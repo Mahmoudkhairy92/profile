@@ -1,0 +1,112 @@
+{
+  "achievements": [
+    {
+      "id": "ach1",
+      "title": "Employee of the Year (2024) - Quality Team",
+      "description": "Awarded Employee of the Year (2024) within the Quality Team at THIQAH for outstanding technical leadership, innovation in AI automation, and elevating team performance. Recognized for creating Quality Mate platform and driving AI-powered testing initiatives.",
+      "date": "2024",
+      "category": "award",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-star-fill"
+    },
+    {
+      "id": "ach2",
+      "title": "Second Place - Elm Company Hackathon",
+      "description": "Achieved Second Place with team Agent X in Elm Company Hackathon (Dec 2025). Developed an innovative AI-driven solution using Nuha LLM, OpenAI LLM, LangChain, CrewAI, FastAPI, NestJS, and Angular. Received deep admiration from senior judges and executive leaders.",
+      "date": "Dec 2025",
+      "category": "award",
+      "organization": "Elm Company",
+      "icon": "bi-trophy-fill"
+    },
+    {
+      "id": "ach3",
+      "title": "Organizer & Mentor - Thiqah Hackathon",
+      "description": "Led the organization of Thiqah Hackathon (Nov 2025) and mentored cross-functional teams on AI implementation, ensuring high-quality prototypes and effective collaboration. Fostered innovation and encouraged creative problem-solving.",
+      "date": "Nov 2025",
+      "category": "recognition",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-people-fill"
+    },
+    {
+      "id": "ach4",
+      "title": "iHealth Presentation at LEAP 2025",
+      "description": "Part of the Digital Innovation team at THIQAH, showcased iHealth product at LEAP 2025. Demonstrated innovative healthcare solution born from team collaboration and technical innovation.",
+      "date": "Feb 2025",
+      "category": "recognition",
+      "organization": "THIQAH Business Services / LEAP 2025",
+      "icon": "bi-presentation-fill"
+    },
+    {
+      "id": "ach5",
+      "title": "Certificate of Appreciation - Outstanding Contributions",
+      "description": "Recognized for outstanding contributions within the development and quality department, including AI hackathons. Acknowledged for exceptional dedication, technical excellence, and innovation in digital transformation initiatives.",
+      "date": "2024",
+      "category": "recognition",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-award-fill"
+    },
+    {
+      "id": "ach6",
+      "title": "Created Quality Mate Platform",
+      "description": "Designed and developed Quality Mate, an AI-powered testing assistant and centralized test management platform. Enabled intelligent test generation, execution tracking, and seamless integration with Azure DevOps and Jira. Transformed team efficiency and quality metrics.",
+      "date": "2024",
+      "category": "innovation",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-robot"
+    },
+    {
+      "id": "ach7",
+      "title": "Launched Test League Gamification",
+      "description": "Launched Test League, a gamified learning and competition program for QA engineers, incorporating quizzes, challenges, and leaderboards. Boosted team collaboration, engagement, and knowledge sharing across automation and manual testing teams.",
+      "date": "2024",
+      "category": "innovation",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-controller"
+    },
+    {
+      "id": "ach8",
+      "title": "Founded QC Tube Knowledge Hub",
+      "description": "Founded QC Tube, an internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence.",
+      "date": "2024",
+      "category": "innovation",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-play-btn-fill"
+    },
+    {
+      "id": "ach9",
+      "title": "Custom GPTs Ecosystem for QA Support",
+      "description": "Developed and deployed a suite of 5 specialized Custom GPTs: ISTQB Study Partner, QC Senior Interviewer, User Story & Test Case Generator, SQL Query Generator, and Python Automation Assistant. Streamlined routine tasks and provided on-demand mentorship for engineers.",
+      "date": "2024",
+      "category": "innovation",
+      "organization": "THIQAH Business Services",
+      "icon": "bi-robot"
+    },
+    {
+      "id": "ach10",
+      "title": "Full Stack AI Course Certification",
+      "description": "Completed comprehensive Full Stack AI Course, covering AI/ML fundamentals, implementation strategies, and practical applications in software testing and automation.",
+      "date": "May 2023",
+      "category": "certification",
+      "organization": "AI Training Institute",
+      "icon": "bi-award-fill"
+    },
+    {
+      "id": "ach11",
+      "title": "ISTQB Foundation Level Certification",
+      "description": "Achieved ISTQB Foundation Level certification, demonstrating strong understanding of software testing fundamentals, methodologies, and best practices.",
+      "date": "May 2018",
+      "category": "certification",
+      "organization": "ISTQB",
+      "icon": "bi-patch-check-fill"
+    },
+    {
+      "id": "ach12",
+      "title": "Graduated with Excellent - Final Project",
+      "description": "Graduated from Menoufia University, Faculty of Electronic Engineering, Communication Department. Final project 'GSM Based Home Automation using Arduino' received Excellent grade, demonstrating strong technical and implementation skills.",
+      "date": "2014",
+      "category": "education",
+      "organization": "Menoufia University",
+      "icon": "bi-mortarboard-fill"
+    }
+  ]
+}
