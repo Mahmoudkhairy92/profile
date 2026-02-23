@@ -1,0 +1,100 @@
+<div class="container py-5">
+  <app-page-header 
+    title="Technical Expertise" 
+    subtitle="Technologies and tools I work with"
+    icon="fas fa-laptop-code" />
+
+  <!-- Search Bar -->
+  <div class="search-section mb-5">
+    <div class="search-wrapper">
+      <i class="fas fa-search"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search technologies..."
+        [value]="searchTerm()"
+        (input)="onSearchChange($any($event.target).value)"
+        autocomplete="off">
+      @if (searchTerm()) {
+        <button
+          type="button"
+          class="clear-btn"
+          (click)="clearSearch()"
+          aria-label="Clear search">
+          <i class="fas fa-times"></i>
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (filteredSkills(); as skillsData) {
+    @if (skillsData.categories.length === 0) {
+      <div class="no-results">
+        <div class="no-results-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h4>No skills found</h4>
+        <p>Try adjusting your search terms</p>
+      </div>
+    } @else {
+      <div class="skills-container">
+        @for (category of skillsData.categories; track category.category) {
+          <div class="skill-category">
+            <div class="category-header">
+              <div class="category-icon">
+                <i [class]="getCategoryIcon(category.category)"></i>
+              </div>
+              <h3 class="category-name">{{ category.category }}</h3>
+              <span class="skill-count">{{ category.skills.length }}</span>
+            </div>
+            
+            <div class="skills-tags">
+              @for (skill of category.skills; track skill.name) {
+                <div 
+                  class="skill-tag"
+                  [class]="'level-' + skill.level"
+                  [class.no-rank]="skill.level === 0">
+                  <i [class]="getSkillIcon(skill, category.category) + ' skill-tag-icon me-2'"></i>
+                  <span class="skill-tag-name">{{ skill.name }}</span>
+                  @if (skill.level !== 0) {
+                    <span class="skill-tag-indicator"></span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      
+      <!-- Legend -->
+      <div class="skills-legend">
+        <div class="legend-title">
+          <i class="fas fa-info-circle me-2"></i>
+          Proficiency Levels
+        </div>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-dot level-1-3"></span>
+            <span>Beginner</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot level-4-6"></span>
+            <span>Intermediate</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot level-7-9"></span>
+            <span>Expert</span>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="loading-state">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Loading skills...</p>
+    </div>
+  }
+</div>
+

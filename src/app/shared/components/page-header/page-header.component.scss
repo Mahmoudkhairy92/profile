@@ -1,0 +1,98 @@
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, transparent, var(--bs-primary), var(--bs-primary-dark), transparent) 1;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+  
+  i {
+    background: var(--bs-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: var(--bs-body-color);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 992px) {
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 2.25rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+  
+  .page-title {
+    font-size: 1.75rem;
+    
+    i {
+      font-size: 1.5rem;
+      margin-right: 0.5rem !important;
+    }
+  }
+  
+  .page-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+    
+    i {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .page-subtitle {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Profile</title>
+  <base href="/profile/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Single Page Apps for GitHub Pages
+    // This script handles 404 errors by redirecting to index.html with the route
+    // The route will be preserved and Angular router will handle it
+    (function() {
+      var l = window.location;
+      var path = l.pathname;
+      
+      // Extract the route after /profile/
+      var routeMatch = path.match(/\/profile\/(.*)/);
+      var route = routeMatch ? routeMatch[1] : '';
+      
+      // Store the full path in sessionStorage for index.html to pick up
+      sessionStorage.redirect = l.pathname + l.search + l.hash;
+      
+      // Redirect to index.html (will be at /profile/index.html or /profile/)
+      var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        '/profile/' + (l.search ? l.search : '') + (l.hash ? l.hash : '');
+      
+      window.location.replace(redirectUrl);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
+

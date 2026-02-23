@@ -1,0 +1,83 @@
+<div class="container py-5">
+  <app-page-header 
+    title="Projects" 
+    subtitle="Showcase of my work and contributions"
+    icon="fas fa-folder-open" />
+
+  @if (projects(); as projectData) {
+    <div class="projects-grid">
+        @for (project of projectData.projects; track project.id) {
+        <div class="project-card" [class.strategic-initiative]="project.isStrategicInitiative" [id]="'project-' + project.id">
+          <div class="card-header">
+            <div class="title-row">
+              <h3 class="project-title">{{ project.name }}</h3>
+              @if (project.isStrategicInitiative) {
+                <span class="strategic-badge">
+                  <i class="fas fa-star"></i>
+                  Strategic Initiative
+                </span>
+              }
+            </div>
+            <div class="project-role">{{ project.role }}</div>
+          </div>
+          
+          <p class="project-description">{{ project.description }}</p>
+          
+          <div class="project-meta">
+            <span class="meta-item">
+              <i class="fas fa-calendar-alt"></i>
+              {{ project.startDate }} - {{ project.endDate || 'Ongoing' }}
+            </span>
+          </div>
+          
+          @if (project.highlights && project.highlights.length > 0) {
+            <div class="section">
+              <h6 class="section-title">Key Highlights</h6>
+              <ul class="simple-list">
+                @for (highlight of project.highlights; track highlight) {
+                  <li>{{ highlight }}</li>
+                }
+              </ul>
+            </div>
+          }
+          
+          @if (project.technologies && project.technologies.length > 0) {
+            <div class="section">
+              <h6 class="section-title">Technologies</h6>
+              <div class="tech-list">
+                @for (tech of project.technologies; track tech) {
+                  <span class="tech-badge">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          }
+          
+          @if (project.githubUrl || project.liveUrl) {
+            <div class="project-links">
+              @if (project.githubUrl) {
+                <a [href]="project.githubUrl" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                  View Code
+                </a>
+              }
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" class="project-link primary">
+                  <i class="fas fa-external-link-alt"></i>
+                  Live Demo
+                </a>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading projects...</p>
+    </div>
+  }
+</div>
+

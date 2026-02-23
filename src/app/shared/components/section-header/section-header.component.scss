@@ -1,0 +1,15 @@
+.section-header {
+  h2 {
+    font-weight: 700;
+    color: var(--bs-heading-color);
+  }
+
+  hr {
+    transition: width 0.3s ease;
+  }
+
+  &:hover hr {
+    width: 30% !important;
+  }
+}
+

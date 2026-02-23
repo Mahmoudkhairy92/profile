@@ -1,0 +1,412 @@
+{
+  "categories": [
+    {
+      "category": "Automation Tools & Frameworks",
+      "skills": [
+        {
+          "name": "Robot Framework",
+          "level": 95,
+          "category": "Automation Tools & Frameworks",
+          "since": 2019
+        },
+        {
+          "name": "Selenium WebDriver",
+          "level": 90,
+          "category": "Automation Tools & Frameworks",
+          "since": 2018
+        },
+        {
+          "name": "Playwright",
+          "level": 90,
+          "category": "Automation Tools & Frameworks",
+          "since": 2023
+        },
+        {
+          "name": "Cypress",
+          "level": 85,
+          "category": "Automation Tools & Frameworks",
+          "since": 2022
+        },
+        {
+          "name": "Appium",
+          "level": 90,
+          "category": "Automation Tools & Frameworks",
+          "since": 2018
+        },
+        {
+          "name": "Katalon Studio",
+          "level": 80,
+          "category": "Automation Tools & Frameworks",
+          "since": 2022
+        },
+        {
+          "name": "Testim",
+          "level": 80,
+          "category": "Automation Tools & Frameworks",
+          "since": 2022
+        }
+      ]
+    },
+    {
+      "category": "AI/ML & Intelligent Testing",
+      "skills": [
+        {
+          "name": "Quality Mate (Creator)",
+          "level": 100,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2024
+        },
+        {
+          "name": "ChatGPT Integration",
+          "level": 95,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2023
+        },
+        {
+          "name": "Flowise AI",
+          "level": 90,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2024
+        },
+        {
+          "name": "AI-Driven Locators",
+          "level": 90,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2024
+        },
+        {
+          "name": "Self-Healing Scripts",
+          "level": 90,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2024
+        },
+        {
+          "name": "Predictive Analytics",
+          "level": 85,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2024
+        },
+        {
+          "name": "Applitools",
+          "level": 75,
+          "category": "AI/ML & Intelligent Testing",
+          "since": 2022
+        }
+      ]
+    },
+    {
+      "category": "Programming & Scripting",
+      "skills": [
+        {
+          "name": "Python",
+          "level": 90,
+          "category": "Programming & Scripting",
+          "since": 2019
+        },
+        {
+          "name": "SQL",
+          "level": 85,
+          "category": "Programming & Scripting",
+          "since": 2017
+        },
+        {
+          "name": "Java SE",
+          "level": 75,
+          "category": "Programming & Scripting",
+          "since": 2017
+        },
+        {
+          "name": "HTML",
+          "level": 80,
+          "category": "Programming & Scripting",
+          "since": 2018
+        },
+        {
+          "name": "JSON",
+          "level": 85,
+          "category": "Programming & Scripting",
+          "since": 2018
+        },
+        {
+          "name": "XML",
+          "level": 80,
+          "category": "Programming & Scripting",
+          "since": 2018
+        }
+      ]
+    },
+    {
+      "category": "API & Performance Testing",
+      "skills": [
+        {
+          "name": "Postman",
+          "level": 90,
+          "category": "API & Performance Testing",
+          "since": 2018
+        },
+        {
+          "name": "SoapUI",
+          "level": 80,
+          "category": "API & Performance Testing",
+          "since": 2018
+        },
+        {
+          "name": "Swagger",
+          "level": 85,
+          "category": "API & Performance Testing",
+          "since": 2019
+        },
+        {
+          "name": "JMeter",
+          "level": 85,
+          "category": "API & Performance Testing",
+          "since": 2019
+        },
+        {
+          "name": "LoadRunner",
+          "level": 70,
+          "category": "API & Performance Testing",
+          "since": 2020
+        }
+      ]
+    },
+    {
+      "category": "Databases & Data Testing",
+      "skills": [
+        {
+          "name": "SQL Server",
+          "level": 85,
+          "category": "Databases & Data Testing",
+          "since": 2017
+        },
+        {
+          "name": "MySQL",
+          "level": 80,
+          "category": "Databases & Data Testing",
+          "since": 2018
+        },
+        {
+          "name": "MongoDB",
+          "level": 70,
+          "category": "Databases & Data Testing",
+          "since": 2020
+        },
+        {
+          "name": "Toad",
+          "level": 75,
+          "category": "Databases & Data Testing",
+          "since": 2018
+        }
+      ]
+    },
+    {
+      "category": "CI/CD & DevOps",
+      "skills": [
+        {
+          "name": "Azure Pipelines",
+          "level": 85,
+          "category": "CI/CD & DevOps",
+          "since": 2019
+        },
+        {
+          "name": "Azure DevOps",
+          "level": 90,
+          "category": "CI/CD & DevOps",
+          "since": 2019
+        },
+        {
+          "name": "Git",
+          "level": 85,
+          "category": "CI/CD & DevOps",
+          "since": 2018
+        },
+        {
+          "name": "Docker",
+          "level": 75,
+          "category": "CI/CD & DevOps",
+          "since": 2020
+        },
+        {
+          "name": "Linux",
+          "level": 75,
+          "category": "CI/CD & DevOps",
+          "since": 2019
+        },
+        {
+          "name": "YAML",
+          "level": 80,
+          "category": "CI/CD & DevOps",
+          "since": 2020
+        }
+      ]
+    },
+    {
+      "category": "Test Management & Bug Tracking",
+      "skills": [
+        {
+          "name": "Azure DevOps (TFS/MTM)",
+          "level": 90,
+          "category": "Test Management & Bug Tracking",
+          "since": 2019
+        },
+        {
+          "name": "JIRA",
+          "level": 85,
+          "category": "Test Management & Bug Tracking",
+          "since": 2018
+        }
+      ]
+    },
+    {
+      "category": "Analytics & Reporting",
+      "skills": [
+        {
+          "name": "Power BI",
+          "level": 85,
+          "category": "Analytics & Reporting",
+          "since": 2022
+        },
+        {
+          "name": "Metabase",
+          "level": 80,
+          "category": "Analytics & Reporting",
+          "since": 2023
+        },
+        {
+          "name": "Custom Dashboards",
+          "level": 85,
+          "category": "Analytics & Reporting",
+          "since": 2023
+        }
+      ]
+    },
+    {
+      "category": "Leadership & People Management",
+      "skills": [
+        {
+          "name": "Team Leadership",
+          "level": 90,
+          "category": "Leadership & People Management",
+          "since": 2022
+        },
+        {
+          "name": "Mentorship & Coaching",
+          "level": 95,
+          "category": "Leadership & People Management",
+          "since": 2022
+        },
+        {
+          "name": "Cross-Functional Collaboration",
+          "level": 90,
+          "category": "Leadership & People Management",
+          "since": 2019
+        },
+        {
+          "name": "Team Building & Engagement",
+          "level": 90,
+          "category": "Leadership & People Management",
+          "since": 2024
+        }
+      ]
+    },
+    {
+      "category": "Strategic & Analytical Skills",
+      "skills": [
+        {
+          "name": "Innovation & Creativity",
+          "level": 95,
+          "category": "Strategic & Analytical Skills",
+          "since": 2024
+        },
+        {
+          "name": "Analytical Thinking",
+          "level": 90,
+          "category": "Strategic & Analytical Skills",
+          "since": 2016
+        },
+        {
+          "name": "Strategic Planning",
+          "level": 85,
+          "category": "Strategic & Analytical Skills",
+          "since": 2024
+        },
+        {
+          "name": "Problem-Solving",
+          "level": 90,
+          "category": "Strategic & Analytical Skills",
+          "since": 2016
+        },
+        {
+          "name": "Decision-Making",
+          "level": 85,
+          "category": "Strategic & Analytical Skills",
+          "since": 2022
+        }
+      ]
+    },
+    {
+      "category": "Communication & Collaboration",
+      "skills": [
+        {
+          "name": "Communication",
+          "level": 90,
+          "category": "Communication & Collaboration",
+          "since": 2016
+        },
+        {
+          "name": "Stakeholder Engagement",
+          "level": 85,
+          "category": "Communication & Collaboration",
+          "since": 2019
+        },
+        {
+          "name": "Public Speaking",
+          "level": 80,
+          "category": "Communication & Collaboration",
+          "since": 2023
+        },
+        {
+          "name": "Technical Writing",
+          "level": 85,
+          "category": "Communication & Collaboration",
+          "since": 2019
+        }
+      ]
+    },
+    {
+      "category": "Testing Methodologies",
+      "skills": [
+        {
+          "name": "Agile/Scrum",
+          "level": 90,
+          "category": "Testing Methodologies",
+          "since": 2019
+        },
+        {
+          "name": "Risk-Based Testing",
+          "level": 90,
+          "category": "Testing Methodologies",
+          "since": 2022
+        },
+        {
+          "name": "Functional Testing",
+          "level": 95,
+          "category": "Testing Methodologies",
+          "since": 2016
+        },
+        {
+          "name": "Regression Testing",
+          "level": 95,
+          "category": "Testing Methodologies",
+          "since": 2016
+        },
+        {
+          "name": "Integration Testing",
+          "level": 90,
+          "category": "Testing Methodologies",
+          "since": 2017
+        }
+      ]
+    }
+  ]
+}

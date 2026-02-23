@@ -1,0 +1,18 @@
+<div class="card h-100" [ngClass]="{
+  'border-2': variant === 'bordered',
+  'shadow-lg': variant === 'elevated'
+}">
+  @if (imageUrl) {
+    <img [src]="imageUrl" class="card-img-top" [alt]="title || 'Card image'">
+  }
+  <div class="card-body">
+    @if (title) {
+      <h5 class="card-title">{{ title }}</h5>
+    }
+    @if (subtitle) {
+      <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+    }
+    <ng-content></ng-content>
+  </div>
+</div>
+

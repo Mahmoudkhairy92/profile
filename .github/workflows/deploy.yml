@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for GitHub Pages
+        run: npm run build:gh-pages
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+
+      - name: Move files from browser subdirectory
+        run: |
+          if [ -d "docs/browser" ]; then
+            cp -r docs/browser/* docs/
+            rm -rf docs/browser
+          fi
+
+      - name: Add .nojekyll file
+        run: touch docs/.nojekyll
+
+      - name: Commit to docs folder
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Deploy to GitHub Pages [skip ci]"
+          git push
+

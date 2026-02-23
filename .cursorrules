@@ -1,0 +1,73 @@
+# Cursor AI Project Rules for MyProfile Angular Application
+
+## File Creation Rules
+
+### Documentation Files
+- **DO NOT** create `.md` (Markdown) documentation files unless explicitly requested by the user
+- **DO NOT** create README files, guides, or documentation proactively
+- Only create documentation when the user specifically asks for it
+
+### Configuration Files
+- Only create new configuration files when requested or absolutely necessary for the feature being implemented
+- Ask before creating new config files if uncertain
+
+## Testing Rules
+
+### Automated Testing
+- **DO NOT** run tests automatically without being requested
+- **DO NOT** execute `npm test`, `npm run build`, or other verification commands unless:
+  - User explicitly asks for testing
+  - User asks to verify the build
+  - Required to diagnose a specific issue
+
+### Manual Testing
+- **DO NOT** start development servers for testing purposes without request
+- **DO NOT** use browser automation tools to test features unless specifically asked
+
+## Development Workflow
+
+### Code Changes
+- Focus on implementing requested features
+- Only run build commands when necessary to verify compilation errors
+- Prioritize code implementation over verification
+
+### Linter Checks
+- Run linter checks only on files you've edited
+- Fix linter errors that you introduce
+- Don't run linter on entire project without request
+
+### Build Verification
+- Only build the project if:
+  - User requests it
+  - There are compilation errors that need to be verified
+  - Making changes that might break the build
+
+## Project-Specific Guidelines
+
+### Angular 21 Portfolio Application
+- Maintain standalone component architecture
+- Use signals-first approach
+- Keep OnPush change detection
+- Follow 4-file component structure (.ts, .html, .scss, .spec.ts)
+- Use Font Awesome icons (not Bootstrap Icons)
+- Load all data from JSON files in `public/assets/data/`
+
+### Code Quality
+- Write production-ready code
+- Follow TypeScript strict mode
+- No `any` types
+- Fully type all inputs/outputs
+- Use proper error handling
+
+## Summary
+
+**Key Rules:**
+1. ❌ No proactive .md file creation
+2. ❌ No automatic testing
+3. ❌ No running servers without request
+4. ✅ Focus on implementing requested features
+5. ✅ Only verify builds when necessary
+6. ✅ Fix errors you introduce
+
+**When in doubt:** Ask the user before creating files or running tests.
+

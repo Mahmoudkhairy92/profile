@@ -1,0 +1,82 @@
+.timeline-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 2rem;
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 45px;
+    bottom: -10px;
+    width: 2px;
+    background: var(--bs-border-color);
+  }
+
+  .timeline-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    z-index: 1;
+    background: white;
+    border: 3px solid;
+    
+    @media (prefers-color-scheme: dark) {
+      background: var(--bs-body-bg);
+    }
+
+    &.timeline-marker-work {
+      border-color: var(--bs-primary);
+      color: var(--bs-primary);
+    }
+
+    &.timeline-marker-education {
+      border-color: var(--bs-success);
+      color: var(--bs-success);
+    }
+
+    &.timeline-marker-achievement {
+      border-color: var(--bs-warning);
+      color: var(--bs-warning);
+    }
+
+    &.timeline-marker-project {
+      border-color: var(--bs-info);
+      color: var(--bs-info);
+    }
+
+    &.timeline-marker-certification {
+      border-color: var(--bs-danger);
+      color: var(--bs-danger);
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding-top: 0.25rem;
+  }
+
+  .timeline-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--bs-heading-color);
+  }
+
+  .timeline-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .timeline-date {
+    margin-bottom: 0.5rem;
+  }
+}
+

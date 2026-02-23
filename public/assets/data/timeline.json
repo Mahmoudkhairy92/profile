@@ -1,0 +1,148 @@
+{
+  "timeline": [
+    {
+      "id": "evt1",
+      "date": "Jan 2025",
+      "title": "Employee of the Year 2024 - Quality Team",
+      "subtitle": "THIQAH Business Services",
+      "description": "Awarded Employee of the Year 2024 within the Quality Team for outstanding technical leadership, AI automation innovation, and elevating team performance through Quality Mate platform and AI-powered initiatives.",
+      "type": "achievement",
+      "icon": "bi-star-fill"
+    },
+    {
+      "id": "evt2",
+      "date": "Dec 2024",
+      "title": "Second Place - Elm Company Hackathon",
+      "subtitle": "Team Agent X",
+      "description": "Achieved Second Place with team Agent X in Elm Company Hackathon. Developed innovative AI-driven solution using Nuha LLM, OpenAI LLM, LangChain, CrewAI, FastAPI, NestJS, and Angular. Received deep admiration from senior judges and executive leaders.",
+      "type": "achievement",
+      "icon": "bi-trophy-fill"
+    },
+    {
+      "id": "evt3",
+      "date": "Nov 2024",
+      "title": "Organizer & Mentor - Thiqah Hackathon",
+      "subtitle": "THIQAH Business Services",
+      "description": "Led organization of Thiqah Hackathon and mentored cross-functional teams on AI implementation. Ensured high-quality prototypes and effective collaboration while fostering innovation.",
+      "type": "achievement",
+      "icon": "bi-people-fill"
+    },
+    {
+      "id": "evt4",
+      "date": "Feb 2024",
+      "title": "Presented iHealth at LEAP 2025",
+      "subtitle": "THIQAH Digital Innovation Team",
+      "description": "Showcased iHealth product at LEAP 2025 as part of THIQAH's Digital Innovation team, demonstrating innovative healthcare solution born from collaboration and innovation.",
+      "type": "recognition",
+      "icon": "bi-presentation-fill"
+    },
+    {
+      "id": "evt5",
+      "date": "2024",
+      "title": "Launched Quality Mate Platform",
+      "subtitle": "AI-Powered Testing Assistant",
+      "description": "Designed and developed Quality Mate, an AI-powered testing assistant with centralized test management, intelligent test generation, execution tracking, and seamless Azure DevOps/Jira integration. Transformed team efficiency and quality metrics.",
+      "type": "innovation",
+      "icon": "bi-robot"
+    },
+    {
+      "id": "evt6",
+      "date": "2024",
+      "title": "Launched Test League & QC Tube",
+      "subtitle": "Gamification & Knowledge Hub",
+      "description": "Created Test League gamified learning platform and QC Tube knowledge hub for workshops, webinars, and technical sharing. Boosted team collaboration, engagement, and continuous learning culture.",
+      "type": "innovation",
+      "icon": "bi-controller"
+    },
+    {
+      "id": "evt7",
+      "date": "Jul 2023",
+      "title": "Promoted to Staff Automation & AI Engineer",
+      "subtitle": "THIQAH Business Services",
+      "description": "Promoted to Staff level position focusing on AI-powered automation, test framework architecture, and technical leadership. Spearheaded AI integration initiatives and mentored engineering teams on automation best practices.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt8",
+      "date": "May 2023",
+      "title": "Completed Full Stack AI Course",
+      "subtitle": "Advanced AI/ML Training",
+      "description": "Completed comprehensive Full Stack AI Course covering AI/ML fundamentals, implementation strategies, and practical applications in software testing and automation.",
+      "type": "education",
+      "icon": "bi-mortarboard-fill"
+    },
+    {
+      "id": "evt9",
+      "date": "Jan 2022",
+      "title": "Promoted to Lead QA Automation Engineer",
+      "subtitle": "THIQAH Business Services",
+      "description": "Led QA automation initiatives including Robot Framework adoption, CI/CD pipeline design, and team mentorship. Established automation best practices and frameworks across multiple enterprise projects.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt10",
+      "date": "Oct 2019",
+      "title": "Promoted to Senior QA Automation Engineer",
+      "subtitle": "THIQAH Business Services",
+      "description": "Advanced to senior role with focus on automation framework development, test strategy design, and team leadership. Delivered high-impact solutions for government and enterprise platforms.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt11",
+      "date": "Jul 2018",
+      "title": "ISTQB Foundation Level Certification",
+      "subtitle": "International Software Testing Qualifications Board",
+      "description": "Achieved ISTQB Foundation Level certification, demonstrating strong understanding of software testing fundamentals, methodologies, and best practices.",
+      "type": "certification",
+      "icon": "bi-patch-check-fill"
+    },
+    {
+      "id": "evt12",
+      "date": "Apr 2018",
+      "title": "Joined THIQAH as QA Automation Engineer",
+      "subtitle": "THIQAH Business Services - Riyadh, Saudi Arabia",
+      "description": "Started journey with THIQAH, implementing test automation solutions for large-scale government platforms. Built foundation for automation excellence and continuous improvement.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt13",
+      "date": "Jan 2017",
+      "title": "QA Engineer at Algorithmz",
+      "subtitle": "Algorithmz - Riyadh, Saudi Arabia",
+      "description": "Executed comprehensive testing for trading and investment platforms. Designed test cases, performed functional and regression testing, and collaborated with development teams.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt14",
+      "date": "Apr 2016",
+      "title": "Software Tester at Path Solutions",
+      "subtitle": "Path Solutions - Cairo, Egypt",
+      "description": "Conducted manual and automated testing for Islamic banking systems. Validated financial transactions, reporting modules, and regulatory compliance features.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt15",
+      "date": "Jun 2015",
+      "title": "Started Career as QA Tester",
+      "subtitle": "Silicon Expert - Cairo, Egypt",
+      "description": "Began professional QA career performing manual testing for web applications. Developed foundational testing skills including test case design, bug reporting, and quality analysis.",
+      "type": "work",
+      "icon": "bi-briefcase-fill"
+    },
+    {
+      "id": "evt16",
+      "date": "2014",
+      "title": "Graduated with Excellent - Final Project",
+      "subtitle": "Menoufia University - Electronic Engineering",
+      "description": "Graduated from Menoufia University, Faculty of Electronic Engineering, Communication Department. Final project 'GSM Based Home Automation using Arduino' received Excellent grade.",
+      "type": "education",
+      "icon": "bi-mortarboard-fill"
+    }
+  ]
+}

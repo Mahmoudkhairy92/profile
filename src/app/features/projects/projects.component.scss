@@ -1,0 +1,294 @@
+// Projects Grid
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+// Project Card
+.project-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--bs-primary);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  color: var(--bs-body-color);
+  scroll-margin-top: 2rem;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// Card Header
+.card-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  
+  @media (prefers-color-scheme: dark) {
+    border-bottom-color: var(--bs-border-color);
+  }
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+// Strategic Initiative Badge
+.strategic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bs-gradient-primary);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+  
+  i {
+    font-size: 0.7rem;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    50% {
+      box-shadow: 0 2px 12px rgba(102, 126, 234, 0.5);
+    }
+  }
+}
+
+// Strategic Initiative Card Styling
+.project-card.strategic-initiative {
+  border-left-color: var(--bs-primary-dark);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+  
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  }
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(118, 75, 162, 0.25);
+  }
+}
+
+.project-role {
+  font-size: 0.95rem;
+  color: var(--bs-primary);
+  font-weight: 600;
+}
+
+// Project Description
+.project-description {
+  color: var(--bs-body-color);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+// Project Meta
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--bs-body-color);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  
+  i {
+    color: var(--bs-primary);
+  }
+}
+
+// Sections
+.section {
+  margin-bottom: 1.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+// Simple List
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--bs-body-color);
+    line-height: 1.6;
+    position: relative;
+    
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--bs-primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Tech List
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--bs-primary);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #667eea;
+    color: white;
+  }
+}
+
+// Project Links
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  
+  @media (prefers-color-scheme: dark) {
+    border-top-color: var(--bs-border-color);
+  }
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: var(--bs-light);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+  
+  &:hover {
+    background: var(--bs-light);
+    color: var(--bs-heading-color);
+    transform: translateY(-1px);
+  }
+  
+  &.primary {
+    background: var(--bs-primary);
+    color: white;
+    border-color: var(--bs-primary);
+    
+    &:hover {
+      background: var(--bs-primary-dark);
+      color: white;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--bs-border-color);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+  }
+  
+  .title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .strategic-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .project-link {
+    justify-content: center;
+  }
+}
+

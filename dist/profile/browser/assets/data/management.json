@@ -1,0 +1,105 @@
+{
+  "management": [
+    {
+      "id": "mgmt1",
+      "level": "high",
+      "title": "Technical Leadership - QA Automation & AI",
+      "organization": "THIQAH Business Services",
+      "startDate": "Jul 2023",
+      "endDate": null,
+      "isCurrent": true,
+      "description": "Leading QA automation and AI initiatives as Staff Automation & AI Engineer. Spearheading Quality Mate platform development, AI-powered testing solutions, and mentoring automation engineers across enterprise projects.",
+      "keyResponsibilities": [
+        "Lead AI-powered automation initiatives and platform development",
+        "Architect test automation frameworks and best practices",
+        "Mentor and guide QA automation engineers on technical excellence",
+        "Drive adoption of Robot Framework, Playwright, and AI testing tools",
+        "Design and implement CI/CD pipelines for automated testing",
+        "Establish quality metrics and continuous improvement strategies",
+        "Collaborate with product and engineering teams on quality standards"
+      ],
+      "achievements": [
+        "Developed Quality Mate AI-powered testing platform",
+        "Launched Test League gamification and QC Tube knowledge hub",
+        "Created 5 Custom GPTs ecosystem for QA support",
+        "Achieved Employee of the Year 2024 - Quality Team",
+        "Successfully mentored 10+ automation engineers",
+        "Implemented AI testing agents reducing manual effort by 40%"
+      ]
+    },
+    {
+      "id": "mgmt2",
+      "level": "high",
+      "title": "Team Lead - QA Automation",
+      "organization": "THIQAH Business Services",
+      "startDate": "Jan 2022",
+      "endDate": "Jun 2023",
+      "isCurrent": false,
+      "description": "Led QA automation team responsible for test framework development, automation strategy, and quality assurance across multiple government platforms. Established automation standards and best practices.",
+      "keyResponsibilities": [
+        "Led team of 8 QA automation engineers",
+        "Designed automation strategy and framework architecture",
+        "Implemented Robot Framework enterprise adoption",
+        "Conducted code reviews and technical mentoring",
+        "Managed test automation roadmap and sprint planning",
+        "Coordinated with development teams on quality integration",
+        "Delivered training sessions on automation tools and practices"
+      ],
+      "achievements": [
+        "Reduced test execution time by 60% through parallel execution",
+        "Established Robot Framework as standard across 15+ projects",
+        "Trained team on Playwright and modern automation tools",
+        "Improved test coverage from 45% to 85%",
+        "Built reusable test library reducing duplication by 50%"
+      ]
+    },
+    {
+      "id": "mgmt3",
+      "level": "medium",
+      "title": "Automation Lead - Enterprise Projects",
+      "organization": "THIQAH Business Services",
+      "startDate": "Oct 2019",
+      "endDate": "Dec 2021",
+      "isCurrent": false,
+      "description": "Senior automation engineer leading test automation implementation for government platforms including SABER, MAZAD, and other large-scale projects. Focused on framework development and team enablement.",
+      "keyResponsibilities": [
+        "Led automation implementation for 10+ enterprise projects",
+        "Mentored junior and mid-level automation engineers",
+        "Developed custom automation frameworks and libraries",
+        "Integrated test automation with Azure DevOps pipelines",
+        "Conducted automation workshops and knowledge sharing",
+        "Reviewed and approved automation test designs"
+      ],
+      "achievements": [
+        "Successfully automated 5 major government platforms",
+        "Reduced regression testing cycle from 5 days to 6 hours",
+        "Mentored 6 engineers advancing to senior roles",
+        "Built API testing framework used across department"
+      ]
+    },
+    {
+      "id": "mgmt4",
+      "level": "medium",
+      "title": "Hackathon Organizer & Mentor",
+      "organization": "THIQAH Business Services",
+      "startDate": "Nov 2024",
+      "endDate": "Nov 2024",
+      "isCurrent": false,
+      "description": "Led organization of Thiqah Hackathon (Nov 2024), mentoring cross-functional teams on AI implementation and ensuring high-quality prototypes through effective collaboration.",
+      "keyResponsibilities": [
+        "Organized and coordinated hackathon logistics and execution",
+        "Mentored multiple teams on AI/ML implementation strategies",
+        "Provided technical guidance on LLM integration and architecture",
+        "Facilitated innovation and creative problem-solving sessions",
+        "Evaluated team prototypes and provided constructive feedback",
+        "Fostered collaborative environment across departments"
+      ],
+      "achievements": [
+        "Successfully organized hackathon with 50+ participants",
+        "Mentored 8 teams to working AI prototype completion",
+        "Facilitated cross-functional collaboration and knowledge sharing",
+        "Inspired innovation in AI-driven solutions"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "projects": [
+    {
+      "id": "proj1",
+      "name": "Quality Mate Platform",
+      "description": "AI-powered automation platform integrated with Azure DevOps, Flowise, and GPT models. Delivers full test lifecycle automation including test case creation, task assignment, bug logging, script generation, and reporting with complete traceability from requirements to execution.",
+      "role": "Creator & Lead Architect",
+      "startDate": "2024",
+      "endDate": null,
+      "isCurrent": true,
+      "isStrategicInitiative": true,
+      "type": "AI Innovation Platform",
+      "technologies": ["Azure DevOps", "Flowise AI", "GPT Models", "Python", "AI/ML", "Automation Frameworks"],
+      "highlights": [
+        "Full test lifecycle automation with AI integration",
+        "Automated test case generation from requirements",
+        "AI-powered bug logging and script creation",
+        "Complete traceability and intelligent reporting",
+        "Improved efficiency and reduced manual effort"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj2",
+      "name": "AI-Powered Testing Agents",
+      "description": "Intelligent agents for self-healing scripts, predictive analytics, and real-user simulation. Enhanced test resilience, accelerated defect detection, and optimized regression execution through AI-driven automation.",
+      "role": "Innovation Lead",
+      "startDate": "2024",
+      "endDate": null,
+      "isCurrent": true,
+      "isStrategicInitiative": true,
+      "type": "AI Innovation",
+      "technologies": ["AI/ML", "Self-Healing Scripts", "Predictive Analytics", "Python", "Machine Learning"],
+      "highlights": [
+        "Self-healing test scripts reducing maintenance",
+        "Predictive analytics for proactive defect detection",
+        "Real-user simulation for improved test coverage",
+        "Enhanced test resilience and reliability"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj3",
+      "name": "Test League - Gamification Platform",
+      "description": "Gamified learning and competition program for QA engineers, incorporating quizzes, challenges, and leaderboards. Boosted team collaboration, engagement, and knowledge sharing across automation and manual testing teams.",
+      "role": "Founder & Program Lead",
+      "startDate": "2024",
+      "endDate": null,
+      "isCurrent": true,
+      "type": "Team Engagement Initiative",
+      "technologies": ["Gamification", "Learning Platform", "Team Collaboration"],
+      "highlights": [
+        "Increased team engagement and motivation",
+        "Knowledge sharing through competitive challenges",
+        "Leaderboards and recognition system",
+        "Improved collaboration between QA and development teams"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj4",
+      "name": "QC Tube Knowledge Hub",
+      "description": "Internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence within the QA community.",
+      "role": "Founder & Content Creator",
+      "startDate": "2024",
+      "endDate": null,
+      "isCurrent": true,
+      "type": "Knowledge Sharing Platform",
+      "technologies": ["Content Creation", "Workshops", "Video Platform"],
+      "highlights": [
+        "Regular workshops and webinars on testing topics",
+        "Knowledge repository for automation frameworks",
+        "AI innovations in testing presentations",
+        "Culture of continuous learning and upskilling"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj5",
+      "name": "Custom GPTs Ecosystem for QA Support",
+      "description": "Suite of 5 specialized Custom GPTs to support QC engineers: ISTQB Study Partner, QC Senior Interviewer, User Story & Test Case Generator, SQL Query Generator, and Python Automation Assistant. Streamlined routine tasks and provided on-demand mentorship.",
+      "role": "Developer & Creator",
+      "startDate": "2024",
+      "endDate": null,
+      "isCurrent": true,
+      "type": "AI Productivity Tools",
+      "technologies": ["ChatGPT", "Custom GPTs", "AI Assistants", "Prompt Engineering"],
+      "highlights": [
+        "ISTQB Study Partner for certification preparation",
+        "QC Senior Interviewer for mock interviews",
+        "User Story & Test Case Generator for automation",
+        "SQL Query Generator for database testing",
+        "Python Automation Assistant for scripting support"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj6",
+      "name": "Automation Dashboards & Metrics",
+      "description": "Interactive dashboards (Power BI, Metabase, custom solutions) to track automation coverage, defect detection rate, execution speed, and ROI. Provided real-time insights for management and supported data-driven decision-making.",
+      "role": "Technical Lead & Developer",
+      "startDate": "2023",
+      "endDate": null,
+      "isCurrent": true,
+      "type": "Analytics & Reporting",
+      "technologies": ["Power BI", "Metabase", "Python", "Data Analytics", "Dashboard Development"],
+      "highlights": [
+        "Real-time automation metrics and KPIs",
+        "ROI tracking and cost-benefit analysis",
+        "Defect detection rate visualization",
+        "Data-driven quality insights for leadership"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj7",
+      "name": "Elm Hackathon - Agent X Solution",
+      "description": "Innovative AI-driven solution using Nuha LLM, OpenAI LLM, LangChain, CrewAI, FastAPI, NestJS, and Angular. Secured 2nd place and received deep admiration from senior judges and executive leaders.",
+      "role": "Team Member - Agent X",
+      "startDate": "Dec 2025",
+      "endDate": "Dec 2025",
+      "type": "Hackathon Project",
+      "technologies": ["Nuha LLM", "OpenAI", "LangChain", "CrewAI", "FastAPI", "NestJS", "Angular"],
+      "highlights": [
+        "2nd Place Winner at Elm Hackathon",
+        "Integrated AI solution with multiple LLMs",
+        "Rapid prototyping under tight deadlines",
+        "Recognition from executive leadership"
+      ],
+      "company": "Elm Hackathon"
+    },
+    {
+      "id": "proj8",
+      "name": "Thiqah Hackathon Organization",
+      "description": "Organized and mentored cross-functional teams on AI implementation for Thiqah's internal hackathon. Ensured high-quality prototypes, effective collaboration, and innovation across teams.",
+      "role": "Organizer & Mentor",
+      "startDate": "Nov 2025",
+      "endDate": "Nov 2025",
+      "type": "Event Organization",
+      "technologies": ["AI Mentorship", "Event Management", "Innovation"],
+      "highlights": [
+        "Successfully organized company-wide hackathon",
+        "Mentored multiple teams on AI solutions",
+        "Fostered innovation and collaboration",
+        "High-quality prototypes delivered"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj9",
+      "name": "Automation Framework Modernization",
+      "description": "Built and optimized automation frameworks using Robot Framework, Playwright, Cypress, Testim, and Appium. Reduced test cycle time by 30%, achieved 95% functional coverage, and improved testing efficiency by 20%.",
+      "role": "Lead Automation Engineer",
+      "startDate": "Sep 2022",
+      "endDate": "Jan 2024",
+      "type": "Framework Development",
+      "technologies": ["Robot Framework", "Playwright", "Cypress", "Testim", "Appium", "Python"],
+      "highlights": [
+        "Reduced test cycle time by 30%",
+        "Achieved 95% functional coverage",
+        "2,000+ automated test cases",
+        "Improved efficiency by 20%"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj10",
+      "name": "Government Platform Quality Assurance",
+      "description": "Delivered comprehensive quality assurance for high-impact projects with Saudi governmental institutions and ministries. Ensured compliance, performance, reliability, and security for critical government services.",
+      "role": "Senior Quality Control Engineer",
+      "startDate": "Apr 2019",
+      "endDate": "Sep 2022",
+      "type": "Government Projects",
+      "technologies": ["TFS", "MTM", "JMeter", "Selenium", "API Testing", "Performance Testing"],
+      "highlights": [
+        "Quality assurance for multiple government platforms",
+        "Compliance with governmental standards",
+        "Performance and load testing using JMeter",
+        "Enhanced product stability and security"
+      ],
+      "company": "THIQAH"
+    },
+    {
+      "id": "proj11",
+      "name": "Cross-Platform Testing Solutions",
+      "description": "Performed comprehensive cross-platform testing across web, Android, iOS, and Smart TV applications. Ensured consistent performance and user experience across all platforms.",
+      "role": "Senior Quality Control Engineer",
+      "startDate": "Mar 2018",
+      "endDate": "Apr 2019",
+      "type": "Multi-Platform Testing",
+      "technologies": ["Selenium", "Appium", "Android", "iOS", "Smart TV", "API Testing"],
+      "highlights": [
+        "Testing across web, mobile, and Smart TV platforms",
+        "Consistent quality across all devices",
+        "Improved defect detection",
+        "Enhanced cross-platform compatibility"
+      ],
+      "company": "Algorithmz"
+    },
+    {
+      "id": "proj12",
+      "name": "Banking System Quality Assurance",
+      "description": "Developed and executed automated test scripts for financial applications. Performed API and integration testing, database validation using SQL, and ensured data integrity for financial transactions.",
+      "role": "Quality Control Engineer II",
+      "startDate": "Feb 2017",
+      "endDate": "Mar 2018",
+      "type": "Financial Systems",
+      "technologies": ["TFS", "SQL", "API Testing", "Selenium", "Banking Systems"],
+      "highlights": [
+        "Quality assurance for banking applications",
+        "Financial transaction validation",
+        "Database testing and data integrity",
+        "API and integration testing"
+      ],
+      "company": "Path Solutions"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<span class="badge" [ngClass]="{
+  'bg-primary': variant === 'primary',
+  'bg-secondary': variant === 'secondary',
+  'bg-success': variant === 'success',
+  'bg-danger': variant === 'danger',
+  'bg-warning': variant === 'warning',
+  'bg-info': variant === 'info',
+  'bg-light text-dark': variant === 'light',
+  'bg-dark': variant === 'dark',
+  'rounded-pill': pill
+}">
+  {{ text }}
+</span>
+

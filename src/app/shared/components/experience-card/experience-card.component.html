@@ -1,0 +1,89 @@
+<article
+  class="timeline-content-modern glass-card experience-card-modern exp-card-linkedin"
+  [id]="cardId">
+  @if (experience.isCurrent && showCurrentBadge) {
+    <div class="current-badge">
+      <i class="fas fa-circle"></i> Current
+    </div>
+  }
+
+  <div class="exp-card-header">
+    @if (experience.companyLogo) {
+      <img
+        [src]="getAssetUrl(experience.companyLogo)"
+        [alt]="experience.company + ' logo'"
+        class="company-logo" />
+    }
+    <div class="exp-header-main">
+      <h3 class="timeline-content-title">{{ experience.position }}</h3>
+      <div class="timeline-content-company">
+        <h4 class="company-name">
+          @if (experience.companyWebsite) {
+            <a
+              [href]="experience.companyWebsite"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="company-link">
+              {{ experience.company }}
+            </a>
+          } @else {
+            {{ experience.company }}
+          }
+        </h4>
+      </div>
+      @if (experience.location) {
+        <div class="timeline-content-location">
+          <i class="fas fa-map-marker-alt me-2"></i>{{ experience.location }}
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="exp-date-range">
+    <i class="fas fa-calendar-alt me-2"></i>{{ experience.startDate }} - {{ experience.endDate || 'Present' }}
+  </div>
+
+  <p class="timeline-content-description">
+    {{ experience.description }}
+  </p>
+
+  @if (showResponsibilities && experience.responsibilities.length) {
+    <div class="section">
+      <h6 class="section-title">Key Responsibilities</h6>
+      <ul class="simple-list">
+        @for (responsibility of experience.responsibilities; track responsibility) {
+          <li>{{ responsibility }}</li>
+        }
+      </ul>
+    </div>
+  }
+
+  @if (showAchievements && experience.achievements.length) {
+    <div class="section">
+      <h6 class="section-title">Achievements</h6>
+      <ul class="simple-list">
+        @for (achievement of experience.achievements; track achievement) {
+          <li>{{ achievement }}</li>
+        }
+      </ul>
+    </div>
+  }
+
+  @if (showTechnologies && experience.technologies.length) {
+    <div class="timeline-tech-stack">
+      @for (tech of experience.technologies; track tech) {
+        <span class="tech-badge">{{ tech }}</span>
+      }
+    </div>
+  }
+
+  @if (showDetailsLink) {
+    <a
+      class="btn-see-details"
+      [routerLink]="detailsLink"
+      [fragment]="detailsFragment ?? cardId">
+      See details <i class="fas fa-arrow-right"></i>
+    </a>
+  }
+</article>
+

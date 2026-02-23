@@ -1,0 +1,84 @@
+<div class="container py-5">
+  <app-page-header 
+    title="Courses & Trainings" 
+    subtitle="Continuous learning and professional development"
+    icon="fas fa-book" />
+
+  @if (courses(); as courseData) {
+    <div class="courses-grid">
+      @for (course of courseData.courses; track course.id) {
+        <div class="course-card">
+          <div class="card-header">
+            <div class="course-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="course-header-info">
+              <h3 class="course-title">{{ course.title }}</h3>
+              <div class="course-provider">{{ course.provider }}</div>
+            </div>
+          </div>
+          
+          @if (course.instructor) {
+            <div class="instructor-info">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span>Instructor: {{ course.instructor }}</span>
+            </div>
+          }
+          
+          @if (course.description) {
+            <p class="course-description">{{ course.description }}</p>
+          }
+          
+          <div class="course-meta">
+            <span class="meta-item">
+              <i class="fas fa-calendar-check"></i>
+              {{ course.completionDate }}
+            </span>
+            @if (course.duration) {
+              <span class="meta-item">
+                <i class="fas fa-clock"></i>
+                {{ course.duration }}
+              </span>
+            }
+          </div>
+          
+          @if (course.skills && course.skills.length > 0) {
+            <div class="section">
+              <h6 class="section-title">Skills Acquired</h6>
+              <div class="skills-list">
+                @for (skill of course.skills; track skill) {
+                  <span class="skill-badge">{{ skill }}</span>
+                }
+              </div>
+            </div>
+          }
+          
+          @if (course.courseUrl || course.certificateUrl) {
+            <div class="course-actions">
+              @if (course.courseUrl) {
+                <a [href]="course.courseUrl" target="_blank" rel="noopener noreferrer" class="action-link primary">
+                  <i class="fas fa-external-link-alt"></i>
+                  View Course
+                </a>
+              }
+              @if (course.certificateUrl) {
+                <a [href]="course.certificateUrl" target="_blank" rel="noopener noreferrer" class="action-link">
+                  <i class="fas fa-file-alt"></i>
+                  Certificate
+                </a>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading courses...</p>
+    </div>
+  }
+</div>
+

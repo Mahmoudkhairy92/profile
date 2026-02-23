@@ -1,0 +1,11 @@
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+

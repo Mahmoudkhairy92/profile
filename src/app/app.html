@@ -1,0 +1,138 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/profile">
+      <i class="fas fa-user-circle me-2"></i>
+      <span class="brand-text">{{ title }}</span>
+    </a>
+    <button 
+      class="navbar-toggler border-0" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav" 
+      [attr.aria-expanded]="isNavbarCollapsed"
+      aria-label="Toggle navigation"
+      (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" [class.show]="!isNavbarCollapsed">
+      <ul class="navbar-nav ms-auto">
+        @for (item of navItems; track item.path) {
+          <li class="nav-item">
+            <a 
+              class="nav-link" 
+              [routerLink]="item.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/profile' }"
+              (click)="collapseNavbar()">
+              <i [class]="item.icon"></i>
+              <span class="nav-text">{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- In Progress Banner -->
+@if (showInProgressBanner()) {
+  <div class="in-progress-banner">
+    <div class="container">
+      <div class="banner-content">
+        <div class="banner-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <div class="banner-text">
+          <strong>Work in Progress</strong>
+          <span class="separator">•</span>
+          <span>This portfolio is currently under development. Some features may be incomplete or subject to change.</span>
+        </div>
+        <button 
+          class="banner-close" 
+          (click)="dismissInProgressBanner()"
+          aria-label="Dismiss banner">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Main Content -->
+<main class="main-content" [class.with-banner]="showInProgressBanner()">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Scroll to Top Button -->
+<button 
+  class="scroll-to-top" 
+  [class.show]="showScrollTop"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-brand">
+          <i class="fas fa-user-circle"></i>
+          <span>{{ title }}</span>
+        </div>
+        <p class="footer-tagline">
+          Professional Portfolio & Profile
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h6 class="footer-title">Quick Links</h6>
+        <ul class="footer-links">
+          @for (item of navItems; track item.path) {
+            <li>
+              <a [routerLink]="item.path" (click)="scrollToTop()">
+                <i [class]="item.icon + ' me-2'"></i>{{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h6 class="footer-title">More</h6>
+        <ul class="footer-links">
+          @for (item of secondaryNavItems; track item.path) {
+            <li>
+              <a [routerLink]="item.path" (click)="scrollToTop()">
+                <i [class]="item.icon + ' me-2'"></i>{{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      
+      @if (profile(); as profileData) {
+        <div class="footer-section">
+          <h6 class="footer-title">Connect</h6>
+          <div class="footer-social">
+            <a [href]="linkedinUrl()" target="_blank" class="social-link" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="mb-0">
+        <i class="far fa-copyright me-1"></i>{{ currentYear }} {{ authorName() }}. All rights reserved.
+      </p>
+      <p class="mb-0">
+        Built with <i class="fas fa-heart text-danger pulse"></i> using Angular {{ getAngularVersion() }}
+      </p>
+    </div>
+  </div>
+</footer>

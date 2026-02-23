@@ -1,0 +1,142 @@
+<!-- Hero Section with Gradient Background -->
+<div class="contact-hero-section">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative">
+    <div class="text-center hero-content">
+      <div class="hero-icon-wrapper">
+        <i class="fas fa-paper-plane hero-icon"></i>
+      </div>
+      <h1 class="display-3 fw-bold mb-3 text-white hero-title">Let's Connect</h1>
+      <p class="lead text-white-50 mb-4 hero-subtitle">
+        I'm always open to discussing new opportunities, innovative projects, and creative collaborations
+      </p>
+      <div class="hero-decorative-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Content -->
+<div class="contact-content">
+  @if (contact(); as contactData) {
+    <div class="container">
+      <!-- Quick Actions Section -->
+      <div class="quick-actions-section">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <app-action-card
+              type="button"
+              variant="download"
+              icon="fas fa-file-pdf"
+              title="Download CV"
+              description="Get my latest resume"
+              (clicked)="downloadCV()">
+            </app-action-card>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <app-action-card
+              type="link"
+              variant="email"
+              icon="fas fa-envelope"
+              title="Send Email"
+              description="Drop me a message"
+              [href]="getMailtoLink(contactData.email)">
+            </app-action-card>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <app-action-card
+              type="link"
+              variant="whatsapp"
+              icon="fab fa-whatsapp"
+              title="WhatsApp"
+              description="Chat instantly"
+              [href]="getWhatsAppLink(contactData.whatsapp)"
+              target="_blank">
+            </app-action-card>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <app-action-card
+              type="link"
+              variant="linkedin"
+              icon="fab fa-linkedin"
+              title="LinkedIn"
+              description="Professional network"
+              [href]="contactData.linkedin"
+              target="_blank">
+            </app-action-card>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional details (phone & location only – email/WhatsApp/LinkedIn are in Quick Actions) -->
+      <div class="contact-details-compact">
+        <div class="contact-details-card glass-card">
+          <a [href]="'tel:' + contactData.phone" class="contact-detail-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>{{ contactData.phone }}</span>
+          </a>
+          <div class="contact-detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{ contactData.location }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media (excluding LinkedIn – already in Quick Actions) -->
+      @if (socialLinksFiltered().length > 0) {
+        <div class="social-section">
+          <div class="section-header-modern">
+            <h2 class="section-title-modern">Connect on Social Media</h2>
+            <p class="section-subtitle-modern">Follow my journey and stay updated</p>
+          </div>
+          
+          <div class="social-grid">
+            @for (social of socialLinksFiltered(); track social.platform) {
+              <a 
+                [href]="social.url" 
+                target="_blank" 
+                class="social-card glass-card"
+                [class]="'social-card-' + social.platform.toLowerCase()">
+                <div class="social-card-icon">
+                  @if (social.icon) {
+                    <i [class]="getSocialIcon(social.platform)"></i>
+                  }
+                </div>
+                <h5 class="social-card-title">{{ social.platform }}</h5>
+                <div class="social-card-arrow">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Call to Action -->
+      <div class="cta-banner glass-card">
+        <div class="cta-content">
+          <div class="cta-text">
+            <h3 class="cta-title">Ready to start a conversation?</h3>
+            <p class="cta-description">Let's create something amazing together.</p>
+          </div>
+          <a [href]="getMailtoLink(contactData.email)" class="btn btn-gradient btn-lg">
+            <i class="fas fa-envelope me-2"></i>
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="container">
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-4 text-muted fs-5">Loading contact information...</p>
+      </div>
+    </div>
+  }
+</div>
+

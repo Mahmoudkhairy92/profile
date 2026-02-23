@@ -1,0 +1,13 @@
+<div class="section-header mb-4">
+  <div class="d-flex align-items-center mb-2">
+    @if (icon) {
+      <i [class]="icon + ' me-3 fs-2 text-primary'"></i>
+    }
+    <h2 class="mb-0">{{ title }}</h2>
+  </div>
+  @if (subtitle) {
+    <p class="text-muted mb-0">{{ subtitle }}</p>
+  }
+  <hr class="border-primary border-2 opacity-50 w-25 mt-3">
+</div>
+

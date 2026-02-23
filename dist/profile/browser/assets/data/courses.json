@@ -1,0 +1,342 @@
+{
+  "courses": [
+    {
+      "id": "edu1",
+      "title": "Bachelor of Engineering - Electronic and Communication",
+      "provider": "Menoufia University, Egypt",
+      "completionDate": "2014",
+      "startDate": "2009",
+      "level": "Bachelor's Degree",
+      "grade": "Excellent (Final Project)",
+      "description": "Bachelor's degree in Electronic and Communication Engineering from Faculty of Electronic Engineering, Menoufia University. Final project 'GSM Based Home Automation using Arduino' received Excellent grade.",
+      "skills": [
+        "Electronic Engineering",
+        "Communication Systems",
+        "Embedded Systems",
+        "Arduino Programming",
+        "GSM Technology",
+        "Home Automation",
+        "Project Management"
+      ]
+    },
+    {
+      "id": "course1",
+      "title": "Full Stack AI",
+      "provider": "AI Training Institute",
+      "completionDate": "May 2023",
+      "level": "Advanced",
+      "description": "Comprehensive Full Stack AI course covering AI/ML fundamentals, implementation strategies, and practical applications in software testing and automation.",
+      "skills": [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Deep Learning",
+        "AI Implementation",
+        "AI in Testing",
+        "Python",
+        "AI Model Development"
+      ]
+    },
+    {
+      "id": "course2",
+      "title": "ISTQB Foundation Level",
+      "provider": "ISTQB",
+      "completionDate": "May 2018",
+      "level": "Certification",
+      "description": "ISTQB Foundation Level certification demonstrating strong understanding of software testing fundamentals, methodologies, and best practices.",
+      "skills": [
+        "Software Testing",
+        "Test Design Techniques",
+        "Test Management",
+        "Defect Management",
+        "Testing Process",
+        "Quality Assurance",
+        "ISTQB Standards"
+      ]
+    },
+    {
+      "id": "course3",
+      "title": "Robot Framework Expert",
+      "provider": "Professional Development",
+      "completionDate": "2021",
+      "level": "Advanced",
+      "description": "Advanced expertise in Robot Framework for test automation, including custom library development, advanced keyword design, and framework architecture.",
+      "skills": [
+        "Robot Framework",
+        "Test Automation",
+        "Python",
+        "Custom Libraries",
+        "Keyword Design",
+        "Framework Architecture"
+      ]
+    },
+    {
+      "id": "course4",
+      "title": "Playwright Automation",
+      "provider": "Self-Study & Practice",
+      "completionDate": "2023",
+      "level": "Advanced",
+      "description": "Mastery of Playwright for modern web automation including parallel execution, API testing, and CI/CD integration.",
+      "skills": [
+        "Playwright",
+        "Web Automation",
+        "TypeScript",
+        "JavaScript",
+        "API Testing",
+        "Parallel Execution",
+        "CI/CD Integration"
+      ]
+    },
+    {
+      "id": "course5",
+      "title": "Azure DevOps Administration",
+      "provider": "Microsoft Learn & Practice",
+      "completionDate": "2022",
+      "level": "Advanced",
+      "description": "Comprehensive knowledge of Azure DevOps including pipeline design, test management, work item tracking, and DevOps best practices.",
+      "skills": [
+        "Azure DevOps",
+        "CI/CD Pipelines",
+        "Test Plans",
+        "Work Items",
+        "Repository Management",
+        "DevOps Practices"
+      ]
+    },
+    {
+      "id": "course6",
+      "title": "Python for Test Automation",
+      "provider": "Self-Study & Industry Practice",
+      "completionDate": "2020",
+      "level": "Advanced",
+      "description": "Advanced Python programming for test automation, including framework development, API testing, and data-driven testing.",
+      "skills": [
+        "Python",
+        "Test Automation",
+        "API Testing",
+        "Framework Development",
+        "Data-Driven Testing",
+        "Object-Oriented Programming"
+      ]
+    },
+    {
+      "id": "course7",
+      "title": "Selenium WebDriver",
+      "provider": "Professional Development",
+      "completionDate": "2019",
+      "level": "Intermediate",
+      "description": "Proficiency in Selenium WebDriver for web application testing with Python and Java.",
+      "skills": [
+        "Selenium WebDriver",
+        "Web Automation",
+        "Python",
+        "Java",
+        "Test Design",
+        "Page Object Model"
+      ]
+    },
+    {
+      "id": "course8",
+      "title": "Postman & API Testing",
+      "provider": "Self-Study",
+      "completionDate": "2020",
+      "level": "Intermediate",
+      "description": "Expert-level API testing using Postman including collection management, automation, and integration testing.",
+      "skills": [
+        "Postman",
+        "API Testing",
+        "REST APIs",
+        "Collection Management",
+        "Test Automation",
+        "Integration Testing"
+      ]
+    },
+    {
+      "id": "course9",
+      "title": "SQL Database Testing",
+      "provider": "Industry Practice",
+      "completionDate": "2018",
+      "level": "Intermediate",
+      "description": "Advanced SQL for database testing including query optimization, data validation, and stored procedure testing.",
+      "skills": [
+        "SQL",
+        "Database Testing",
+        "Query Optimization",
+        "Data Validation",
+        "Stored Procedures",
+        "MS SQL Server"
+      ]
+    },
+    {
+      "id": "course10",
+      "title": "Docker & Kubernetes Basics",
+      "provider": "Self-Study",
+      "completionDate": "2022",
+      "level": "Intermediate",
+      "description": "Containerization and orchestration fundamentals for test environment management.",
+      "skills": [
+        "Docker",
+        "Kubernetes",
+        "Containerization",
+        "Test Environment Management",
+        "DevOps"
+      ]
+    },
+    {
+      "id": "course11",
+      "title": "Git & Version Control",
+      "provider": "Industry Practice",
+      "completionDate": "2017",
+      "level": "Intermediate",
+      "description": "Advanced Git usage including branching strategies, merge conflict resolution, and collaborative workflows.",
+      "skills": [
+        "Git",
+        "Version Control",
+        "Branching Strategies",
+        "Code Collaboration",
+        "GitHub",
+        "GitLab"
+      ]
+    },
+    {
+      "id": "course12",
+      "title": "Agile & Scrum Methodologies",
+      "provider": "Professional Practice",
+      "completionDate": "2018",
+      "level": "Intermediate",
+      "description": "Practical experience with Agile development and Scrum framework including sprint planning, daily standups, and retrospectives.",
+      "skills": [
+        "Agile",
+        "Scrum",
+        "Sprint Planning",
+        "User Stories",
+        "Backlog Management",
+        "Team Collaboration"
+      ]
+    },
+    {
+      "id": "course13",
+      "title": "Jira Administration & Test Management",
+      "provider": "Industry Practice",
+      "completionDate": "2019",
+      "level": "Intermediate",
+      "description": "Comprehensive Jira administration including workflow customization, test case management, and integration with test automation.",
+      "skills": [
+        "Jira",
+        "Test Management",
+        "Workflow Customization",
+        "Issue Tracking",
+        "Project Management",
+        "Integration"
+      ]
+    },
+    {
+      "id": "course14",
+      "title": "Performance Testing Fundamentals",
+      "provider": "Professional Development",
+      "completionDate": "2020",
+      "level": "Intermediate",
+      "description": "Introduction to performance testing including load testing, stress testing, and performance analysis.",
+      "skills": [
+        "Performance Testing",
+        "Load Testing",
+        "Stress Testing",
+        "JMeter",
+        "Performance Analysis"
+      ]
+    },
+    {
+      "id": "course15",
+      "title": "Mobile Testing Basics",
+      "provider": "Self-Study",
+      "completionDate": "2021",
+      "level": "Beginner",
+      "description": "Fundamentals of mobile application testing on Android and iOS platforms.",
+      "skills": [
+        "Mobile Testing",
+        "Android Testing",
+        "iOS Testing",
+        "Appium Basics",
+        "Mobile Automation"
+      ]
+    },
+    {
+      "id": "course16",
+      "title": "ChatGPT & AI for Testing",
+      "provider": "Self-Study & Innovation",
+      "completionDate": "2024",
+      "level": "Advanced",
+      "description": "Pioneering use of ChatGPT and AI technologies for test generation, test data creation, and testing efficiency improvements.",
+      "skills": [
+        "ChatGPT",
+        "AI in Testing",
+        "Test Generation",
+        "Prompt Engineering",
+        "AI Integration",
+        "Efficiency Automation"
+      ]
+    },
+    {
+      "id": "course17",
+      "title": "LangChain & AI Agents",
+      "provider": "Self-Study & Hackathons",
+      "completionDate": "2024",
+      "level": "Advanced",
+      "description": "Development of AI agents using LangChain, CrewAI, and custom integrations for intelligent automation solutions.",
+      "skills": [
+        "LangChain",
+        "AI Agents",
+        "CrewAI",
+        "RAG Systems",
+        "FastAPI",
+        "AI Architecture"
+      ]
+    },
+    {
+      "id": "course18",
+      "title": "Power BI & Data Visualization",
+      "provider": "Professional Development",
+      "completionDate": "2023",
+      "level": "Intermediate",
+      "description": "Creating dashboards and visualizations for test metrics, quality reports, and automation insights.",
+      "skills": [
+        "Power BI",
+        "Data Visualization",
+        "Dashboard Design",
+        "Metrics Reporting",
+        "Data Analysis"
+      ]
+    },
+    {
+      "id": "course19",
+      "title": "Leadership & Team Management",
+      "provider": "THIQAH Leadership Program",
+      "completionDate": "2023",
+      "level": "Advanced",
+      "description": "Leadership development program covering team management, mentoring, conflict resolution, and strategic planning.",
+      "skills": [
+        "Leadership",
+        "Team Management",
+        "Mentoring",
+        "Conflict Resolution",
+        "Strategic Planning",
+        "Communication"
+      ]
+    },
+    {
+      "id": "course20",
+      "title": "Angular & TypeScript Development",
+      "provider": "Self-Study & Project Work",
+      "completionDate": "2024",
+      "level": "Intermediate",
+      "description": "Full-stack development skills in Angular and TypeScript for building Quality Mate platform and other web applications.",
+      "skills": [
+        "Angular",
+        "TypeScript",
+        "Web Development",
+        "Frontend Development",
+        "Bootstrap",
+        "Responsive Design"
+      ]
+    }
+  ]
+}

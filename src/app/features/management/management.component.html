@@ -1,0 +1,173 @@
+<div class="container py-5">
+  <app-section-header 
+    title="Management Responsibilities"
+    subtitle="Leadership roles and management experience"
+    icon="fas fa-users">
+  </app-section-header>
+
+  @if (management(); as managementData) {
+    <!-- High-Level Management -->
+    <div class="mb-5">
+      <h4 class="mb-4">
+        <i class="fas fa-sitemap me-2 text-primary"></i>
+        High-Level Management
+      </h4>
+      <div class="accordion" id="highLevelAccordion">
+        @for (item of getHighLevelResponsibilities(); track item.id; let idx = $index) {
+          <div class="accordion-item mb-3 shadow-sm">
+            <h2 class="accordion-header">
+              <button 
+                class="accordion-button" 
+                [class.collapsed]="idx !== 0"
+                type="button" 
+                [attr.data-bs-toggle]="'collapse'"
+                [attr.data-bs-target]="'#highLevel' + idx"
+                [attr.aria-expanded]="idx === 0"
+                [attr.aria-controls]="'highLevel' + idx">
+                <div class="w-100">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h5 class="mb-1">{{ item.title }}</h5>
+                      <h6 class="text-muted mb-0">{{ item.organization }}</h6>
+                    </div>
+                    <div class="text-end">
+                      <small class="text-muted d-block">
+                        {{ item.startDate }} - {{ item.endDate || 'Present' }}
+                      </small>
+                      @if (item.isCurrent) {
+                        <span class="badge bg-success mt-1">Current</span>
+                      }
+                      @if (item.teamSize) {
+                        <span class="badge bg-info mt-1">Team: {{ item.teamSize }}</span>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div 
+              [id]="'highLevel' + idx" 
+              class="accordion-collapse collapse"
+              [class.show]="idx === 0"
+              [attr.data-bs-parent]="'#highLevelAccordion'">
+              <div class="accordion-body">
+                <p class="lead mb-4">{{ item.description }}</p>
+
+                <h6 class="mb-3">
+                  <i class="fas fa-tasks me-2 text-primary"></i>Key Responsibilities
+                </h6>
+                <ul class="list-group list-group-flush mb-4">
+                  @for (responsibility of item.keyResponsibilities; track responsibility) {
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle me-2 text-success"></i>
+                      {{ responsibility }}
+                    </li>
+                  }
+                </ul>
+
+                @if (item.achievements.length > 0) {
+                  <h6 class="mb-3">
+                    <i class="fas fa-trophy me-2 text-primary"></i>Key Achievements
+                  </h6>
+                  <ul class="list-group list-group-flush">
+                    @for (achievement of item.achievements; track achievement) {
+                      <li class="list-group-item">
+                        <i class="fas fa-star me-2 text-warning"></i>
+                        {{ achievement }}
+                      </li>
+                    }
+                  </ul>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Low-Level Management -->
+    <div class="mb-5">
+      <h4 class="mb-4">
+        <i class="fas fa-project-diagram me-2 text-secondary"></i>
+        Operational Management
+      </h4>
+      <div class="accordion" id="lowLevelAccordion">
+        @for (item of getLowLevelResponsibilities(); track item.id; let idx = $index) {
+          <div class="accordion-item mb-3 shadow-sm">
+            <h2 class="accordion-header">
+              <button 
+                class="accordion-button collapsed" 
+                type="button" 
+                [attr.data-bs-toggle]="'collapse'"
+                [attr.data-bs-target]="'#lowLevel' + idx"
+                [attr.aria-expanded]="false"
+                [attr.aria-controls]="'lowLevel' + idx">
+                <div class="w-100">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h5 class="mb-1">{{ item.title }}</h5>
+                      <h6 class="text-muted mb-0">{{ item.organization }}</h6>
+                    </div>
+                    <div class="text-end">
+                      <small class="text-muted d-block">
+                        {{ item.startDate }} - {{ item.endDate || 'Present' }}
+                      </small>
+                      @if (item.isCurrent) {
+                        <span class="badge bg-success mt-1">Current</span>
+                      }
+                      @if (item.teamSize) {
+                        <span class="badge bg-info mt-1">Team: {{ item.teamSize }}</span>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div 
+              [id]="'lowLevel' + idx" 
+              class="accordion-collapse collapse"
+              [attr.data-bs-parent]="'#lowLevelAccordion'">
+              <div class="accordion-body">
+                <p class="lead mb-4">{{ item.description }}</p>
+
+                <h6 class="mb-3">
+                  <i class="fas fa-tasks me-2 text-secondary"></i>Key Responsibilities
+                </h6>
+                <ul class="list-group list-group-flush mb-4">
+                  @for (responsibility of item.keyResponsibilities; track responsibility) {
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle me-2 text-success"></i>
+                      {{ responsibility }}
+                    </li>
+                  }
+                </ul>
+
+                @if (item.achievements.length > 0) {
+                  <h6 class="mb-3">
+                    <i class="fas fa-trophy me-2 text-secondary"></i>Key Achievements
+                  </h6>
+                  <ul class="list-group list-group-flush">
+                    @for (achievement of item.achievements; track achievement) {
+                      <li class="list-group-item">
+                        <i class="fas fa-star me-2 text-warning"></i>
+                        {{ achievement }}
+                      </li>
+                    }
+                  </ul>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading management data...</p>
+    </div>
+  }
+</div>
+

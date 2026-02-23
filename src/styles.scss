@@ -1,0 +1,364 @@
+/* Bootstrap CSS */
+@use 'bootstrap/scss/bootstrap';
+
+/* Custom CSS Variables - Modern Emerald & Amber Palette */
+:root {
+  /* Primary Colors - Emerald Green */
+  --bs-primary: #10b981;
+  --bs-primary-light: #34d399;
+  --bs-primary-dark: #059669;
+  
+  /* Secondary Colors - Amber Gold */
+  --bs-secondary: #f59e0b;
+  --bs-secondary-light: #fbbf24;
+  --bs-secondary-dark: #d97706;
+  
+  /* Status Colors - Modern & Muted */
+  --bs-success: #10b981;
+  --bs-success-light: #34d399;
+  --bs-info: #3b82f6;
+  --bs-info-light: #60a5fa;
+  --bs-warning: #f59e0b;
+  --bs-warning-light: #fbbf24;
+  --bs-danger: #ef4444;
+  --bs-danger-light: #f87171;
+  
+  /* Neutral Colors */
+  --bs-light: #f0fdf4;
+  --bs-dark: #064e3b;
+  
+  /* Text & Background */
+  --bs-heading-color: #064e3b;
+  --bs-body-color: #374151;
+  --bs-body-bg: #ffffff;
+  --bs-border-color: #d1fae5;
+  --bs-secondary-bg: #ecfdf5;
+  
+  /* Shadows */
+  --bs-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --bs-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  
+  /* Overlays & Opacity */
+  --bs-overlay-white: rgba(255, 255, 255, 0.1);
+  --bs-overlay-dark: rgba(0, 0, 0, 0.1);
+  --bs-text-muted: rgba(255, 255, 255, 0.7);
+  
+  /* Gradients */
+  --bs-gradient-card: linear-gradient(135deg, var(--bs-body-bg) 0%, var(--bs-light) 100%);
+  --bs-gradient-primary: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary-dark) 100%);
+  --bs-gradient-secondary: linear-gradient(135deg, var(--bs-secondary-light) 0%, var(--bs-secondary) 100%);
+  
+  /* Additional Color Variables */
+  --bs-accent-purple: #a855f7;
+  --bs-accent-purple-dark: #9333ea;
+  --bs-accent-blue: #3b82f6;
+  --bs-accent-blue-dark: #2563eb;
+  
+  /* Font */
+  --bs-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-heading-color: #f8f9fa;
+    --bs-body-color: #dee2e6;
+    --bs-body-bg: #1a1a1a;
+    --bs-border-color: #495057;
+    --bs-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    --bs-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.6);
+    --bs-gradient-card: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  }
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-heading-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Utility Classes */
+.shadow-sm {
+  box-shadow: var(--bs-shadow-sm) !important;
+}
+
+.shadow {
+  box-shadow: var(--bs-shadow) !important;
+}
+
+.shadow-lg {
+  box-shadow: var(--bs-shadow-lg) !important;
+}
+
+/* Card Enhancements */
+.card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--bs-border-color);
+  background: var(--bs-gradient-card);
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better focus indicators */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--bs-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improved link styles */
+a {
+  color: var(--bs-primary);
+  
+  &:hover {
+    color: var(--bs-primary-dark);
+  }
+}
+
+/* Button Enhancements */
+.btn {
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bs-shadow);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bs-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-secondary);
+  border-radius: 6px;
+  
+  &:hover {
+    background: var(--bs-dark);
+  }
+}
+
+/* Loading Animation */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading State Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 3rem;
+  
+  .spinner-border {
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: var(--bs-secondary);
+    font-weight: 500;
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 0.9rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Print Styles for PDF Export */
+@media print {
+  .navbar,
+  .footer,
+  .btn,
+  button {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card {
+    break-inside: avoid;
+  }
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+  button, 
+  a.btn,
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Better spacing on mobile */
+@media (max-width: 768px) {
+  .py-5 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  .mb-5 {
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .mt-5 {
+    margin-top: 2.5rem !important;
+  }
+}
+
+/* Focus Styles for Accessibility */
+*:focus {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}

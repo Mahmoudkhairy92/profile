@@ -1,0 +1,207 @@
+// Achievements Grid
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+// Achievement Card
+.achievement-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+  color: var(--bs-body-color);
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  // Category-specific border colors
+  &[data-category="award"] {
+    border-left-color: #fbbf24;
+  }
+  
+  &[data-category="certification"] {
+    border-left-color: #3b82f6;
+  }
+  
+  &[data-category="recognition"] {
+    border-left-color: #a855f7;
+  }
+  
+  &[data-category="milestone"] {
+    border-left-color: #10b981;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// Card Header
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  
+  @media (prefers-color-scheme: dark) {
+    border-bottom-color: var(--bs-border-color);
+  }
+}
+
+// Category Icon
+.category-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  
+  &.icon-award {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+  }
+  
+  &.icon-certification {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+  }
+  
+  &.icon-recognition {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+  }
+  
+  &.icon-milestone {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+}
+
+// Category Badge
+.category-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  
+  &.badge-award {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+  }
+  
+  &.badge-certification {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+  }
+  
+  &.badge-recognition {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+  }
+  
+  &.badge-milestone {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+}
+
+// Achievement Title
+.achievement-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+// Achievement Description
+.achievement-description {
+  color: var(--bs-body-color);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+// Achievement Meta
+.achievement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--bs-body-color);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  
+  i {
+    color: #667eea;
+    width: 16px;
+  }
+}
+
+// Achievement Action
+.achievement-action {
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  
+  @media (prefers-color-scheme: dark) {
+    border-top-color: var(--bs-border-color);
+  }
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: #667eea;
+  color: white;
+  
+  &:hover {
+    background: #5568d3;
+    color: white;
+    transform: translateY(-1px);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .achievement-card {
+    padding: 1.5rem;
+  }
+  
+  .achievement-title {
+    font-size: 1.25rem;
+  }
+}
+

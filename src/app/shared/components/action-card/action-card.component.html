@@ -1,0 +1,28 @@
+@if (type === 'button') {
+  <button 
+    (click)="onClick()" 
+    class="action-card glass-card"
+    [ngClass]="'action-card-' + variant">
+    <div class="action-icon">
+      <i [class]="icon"></i>
+    </div>
+    <h5 class="action-title">{{ title }}</h5>
+    @if (description) {
+      <p class="action-description">{{ description }}</p>
+    }
+  </button>
+} @else {
+  <a 
+    [href]="href" 
+    [target]="target"
+    class="action-card glass-card"
+    [ngClass]="'action-card-' + variant">
+    <div class="action-icon">
+      <i [class]="icon"></i>
+    </div>
+    <h5 class="action-title">{{ title }}</h5>
+    @if (description) {
+      <p class="action-description">{{ description }}</p>
+    }
+  </a>
+}
