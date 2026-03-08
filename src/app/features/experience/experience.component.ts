@@ -22,7 +22,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   /**
-   * Resolves an asset path with the correct base href (e.g. /profile in production at aelbazz.github.io/profile).
+   * Resolves an asset path with the correct base href (e.g. /profile in production at mahmoudkhairy92.github.io/profile).
    */
   getAssetUrl(path: string): string {
     if (!path) return '';

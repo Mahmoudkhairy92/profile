@@ -7,6 +7,7 @@ export interface SocialLink {
 export interface Contact {
   email: string;
   phone: string;
+  phoneEgypt?: string;
   whatsapp: string;
   linkedin: string;
   location?: string;

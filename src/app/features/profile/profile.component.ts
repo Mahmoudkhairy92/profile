@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
   readonly experience = this.configService.experience;
   readonly achievements = this.configService.achievements;
   readonly projects = this.configService.projects;
+  readonly contact = this.configService.contact;
   
   isExporting = signal(false);
 
@@ -81,6 +82,7 @@ export class ProfileComponent implements OnInit {
     this.configService.loadExperience();
     this.configService.loadAchievements();
     this.configService.loadProjects();
+    this.configService.loadContact();
   }
 
   async exportToPdf(): Promise<void> {
@@ -123,7 +125,7 @@ export class ProfileComponent implements OnInit {
   }
 
   /**
-   * Resolves an asset path with the correct base href (e.g. /profile in production at aelbazz.github.io/profile).
+   * Resolves an asset path with the correct base href (e.g. /profile in production at mahmoudkhairy92.github.io/profile).
    */
   getAssetUrl(path: string): string {
     if (!path) return '';
