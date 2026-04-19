@@ -1,0 +1,144 @@
+{
+  "techItems": [
+    {
+      "tech": "TypeScript",
+      "icon": "📘",
+      "color": "#3178c6",
+      "tip": "TypeScript reduces bugs by 15% in large codebases - Mahmoud's experience",
+      "points": 50
+    },
+    {
+      "tech": "Angular",
+      "icon": "🅰️",
+      "color": "#dd0031",
+      "tip": "Signals in Angular 21 make state management incredibly smooth - Mahmoud",
+      "points": 50
+    },
+    {
+      "tech": "Python",
+      "icon": "🐍",
+      "color": "#3776ab",
+      "tip": "Python's simplicity doesn't mean less power - it means more productivity",
+      "points": 50
+    },
+    {
+      "tech": "React",
+      "icon": "⚛️",
+      "color": "#61dafb",
+      "tip": "Master the fundamentals before jumping to frameworks - Mahmoud's advice",
+      "points": 50
+    },
+    {
+      "tech": "Node.js",
+      "icon": "🟢",
+      "color": "#339933",
+      "tip": "JavaScript everywhere = faster development, single language mastery",
+      "points": 50
+    },
+    {
+      "tech": "Docker",
+      "icon": "🐳",
+      "color": "#2496ed",
+      "tip": "Containerization isn't optional anymore - it's essential for modern DevOps",
+      "points": 50
+    },
+    {
+      "tech": "AWS",
+      "icon": "☁️",
+      "color": "#ff9900",
+      "tip": "Cloud skills multiply your value - learn one platform deeply",
+      "points": 50
+    },
+    {
+      "tech": "Git",
+      "icon": "📦",
+      "color": "#f05032",
+      "tip": "Good commit messages are documentation for your future self - Mahmoud",
+      "points": 50
+    },
+    {
+      "tech": "MongoDB",
+      "icon": "🍃",
+      "color": "#47a248",
+      "tip": "NoSQL shines for rapid prototyping and flexible schemas",
+      "points": 50
+    },
+    {
+      "tech": "PostgreSQL",
+      "icon": "🐘",
+      "color": "#336791",
+      "tip": "SQL databases still rule for data integrity and complex queries",
+      "points": 50
+    },
+    {
+      "tech": "Kubernetes",
+      "icon": "⚓",
+      "color": "#326ce5",
+      "tip": "K8s orchestration = scaling from 10 to 10,000 users seamlessly",
+      "points": 60
+    },
+    {
+      "tech": "GraphQL",
+      "icon": "◈",
+      "color": "#e10098",
+      "tip": "Ask for exactly what you need - no more over-fetching",
+      "points": 50
+    },
+    {
+      "tech": "Redis",
+      "icon": "🔴",
+      "color": "#dc382d",
+      "tip": "Caching with Redis can 10x your API response times - Mahmoud's tip",
+      "points": 50
+    },
+    {
+      "tech": "Vue.js",
+      "icon": "💚",
+      "color": "#42b883",
+      "tip": "Progressive framework = start small, scale when needed",
+      "points": 50
+    },
+    {
+      "tech": "Jenkins",
+      "icon": "🔧",
+      "color": "#d24939",
+      "tip": "Automate everything - CI/CD saves hours every week",
+      "points": 50
+    },
+    {
+      "tech": "Linux",
+      "icon": "🐧",
+      "color": "#fcc624",
+      "tip": "Command line mastery = developer superpowers - Mahmoud Kahiry",
+      "points": 50
+    },
+    {
+      "tech": "Java",
+      "icon": "☕",
+      "color": "#007396",
+      "tip": "Enterprise Java powers billions of devices - still highly relevant",
+      "points": 50
+    },
+    {
+      "tech": "C#",
+      "icon": "#️⃣",
+      "color": "#239120",
+      "tip": ".NET Core = cross-platform enterprise applications",
+      "points": 50
+    },
+    {
+      "tech": "TensorFlow",
+      "icon": "🧠",
+      "color": "#ff6f00",
+      "tip": "AI/ML skills are the future - start learning now - Mahmoud",
+      "points": 60
+    },
+    {
+      "tech": "Firebase",
+      "icon": "🔥",
+      "color": "#ffca28",
+      "tip": "Build MVPs in days, not months with Firebase backend",
+      "points": 50
+    }
+  ]
+}

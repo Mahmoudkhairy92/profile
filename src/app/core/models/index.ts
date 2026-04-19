@@ -7,4 +7,5 @@ export * from './management.model';
 export * from './skill.model';
 export * from './timeline.model';
 export * from './contact.model';
+export * from './game.model';
 

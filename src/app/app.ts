@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { path: '/experience', label: 'Experience', icon: 'fas fa-briefcase' },
     { path: '/projects', label: 'Projects', icon: 'fas fa-folder-open' },
     { path: '/skills', label: 'Skills', icon: 'fas fa-code' },
+    { path: '/game', label: 'Game', icon: 'fas fa-gamepad' },
     { path: '/contact', label: 'Contact', icon: 'fas fa-envelope' }
   ];
   

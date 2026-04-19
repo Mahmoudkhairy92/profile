@@ -49,6 +49,12 @@ export const routes: Routes = [
     title: 'Contact'
   },
   {
+    path: 'game',
+    loadComponent: () => 
+      import('./features/game/game.component').then(m => m.GameComponent),
+    title: 'Tech Stack Snake - Play & Learn'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

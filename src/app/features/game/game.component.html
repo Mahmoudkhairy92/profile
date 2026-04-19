@@ -1,0 +1,306 @@
+<div class="game-container">
+  <!-- Instructions Screen -->
+  @if (showInstructions()) {
+    <div class="overlay instructions-overlay">
+      <div class="modal-content glassmorphism">
+        <h1 class="game-title">🐍 Tech Stack Snake</h1>
+        <p class="subtitle">Built by Mahmoud Kahiry</p>
+        
+        <div class="instructions">
+          <h3>How to Play:</h3>
+          <ul>
+            <li>🎯 Collect tech icons to grow your snake</li>
+            <li>💡 Learn valuable tech tips with each item</li>
+            <li>🏆 Build the longest tech stack possible</li>
+            <li>⚠️ Don't hit walls or yourself!</li>
+          </ul>
+          
+          <h3>Controls:</h3>
+          <div class="controls-grid">
+            <div class="control-item">
+              <strong>Desktop:</strong> Arrow Keys or WASD
+            </div>
+            <div class="control-item">
+              <strong>Mobile:</strong> Swipe gestures
+            </div>
+            <div class="control-item">
+              <strong>Pause:</strong> Spacebar
+            </div>
+          </div>
+          
+          <h3>Scoring:</h3>
+          <ul>
+            <li>Each tech: +50 points</li>
+            <li>3-item combo: +100 bonus</li>
+            <li>Speed increases every 5 items</li>
+          </ul>
+        </div>
+        
+        <button class="btn btn-primary btn-lg" (click)="startGame()">
+          🚀 Start Playing
+        </button>
+        
+        <button class="btn btn-outline-secondary mt-3" (click)="viewLeaderboard()">
+          🏆 View Leaderboard
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Game Over Screen -->
+  @if (showGameOver()) {
+    <div class="overlay gameover-overlay">
+      <div class="modal-content glassmorphism">
+        <h1 class="game-over-title">🎮 Game Over!</h1>
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">{{ gameService.state().score }}</div>
+            <div class="stat-label">Final Score</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ gameService.state().techCollected }}</div>
+            <div class="stat-label">Tech Items</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">Level {{ gameService.state().level }}</div>
+            <div class="stat-label">Reached</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ formatDuration(gameService.getGameDuration()) }}</div>
+            <div class="stat-label">Time</div>
+          </div>
+        </div>
+        
+        @if (gameService.state().score > gameService.state().highScore) {
+          <div class="high-score-banner">
+            🎉 New High Score! 🎉
+          </div>
+        }
+        
+        <div class="rank-info">
+          <p>Your Rank: <strong>#{{ playerRank() }}</strong> of {{ totalPlayers() }} players</p>
+        </div>
+        
+        <div class="player-input">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Enter your name"
+            [(ngModel)]="playerName"
+            (keyup.enter)="saveAndShare()"
+          />
+        </div>
+        
+        <div class="button-group">
+          <button class="btn btn-linkedin btn-lg" (click)="quickShareToLinkedIn()">
+            <i class="fab fa-linkedin"></i> Share to LinkedIn (One Click)
+          </button>
+          <button class="btn btn-success" (click)="saveAndShare()">
+            📸 Get Screenshot & Manual Share
+          </button>
+          <button class="btn btn-primary" (click)="startGame()">
+            🔄 Play Again
+          </button>
+          <button class="btn btn-outline-secondary" (click)="viewLeaderboard()">
+            🏆 Leaderboard
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Leaderboard Screen -->
+  @if (showLeaderboard()) {
+    <div class="overlay leaderboard-overlay">
+      <div class="modal-content glassmorphism">
+        <h1 class="leaderboard-title">🏆 Leaderboard</h1>
+        <p class="subtitle">Top Tech Stack Builders</p>
+        
+        <div class="leaderboard-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Score</th>
+                <th>Tech</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (entry of leaderboard(); track entry.timestamp) {
+                <tr [class.highlight]="$index < 3">
+                  <td>
+                    @if ($index === 0) { 🥇 }
+                    @else if ($index === 1) { 🥈 }
+                    @else if ($index === 2) { 🥉 }
+                    @else { {{ $index + 1 }} }
+                  </td>
+                  <td>{{ entry.playerName }}</td>
+                  <td><strong>{{ entry.score }}</strong></td>
+                  <td>{{ entry.techCollected }}</td>
+                  <td>{{ formatDate(entry.timestamp) }}</td>
+                </tr>
+              }
+              @if (leaderboard().length === 0) {
+                <tr>
+                  <td colspan="5" class="text-center">
+                    No players yet. Be the first!
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn btn-primary" (click)="startGame()">
+            🎮 Play Now
+          </button>
+          <button class="btn btn-outline-secondary" (click)="closeLeaderboard()">
+            ← Back
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Share Modal with Screenshot -->
+  @if (showShareModal()) {
+    <div class="overlay share-overlay">
+      <div class="modal-content glassmorphism share-modal">
+        <h1 class="share-title">🎉 Ready to Share!</h1>
+        <p class="subtitle">Post this to LinkedIn and challenge your network</p>
+        
+        <!-- Screenshot Preview -->
+        @if (screenshotUrl()) {
+          <div class="screenshot-preview">
+            <img [src]="screenshotUrl()" alt="Leaderboard Screenshot" />
+          </div>
+        }
+        
+        <!-- Share Message -->
+        <div class="share-message-container">
+          <label class="share-label">LinkedIn Post Message:</label>
+          <textarea 
+            class="share-textarea" 
+            [value]="shareMessage()" 
+            readonly
+            rows="12"
+          ></textarea>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="share-actions">
+          <button class="btn btn-linkedin btn-lg" (click)="shareToLinkedInDirect()">
+            <i class="fab fa-linkedin"></i> Share Now
+          </button>
+          
+          <button class="btn btn-primary btn-lg" (click)="copyMessage()">
+            {{ copySuccess() ? '✅ Copied!' : '📋 Copy Message' }}
+          </button>
+          
+          @if (screenshotUrl()) {
+            <button class="btn btn-success btn-lg" (click)="downloadScreenshot()">
+              ⬇️ Download Image
+            </button>
+          }
+        </div>
+        
+        <!-- Instructions -->
+        <div class="share-instructions">
+          <h4>📝 Two Ways to Share:</h4>
+          
+          <div class="share-option highlight">
+            <strong>🚀 Quick Share (Recommended):</strong>
+            <p>Click "Share Now" - LinkedIn will open with pre-filled message. Just attach the screenshot image and post!</p>
+          </div>
+          
+          <div class="share-option">
+            <strong>📋 Manual Share:</strong>
+            <ol>
+              <li>Click "Copy Message" and "Download Image"</li>
+              <li>Go to LinkedIn and create a new post</li>
+              <li>Paste message and upload the image</li>
+              <li>Post! 🎉</li>
+            </ol>
+          </div>
+        </div>
+        
+        <button class="btn btn-outline-secondary mt-3" (click)="closeShareModal()">
+          ← Back
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Game Canvas -->
+  <div class="game-wrapper">
+    <!-- Score Panel -->
+    <div class="score-panel glassmorphism">
+      <div class="score-item">
+        <div class="score-label">Score</div>
+        <div class="score-value">{{ gameService.state().score }}</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Level</div>
+        <div class="score-value">{{ gameService.state().level }}</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Tech Collected</div>
+        <div class="score-value">{{ gameService.state().techCollected }}</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">High Score</div>
+        <div class="score-value">{{ gameService.state().highScore }}</div>
+      </div>
+      @if (gameService.state().combo >= 3) {
+        <div class="combo-badge">
+          🔥 {{ gameService.state().combo }}x Combo!
+        </div>
+      }
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-container">
+      <canvas #gameCanvas></canvas>
+      
+      @if (gameService.state().paused && !gameService.state().gameOver) {
+        <div class="pause-overlay">
+          <h2>⏸️ PAUSED</h2>
+          <p>Press SPACE to continue</p>
+        </div>
+      }
+    </div>
+
+    <!-- Current Tech Tip -->
+    @if (gameService.state().techItem) {
+      <div class="tech-tip glassmorphism">
+        <div class="tech-header">
+          <span class="tech-icon">{{ gameService.state().techItem!.icon }}</span>
+          <span class="tech-name">{{ gameService.state().techItem!.name }}</span>
+          <span class="tech-points">+{{ gameService.state().techItem!.points }}</span>
+        </div>
+        <div class="tech-tip-text">
+          💡 {{ gameService.state().techItem!.tip }}
+        </div>
+      </div>
+    }
+
+    <!-- Mobile Controls -->
+    @if (isMobile()) {
+      <div class="mobile-controls">
+        <div class="dpad">
+          <button class="dpad-btn up" (click)="swipeUp()">▲</button>
+          <button class="dpad-btn down" (click)="swipeDown()">▼</button>
+          <button class="dpad-btn left" (click)="swipeLeft()">◀</button>
+          <button class="dpad-btn right" (click)="swipeRight()">▶</button>
+        </div>
+        <button class="pause-btn" (click)="gameService.togglePause()">
+          {{ gameService.state().paused ? '▶️' : '⏸️' }}
+        </button>
+      </div>
+    }
+  </div>
+</div>
