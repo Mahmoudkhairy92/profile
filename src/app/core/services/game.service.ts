@@ -40,7 +40,7 @@ export class GameService {
   }
 
   private loadTechTips(): void {
-    this.http.get<{ techItems: GameTip[] }>('/assets/data/tech-tips.json').subscribe({
+    this.http.get<{ techItems: GameTip[] }>('assets/data/tech-tips.json').subscribe({
       next: (data) => this.techTips.set(data.techItems),
       error: (err) => console.error('Failed to load tech tips:', err),
     });

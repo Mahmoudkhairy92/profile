@@ -393,48 +393,38 @@ export class GameComponent implements OnInit, OnDestroy {
   public async shareToLinkedInDirect(): Promise<void> {
     const state = this.gameService.state();
     const shareUrl = window.location.href;
+    const shareText = this.shareMessage();
     
-    // Try Web Share API first (works on mobile and some browsers)
+    // Try Web Share API first (works on mobile)
     if (navigator.share) {
       try {
-        // Convert screenshot to blob for sharing
-        const screenshotUrl = this.screenshotUrl();
-        let files: File[] = [];
-        
-        if (screenshotUrl) {
-          const blob = await (await fetch(screenshotUrl)).blob();
-          const file = new File([blob], 'tech-stack-snake-score.png', { type: 'image/png' });
-          files = [file];
-        }
-        
         await navigator.share({
-          title: `I scored ${state.score} points on Tech Stack Snake!`,
-          text: this.shareMessage(),
+          title: `Tech Stack Snake - Score: ${state.score}`,
+          text: shareText,
           url: shareUrl,
-          files: files.length > 0 ? files : undefined,
         });
-        
         return;
-      } catch (error) {
-        // If Web Share fails or is cancelled, continue to LinkedIn share
-        console.log('Web Share not available or cancelled');
+      } catch (error: any) {
+        // User cancelled or share failed
+        if (error.name !== 'AbortError') {
+          console.log('Web Share failed:', error);
+        } else {
+          return; // User cancelled, don't open LinkedIn
+        }
       }
     }
     
-    // Fallback: Open LinkedIn share dialog
-    const linkedInText = encodeURIComponent(
-      `🎮 Just scored ${state.score} points on Mahmoud Kahiry's Tech Stack Snake!\n` +
-      `🏆 Collected ${state.techCollected} technologies\n` +
-      `Can you beat my score? 🚀\n\n` +
-      `Play: ${shareUrl}\n\n` +
-      `By Mahmoud Kahiry\n` +
-      `https://www.linkedin.com/in/mahmoud-khairy-64633188/\n\n` +
-      `#TechChallenge #GameDev #WebDevelopment`
-    );
+    // Fallback: Copy text and open LinkedIn
+    try {
+      // Copy message to clipboard
+      await navigator.clipboard.writeText(shareText);
+      alert('Message copied! Paste it in LinkedIn and attach the screenshot.');
+    } catch (error) {
+      console.log('Clipboard copy failed');
+    }
     
-    // Open LinkedIn with pre-filled text
-    const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${linkedInText}`;
-    window.open(linkedInShareUrl, '_blank', 'width=600,height=700');
+    // Open LinkedIn feed
+    window.open('https://www.linkedin.com/feed/', '_blank');
   }
 
   public openLinkedIn(): void {
