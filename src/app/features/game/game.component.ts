@@ -27,7 +27,7 @@ export class GameComponent implements OnInit, OnDestroy {
   @ViewChild('leaderboardCard') leaderboardCardRef?: ElementRef<HTMLElement>;
 
   private ctx!: CanvasRenderingContext2D;
-  private gameLoop: any;
+  public gameLoop: any; // Make public for template access
   private lastRenderTime = 0;
 
   // Signals
@@ -93,6 +93,9 @@ export class GameComponent implements OnInit, OnDestroy {
       return;
     }
 
+    // Start game loop on first move
+    const startLoop = !this.gameLoop;
+
     switch (event.key) {
       case 'ArrowUp':
       case 'w':
@@ -121,7 +124,11 @@ export class GameComponent implements OnInit, OnDestroy {
       case ' ':
         event.preventDefault();
         this.gameService.togglePause();
-        break;
+        return; // Don't start loop for pause
+    }
+    
+    if (startLoop) {
+      this.startGameLoop();
     }
   }
 
@@ -134,7 +141,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showGameOver.set(false);
     this.showLeaderboard.set(false);
     this.gameService.startGame();
-    this.startGameLoop();
+    // Don't start game loop yet - wait for first move
   }
 
   private startGameLoop(): void {
@@ -394,8 +401,41 @@ export class GameComponent implements OnInit, OnDestroy {
     const state = this.gameService.state();
     const shareUrl = window.location.href;
     const shareText = this.shareMessage();
+    const screenshotUrl = this.screenshotUrl();
     
-    // Try Web Share API first (works on mobile)
+    // For mobile: Try to save image first
+    if (screenshotUrl && this.isMobile()) {
+      try {
+        // Download the screenshot for user to upload
+        this.downloadScreenshot();
+        
+        // Copy text to clipboard
+        await navigator.clipboard.writeText(shareText);
+        
+        // Show instructions
+        alert(
+          '✅ Screenshot downloaded!\n' +
+          '✅ Message copied to clipboard!\n\n' +
+          'Now:\n' +
+          '1. Go to LinkedIn\n' +
+          '2. Create new post\n' +
+          '3. Paste the message\n' +
+          '4. Attach the screenshot from downloads\n' +
+          '5. Post! 🚀'
+        );
+        
+        // Open LinkedIn
+        setTimeout(() => {
+          window.open('https://www.linkedin.com/feed/', '_blank');
+        }, 500);
+        
+        return;
+      } catch (error) {
+        console.log('Mobile share preparation failed:', error);
+      }
+    }
+    
+    // Desktop: Try Web Share API
     if (navigator.share) {
       try {
         await navigator.share({
@@ -405,25 +445,22 @@ export class GameComponent implements OnInit, OnDestroy {
         });
         return;
       } catch (error: any) {
-        // User cancelled or share failed
         if (error.name !== 'AbortError') {
           console.log('Web Share failed:', error);
         } else {
-          return; // User cancelled, don't open LinkedIn
+          return;
         }
       }
     }
     
     // Fallback: Copy text and open LinkedIn
     try {
-      // Copy message to clipboard
       await navigator.clipboard.writeText(shareText);
-      alert('Message copied! Paste it in LinkedIn and attach the screenshot.');
+      alert('✅ Message copied! Download the screenshot and attach it in LinkedIn.');
     } catch (error) {
       console.log('Clipboard copy failed');
     }
     
-    // Open LinkedIn feed
     window.open('https://www.linkedin.com/feed/', '_blank');
   }
 
@@ -453,18 +490,28 @@ export class GameComponent implements OnInit, OnDestroy {
   // Mobile controls
   public swipeUp(): void {
     this.gameService.changeDirection(Direction.UP);
+    this.startGameOnFirstMove();
   }
 
   public swipeDown(): void {
     this.gameService.changeDirection(Direction.DOWN);
+    this.startGameOnFirstMove();
   }
 
   public swipeLeft(): void {
     this.gameService.changeDirection(Direction.LEFT);
+    this.startGameOnFirstMove();
   }
 
   public swipeRight(): void {
     this.gameService.changeDirection(Direction.RIGHT);
+    this.startGameOnFirstMove();
+  }
+  
+  private startGameOnFirstMove(): void {
+    if (!this.gameLoop) {
+      this.startGameLoop();
+    }
   }
 
   public formatDuration(seconds: number): string {

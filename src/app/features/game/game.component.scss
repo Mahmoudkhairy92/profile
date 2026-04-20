@@ -101,6 +101,27 @@
       color: #8892b0;
     }
   }
+  
+  .start-prompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 25, 47, 0.95);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 2px solid #64ffda;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+    
+    h3 {
+      color: #64ffda;
+      margin: 0;
+      font-size: 1.5rem;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.8);
+    }
+  }
 }
 
 // Tech Tip
@@ -505,31 +526,38 @@
 // Mobile Controls
 .mobile-controls {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
+  padding: 1rem;
 
   .dpad {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
 
     .dpad-btn {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background: rgba(100, 255, 218, 0.2);
-      border: 2px solid #64ffda;
-      border-radius: 8px;
+      width: 60px;
+      height: 60px;
+      background: rgba(100, 255, 218, 0.3);
+      border: 3px solid #64ffda;
+      border-radius: 12px;
       color: #64ffda;
-      font-size: 1.5rem;
+      font-size: 2rem;
       cursor: pointer;
       transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
 
       &:active {
-        background: rgba(100, 255, 218, 0.4);
+        background: rgba(100, 255, 218, 0.6);
         transform: scale(0.95);
+        box-shadow: 0 2px 8px rgba(100, 255, 218, 0.5);
       }
 
       &.up {
@@ -559,19 +587,21 @@
   }
 
   .pause-btn {
-    width: 60px;
-    height: 60px;
-    background: rgba(100, 255, 218, 0.2);
-    border: 2px solid #64ffda;
+    width: 70px;
+    height: 70px;
+    background: rgba(100, 255, 218, 0.3);
+    border: 3px solid #64ffda;
     border-radius: 50%;
     color: #64ffda;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
 
     &:active {
-      background: rgba(100, 255, 218, 0.4);
+      background: rgba(100, 255, 218, 0.6);
       transform: scale(0.95);
+      box-shadow: 0 2px 8px rgba(100, 255, 218, 0.5);
     }
   }
 }
@@ -667,7 +697,13 @@
 // Responsive
 @media (max-width: 768px) {
   .game-container {
-    padding: 1rem;
+    padding: 0.5rem;
+    min-height: 100vh;
+  }
+
+  .game-wrapper {
+    gap: 1rem;
+    width: 100%;
   }
 
   .modal-content {
@@ -684,20 +720,96 @@
   }
 
   .score-panel {
-    gap: 1rem;
-    padding: 1rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    flex-wrap: wrap;
 
     .score-item {
-      min-width: 80px;
+      min-width: 70px;
+
+      .score-label {
+        font-size: 0.75rem;
+      }
 
       .score-value {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
+    }
+
+    .combo-badge {
+      position: static;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.8rem;
     }
   }
 
-  canvas {
+  .canvas-container {
     max-width: 100%;
-    height: auto;
+    width: 100%;
+    
+    canvas {
+      max-width: 100%;
+      height: auto;
+      width: 100% !important;
+    }
+  }
+
+  .tech-tip {
+    padding: 1rem;
+    font-size: 0.875rem;
+
+    .tech-header {
+      .tech-icon {
+        font-size: 1.5rem;
+      }
+
+      .tech-name {
+        font-size: 1rem;
+      }
+
+      .tech-points {
+        font-size: 1rem;
+      }
+    }
+
+    .tech-tip-text {
+      font-size: 0.85rem;
+    }
+  }
+
+  .mobile-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, #0a192f 80%, transparent);
+    padding: 1.5rem;
+    z-index: 100;
+  }
+
+  .instructions {
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    ul li {
+      font-size: 0.9rem;
+    }
+  }
+
+  .share-modal {
+    .screenshot-preview {
+      margin: 1rem 0;
+    }
+
+    .share-actions {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+        min-width: unset;
+      }
+    }
   }
 }

@@ -266,6 +266,12 @@
     <div class="canvas-container">
       <canvas #gameCanvas></canvas>
       
+      @if (!gameLoop && !gameService.state().gameOver && !showInstructions()) {
+        <div class="start-prompt">
+          <h3>{{ isMobile() ? '👇 Tap any arrow to start!' : '⌨️ Press any arrow key to start!' }}</h3>
+        </div>
+      }
+      
       @if (gameService.state().paused && !gameService.state().gameOver) {
         <div class="pause-overlay">
           <h2>⏸️ PAUSED</h2>

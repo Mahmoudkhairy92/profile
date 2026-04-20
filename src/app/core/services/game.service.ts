@@ -6,8 +6,8 @@ import { Direction, GameState, GameTip, LeaderboardEntry, Position, TechItem } f
   providedIn: 'root',
 })
 export class GameService {
-  private readonly GRID_SIZE = 20;
-  private readonly CELL_SIZE = 20;
+  private readonly GRID_SIZE = typeof window !== 'undefined' && window.innerWidth < 768 ? 15 : 20;
+  private readonly CELL_SIZE = typeof window !== 'undefined' && window.innerWidth < 768 ? 18 : 20;
   private readonly INITIAL_SPEED = 150;
   private readonly SPEED_INCREMENT = 10;
   private readonly COMBO_BONUS = 100;
