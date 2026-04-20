@@ -5,140 +5,240 @@
       "icon": "📘",
       "color": "#3178c6",
       "tip": "TypeScript reduces bugs by 15% in large codebases - Mahmoud's experience",
-      "points": 50
+      "points": 10,
+      "rarity": "common"
+    },
+    {
+      "tech": "JavaScript",
+      "icon": "📜",
+      "color": "#f7df1e",
+      "tip": "Master the fundamentals - they never go out of style",
+      "points": 10,
+      "rarity": "common"
     },
     {
       "tech": "Angular",
       "icon": "🅰️",
       "color": "#dd0031",
       "tip": "Signals in Angular 21 make state management incredibly smooth - Mahmoud",
-      "points": 50
+      "points": 15,
+      "rarity": "common"
     },
     {
       "tech": "Python",
       "icon": "🐍",
       "color": "#3776ab",
       "tip": "Python's simplicity doesn't mean less power - it means more productivity",
-      "points": 50
+      "points": 10,
+      "rarity": "common"
     },
     {
       "tech": "React",
       "icon": "⚛️",
       "color": "#61dafb",
       "tip": "Master the fundamentals before jumping to frameworks - Mahmoud's advice",
-      "points": 50
+      "points": 15,
+      "rarity": "common"
+    },
+    {
+      "tech": "Vue.js",
+      "icon": "💚",
+      "color": "#42b883",
+      "tip": "Vue's gentle learning curve makes it perfect for beginners",
+      "points": 15,
+      "rarity": "common"
     },
     {
       "tech": "Node.js",
       "icon": "🟢",
       "color": "#339933",
       "tip": "JavaScript everywhere = faster development, single language mastery",
-      "points": 50
+      "points": 20,
+      "rarity": "rare"
     },
     {
       "tech": "Docker",
       "icon": "🐳",
       "color": "#2496ed",
       "tip": "Containerization isn't optional anymore - it's essential for modern DevOps",
-      "points": 50
+      "points": 25,
+      "rarity": "rare"
+    },
+    {
+      "tech": "Kubernetes",
+      "icon": "☸️",
+      "color": "#326ce5",
+      "tip": "K8s orchestration skills are highly valuable in cloud-native development",
+      "points": 30,
+      "rarity": "rare"
     },
     {
       "tech": "AWS",
       "icon": "☁️",
       "color": "#ff9900",
       "tip": "Cloud skills multiply your value - learn one platform deeply",
-      "points": 50
+      "points": 25,
+      "rarity": "rare"
+    },
+    {
+      "tech": "Azure",
+      "icon": "🌐",
+      "color": "#0089d6",
+      "tip": "Microsoft Azure integrates seamlessly with enterprise environments",
+      "points": 25,
+      "rarity": "rare"
     },
     {
       "tech": "Git",
       "icon": "📦",
       "color": "#f05032",
       "tip": "Good commit messages are documentation for your future self - Mahmoud",
-      "points": 50
+      "points": 10,
+      "rarity": "common"
     },
     {
       "tech": "MongoDB",
       "icon": "🍃",
       "color": "#47a248",
-      "tip": "NoSQL shines for rapid prototyping and flexible schemas",
-      "points": 50
+      "tip": "NoSQL flexibility comes with responsibility - design your schema wisely",
+      "points": 20,
+      "rarity": "rare"
     },
     {
       "tech": "PostgreSQL",
       "icon": "🐘",
       "color": "#336791",
-      "tip": "SQL databases still rule for data integrity and complex queries",
-      "points": 50
-    },
-    {
-      "tech": "Kubernetes",
-      "icon": "⚓",
-      "color": "#326ce5",
-      "tip": "K8s orchestration = scaling from 10 to 10,000 users seamlessly",
-      "points": 60
-    },
-    {
-      "tech": "GraphQL",
-      "icon": "◈",
-      "color": "#e10098",
-      "tip": "Ask for exactly what you need - no more over-fetching",
-      "points": 50
+      "tip": "PostgreSQL: the database that scales with your ambition",
+      "points": 20,
+      "rarity": "rare"
     },
     {
       "tech": "Redis",
       "icon": "🔴",
       "color": "#dc382d",
-      "tip": "Caching with Redis can 10x your API response times - Mahmoud's tip",
-      "points": 50
+      "tip": "Caching with Redis can 10x your application performance",
+      "points": 25,
+      "rarity": "rare"
     },
     {
-      "tech": "Vue.js",
-      "icon": "💚",
-      "color": "#42b883",
-      "tip": "Progressive framework = start small, scale when needed",
-      "points": 50
-    },
-    {
-      "tech": "Jenkins",
-      "icon": "🔧",
-      "color": "#d24939",
-      "tip": "Automate everything - CI/CD saves hours every week",
-      "points": 50
-    },
-    {
-      "tech": "Linux",
-      "icon": "🐧",
-      "color": "#fcc624",
-      "tip": "Command line mastery = developer superpowers - Mahmoud Kahiry",
-      "points": 50
-    },
-    {
-      "tech": "Java",
-      "icon": "☕",
-      "color": "#007396",
-      "tip": "Enterprise Java powers billions of devices - still highly relevant",
-      "points": 50
-    },
-    {
-      "tech": "C#",
-      "icon": "#️⃣",
-      "color": "#239120",
-      "tip": ".NET Core = cross-platform enterprise applications",
-      "points": 50
+      "tech": "GraphQL",
+      "icon": "🔺",
+      "color": "#e10098",
+      "tip": "GraphQL gives clients the power to request exactly what they need",
+      "points": 30,
+      "rarity": "rare"
     },
     {
       "tech": "TensorFlow",
       "icon": "🧠",
       "color": "#ff6f00",
-      "tip": "AI/ML skills are the future - start learning now - Mahmoud",
-      "points": 60
+      "tip": "AI/ML skills are the future - start learning today",
+      "points": 50,
+      "rarity": "epic"
     },
     {
-      "tech": "Firebase",
-      "icon": "🔥",
-      "color": "#ffca28",
-      "tip": "Build MVPs in days, not months with Firebase backend",
-      "points": 50
+      "tech": "Selenium",
+      "icon": "🧪",
+      "color": "#43b02a",
+      "tip": "Automation testing saves time and prevents regressions - Mahmoud's expertise",
+      "points": 40,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Playwright",
+      "icon": "🎭",
+      "color": "#2ead33",
+      "tip": "Modern testing with Playwright - fast, reliable, and powerful",
+      "points": 40,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Cypress",
+      "icon": "🌲",
+      "color": "#17202c",
+      "tip": "E2E testing made easy with Cypress - developer-friendly automation",
+      "points": 40,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Jenkins",
+      "icon": "🏗️",
+      "color": "#d24939",
+      "tip": "CI/CD automation is the backbone of modern development",
+      "points": 35,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Terraform",
+      "icon": "🏛️",
+      "color": "#7b42bc",
+      "tip": "Infrastructure as Code - manage cloud resources like software",
+      "points": 45,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Rust",
+      "icon": "🦀",
+      "color": "#ce422b",
+      "tip": "Rust: memory safety without garbage collection - the future of systems",
+      "points": 50,
+      "rarity": "epic"
+    },
+    {
+      "tech": "Go",
+      "icon": "🐹",
+      "color": "#00add8",
+      "tip": "Go's simplicity and performance make it perfect for cloud services",
+      "points": 35,
+      "rarity": "epic"
+    },
+    {
+      "tech": "WebAssembly",
+      "icon": "⚡",
+      "color": "#654ff0",
+      "tip": "WASM brings near-native performance to the web - game changer",
+      "points": 60,
+      "rarity": "epic"
+    },
+    {
+      "tech": "AI Testing",
+      "icon": "🤖",
+      "color": "#00d9ff",
+      "tip": "AI-powered testing is revolutionizing QA - Mahmoud's specialty",
+      "points": 100,
+      "rarity": "legendary"
+    },
+    {
+      "tech": "Quantum Computing",
+      "icon": "⚛️✨",
+      "color": "#9c27b0",
+      "tip": "Quantum computing: preparing for tomorrow's impossible problems",
+      "points": 100,
+      "rarity": "legendary"
+    },
+    {
+      "tech": "Blockchain",
+      "icon": "⛓️",
+      "color": "#f7931a",
+      "tip": "Distributed ledger technology beyond cryptocurrency",
+      "points": 75,
+      "rarity": "legendary"
+    },
+    {
+      "tech": "WebGL",
+      "icon": "🎮",
+      "color": "#990000",
+      "tip": "3D graphics in the browser - unlimited creative potential",
+      "points": 60,
+      "rarity": "epic"
+    },
+    {
+      "tech": "RxJS",
+      "icon": "🌊",
+      "color": "#b7178c",
+      "tip": "Reactive programming: handle async complexity with elegance",
+      "points": 30,
+      "rarity": "rare"
     }
   ]
 }

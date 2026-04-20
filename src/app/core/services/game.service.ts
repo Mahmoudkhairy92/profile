@@ -27,7 +27,7 @@ export class GameService {
   private gameState = signal<GameState>({
     snake: [{ x: 10, y: 10 }],
     direction: Direction.RIGHT,
-    techItem: null,
+    techItems: [],
     score: 0,
     gameOver: false,
     paused: false,
@@ -36,6 +36,7 @@ export class GameService {
     techCollected: 0,
     combo: 0,
     highScore: this.loadHighScore(),
+    lastSpawnTime: Date.now(),
   });
 
   private techTips = signal<GameTip[]>([]);
@@ -74,10 +75,16 @@ export class GameService {
 
   public startGame(): void {
     this.gameStartTime = Date.now();
+    const items: TechItem[] = [];
+    const item1 = this.generateTechItem();
+    const item2 = this.generateTechItem([], item1 ? [item1] : []);
+    if (item1) items.push(item1);
+    if (item2) items.push(item2);
+    
     this.gameState.set({
       snake: [{ x: 10, y: 10 }],
       direction: Direction.RIGHT,
-      techItem: this.generateTechItem(),
+      techItems: items,
       score: 0,
       gameOver: false,
       paused: false,
@@ -86,6 +93,7 @@ export class GameService {
       techCollected: 0,
       combo: 0,
       highScore: this.loadHighScore(),
+      lastSpawnTime: Date.now(),
     });
   }
 
@@ -158,14 +166,21 @@ export class GameService {
     let newCombo = state.combo;
     let newLevel = state.level;
     let newSpeed = state.speed;
-    let newTechItem = state.techItem;
+    let newTechItems = [...state.techItems];
+    let ate = false;
 
-    // Check tech item collision
-    if (state.techItem && newHead.x === state.techItem.position.x && newHead.y === state.techItem.position.y) {
-      // Ate the tech item - grow snake
-      newScore += state.techItem.points;
+    // Check collision with any tech item
+    const collectedItemIndex = newTechItems.findIndex(
+      item => newHead.x === item.position.x && newHead.y === item.position.y
+    );
+
+    if (collectedItemIndex !== -1) {
+      const collectedItem = newTechItems[collectedItemIndex];
+      // Ate a tech item - grow snake
+      newScore += collectedItem.points;
       newTechCollected++;
       newCombo++;
+      ate = true;
 
       // Combo bonus
       if (newCombo >= 3) {
@@ -178,11 +193,27 @@ export class GameService {
         newSpeed = Math.max(50, this.INITIAL_SPEED - (newLevel - 1) * this.SPEED_INCREMENT);
       }
 
-      newTechItem = this.generateTechItem(newSnake);
+      // Remove collected item and replace with new one
+      newTechItems.splice(collectedItemIndex, 1);
+      const newItem = this.generateTechItem(newSnake, newTechItems);
+      if (newItem) {
+        newTechItems.push(newItem);
+      }
     } else {
-      // No food eaten - remove tail
+      // No food eaten - remove tail and reset combo
       newSnake.pop();
-      newCombo = 0; // Reset combo if no food eaten
+      newCombo = 0;
+    }
+
+    // Timed spawning: Add new item every 8 seconds if less than 3 items
+    const currentTime = Date.now();
+    let newLastSpawnTime = state.lastSpawnTime;
+    if (newTechItems.length < 3 && currentTime - state.lastSpawnTime >= 8000) {
+      const newItem = this.generateTechItem(newSnake, newTechItems);
+      if (newItem) {
+        newTechItems.push(newItem);
+        newLastSpawnTime = currentTime;
+      }
     }
 
     this.gameState.update((s) => ({
@@ -193,22 +224,41 @@ export class GameService {
       combo: newCombo,
       level: newLevel,
       speed: newSpeed,
-      techItem: newTechItem,
+      techItems: newTechItems,
+      lastSpawnTime: newLastSpawnTime,
     }));
 
     return true;
   }
 
-  private generateTechItem(snake: Position[] = this.gameState().snake): TechItem | null {
+  private generateTechItem(snake: Position[] = this.gameState().snake, existingItems: TechItem[] = []): TechItem | null {
     const tips = this.techTips();
     if (tips.length === 0) return null;
 
-    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    // Weighted random selection based on rarity
+    const rarityWeights = { common: 60, rare: 30, epic: 9, legendary: 1 };
+    const totalWeight = Object.values(rarityWeights).reduce((a, b) => a + b, 0);
+    let random = Math.random() * totalWeight;
+    let selectedRarity: 'common' | 'rare' | 'epic' | 'legendary' = 'common';
+    
+    for (const [rarity, weight] of Object.entries(rarityWeights)) {
+      random -= weight;
+      if (random <= 0) {
+        selectedRarity = rarity as any;
+        break;
+      }
+    }
+
+    // Filter tips by rarity
+    const filteredTips = tips.filter(t => t.rarity === selectedRarity);
+    if (filteredTips.length === 0) return null;
+    
+    const randomTip = filteredTips[Math.floor(Math.random() * filteredTips.length)];
     let position: Position;
     let attempts = 0;
     const maxAttempts = 100;
 
-    // Find a position that doesn't overlap with snake
+    // Find a position that doesn't overlap with snake or existing items
     do {
       position = {
         x: Math.floor(Math.random() * this.GRID_SIZE),
@@ -217,7 +267,8 @@ export class GameService {
       attempts++;
     } while (
       attempts < maxAttempts &&
-      snake.some((segment) => segment.x === position.x && segment.y === position.y)
+      (snake.some((segment) => segment.x === position.x && segment.y === position.y) ||
+       existingItems.some((item) => item.position.x === position.x && item.position.y === position.y))
     );
 
     return {
@@ -227,6 +278,7 @@ export class GameService {
       color: randomTip.color,
       tip: randomTip.tip,
       points: randomTip.points,
+      rarity: randomTip.rarity,
       position,
     };
   }

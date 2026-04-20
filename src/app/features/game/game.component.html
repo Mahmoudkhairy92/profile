@@ -213,17 +213,25 @@
 
   <!-- Game Canvas -->
   <div class="game-wrapper">
-    <!-- Current Tech Tip (moved to top) -->
-    @if (gameService.state().techItem) {
-      <div class="tech-tip glassmorphism">
-        <div class="tech-header">
-          <span class="tech-icon">{{ gameService.state().techItem!.icon }}</span>
-          <span class="tech-name">{{ gameService.state().techItem!.name }}</span>
-          <span class="tech-points">+{{ gameService.state().techItem!.points }}</span>
-        </div>
-        <div class="tech-tip-text">
-          💡 {{ gameService.state().techItem!.tip }}
-        </div>
+    <!-- Current Tech Items (moved to top) -->
+    @if (gameService.state().techItems.length > 0) {
+      <div class="tech-tips-container">
+        @for (item of gameService.state().techItems; track item.id) {
+          <div class="tech-tip glassmorphism" [class.rare]="item.rarity === 'rare'" 
+               [class.epic]="item.rarity === 'epic'" [class.legendary]="item.rarity === 'legendary'">
+            <div class="tech-header">
+              <span class="tech-icon">{{ item.icon }}</span>
+              <span class="tech-name">{{ item.name }}</span>
+              <span class="tech-points">+{{ item.points }}</span>
+              @if (item.rarity !== 'common') {
+                <span class="rarity-badge">{{ item.rarity }}</span>
+              }
+            </div>
+            <div class="tech-tip-text">
+              💡 {{ item.tip }}
+            </div>
+          </div>
+        }
       </div>
     }
 

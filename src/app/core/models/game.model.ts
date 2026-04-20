@@ -10,13 +10,14 @@ export interface TechItem {
   color: string;
   tip: string;
   points: number;
+  rarity: 'common' | 'rare' | 'epic' | 'legendary';
   position: Position;
 }
 
 export interface GameState {
   snake: Position[];
   direction: Direction;
-  techItem: TechItem | null;
+  techItems: TechItem[];
   score: number;
   gameOver: boolean;
   paused: boolean;
@@ -25,6 +26,7 @@ export interface GameState {
   techCollected: number;
   combo: number;
   highScore: number;
+  lastSpawnTime: number;
 }
 
 export enum Direction {
@@ -49,4 +51,5 @@ export interface GameTip {
   color: string;
   tip: string;
   points: number;
+  rarity: 'common' | 'rare' | 'epic' | 'legendary';
 }

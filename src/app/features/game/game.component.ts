@@ -205,30 +205,58 @@ export class GameComponent implements OnInit, OnDestroy {
       this.ctx.stroke();
     }
 
-    // Draw tech item
-    if (state.techItem) {
-      const item = state.techItem;
+    // Draw tech items with rarity-based effects
+    state.techItems.forEach((item: any) => {
       const x = item.position.x * cellSize;
       const y = item.position.y * cellSize;
 
+      // Rarity-based glow intensity
+      const glowIntensity = ({
+        common: 10,
+        rare: 20,
+        epic: 30,
+        legendary: 40
+      } as any)[item.rarity] || 15;
+
       // Glow effect
-      this.ctx.shadowBlur = 15;
+      this.ctx.shadowBlur = glowIntensity;
       this.ctx.shadowColor = item.color;
       
-      // Draw icon background
+      // Draw icon background with rarity opacity
+      const bgOpacity = ({
+        common: 0.2,
+        rare: 0.3,
+        epic: 0.4,
+        legendary: 0.5
+      } as any)[item.rarity] || 0.3;
+      
       this.ctx.fillStyle = item.color;
-      this.ctx.globalAlpha = 0.3;
+      this.ctx.globalAlpha = bgOpacity;
       this.ctx.fillRect(x + 2, y + 2, cellSize - 4, cellSize - 4);
       this.ctx.globalAlpha = 1;
       
-      // Draw icon
-      this.ctx.font = '16px Arial';
+      // Draw icon with larger size for rare items
+      const iconSize = ({
+        common: 16,
+        rare: 18,
+        epic: 20,
+        legendary: 22
+      } as any)[item.rarity] || 16;
+      
+      this.ctx.font = `${iconSize}px Arial`;
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'middle';
       this.ctx.fillText(item.icon, x + cellSize / 2, y + cellSize / 2);
       
+      // Draw points indicator for rare+ items
+      if (item.rarity !== 'common') {
+        this.ctx.font = '10px Arial';
+        this.ctx.fillStyle = '#64ffda';
+        this.ctx.fillText(`+${item.points}`, x + cellSize / 2, y + cellSize - 3);
+      }
+      
       this.ctx.shadowBlur = 0;
-    }
+    });
 
     // Draw snake with gradient
     state.snake.forEach((segment: any, index: number) => {

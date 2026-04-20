@@ -125,10 +125,34 @@
 }
 
 // Tech Tip
+.tech-tips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .tech-tip {
   padding: 1.5rem;
   max-width: 500px;
   animation: slideUp 0.3s ease-out;
+  border-left: 3px solid #64ffda;
+
+  &.rare {
+    border-left-color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  }
+
+  &.epic {
+    border-left-color: #b968ff;
+    box-shadow: 0 0 20px rgba(185, 104, 255, 0.3);
+  }
+
+  &.legendary {
+    border-left-color: #ffd700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
 
   .tech-header {
     display: flex;
@@ -151,6 +175,28 @@
       color: #64ffda;
       font-weight: bold;
       font-size: 1.25rem;
+    }
+
+    .rarity-badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      
+      &:parent(.rare) {
+        background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
+      }
+      
+      &:parent(.epic) {
+        background: linear-gradient(135deg, #b968ff 0%, #8e44ad 100%);
+      }
+      
+      &:parent(.legendary) {
+        background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+      }
     }
   }
 
