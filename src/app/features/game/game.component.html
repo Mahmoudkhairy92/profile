@@ -213,7 +213,39 @@
 
   <!-- Game Canvas -->
   <div class="game-wrapper">
-    <!-- Score Panel -->
+    <!-- Current Tech Tip (moved to top) -->
+    @if (gameService.state().techItem) {
+      <div class="tech-tip glassmorphism">
+        <div class="tech-header">
+          <span class="tech-icon">{{ gameService.state().techItem!.icon }}</span>
+          <span class="tech-name">{{ gameService.state().techItem!.name }}</span>
+          <span class="tech-points">+{{ gameService.state().techItem!.points }}</span>
+        </div>
+        <div class="tech-tip-text">
+          💡 {{ gameService.state().techItem!.tip }}
+        </div>
+      </div>
+    }
+
+    <!-- Canvas -->
+    <div class="canvas-container">
+      <canvas #gameCanvas></canvas>
+      
+      @if (!gameLoop && !gameService.state().gameOver && !showInstructions()) {
+        <div class="start-prompt">
+          <h3>{{ isMobile() ? '👇 Tap any arrow to start!' : '⌨️ Press any arrow key to start!' }}</h3>
+        </div>
+      }
+      
+      @if (gameService.state().paused && !gameService.state().gameOver) {
+        <div class="pause-overlay">
+          <h2>⏸️ PAUSED</h2>
+          <p>Press SPACE to continue</p>
+        </div>
+      }
+    </div>
+
+    <!-- Score Panel (moved to bottom) -->
     <div class="score-panel glassmorphism">
       <div class="score-item">
         <div class="score-label">Score</div>
@@ -237,38 +269,6 @@
         </div>
       }
     </div>
-
-    <!-- Canvas -->
-    <div class="canvas-container">
-      <canvas #gameCanvas></canvas>
-      
-      @if (!gameLoop && !gameService.state().gameOver && !showInstructions()) {
-        <div class="start-prompt">
-          <h3>{{ isMobile() ? '👇 Tap any arrow to start!' : '⌨️ Press any arrow key to start!' }}</h3>
-        </div>
-      }
-      
-      @if (gameService.state().paused && !gameService.state().gameOver) {
-        <div class="pause-overlay">
-          <h2>⏸️ PAUSED</h2>
-          <p>Press SPACE to continue</p>
-        </div>
-      }
-    </div>
-
-    <!-- Current Tech Tip -->
-    @if (gameService.state().techItem) {
-      <div class="tech-tip glassmorphism">
-        <div class="tech-header">
-          <span class="tech-icon">{{ gameService.state().techItem!.icon }}</span>
-          <span class="tech-name">{{ gameService.state().techItem!.name }}</span>
-          <span class="tech-points">+{{ gameService.state().techItem!.points }}</span>
-        </div>
-        <div class="tech-tip-text">
-          💡 {{ gameService.state().techItem!.tip }}
-        </div>
-      </div>
-    }
 
     <!-- Mobile Controls -->
     @if (isMobile()) {

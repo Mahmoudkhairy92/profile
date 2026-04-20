@@ -67,6 +67,10 @@ export class GameComponent implements OnInit, OnDestroy {
     this.setupControls();
     this.checkMobile();
     this.loadLeaderboard();
+    
+    // Clear all scores to start fresh
+    localStorage.removeItem('snakeHighScore');
+    localStorage.removeItem('snakeLeaderboard');
   }
 
   ngOnDestroy(): void {
@@ -289,9 +293,9 @@ export class GameComponent implements OnInit, OnDestroy {
       `🎮 Just scored ${state.score} points on Mahmoud Kahiry's Tech Stack Snake!\n` +
       `🏆 Collected ${state.techCollected} technologies in ${this.formatDuration(this.gameService.getGameDuration())}\n` +
       `📊 Ranked #${this.playerRank()} out of ${this.totalPlayers()} players\n\n` +
-      `Think you can beat my score? 🚀\n` +
-      `Play now: ${window.location.href}\n\n` +
-      `Created by Mahmoud Kahiry\n\n` +
+      `Think you can beat my score? 🚀\n\n` +
+      `Created by Mahmoud Kahiry\n` +
+      `🔗 https://www.linkedin.com/in/mahmoud-khairy-64633188/\n\n` +
       `#TechChallenge #MahmoudKhairy #QualityControl #AutomationTesting #AITesting`;
     
     this.shareMessage.set(message);
