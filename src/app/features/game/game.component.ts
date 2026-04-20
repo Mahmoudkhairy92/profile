@@ -290,13 +290,15 @@ export class GameComponent implements OnInit, OnDestroy {
     
     // Generate share message with LinkedIn profile link
     const message = 
+      `مين يقدر يكسر التحدي\n` +
       `🎮 Just scored ${state.score} points on Mahmoud Kahiry's Tech Stack Snake!\n` +
       `🏆 Collected ${state.techCollected} technologies in ${this.formatDuration(this.gameService.getGameDuration())}\n` +
       `📊 Ranked #${this.playerRank()} out of ${this.totalPlayers()} players\n\n` +
-      `Think you can beat my score? 🚀\n\n` +
+      `Think you can beat my score? 🚀\n` +
+      `Try it now: ${window.location.href}\n\n` +
+      `#TechChallenge #MahmoudKhairy #QualityControl #AutomationTesting #AITesting\n` +
       `Created by Mahmoud Kahiry\n` +
-      `🔗 https://www.linkedin.com/in/mahmoud-khairy-64633188/\n\n` +
-      `#TechChallenge #MahmoudKhairy #QualityControl #AutomationTesting #AITesting`;
+      `🔗 https://www.linkedin.com/in/mahmoud-khairy-64633188/`;
     
     this.shareMessage.set(message);
     
