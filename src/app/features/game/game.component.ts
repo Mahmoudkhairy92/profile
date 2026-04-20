@@ -398,6 +398,13 @@ export class GameComponent implements OnInit, OnDestroy {
     const shareText = this.shareMessage();
     const screenshotUrl = this.screenshotUrl();
     
+    // Always copy text to clipboard first (LinkedIn needs manual paste with images)
+    try {
+      await navigator.clipboard.writeText(shareText);
+    } catch (error) {
+      console.log('Clipboard copy failed:', error);
+    }
+    
     // Try Web Share API with image file (works on mobile)
     if (navigator.share && screenshotUrl) {
       try {
@@ -408,9 +415,17 @@ export class GameComponent implements OnInit, OnDestroy {
         
         // Check if we can share files
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          // Show message before sharing
+          alert(
+            '✅ Message copied to clipboard!\n\n' +
+            'After selecting LinkedIn:\n' +
+            '1. Image will be attached\n' +
+            '2. Paste (long press text field) for message\n' +
+            '3. Post! 🚀'
+          );
+          
           await navigator.share({
-            title: 'Tech Stack Snake - My Score',
-            text: shareText,
+            title: 'Tech Stack Snake',
             files: [file],
           });
           return; // Success!
@@ -424,25 +439,19 @@ export class GameComponent implements OnInit, OnDestroy {
       }
     }
     
-    // Fallback: Auto-copy and download, then open LinkedIn
+    // Fallback: Auto-download and open LinkedIn
     if (screenshotUrl) {
       this.downloadScreenshot();
     }
     
-    try {
-      await navigator.clipboard.writeText(shareText);
-      
-      // Simplified alert
-      alert(
-        '✅ Ready to share!\n\n' +
-        '📋 Message copied\n' +
-        '📸 Image downloaded\n\n' +
-        'LinkedIn opening now...\n' +
-        'Just paste & attach! 🚀'
-      );
-    } catch (error) {
-      alert('📸 Image downloaded!\n\nCopy the message and attach the image in LinkedIn.');
-    }
+    // Show alert
+    alert(
+      '✅ Ready to share!\n\n' +
+      '📋 Message copied to clipboard\n' +
+      '📸 Image downloaded\n\n' +
+      'LinkedIn opening now...\n' +
+      'Paste message & attach image! 🚀'
+    );
     
     // Open LinkedIn immediately
     setTimeout(() => {
