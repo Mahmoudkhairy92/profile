@@ -291,9 +291,8 @@ export class GameComponent implements OnInit, OnDestroy {
       `📊 Ranked #${this.playerRank()} out of ${this.totalPlayers()} players\n\n` +
       `Think you can beat my score? 🚀\n` +
       `Play now: ${window.location.href}\n\n` +
-      `Created by Mahmoud Kahiry\n` +
-      `🔗 https://www.linkedin.com/in/mahmoud-khairy-64633188/\n\n` +
-      `#TechChallenge #GameDev #WebDevelopment #AngularGame #Portfolio`;
+      `Created by Mahmoud Kahiry\n\n` +
+      `#TechChallenge #MahmoudKhairy #QualityControl #AutomationTesting #AITesting`;
     
     this.shareMessage.set(message);
     
