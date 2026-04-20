@@ -70,9 +70,9 @@ export class GameComponent implements OnInit, OnDestroy {
     
     // Update player stats from current game state
     const state = this.gameService.state();
-    this.totalPlayers.set(this.gameService.getTotalPlayers());
+    this.gameService.getTotalPlayers().then(count => this.totalPlayers.set(count));
     if (state.score > 0) {
-      this.playerRank.set(this.gameService.getPlayerRank(state.score));
+      this.gameService.getPlayerRank(state.score).then(rank => this.playerRank.set(rank));
     }
   }
 
@@ -249,14 +249,16 @@ export class GameComponent implements OnInit, OnDestroy {
     });
   }
 
-  private onGameOver(): void {
+  private async onGameOver(): Promise<void> {
     if (this.gameLoop) {
       cancelAnimationFrame(this.gameLoop);
     }
     
     const state = this.gameService.state();
-    this.playerRank.set(this.gameService.getPlayerRank(state.score));
-    this.totalPlayers.set(this.gameService.getTotalPlayers());
+    const rank = await this.gameService.getPlayerRank(state.score);
+    const total = await this.gameService.getTotalPlayers();
+    this.playerRank.set(rank);
+    this.totalPlayers.set(total);
     this.showGameOver.set(true);
   }
 
@@ -468,8 +470,9 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showLeaderboard.set(false);
   }
 
-  private loadLeaderboard(): void {
-    this.leaderboard.set(this.gameService.getLeaderboard(10));
+  private async loadLeaderboard(): Promise<void> {
+    const leaders = await this.gameService.getLeaderboard(10);
+    this.leaderboard.set(leaders);
   }
 
   // Mobile controls

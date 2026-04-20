@@ -1,5 +1,16 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { 
+  Firestore, 
+  collection, 
+  addDoc, 
+  query, 
+  orderBy, 
+  limit as firestoreLimit, 
+  getDocs,
+  QuerySnapshot,
+  DocumentData
+} from '@angular/fire/firestore';
 import { Direction, GameState, GameTip, LeaderboardEntry, Position, TechItem } from '../models/game.model';
 
 @Injectable({
@@ -29,6 +40,8 @@ export class GameService {
 
   private techTips = signal<GameTip[]>([]);
   private gameStartTime = 0;
+  private firestore = inject(Firestore);
+  private leaderboardCollection = collection(this.firestore, 'leaderboard');
 
   // Public computed signals
   public state = this.gameState.asReadonly();
@@ -228,7 +241,7 @@ export class GameService {
     return Math.floor((Date.now() - this.gameStartTime) / 1000);
   }
 
-  // Leaderboard methods (will integrate with Firebase later)
+  // Leaderboard methods with Firebase Firestore
   public async saveScore(playerName: string): Promise<void> {
     const state = this.gameState();
     const entry: LeaderboardEntry = {
@@ -239,17 +252,40 @@ export class GameService {
       duration: this.getGameDuration(),
     };
 
-    // For now, save to localStorage - will replace with Firebase
-    const leaderboard = this.getLocalLeaderboard();
-    leaderboard.push(entry);
-    leaderboard.sort((a, b) => b.score - a.score);
-    const top100 = leaderboard.slice(0, 100);
-    localStorage.setItem('snakeLeaderboard', JSON.stringify(top100));
+    try {
+      // Save to Firestore
+      await addDoc(this.leaderboardCollection, entry);
+      console.log('Score saved to Firestore successfully');
+    } catch (error) {
+      console.error('Error saving to Firestore, falling back to localStorage:', error);
+      // Fallback to localStorage if Firestore fails
+      const leaderboard = this.getLocalLeaderboard();
+      leaderboard.push(entry);
+      leaderboard.sort((a, b) => b.score - a.score);
+      const top100 = leaderboard.slice(0, 100);
+      localStorage.setItem('snakeLeaderboard', JSON.stringify(top100));
+    }
   }
 
-  public getLeaderboard(limit: number = 10): LeaderboardEntry[] {
-    const leaderboard = this.getLocalLeaderboard();
-    return leaderboard.slice(0, limit);
+  public async getLeaderboard(limitCount: number = 10): Promise<LeaderboardEntry[]> {
+    try {
+      // Fetch from Firestore
+      const q = query(
+        this.leaderboardCollection, 
+        orderBy('score', 'desc'), 
+        firestoreLimit(limitCount)
+      );
+      const querySnapshot = await getDocs(q);
+      const leaderboard: LeaderboardEntry[] = [];
+      querySnapshot.forEach((doc) => {
+        leaderboard.push(doc.data() as LeaderboardEntry);
+      });
+      return leaderboard;
+    } catch (error) {
+      console.error('Error fetching from Firestore, using localStorage:', error);
+      // Fallback to localStorage
+      return this.getLocalLeaderboard().slice(0, limitCount);
+    }
   }
 
   private getLocalLeaderboard(): LeaderboardEntry[] {
@@ -257,13 +293,26 @@ export class GameService {
     return stored ? JSON.parse(stored) : [];
   }
 
-  public getPlayerRank(score: number): number {
-    const leaderboard = this.getLocalLeaderboard();
-    const rank = leaderboard.filter((entry) => entry.score > score).length + 1;
-    return rank;
+  public async getPlayerRank(score: number): Promise<number> {
+    try {
+      // Count scores higher than current score from Firestore
+      const allScores = await this.getLeaderboard(1000); // Get top 1000
+      const rank = allScores.filter((entry) => entry.score > score).length + 1;
+      return rank;
+    } catch (error) {
+      console.error('Error getting rank from Firestore:', error);
+      const leaderboard = this.getLocalLeaderboard();
+      return leaderboard.filter((entry) => entry.score > score).length + 1;
+    }
   }
 
-  public getTotalPlayers(): number {
-    return this.getLocalLeaderboard().length;
+  public async getTotalPlayers(): Promise<number> {
+    try {
+      const allScores = await this.getLeaderboard(1000);
+      return allScores.length;
+    } catch (error) {
+      console.error('Error getting total players from Firestore:', error);
+      return this.getLocalLeaderboard().length;
+    }
   }
 }
