@@ -398,62 +398,44 @@ export class GameComponent implements OnInit, OnDestroy {
     const shareText = this.shareMessage();
     const screenshotUrl = this.screenshotUrl();
     
-    // Always copy text to clipboard first (LinkedIn needs manual paste with images)
-    try {
-      await navigator.clipboard.writeText(shareText);
-    } catch (error) {
-      console.log('Clipboard copy failed:', error);
-    }
-    
-    // Try Web Share API with image file (works on mobile)
-    if (navigator.share && screenshotUrl) {
-      try {
-        // Convert screenshot to file
-        const response = await fetch(screenshotUrl);
-        const blob = await response.blob();
-        const file = new File([blob], 'tech-stack-snake-leaderboard.png', { type: 'image/png' });
-        
-        // Check if we can share files
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          // Show message before sharing
-          alert(
-            '✅ Message copied to clipboard!\n\n' +
-            'After selecting LinkedIn:\n' +
-            '1. Image will be attached\n' +
-            '2. Paste (long press text field) for message\n' +
-            '3. Post! 🚀'
-          );
-          
-          await navigator.share({
-            title: 'Tech Stack Snake',
-            files: [file],
-          });
-          return; // Success!
-        }
-      } catch (error: any) {
-        // Continue to fallback if share was cancelled or failed
-        if (error.name === 'AbortError') {
-          return; // User cancelled
-        }
-        console.log('Web Share with files not supported:', error);
-      }
-    }
-    
-    // Fallback: Auto-download and open LinkedIn
+    // Auto-download the image first
     if (screenshotUrl) {
       this.downloadScreenshot();
     }
     
-    // Show alert
-    alert(
-      '✅ Ready to share!\n\n' +
-      '📋 Message copied to clipboard\n' +
-      '📸 Image downloaded\n\n' +
-      'LinkedIn opening now...\n' +
-      'Paste message & attach image! 🚀'
-    );
+    // Try Web Share API with text only (works better)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Tech Stack Snake - My Score',
+          text: shareText,
+          url: window.location.href,
+        });
+        return; // Success!
+      } catch (error: any) {
+        // User cancelled or not supported
+        if (error.name === 'AbortError') {
+          return; // User cancelled, that's fine
+        }
+        console.log('Web Share not supported:', error);
+      }
+    }
     
-    // Open LinkedIn immediately
+    // Fallback for desktop: Open LinkedIn with copied text
+    try {
+      await navigator.clipboard.writeText(shareText);
+      alert(
+        '✅ Ready to share!\n\n' +
+        '📋 Message copied\n' +
+        '📸 Image downloaded\n\n' +
+        'LinkedIn opening...\n' +
+        'Paste & attach image!'
+      );
+    } catch (error) {
+      alert('📸 Image downloaded!\n\nLinkedIn opening...');
+    }
+    
+    // Open LinkedIn
     setTimeout(() => {
       window.open('https://www.linkedin.com/feed/', '_blank');
     }, 100);
