@@ -253,6 +253,7 @@ export class GameComponent implements OnInit, OnDestroy {
   private async onGameOver(): Promise<void> {
     if (this.gameLoop) {
       cancelAnimationFrame(this.gameLoop);
+      this.gameLoop = null;
     }
     
     const state = this.gameService.state();
