@@ -147,6 +147,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showInstructions.set(false);
     this.showGameOver.set(false);
     this.showLeaderboard.set(false);
+    this.showShareModal.set(false);
     this.gameService.startGame();
     // Don't start game loop yet - wait for first move
   }
