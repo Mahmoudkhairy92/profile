@@ -167,64 +167,46 @@
   @if (showShareModal()) {
     <div class="overlay share-overlay">
       <div class="modal-content glassmorphism share-modal">
-        <h1 class="share-title">🎉 Ready to Share on LinkedIn!</h1>
-        <p class="subtitle">Your score is ready to share with your network</p>
+        <h1 class="share-title">🎉 Share Your Score!</h1>
+        <p class="subtitle">Show your network what you achieved</p>
         
         <!-- Screenshot Preview -->
         @if (screenshotUrl()) {
           <div class="screenshot-preview">
             <img [src]="screenshotUrl()" alt="Leaderboard Screenshot" />
-            <p class="preview-label">👆 This image will be downloaded</p>
           </div>
         }
         
-        <!-- Share Message -->
-        <div class="share-message-container">
-          <label class="share-label">📝 Post Message (will be copied):</label>
-          <textarea 
-            class="share-textarea" 
-            [value]="shareMessage()" 
-            readonly
-            rows="10"
-          ></textarea>
+        <!-- Share Message Preview -->
+        <div class="share-message-preview">
+          <p class="preview-label">📝 Your LinkedIn Post:</p>
+          <div class="message-snippet">
+            {{ shareMessage().substring(0, 150) }}...
+          </div>
         </div>
         
         <!-- Primary Action -->
         <div class="primary-action">
           <button class="btn btn-linkedin btn-xl pulse-animation" (click)="shareToLinkedInDirect()">
-            <i class="fab fa-linkedin"></i> Share to LinkedIn Now
+            <i class="fab fa-linkedin"></i> Share to LinkedIn
           </button>
-          <p class="action-hint">Click above to copy message, download image, and open LinkedIn</p>
+          <p class="action-hint">
+            @if (isMobile()) {
+              📱 Tap to share with LinkedIn app
+            } @else {
+              💻 Opens LinkedIn → Paste message → Attach image → Post!
+            }
+          </p>
         </div>
         
-        <!-- Alternative Actions -->
-        <div class="share-actions-secondary">
-          <button class="btn btn-outline-secondary" (click)="copyMessage()">
-            {{ copySuccess() ? '✅ Copied!' : '📋 Copy Message Only' }}
+        <div class="quick-actions">
+          <button class="btn btn-primary" (click)="startGame()">
+            🔄 Play Again
           </button>
-          
-          @if (screenshotUrl()) {
-            <button class="btn btn-outline-secondary" (click)="downloadScreenshot()">
-              ⬇️ Download Image Only
-            </button>
-          }
+          <button class="btn btn-outline-secondary" (click)="closeShareModal()">
+            ← Back
+          </button>
         </div>
-        
-        <!-- Instructions -->
-        <div class="share-instructions-simple">
-          <h4>📱 How it works:</h4>
-          <ol>
-            <li>Click "Share to LinkedIn Now" button</li>
-            <li>Message will be copied & image downloaded</li>
-            <li>LinkedIn opens automatically</li>
-            <li>Create new post → Paste message → Attach image</li>
-            <li>Post and watch the engagement! 🚀</li>
-          </ol>
-        </div>
-        
-        <button class="btn btn-outline-secondary mt-3" (click)="closeShareModal()">
-          ← Back
-        </button>
       </div>
     </div>
   }

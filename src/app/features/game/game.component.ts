@@ -398,30 +398,56 @@ export class GameComponent implements OnInit, OnDestroy {
     const shareText = this.shareMessage();
     const screenshotUrl = this.screenshotUrl();
     
-    // Download screenshot
+    // Try Web Share API with image file (works on mobile)
+    if (navigator.share && screenshotUrl) {
+      try {
+        // Convert screenshot to file
+        const response = await fetch(screenshotUrl);
+        const blob = await response.blob();
+        const file = new File([blob], 'tech-stack-snake-leaderboard.png', { type: 'image/png' });
+        
+        // Check if we can share files
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: 'Tech Stack Snake - My Score',
+            text: shareText,
+            files: [file],
+          });
+          return; // Success!
+        }
+      } catch (error: any) {
+        // Continue to fallback if share was cancelled or failed
+        if (error.name === 'AbortError') {
+          return; // User cancelled
+        }
+        console.log('Web Share with files not supported:', error);
+      }
+    }
+    
+    // Fallback: Auto-copy and download, then open LinkedIn
     if (screenshotUrl) {
       this.downloadScreenshot();
     }
     
-    // Copy message to clipboard
     try {
       await navigator.clipboard.writeText(shareText);
       
-      // Show success message
+      // Simplified alert
       alert(
-        '✅ Message copied to clipboard!\n' +
-        '✅ Screenshot downloaded!\n\n' +
-        'LinkedIn will open now.\n' +
-        'Just paste the message and attach the image! 🚀'
+        '✅ Ready to share!\n\n' +
+        '📋 Message copied\n' +
+        '📸 Image downloaded\n\n' +
+        'LinkedIn opening now...\n' +
+        'Just paste & attach! 🚀'
       );
     } catch (error) {
-      alert('Screenshot downloaded! Copy the message manually and attach the image.');
+      alert('📸 Image downloaded!\n\nCopy the message and attach the image in LinkedIn.');
     }
     
-    // Open LinkedIn after a short delay
+    // Open LinkedIn immediately
     setTimeout(() => {
       window.open('https://www.linkedin.com/feed/', '_blank');
-    }, 500);
+    }, 100);
   }
 
   public openLinkedIn(): void {
