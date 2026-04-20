@@ -149,6 +149,11 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showLeaderboard.set(false);
     this.showShareModal.set(false);
     this.gameService.startGame();
+    
+    // Clear canvas and render initial state
+    this.ctx.clearRect(0, 0, this.gameService.canvasWidth(), this.gameService.canvasHeight());
+    this.render();
+    
     // Don't start game loop yet - wait for first move
   }
 
