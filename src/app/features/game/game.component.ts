@@ -67,6 +67,13 @@ export class GameComponent implements OnInit, OnDestroy {
     this.setupControls();
     this.checkMobile();
     this.loadLeaderboard();
+    
+    // Update player stats from current game state
+    const state = this.gameService.state();
+    this.totalPlayers.set(this.gameService.getTotalPlayers());
+    if (state.score > 0) {
+      this.playerRank.set(this.gameService.getPlayerRank(state.score));
+    }
   }
 
   ngOnDestroy(): void {
