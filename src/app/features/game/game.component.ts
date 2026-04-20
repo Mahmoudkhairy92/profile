@@ -67,10 +67,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this.setupControls();
     this.checkMobile();
     this.loadLeaderboard();
-    
-    // Clear all scores to start fresh
-    localStorage.removeItem('snakeHighScore');
-    localStorage.removeItem('snakeLeaderboard');
   }
 
   ngOnDestroy(): void {
