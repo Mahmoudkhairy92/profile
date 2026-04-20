@@ -277,11 +277,8 @@ export class GameComponent implements OnInit, OnDestroy {
     await this.gameService.saveScore(name);
     this.loadLeaderboard();
     
-    // Wait a moment then share directly
-    setTimeout(() => {
-      this.prepareShareContent();
-      setTimeout(() => this.shareToLinkedInDirect(), 200);
-    }, 100);
+    // Show the share modal with screenshot
+    setTimeout(() => this.prepareShareContent(), 100);
   }
 
   private async prepareShareContent(): Promise<void> {
@@ -398,70 +395,33 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   public async shareToLinkedInDirect(): Promise<void> {
-    const state = this.gameService.state();
-    const shareUrl = window.location.href;
     const shareText = this.shareMessage();
     const screenshotUrl = this.screenshotUrl();
     
-    // For mobile: Try to save image first
-    if (screenshotUrl && this.isMobile()) {
-      try {
-        // Download the screenshot for user to upload
-        this.downloadScreenshot();
-        
-        // Copy text to clipboard
-        await navigator.clipboard.writeText(shareText);
-        
-        // Show instructions
-        alert(
-          '✅ Screenshot downloaded!\n' +
-          '✅ Message copied to clipboard!\n\n' +
-          'Now:\n' +
-          '1. Go to LinkedIn\n' +
-          '2. Create new post\n' +
-          '3. Paste the message\n' +
-          '4. Attach the screenshot from downloads\n' +
-          '5. Post! 🚀'
-        );
-        
-        // Open LinkedIn
-        setTimeout(() => {
-          window.open('https://www.linkedin.com/feed/', '_blank');
-        }, 500);
-        
-        return;
-      } catch (error) {
-        console.log('Mobile share preparation failed:', error);
-      }
+    // Download screenshot
+    if (screenshotUrl) {
+      this.downloadScreenshot();
     }
     
-    // Desktop: Try Web Share API
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `Tech Stack Snake - Score: ${state.score}`,
-          text: shareText,
-          url: shareUrl,
-        });
-        return;
-      } catch (error: any) {
-        if (error.name !== 'AbortError') {
-          console.log('Web Share failed:', error);
-        } else {
-          return;
-        }
-      }
-    }
-    
-    // Fallback: Copy text and open LinkedIn
+    // Copy message to clipboard
     try {
       await navigator.clipboard.writeText(shareText);
-      alert('✅ Message copied! Download the screenshot and attach it in LinkedIn.');
+      
+      // Show success message
+      alert(
+        '✅ Message copied to clipboard!\n' +
+        '✅ Screenshot downloaded!\n\n' +
+        'LinkedIn will open now.\n' +
+        'Just paste the message and attach the image! 🚀'
+      );
     } catch (error) {
-      console.log('Clipboard copy failed');
+      alert('Screenshot downloaded! Copy the message manually and attach the image.');
     }
     
-    window.open('https://www.linkedin.com/feed/', '_blank');
+    // Open LinkedIn after a short delay
+    setTimeout(() => {
+      window.open('https://www.linkedin.com/feed/', '_blank');
+    }, 500);
   }
 
   public openLinkedIn(): void {

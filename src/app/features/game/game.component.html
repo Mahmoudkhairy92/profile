@@ -94,10 +94,7 @@
         
         <div class="button-group">
           <button class="btn btn-linkedin btn-lg" (click)="quickShareToLinkedIn()">
-            <i class="fab fa-linkedin"></i> Share to LinkedIn (One Click)
-          </button>
-          <button class="btn btn-success" (click)="saveAndShare()">
-            📸 Get Screenshot & Manual Share
+            <i class="fab fa-linkedin"></i> Share to LinkedIn
           </button>
           <button class="btn btn-primary" (click)="startGame()">
             🔄 Play Again
@@ -170,62 +167,59 @@
   @if (showShareModal()) {
     <div class="overlay share-overlay">
       <div class="modal-content glassmorphism share-modal">
-        <h1 class="share-title">🎉 Ready to Share!</h1>
-        <p class="subtitle">Post this to LinkedIn and challenge your network</p>
+        <h1 class="share-title">🎉 Ready to Share on LinkedIn!</h1>
+        <p class="subtitle">Your score is ready to share with your network</p>
         
         <!-- Screenshot Preview -->
         @if (screenshotUrl()) {
           <div class="screenshot-preview">
             <img [src]="screenshotUrl()" alt="Leaderboard Screenshot" />
+            <p class="preview-label">👆 This image will be downloaded</p>
           </div>
         }
         
         <!-- Share Message -->
         <div class="share-message-container">
-          <label class="share-label">LinkedIn Post Message:</label>
+          <label class="share-label">📝 Post Message (will be copied):</label>
           <textarea 
             class="share-textarea" 
             [value]="shareMessage()" 
             readonly
-            rows="12"
+            rows="10"
           ></textarea>
         </div>
         
-        <!-- Action Buttons -->
-        <div class="share-actions">
-          <button class="btn btn-linkedin btn-lg" (click)="shareToLinkedInDirect()">
-            <i class="fab fa-linkedin"></i> Share Now
+        <!-- Primary Action -->
+        <div class="primary-action">
+          <button class="btn btn-linkedin btn-xl pulse-animation" (click)="shareToLinkedInDirect()">
+            <i class="fab fa-linkedin"></i> Share to LinkedIn Now
           </button>
-          
-          <button class="btn btn-primary btn-lg" (click)="copyMessage()">
-            {{ copySuccess() ? '✅ Copied!' : '📋 Copy Message' }}
+          <p class="action-hint">Click above to copy message, download image, and open LinkedIn</p>
+        </div>
+        
+        <!-- Alternative Actions -->
+        <div class="share-actions-secondary">
+          <button class="btn btn-outline-secondary" (click)="copyMessage()">
+            {{ copySuccess() ? '✅ Copied!' : '📋 Copy Message Only' }}
           </button>
           
           @if (screenshotUrl()) {
-            <button class="btn btn-success btn-lg" (click)="downloadScreenshot()">
-              ⬇️ Download Image
+            <button class="btn btn-outline-secondary" (click)="downloadScreenshot()">
+              ⬇️ Download Image Only
             </button>
           }
         </div>
         
         <!-- Instructions -->
-        <div class="share-instructions">
-          <h4>📝 Two Ways to Share:</h4>
-          
-          <div class="share-option highlight">
-            <strong>🚀 Quick Share (Recommended):</strong>
-            <p>Click "Share Now" - LinkedIn will open with pre-filled message. Just attach the screenshot image and post!</p>
-          </div>
-          
-          <div class="share-option">
-            <strong>📋 Manual Share:</strong>
-            <ol>
-              <li>Click "Copy Message" and "Download Image"</li>
-              <li>Go to LinkedIn and create a new post</li>
-              <li>Paste message and upload the image</li>
-              <li>Post! 🎉</li>
-            </ol>
-          </div>
+        <div class="share-instructions-simple">
+          <h4>📱 How it works:</h4>
+          <ol>
+            <li>Click "Share to LinkedIn Now" button</li>
+            <li>Message will be copied & image downloaded</li>
+            <li>LinkedIn opens automatically</li>
+            <li>Create new post → Paste message → Attach image</li>
+            <li>Post and watch the engagement! 🚀</li>
+          </ol>
         </div>
         
         <button class="btn btn-outline-secondary mt-3" (click)="closeShareModal()">
