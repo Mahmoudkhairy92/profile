@@ -9,9 +9,7 @@ A modern, professional portfolio application built with Angular 21, Bootstrap 5,
 - 🚀 **Projects Showcase** - Portfolio of completed projects with links
 - 🏆 **Achievements** - Awards, certifications, and recognitions
 - 📚 **Courses & Training** - Professional development and continuous learning
-- 👥 **Management Experience** - High-level and operational management responsibilities
 - 💻 **Skills & Expertise** - Technical skills with proficiency levels
-- ⏱️ **Career Timeline** - Chronological view of career milestones
 - 📧 **Contact Page** - Multiple contact methods (WhatsApp, Email, LinkedIn)
 - 📄 **PDF Export** - Export profile to PDF document
 
@@ -39,9 +37,7 @@ src/app/
 │   │   ├── project.model.ts
 │   │   ├── achievement.model.ts
 │   │   ├── course.model.ts
-│   │   ├── management.model.ts
 │   │   ├── skill.model.ts
-│   │   ├── timeline.model.ts
 │   │   └── contact.model.ts
 │   └── services/         # Core services
 │       ├── config-data.service.ts    # Data loading with signals
@@ -52,16 +48,13 @@ src/app/
 │   ├── projects/
 │   ├── achievements/
 │   ├── courses/
-│   ├── management/
 │   ├── skills/
-│   ├── timeline/
 │   └── contact/
 ├── shared/              # Shared components
 │   └── components/
 │       ├── section-header/
 │       ├── card/
-│       ├── badge/
-│       └── timeline-item/
+│       └── badge/
 ├── app.component.*      # Root component with navigation
 ├── app.routes.ts        # Route configuration
 └── app.config.ts        # Application configuration
@@ -75,9 +68,7 @@ All data is loaded from JSON files located in `public/assets/config/`:
 - `projects.json` - Project portfolio
 - `achievements.json` - Awards and certifications
 - `courses.json` - Training and courses
-- `management.json` - Management responsibilities
 - `skills.json` - Technical skills and proficiency
-- `timeline.json` - Career timeline events
 - `contact.json` - Contact information and social links
 
 ## Getting Started

@@ -6,9 +6,7 @@ import {
   ProjectData, 
   AchievementData, 
   CourseData, 
-  ManagementData, 
   SkillData, 
-  TimelineData, 
   Contact 
 } from '../models';
 import { catchError, tap } from 'rxjs/operators';
@@ -26,9 +24,7 @@ export class ConfigDataService {
   private projectsSignal = signal<ProjectData | null>(null);
   private achievementsSignal = signal<AchievementData | null>(null);
   private coursesSignal = signal<CourseData | null>(null);
-  private managementSignal = signal<ManagementData | null>(null);
   private skillsSignal = signal<SkillData | null>(null);
-  private timelineSignal = signal<TimelineData | null>(null);
   private contactSignal = signal<Contact | null>(null);
 
   // Readonly computed signals
@@ -37,9 +33,7 @@ export class ConfigDataService {
   readonly projects = computed(() => this.projectsSignal());
   readonly achievements = computed(() => this.achievementsSignal());
   readonly courses = computed(() => this.coursesSignal());
-  readonly management = computed(() => this.managementSignal());
   readonly skills = computed(() => this.skillsSignal());
-  readonly timeline = computed(() => this.timelineSignal());
   readonly contact = computed(() => this.contactSignal());
 
   // Loading states
@@ -113,36 +107,12 @@ export class ConfigDataService {
       .subscribe();
   }
 
-  loadManagement(): void {
-    this.http.get<ManagementData>(`${this.baseUrl}/management.json`)
-      .pipe(
-        tap(data => this.managementSignal.set(data)),
-        catchError(error => {
-          console.error('Error loading management:', error);
-          return of(null);
-        })
-      )
-      .subscribe();
-  }
-
   loadSkills(): void {
     this.http.get<SkillData>(`${this.baseUrl}/skills.json`)
       .pipe(
         tap(data => this.skillsSignal.set(data)),
         catchError(error => {
           console.error('Error loading skills:', error);
-          return of(null);
-        })
-      )
-      .subscribe();
-  }
-
-  loadTimeline(): void {
-    this.http.get<TimelineData>(`${this.baseUrl}/timeline.json`)
-      .pipe(
-        tap(data => this.timelineSignal.set(data)),
-        catchError(error => {
-          console.error('Error loading timeline:', error);
           return of(null);
         })
       )
@@ -168,9 +138,7 @@ export class ConfigDataService {
     this.loadProjects();
     this.loadAchievements();
     this.loadCourses();
-    this.loadManagement();
     this.loadSkills();
-    this.loadTimeline();
     this.loadContact();
   }
 }
