@@ -11,7 +11,6 @@ export interface Contact {
   whatsapp: string;
   linkedin: string;
   location?: string;
-  birthday?: string;
   muchskills?: string;
   socialLinks: SocialLink[];
 }
