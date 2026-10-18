@@ -1,13 +1,27 @@
 <div class="container py-5">
   <app-page-header 
     title="Projects" 
-    subtitle="Showcase of my work and contributions"
+    subtitle="Professional initiatives, quality engineering work and hackathons"
     icon="fas fa-folder-open" />
 
-  @if (projects(); as projectData) {
-    <div class="projects-grid">
-        @for (project of projectData.projects; track project.id) {
-        <div class="project-card" [class.strategic-initiative]="project.isStrategicInitiative" [id]="'project-' + project.id">
+  <p class="ventures-pointer">
+    <i class="fas fa-lightbulb"></i>
+    Independent products and ventures, such as QCVerse and Quad Insight, are on the
+    <a routerLink="/ventures">Products &amp; Ventures</a> page.
+  </p>
+
+  @if (projects()) {
+    @for (group of projectGroups(); track group.title) {
+      <section class="project-group">
+        <div class="project-group-header">
+          <h2 class="project-group-title">{{ group.title }}</h2>
+          @if (group.description) {
+            <p class="project-group-description">{{ group.description }}</p>
+          }
+        </div>
+        <div class="projects-grid">
+        @for (project of group.projects; track project.id) {
+        <div class="project-card" [class.strategic-initiative]="project.isStrategicInitiative" [id]="'project-' + project.id" tabindex="-1">
           <div class="card-header">
             <div class="title-row">
               <h3 class="project-title">{{ project.name }}</h3>
@@ -18,7 +32,7 @@
                 </span>
               }
             </div>
-            <div class="project-role">{{ project.role }}</div>
+            <div class="project-role">{{ project.role }}@if (project.company) {<span class="project-company"> · {{ project.company }}</span>}</div>
           </div>
           
           <p class="project-description">{{ project.description }}</p>
@@ -26,7 +40,7 @@
           <div class="project-meta">
             <span class="meta-item">
               <i class="fas fa-calendar-alt"></i>
-              {{ project.startDate }} - {{ project.endDate || 'Ongoing' }}
+              <span class="meta-label">{{ group.dateLabel }}:</span> {{ formatPeriod(project) }}
             </span>
           </div>
           
@@ -70,7 +84,9 @@
           }
         </div>
       }
-    </div>
+        </div>
+      </section>
+    }
   } @else {
     <div class="text-center py-5">
       <div class="spinner-border text-primary" role="status">

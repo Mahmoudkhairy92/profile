@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" data-fixed-header>
   <div class="container">
     <a class="navbar-brand" routerLink="/profile">
       <i class="fas fa-user-circle me-2"></i>
@@ -38,7 +38,7 @@
 
 <!-- In Progress Banner -->
 @if (showInProgressBanner()) {
-  <div class="in-progress-banner">
+  <div class="in-progress-banner" data-fixed-header>
     <div class="container">
       <div class="banner-content">
         <div class="banner-icon">

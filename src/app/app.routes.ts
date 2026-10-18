@@ -25,6 +25,12 @@ export const routes: Routes = [
     title: 'Projects | Mahmoud Khairy'
   },
   {
+    path: 'ventures',
+    loadComponent: () =>
+      import('./features/ventures/ventures.component').then(m => m.VenturesComponent),
+    title: 'Products & Ventures | Mahmoud Khairy'
+  },
+  {
     path: 'achievements',
     loadComponent: () => 
       import('./features/achievements/achievements.component').then(m => m.AchievementsComponent),

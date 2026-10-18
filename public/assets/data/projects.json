@@ -16,7 +16,8 @@
         "Improved testing efficiency by 40%",
         "Integrated with Azure DevOps and GPT-based workflows"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj2",
@@ -34,7 +35,8 @@
         "AI locators",
         "Predictive test selection"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj3",
@@ -52,7 +54,8 @@
         "Leaderboards and recognition system",
         "Improved collaboration between QA and development teams"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj4",
@@ -70,7 +73,8 @@
         "AI innovations in testing presentations",
         "Culture of continuous learning and upskilling"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj5",
@@ -89,7 +93,8 @@
         "SQL Query Generator for database testing",
         "Python Automation Assistant for scripting support"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj6",
@@ -107,7 +112,8 @@
         "Defect detection rate visualization",
         "Data-driven quality insights for leadership"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "thiqah-initiative"
     },
     {
       "id": "proj7",
@@ -124,7 +130,8 @@
         "Rapid prototyping under tight deadlines",
         "Recognition from executive leadership"
       ],
-      "company": "Elm Hackathon"
+      "company": "Elm Hackathon",
+      "category": "hackathon"
     },
     {
       "id": "proj8",
@@ -139,7 +146,8 @@
         "Co-organized the company hackathon",
         "Supported 10+ cross-functional teams on AI solutions"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "hackathon"
     },
     {
       "id": "proj9",
@@ -156,7 +164,8 @@
         "2,000+ automated regression tests",
         "CI/CD pipelines with scheduled execution"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "quality-engineering"
     },
     {
       "id": "proj10",
@@ -173,7 +182,8 @@
         "Performance and load testing using JMeter",
         "Compliance with governmental standards"
       ],
-      "company": "THIQAH"
+      "company": "THIQAH",
+      "category": "quality-engineering"
     },
     {
       "id": "proj11",
@@ -190,7 +200,8 @@
         "Improved defect detection",
         "Enhanced cross-platform compatibility"
       ],
-      "company": "Algorithmz"
+      "company": "Algorithmz",
+      "category": "quality-engineering"
     },
     {
       "id": "proj12",
@@ -207,7 +218,8 @@
         "Database testing and data integrity",
         "API and integration testing"
       ],
-      "company": "Path Solutions"
+      "company": "Path Solutions",
+      "category": "quality-engineering"
     }
   ]
 }

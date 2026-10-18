@@ -117,8 +117,13 @@
 // Tablet Navigation
 @media (max-width: 1199px) {
   .navbar {
+    // Seven nav items: keep the expanded menu on one line between 992px and 1199px
+    .navbar-nav {
+      gap: 0.25rem;
+    }
+
     .nav-link {
-      padding: 0.5rem 0.875rem;
+      padding: 0.5rem 0.5rem;
       font-size: 0.9rem;
       
       i {

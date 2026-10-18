@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, computed, HostListener, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, computed, HostListener, inject, signal } from '@angular/core';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { VERSION } from '@angular/core';
 import { ConfigDataService } from './core/services';
+import { fixedHeaderOffset } from './core/fixed-header-offset';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { path: '/profile', label: 'Home', icon: 'fas fa-user' },
     { path: '/experience', label: 'Experience', icon: 'fas fa-briefcase' },
     { path: '/projects', label: 'Projects', icon: 'fas fa-folder-open' },
+    { path: '/ventures', label: 'Ventures', icon: 'fas fa-lightbulb' },
     { path: '/skills', label: 'Skills', icon: 'fas fa-code' },
     { path: '/game', label: 'Game', icon: 'fas fa-gamepad' },
     { path: '/contact', label: 'Contact', icon: 'fas fa-envelope' }
@@ -39,7 +42,17 @@ export class AppComponent implements OnInit, OnDestroy {
   readonly authorName = computed(() => this.profile()?.name || 'Author');
   readonly linkedinUrl = computed(() => this.profile()?.linkedin || '#');
 
-  constructor(private configService: ConfigDataService) {}
+  constructor(private configService: ConfigDataService) {
+    // Anchor scrolling (e.g. /projects#project-...) must clear the fixed navbar and banner. The same
+    // value is applied as scroll-padding so the browser's own scroll-into-view (e.g. when the anchor
+    // target receives focus) lands in the same place.
+    const document = inject(DOCUMENT);
+    inject(ViewportScroller).setOffset(() => {
+      const offset = fixedHeaderOffset(document);
+      document.documentElement.style.scrollPaddingTop = `${offset}px`;
+      return [0, offset];
+    });
+  }
 
   ngOnInit(): void {
     this.configService.loadProfile();

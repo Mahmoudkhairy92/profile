@@ -7,6 +7,7 @@ import {
   AchievementData, 
   CourseData, 
   SkillData, 
+  VentureData,
   Contact 
 } from '../models';
 import { catchError, tap } from 'rxjs/operators';
@@ -26,6 +27,7 @@ export class ConfigDataService {
   private coursesSignal = signal<CourseData | null>(null);
   private skillsSignal = signal<SkillData | null>(null);
   private contactSignal = signal<Contact | null>(null);
+  private venturesSignal = signal<VentureData | null>(null);
 
   // Readonly computed signals
   readonly profile = computed(() => this.profileSignal());
@@ -35,6 +37,7 @@ export class ConfigDataService {
   readonly courses = computed(() => this.coursesSignal());
   readonly skills = computed(() => this.skillsSignal());
   readonly contact = computed(() => this.contactSignal());
+  readonly ventures = computed(() => this.venturesSignal());
 
   // Loading states
   private loadingSignal = signal<boolean>(false);
@@ -131,6 +134,18 @@ export class ConfigDataService {
       .subscribe();
   }
 
+  loadVentures(): void {
+    this.http.get<VentureData>(`${this.baseUrl}/ventures.json`)
+      .pipe(
+        tap(data => this.venturesSignal.set(data)),
+        catchError(error => {
+          console.error('Error loading ventures:', error);
+          return of(null);
+        })
+      )
+      .subscribe();
+  }
+
   // Load all data at once
   loadAllData(): void {
     this.loadProfile();
@@ -140,6 +155,7 @@ export class ConfigDataService {
     this.loadCourses();
     this.loadSkills();
     this.loadContact();
+    this.loadVentures();
   }
 }
 

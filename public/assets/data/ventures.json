@@ -1,0 +1,79 @@
+{
+  "ventures": [
+    {
+      "id": "qcverse",
+      "name": "QCVerse",
+      "type": "AI-Powered Quality Engineering Product",
+      "role": "Founder & Product Owner",
+      "startDate": "May 2026",
+      "status": "Public Website Available",
+      "affiliation": "Independent product, not affiliated with THIQAH",
+      "summary": "An AI-powered Quality Engineering and Test Automation product that helps QA engineers move from requirements to test cases, automation scripts and bug reports with AI-assisted workflows.",
+      "team": "Built collaboratively by the QCVerse Team.",
+      "myContributions": [
+        "Product direction",
+        "Requirements and prioritization",
+        "Product design decisions",
+        "Hands-on development and validation"
+      ],
+      "capabilities": [
+        "AI test case generation from user stories",
+        "Requirement analysis (acceptance criteria, edge cases, dependencies)",
+        "Reported AI requirement coverage analysis",
+        "Automation script generation for Playwright, Robot Framework and Selenium",
+        "AI-assisted bug reports",
+        "Rule-based locator generation",
+        "Azure DevOps integration (when connected)"
+      ],
+      "notes": [
+        "Capabilities are as described on the public website; available tools depend on account permissions and connected services.",
+        "Showcase figures on the QCVerse website come from one illustrative sample run; AI-generated test cases are drafts that require human review."
+      ],
+      "links": [
+        { "label": "Visit qcverseai.com", "url": "https://www.qcverseai.com/" }
+      ]
+    },
+    {
+      "id": "quad-insight",
+      "name": "Quad Insight",
+      "type": "Product Venture",
+      "role": "Co-owner & Product Manager",
+      "startDate": "Jan 2024",
+      "affiliation": "Independent venture, not affiliated with THIQAH",
+      "engagement": "Remote, part-time",
+      "summary": "An independent product venture behind VetICare and Squeak, two connected products for veterinary clinics and pet owners.",
+      "team": "Delivered by the Quad Insight team.",
+      "myContributions": [
+        "Lead the Quad Insight team behind VetICare and Squeak",
+        "Led mobile quality validation for Squeak across multiple production builds through App Store release"
+      ],
+      "products": [
+        {
+          "name": "VetICare",
+          "description": "B2B software for veterinary clinics."
+        },
+        {
+          "name": "Squeak",
+          "description": "Pet-owner mobile app integrated with VetICare: book clinic appointments, rate visits, manage pets and vaccination records, and view receipts.",
+          "links": [
+            { "label": "Google Play", "url": "https://play.google.com/store/apps/details?id=com.softicare.squeak" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blindo",
+      "name": "BLINDO",
+      "type": "Card Game Concept",
+      "role": "Creator & Product Owner",
+      "startDate": "Aug 2026",
+      "status": "Concept, not launched",
+      "affiliation": "Independent product idea, not affiliated with THIQAH",
+      "summary": "An original card-game product idea, included as an example of independent product thinking and ownership.",
+      "myContributions": [
+        "Original game concept",
+        "Product ownership and direction"
+      ]
+    }
+  ]
+}

@@ -48,23 +48,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
-  <script>
-    // Handle redirect from 404.html for GitHub Pages SPA routing
-    (function() {
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect !== location.href) {
-        history.replaceState(null, null, redirect);
-      }
-      
-      // Handle query parameter redirect (from 404.html)
-      var match = /[?&]\/?(.*)/.exec(location.search);
-      if (match && match[1]) {
-        var route = match[1].replace(/\//g, '/');
-        history.replaceState(null, null, '/' + route);
-      }
-    })();
-  </script>
 </head>
 <body>
   <app-root></app-root>

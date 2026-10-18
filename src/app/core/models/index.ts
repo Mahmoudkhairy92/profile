@@ -6,4 +6,5 @@ export * from './course.model';
 export * from './skill.model';
 export * from './contact.model';
 export * from './game.model';
+export * from './venture.model';
 

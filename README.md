@@ -7,6 +7,7 @@ A modern, professional portfolio application built with Angular 21, Bootstrap 5,
 - ✅ **Profile Overview** - Comprehensive professional profile with avatar and summary
 - 📊 **Work Experience** - Detailed work history with accordion interface
 - 🚀 **Projects Showcase** - Portfolio of completed projects with links
+- 💡 **Products & Ventures** - Independent products and ventures, separate from employment
 - 🏆 **Achievements** - Awards, certifications, and recognitions
 - 📚 **Courses & Training** - Professional development and continuous learning
 - 💻 **Skills & Expertise** - Technical skills with proficiency levels
@@ -70,6 +71,7 @@ All data is loaded from JSON files located in `public/assets/config/`:
 - `courses.json` - Training and courses
 - `skills.json` - Technical skills and proficiency
 - `contact.json` - Contact information and social links
+- `ventures.json` - Independent products and ventures (role, own contributions, team credit, public links)
 
 ## Getting Started
 

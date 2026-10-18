@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
   color: var(--bs-body-color);
-  scroll-margin-top: 2rem;
   
   &:hover {
     box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
@@ -292,3 +291,57 @@
   }
 }
 
+// Category groups and pointer to Products & Ventures
+.ventures-pointer {
+  margin-bottom: 2.5rem;
+  color: var(--bs-body-color);
+
+  i {
+    margin-right: 0.5rem;
+    color: var(--bs-primary);
+  }
+
+  a {
+    font-weight: 600;
+    color: var(--bs-primary);
+  }
+}
+
+.project-group {
+  margin-bottom: 3.5rem;
+}
+
+.project-group-header {
+  margin-bottom: 1.5rem;
+}
+
+.project-group-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+}
+
+.project-group-description {
+  margin: 0;
+  color: var(--bs-secondary-color);
+}
+
+.project-company {
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+}
+
+.meta-label {
+  font-weight: 600;
+}
+
+// Anchor targets receive focus; show it for keyboard users only
+.project-card:focus {
+  outline: none;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 4px;
+}
