@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, inject, computed } from '@a
 import { ConfigDataService, FileDownloadService } from '../../core/services';
 import { ActionCardComponent } from '../../shared/components';
 
-/** Platforms already shown in Quick Actions – hide from Social section to avoid repetition */
-const QUICK_ACTION_PLATFORMS = new Set(['LinkedIn']);
+/** Platforms already shown in Quick Actions or the location groups – hide from Social section to avoid repetition */
+const QUICK_ACTION_PLATFORMS = new Set(['LinkedIn', 'Email', 'WhatsApp']);
 
 @Component({
   selector: 'app-contact',
