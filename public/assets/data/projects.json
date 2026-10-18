@@ -17,7 +17,8 @@
         "Integrated with Azure DevOps and GPT-based workflows"
       ],
       "company": "THIQAH",
-      "category": "thiqah-initiative"
+      "category": "thiqah-initiative",
+      "featured": true
     },
     {
       "id": "proj2",
@@ -36,7 +37,8 @@
         "Predictive test selection"
       ],
       "company": "THIQAH",
-      "category": "thiqah-initiative"
+      "category": "thiqah-initiative",
+      "featured": true
     },
     {
       "id": "proj3",
@@ -165,7 +167,8 @@
         "CI/CD pipelines with scheduled execution"
       ],
       "company": "THIQAH",
-      "category": "quality-engineering"
+      "category": "quality-engineering",
+      "featured": true
     },
     {
       "id": "proj10",

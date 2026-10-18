@@ -1,6 +1,7 @@
 export interface Skill {
   name: string;
-  level: number; // 1-9 (1-3: Beginner, 4-6: Intermediate, 7-9: Expert)
+  /** Optional proficiency level (1-9); skills are listed without self-assessed levels. */
+  level?: number;
   proficiency?: 'Expert' | 'Intermediate' | 'Beginner';
   category: string;
   /** Font Awesome icon class (e.g. 'fab fa-angular'). When set, used instead of lookup. */

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, computed, HostListener, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, computed, HostListener, inject } from '@angular/core';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { VERSION } from '@angular/core';
@@ -17,10 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   showScrollTop = false;
   isNavbarCollapsed = true;
-  showInProgressBanner = signal(true);
-  
-  private readonly IN_PROGRESS_BANNER_KEY = 'hideInProgressBanner';
-  
+
   // Main navigation items - streamlined for better UX
   navItems = [
     { path: '/profile', label: 'Home', icon: 'fas fa-user' },
@@ -43,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
   readonly linkedinUrl = computed(() => this.profile()?.linkedin || '#');
 
   constructor(private configService: ConfigDataService) {
-    // Anchor scrolling (e.g. /projects#project-...) must clear the fixed navbar and banner. The same
+    // Anchor scrolling (e.g. /projects#project-...) must clear the fixed navbar. The same
     // value is applied as scroll-padding so the browser's own scroll-into-view (e.g. when the anchor
     // target receives focus) lands in the same place.
     const document = inject(DOCUMENT);
@@ -56,28 +53,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.configService.loadProfile();
-    this.checkInProgressBannerState();
   }
 
   ngOnDestroy(): void {}
-
-  /**
-   * Check if the user has previously dismissed the in-progress banner
-   */
-  private checkInProgressBannerState(): void {
-    const hideBanner = localStorage.getItem(this.IN_PROGRESS_BANNER_KEY);
-    if (hideBanner === 'true') {
-      this.showInProgressBanner.set(false);
-    }
-  }
-
-  /**
-   * Dismiss the in-progress banner and save state to localStorage
-   */
-  dismissInProgressBanner(): void {
-    this.showInProgressBanner.set(false);
-    localStorage.setItem(this.IN_PROGRESS_BANNER_KEY, 'true');
-  }
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {

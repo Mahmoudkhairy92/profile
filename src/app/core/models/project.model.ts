@@ -16,6 +16,8 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   isStrategicInitiative?: boolean;
+  /** Shown in Featured Work on the home page. */
+  featured?: boolean;
 }
 
 export interface ProjectData {

@@ -183,114 +183,6 @@
   }
 }
 
-// In Progress Banner
-.in-progress-banner {
-  background: linear-gradient(135deg, var(--bs-warning-light) 0%, var(--bs-warning) 100%);
-  color: var(--bs-dark);
-  padding: 0.875rem 0;
-  box-shadow: var(--bs-shadow-sm);
-  animation: slideDown 0.5s ease-out;
-  position: fixed;
-  top: 70px; // Position below navbar
-  left: 0;
-  right: 0;
-  z-index: 1020;
-  overflow: hidden;
-  
-  // Animated background pattern
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shimmer 3s infinite;
-  }
-  
-  .container {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .banner-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
-  }
-  
-  .banner-icon {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: rotate 3s linear infinite;
-    
-    i {
-      font-size: 1.125rem;
-      color: var(--bs-dark);
-    }
-  }
-  
-  .banner-text {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    
-    strong {
-      font-weight: 700;
-      color: var(--bs-dark);
-    }
-    
-    .separator {
-      color: var(--bs-overlay-dark);
-      font-weight: 700;
-    }
-    
-    span:not(.separator) {
-      color: var(--bs-body-color);
-    }
-  }
-  
-  .banner-close {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--bs-overlay-dark);
-    border: none;
-    color: var(--bs-dark);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    
-    i {
-      font-size: 1rem;
-    }
-    
-    &:hover {
-      background: rgba(0, 0, 0, 0.2);
-      transform: rotate(90deg);
-    }
-    
-    &:active {
-      transform: rotate(90deg) scale(0.9);
-    }
-  }
-}
-
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -302,75 +194,9 @@
   }
 }
 
-@keyframes shimmer {
-  to {
-    left: 100%;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Mobile Banner
-@media (max-width: 991px) {
-  .in-progress-banner {
-    top: 60px; // Adjust for smaller navbar on mobile
-  }
-}
-
 @media (max-width: 768px) {
-  .in-progress-banner {
-    padding: 1rem 0;
-    top: 58px;
-    
-    .banner-content {
-      gap: 0.75rem;
-    }
-    
-    .banner-icon {
-      width: 32px;
-      height: 32px;
-      
-      i {
-        font-size: 1rem;
-      }
-    }
-    
-    .banner-text {
-      font-size: 0.875rem;
-      gap: 0.5rem;
-      
-      .separator {
-        display: none;
-      }
-      
-      span:not(.separator) {
-        flex-basis: 100%;
-      }
-    }
-    
-    .banner-close {
-      width: 28px;
-      height: 28px;
-      
-      i {
-        font-size: 0.875rem;
-      }
-    }
-  }
-  
   .main-content {
     padding-top: 58px; // Smaller navbar on mobile
-    
-    &.with-banner {
-      padding-top: 118px; // Navbar + banner on mobile
-    }
   }
 }
 
@@ -379,11 +205,6 @@
   min-height: calc(100vh - 250px);
   animation: fadeIn 0.5s ease-in;
   padding-top: 70px; // Space for fixed navbar
-  
-  // Add extra padding when banner is visible
-  &.with-banner {
-    padding-top: 130px; // Space for navbar + banner
-  }
 }
 
 // Scroll to Top Button
@@ -405,7 +226,7 @@
   visibility: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-  z-index: 999; // Below navbar and banner
+  z-index: 999; // Below navbar
   
   &.show {
     opacity: 1;

@@ -20,7 +20,7 @@ describe('fixedHeaderOffset', () => {
     expect(fixedHeaderOffset(document)).toBe(16);
   });
 
-  it('should clear the lowest fixed header element, e.g. navbar plus banner', () => {
+  it('should clear the lowest of several fixed header elements', () => {
     addElement(0, 70);
     addElement(70, 50);
 

@@ -181,78 +181,9 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   
-  // No rank (level 0)
-  &.level-0,
-  &.no-rank {
-    border-color: var(--bs-border-color);
-    background: var(--bs-light);
-    color: var(--bs-body-color);
-    opacity: 0.7;
-    
-    .skill-tag-indicator {
-      display: none;
-    }
-  }
-  
   @media (prefers-color-scheme: dark) {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.1);
-    
-    &.level-0,
-    &.no-rank {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    
-    // Improve text contrast for Beginner & Intermediate levels in dark mode
-    &.level-1,
-    &.level-2,
-    &.level-3,
-    &.level-4,
-    &.level-5,
-    &.level-6 {
-      .skill-tag-name {
-        color: var(--bs-body-color);
-      }
-    }
-  }
-  
-  // Starting/Learning (1-3)
-  &.level-1,
-  &.level-2,
-  &.level-3 {
-    border-color: var(--bs-warning-light);
-    background: var(--bs-secondary-bg);
-    
-    .skill-tag-indicator {
-      background: var(--bs-warning-light);
-    }
-  }
-  
-  // Intermediate (4-6)
-  &.level-4,
-  &.level-5,
-  &.level-6 {
-    border-color: var(--bs-success-light);
-    background: var(--bs-secondary-bg);
-    
-    .skill-tag-indicator {
-      background: var(--bs-success-light);
-    }
-  }
-  
-  // Expert (7-9)
-  &.level-7,
-  &.level-8,
-  &.level-9 {
-    border-color: var(--bs-primary);
-    background: var(--bs-secondary-bg);
-    color: var(--bs-primary-dark);
-    
-    .skill-tag-indicator {
-      background: var(--bs-primary);
-      box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
-    }
   }
 }
 
@@ -264,70 +195,6 @@
 
 .skill-tag-name {
   position: relative;
-}
-
-.skill-tag-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-// Skills Legend
-.skills-legend {
-  margin-top: 3rem;
-  padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border-radius: 16px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.legend-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--bs-body-color);
-  display: flex;
-  align-items: center;
-}
-
-.legend-items {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--bs-body-color);
-  font-weight: 500;
-}
-
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  
-  &.level-1-3 {
-    background: var(--bs-warning-light);
-  }
-  
-  &.level-4-6 {
-    background: var(--bs-success-light);
-  }
-  
-  &.level-7-9 {
-    background: var(--bs-primary);
-    box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
-  }
 }
 
 // No Results
@@ -401,16 +268,6 @@
     height: 42px;
     font-size: 1.1rem;
   }
-  
-  .skills-legend {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.25rem 1.5rem;
-  }
-  
-  .legend-items {
-    gap: 1.5rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -455,24 +312,6 @@
   
   .skill-tag {
     padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
-  }
-  
-  .skills-legend {
-    padding: 1rem;
-    gap: 1rem;
-  }
-  
-  .legend-title {
-    font-size: 0.9rem;
-  }
-  
-  .legend-items {
-    gap: 1rem;
-    width: 100%;
-  }
-  
-  .legend-item {
     font-size: 0.85rem;
   }
 }

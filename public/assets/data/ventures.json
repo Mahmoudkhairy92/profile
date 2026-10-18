@@ -2,6 +2,7 @@
   "ventures": [
     {
       "id": "qcverse",
+      "featured": true,
       "name": "QCVerse",
       "type": "AI-Powered Quality Engineering Product",
       "role": "Founder & Product Owner",
@@ -35,6 +36,7 @@
     },
     {
       "id": "quad-insight",
+      "featured": true,
       "name": "Quad Insight",
       "type": "Product Venture",
       "role": "Co-owner & Product Manager",

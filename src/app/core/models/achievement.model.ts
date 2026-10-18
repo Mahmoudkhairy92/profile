@@ -7,6 +7,8 @@ export interface Achievement {
   organization?: string;
   icon?: string;
   articleUrl?: string;
+  /** Shown in Recognition & Certifications on the home page. */
+  featured?: boolean;
 }
 
 export interface AchievementData {

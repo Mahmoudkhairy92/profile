@@ -7,7 +7,8 @@
       "date": "2024",
       "category": "award",
       "organization": "THIQAH Business Services",
-      "icon": "bi-star-fill"
+      "icon": "bi-star-fill",
+      "featured": true
     },
     {
       "id": "ach2",
@@ -16,7 +17,8 @@
       "date": "Dec 2025",
       "category": "award",
       "organization": "Elm Company",
-      "icon": "bi-trophy-fill"
+      "icon": "bi-trophy-fill",
+      "featured": true
     },
     {
       "id": "ach3",
@@ -25,7 +27,8 @@
       "date": "Nov 2025",
       "category": "recognition",
       "organization": "THIQAH Business Services",
-      "icon": "bi-people-fill"
+      "icon": "bi-people-fill",
+      "featured": true
     },
     {
       "id": "ach4",
@@ -88,7 +91,8 @@
       "date": "Jan 2025",
       "category": "certification",
       "organization": "iSQI",
-      "icon": "bi-patch-check-fill"
+      "icon": "bi-patch-check-fill",
+      "featured": true
     },
     {
       "id": "ach14",

@@ -6,5 +6,79 @@
   "yearsOfExperience": 10,
   "avatar": "/assets/images/profile-image.jpg",
   "tagline": "Innovating Quality Through AI-Driven Automation",
-  "linkedin": "https://www.linkedin.com/in/mahmoud-khairy-64633188/"
+  "linkedin": "https://www.linkedin.com/in/mahmoud-khairy-64633188/",
+  "highlights": [
+    {
+      "value": "10+",
+      "label": "Years in software testing and test automation"
+    },
+    {
+      "value": "5",
+      "label": "Automation engineers led directly"
+    },
+    {
+      "value": "~70",
+      "label": "Engineers in the Quality organization influenced through standards and tooling"
+    },
+    {
+      "value": "2,000+",
+      "label": "Tests in the automated regression suite I scaled as Lead Automation Testing Engineer, with 95% functional coverage"
+    },
+    {
+      "value": "40%",
+      "label": "Testing efficiency improvement for the 5 teams (~20 QC engineers) that adopted an internal AI QA platform I built"
+    },
+    {
+      "value": "ISTQB",
+      "label": "Advanced Level Test Manager"
+    }
+  ],
+  "focusAreas": [
+    {
+      "title": "Quality Engineering & Test Automation",
+      "tag": "Primary focus",
+      "description": "Automation strategy, framework selection and technical standards, with CI/CD-integrated and scheduled test execution.",
+      "evidence": [
+        "Directly led a 5-engineer automation team",
+        "Scaled the automated regression suite to 2,000+ tests with 95% functional coverage",
+        "Reduced test cycle time by 30% across 10+ projects"
+      ],
+      "link": "/experience",
+      "linkLabel": "Experience"
+    },
+    {
+      "title": "AI Enablement",
+      "tag": "Primary focus",
+      "description": "Bringing AI into quality engineering: AI-powered QA tooling, self-healing scripts, AI locators and predictive test selection.",
+      "evidence": [
+        "Internal AI-powered QA platform adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%",
+        "Built 5 custom GPT assistants for QA engineers"
+      ],
+      "link": "/projects",
+      "linkLabel": "Projects"
+    },
+    {
+      "title": "LLM Evaluation",
+      "tag": "Primary focus",
+      "description": "Structured evaluation of customer-service AI across correctness, relevance, task completion, hallucination, safety, prompt-injection resistance, privacy/PII handling and multilingual comprehension.",
+      "evidence": [
+        "Repeatable test scenarios combined with human review",
+        "Supports vendor acceptance and production-readiness decisions"
+      ],
+      "link": "/experience",
+      "linkLabel": "Experience"
+    },
+    {
+      "title": "AI Product Management",
+      "tag": "Current role",
+      "secondary": true,
+      "description": "Business requirements and solution design for AI-powered customer service solutions, working with engineering, data and business teams.",
+      "evidence": [
+        "AI Product Manager at THIQAH since Jun 2026",
+        "Founder & Product Owner of QCVerse, an independent product built with the QCVerse Team"
+      ],
+      "link": "/ventures",
+      "linkLabel": "Products & Ventures"
+    }
+  ]
 }

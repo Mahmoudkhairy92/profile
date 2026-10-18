@@ -16,6 +16,8 @@ export interface VentureProduct {
 export interface Venture {
   id: string;
   name: string;
+  /** Shown in Featured Work on the home page. */
+  featured?: boolean;
   type: string;
   role: string;
   startDate: string;
