@@ -1,36 +1,57 @@
 {
   "experiences": [
     {
-      "id": "exp1",
+      "id": "exp0",
       "company": "THIQAH",
       "companyFullName": "THIQAH Business Services Co.",
       "companyLogo": "/assets/images/logos/thiqah.jpeg",
       "companyWebsite": "https://thiqah.sa/en/",
       "companyDescription": "THIQAH is a Saudi company specializing in smart solutions and creative services. Established in 2012, it has partnered with over 100 strategic partners and developed more than 60 smart technical projects, serving over 10 million users in approximately 26 countries. Recognized as one of Asia's top workplaces for 2024.",
-      "position": "Staff Automation Engineer",
+      "position": "AI Product Manager",
       "location": "Riyadh, Saudi Arabia",
-      "startDate": "Jan 2024",
+      "startDate": "Jun 2026",
       "endDate": null,
       "isCurrent": true,
-      "description": "Staff Automation & AI Engineer with deep expertise in building AI-driven testing solutions and leading the development of the Quality Mate platform.",
+      "description": "Applies a quality-engineering foundation to AI products: owning requirements and solution design, and leading structured LLM evaluation to support production-readiness decisions.",
+      "responsibilities": [
+        "Own business requirements and solution design for AI-powered customer service (call center) solutions, working with engineering, data and business teams through delivery",
+        "Designed and executed structured evaluation of customer-service AI across correctness, relevance, task completion, hallucination, safety, prompt-injection resistance, privacy/PII handling, multilingual comprehension and conversational robustness, using repeatable test scenarios and human review to support vendor acceptance and production-readiness decisions",
+        "Built and validated key capabilities for an AI-assisted procurement platform, combining hands-on AI-assisted development with testing and quality ownership, and translating business needs into clear requirements and prioritized backlogs",
+        "Built and prototyped AI agents and agentic workflows, designed prompt strategies, and validated solution concepts using AI-assisted development tools"
+      ],
+      "technologies": ["LLM Evaluation", "AI Agents", "Agentic Workflows", "Prompt Engineering", "Requirements & Solution Design", "AI-Assisted Development"],
+      "achievements": []
+    },
+    {
+      "id": "exp1",
+      "company": "THIQAH",
+      "companyFullName": "THIQAH Business Services Co.",
+      "companyLogo": "/assets/images/logos/thiqah.jpeg",
+      "companyWebsite": "https://thiqah.sa/en/",
+      "companyDescription": "THIQAH is a Saudi company specializing in smart solutions and creative services.",
+      "position": "Staff Engineer, Quality Control Automation",
+      "location": "Riyadh, Saudi Arabia",
+      "startDate": "Jan 2024",
+      "endDate": "Jun 2026",
+      "isCurrent": false,
+      "description": "Shaped automation strategy and technical standards across THIQAH's Quality organization and led AI-enabled Quality Engineering initiatives.",
       "responsibilities": [
         "Awarded Employee of the Year (2024) within the Quality Team for outstanding technical leadership, innovation in AI automation, and elevating team performance",
-        "Built and led the development of Quality Mate, an AI-powered automation platform integrated with Azure DevOps, Flowise, and GPT",
-        "Delivered full traceability from requirements to execution, automated test case generation, bug logging, and automation script creation",
-        "Researched, evaluated, and implemented new tools across AI/ML, low-code/no-code automation, and predictive analytics",
-        "Introduced AI-driven practices including self-healing scripts, AI locators, predictive test selection, and intelligent dashboards",
-        "Spearheaded gamification and engagement programs such as Test League, QC Tube, and Employee of the Quarter",
-        "Built and mentored cross-functional AI enablement teams, improving collaboration between developers and QA engineers",
-        "Represented the QC Automation team in company-wide innovation initiatives, presenting AI agent use cases and driving hackathons",
-        "Contributed to tool evaluations (Testsigma, Katalon, Mabl, Functionize, etc.), ensuring cost-effectiveness and long-term ROI",
-        "Enhanced automation maturity metrics by building dashboards (Power BI, Metabase, custom dashboards) to track coverage, defect detection rate, execution speed, and ROI"
+        "Shaped automation strategy, planning, prioritization, tool and framework selection, and technical standards, including mandatory CI/CD pipeline integration and scheduled execution, with technical influence across a Quality organization of ~70 engineers (seniors, leads and technical leads)",
+        "Led test strategy and planning across multiple projects, including estimation, risk-based testing, defect triage, release-readiness assessment, CI/CD quality gates and stakeholder reporting to support go/no-go decisions",
+        "Built Quality Mate, an internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%",
+        "Introduced self-healing scripts, AI locators and predictive test selection, and built 5 custom GPT assistants for QA engineers covering test design and SQL/Python automation support",
+        "Contributed to technical evaluations of enterprise and AI-driven testing platforms (e.g., Katalon, Testim, mabl, BrowserStack) to inform tooling strategy and build-vs-buy decisions",
+        "Built Power BI and Metabase dashboards tracking automation coverage, defect rates, execution speed and ROI to support leadership decisions",
+        "Launched Test League (gamified learning program) and QC Tube (knowledge hub) for the Quality organization, later expanded to Development teams, to accelerate automation and AI adoption",
+        "Represented the QC Automation team in company-wide innovation initiatives, presenting AI agent use cases"
       ],
-      "technologies": ["Quality Mate", "Azure DevOps", "Flowise", "ChatGPT", "Robot Framework", "Playwright", "Cypress", "Appium", "Power BI", "Python", "AI/ML"],
+      "technologies": ["Quality Mate", "Azure DevOps", "Flowise", "ChatGPT", "Robot Framework", "Playwright", "Cypress", "Appium", "Power BI", "Metabase", "Python", "AI/ML"],
       "achievements": [
         "Employee of the Year (2024) - Quality Team",
         "2nd Place Winner - Elm Hackathon (Dec 2025) with team Agent X",
-        "Organizer & Mentor - Thiqah Hackathon (Nov 2025)",
-        "Created Quality Mate platform - AI-powered automation solution",
+        "Co-organizer - THIQAH Hackathon (Nov 2025), supporting 10+ cross-functional teams on AI solutions",
+        "Created Quality Mate, an internal AI-powered QA platform adopted by 5 teams",
         "Launched Test League gamification program",
         "Founded QC Tube knowledge hub"
       ]
@@ -47,24 +68,20 @@
       "startDate": "Sep 2022",
       "endDate": "Jan 2024",
       "isCurrent": false,
-      "description": "Led automation framework development and team mentorship, significantly improving test efficiency and coverage.",
+      "description": "Provided direct technical leadership to a 5-engineer automation team and evolved THIQAH's web and mobile automation frameworks.",
       "responsibilities": [
-        "Built and optimized automation frameworks (Robot Framework, Playwright, Cypress, Testim, Appium), reducing test cycle time by 30%",
-        "Designed and executed 2,000+ automated test cases, achieving 95% functional coverage",
-        "Implemented risk-based testing strategies, increasing coverage of high-priority features by 40%",
-        "Introduced new automation tools and frameworks, boosting testing efficiency by 20% and reducing costs by 10%",
-        "Mentored and led a team of 5 engineers, improving skill levels, collaboration, and overall team productivity by 20%",
-        "Partnered with cross-functional stakeholders to define automation strategies, reducing post-release defect leakage by 30%",
-        "Drove process improvement initiatives aligned with industry best practices, increasing testing accuracy by 15%",
-        "Promoted continuous learning by attending and sharing insights from industry conferences, reducing defect rates by 10%",
-        "Fostered a culture of growth and accountability, conducting quarterly performance evaluations improving employee satisfaction by 25%"
+        "Directly led a 5-engineer automation team, owning planning, prioritization, technical standards and hands-on mentoring",
+        "Designed and evolved web and mobile automation frameworks (Robot Framework, Playwright, Cypress, Appium), reducing test cycle time by 30% across 10+ projects",
+        "Scaled the automated regression suite to 2,000+ tests with 95% functional coverage, running through CI/CD pipelines with scheduled execution",
+        "Applied risk-based testing to prioritize coverage of high-priority features",
+        "Partnered with cross-functional stakeholders to define automation strategies and drove process improvements aligned with industry best practices",
+        "Promoted continuous learning by sharing insights from industry conferences with the team"
       ],
       "technologies": ["Robot Framework", "Playwright", "Cypress", "Testim", "Appium", "Python", "Selenium", "Azure DevOps"],
       "achievements": [
-        "Reduced test cycle time by 30%",
-        "Achieved 95% functional coverage with 2,000+ automated test cases",
-        "Reduced post-release defect leakage by 30%",
-        "Improved team productivity by 20%"
+        "Reduced test cycle time by 30% across 10+ projects",
+        "Scaled automated regression to 2,000+ tests with 95% functional coverage",
+        "Directly led a 5-engineer automation team"
       ]
     },
     {
@@ -81,11 +98,11 @@
       "isCurrent": false,
       "description": "Delivered quality assurance for high-impact projects with Saudi governmental institutions, ensuring compliance and reliability.",
       "responsibilities": [
-        "Delivered quality assurance for high-impact projects with Saudi governmental institutions and ministries",
+        "Owned test design and performance testing for 15+ government projects, reducing post-release defects by 30%",
         "Worked in Agile/Scrum environments, collaborating with developers, product owners, and business stakeholders",
         "Designed and developed detailed test cases based on user requirements, improving functional validation",
         "Created clear bug reports and scenarios to streamline developer collaboration and shorten defect resolution cycles",
-        "Utilized TFS and MTM for test management, traceability, and defect tracking",
+        "Introduced Agile QA practices and managed test cases and defects in TFS/MTM for end-to-end traceability",
         "Conducted performance and load testing using JMeter, preventing recurring production issues",
         "Reviewed and approved software updates to guarantee product stability and security",
         "Maintained and executed manual and automated test scripts, strengthening regression coverage",
@@ -94,7 +111,7 @@
       ],
       "technologies": ["TFS", "MTM", "JMeter", "Selenium", "API Testing", "SQL", "Agile/Scrum"],
       "achievements": [
-        "Ensured compliance for multiple government platform projects",
+        "Reduced post-release defects by 30% across 15+ government projects",
         "Improved test coverage for critical features",
         "Reduced production issues through comprehensive performance testing"
       ]
@@ -106,8 +123,8 @@
       "companyLogo": "",
       "companyWebsite": "",
       "companyDescription": "Software development company delivering quality solutions across multiple platforms.",
-      "position": "Senior Quality Control Engineer",
-      "location": "Egypt",
+      "position": "Senior Software Testing Engineer",
+      "location": "Cairo, Egypt",
       "startDate": "Mar 2018",
       "endDate": "Apr 2019",
       "isCurrent": false,
@@ -137,14 +154,14 @@
       "companyLogo": "",
       "companyWebsite": "",
       "companyDescription": "Leading provider of Islamic banking software solutions.",
-      "position": "Quality Control Engineer II",
-      "location": "Egypt",
+      "position": "Software Testing Engineer II",
+      "location": "Cairo, Egypt",
       "startDate": "Feb 2017",
       "endDate": "Mar 2018",
       "isCurrent": false,
       "description": "Developed and executed test scripts for financial applications, ensuring accuracy and reliability.",
       "responsibilities": [
-        "Developed and executed manual and automated test scripts for financial applications",
+        "Designed and executed 1,500+ manual and automated test scripts for financial systems, including SQL-based database validation, across 5+ concurrent projects",
         "Performed API and integration testing, validating data exchange and system interoperability",
         "Tested applications across web and mobile environments, ensuring compatibility",
         "Created detailed bug reports to support efficient defect tracking",
@@ -161,18 +178,18 @@
       "achievements": [
         "Delivered quality assurance for multiple banking applications",
         "Ensured data integrity for financial transactions",
-        "Maintained high quality standards across parallel projects"
+        "Executed 1,500+ test scripts across 5+ concurrent projects"
       ]
     },
     {
       "id": "exp6",
-      "company": "Silicon Expert Technologies (Arrow)",
-      "companyFullName": "Silicon Expert Technologies (Arrow)",
+      "company": "SiliconExpert Technologies",
+      "companyFullName": "SiliconExpert Technologies",
       "companyLogo": "",
       "companyWebsite": "",
       "companyDescription": "Technology company specializing in data management and quality assurance.",
-      "position": "Quality Control Engineer I",
-      "location": "Egypt",
+      "position": "Software Testing Engineer",
+      "location": "Cairo, Egypt",
       "startDate": "May 2016",
       "endDate": "Feb 2017",
       "isCurrent": false,
@@ -180,7 +197,7 @@
       "responsibilities": [
         "Reviewed and validated requirements for new tools requested by data teams",
         "Designed and applied test procedures for newly developed tools and database updates",
-        "Performed detailed inspections and quality checks on database entries",
+        "Validated 500+ database entries through detailed inspections and quality checks",
         "Executed statistical analysis and data validation, identifying inconsistencies",
         "Maintained accurate documentation and prepared comprehensive reports for executives",
         "Collected and analyzed customer feedback, ensuring requirements were met",

@@ -3,39 +3,36 @@
     {
       "id": "proj1",
       "name": "Quality Mate Platform",
-      "description": "AI-powered automation platform integrated with Azure DevOps, Flowise, and GPT models. Delivers full test lifecycle automation including test case creation, task assignment, bug logging, script generation, and reporting with complete traceability from requirements to execution.",
-      "role": "Creator & Lead Architect",
+      "description": "Internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows, adopted by 5 teams (~20 QC engineers) and improving testing efficiency by 40%.",
+      "role": "Creator",
       "startDate": "2024",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "isStrategicInitiative": true,
       "type": "AI Innovation Platform",
-      "technologies": ["Azure DevOps", "Flowise AI", "GPT Models", "Python", "AI/ML", "Automation Frameworks"],
+      "technologies": ["Azure DevOps", "GPT-Based Workflows", "AI/ML"],
       "highlights": [
-        "Full test lifecycle automation with AI integration",
-        "Automated test case generation from requirements",
-        "AI-powered bug logging and script creation",
-        "Complete traceability and intelligent reporting",
-        "Improved efficiency and reduced manual effort"
+        "Adopted by 5 teams (~20 QC engineers)",
+        "Improved testing efficiency by 40%",
+        "Integrated with Azure DevOps and GPT-based workflows"
       ],
       "company": "THIQAH"
     },
     {
       "id": "proj2",
-      "name": "AI-Powered Testing Agents",
-      "description": "Intelligent agents for self-healing scripts, predictive analytics, and real-user simulation. Enhanced test resilience, accelerated defect detection, and optimized regression execution through AI-driven automation.",
-      "role": "Innovation Lead",
+      "name": "AI-Enabled Testing Practices",
+      "description": "Introduced AI-enabled testing practices at THIQAH, including self-healing scripts, AI locators and predictive test selection.",
+      "role": "Staff Engineer, Quality Control Automation",
       "startDate": "2024",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "isStrategicInitiative": true,
       "type": "AI Innovation",
-      "technologies": ["AI/ML", "Self-Healing Scripts", "Predictive Analytics", "Python", "Machine Learning"],
+      "technologies": ["AI/ML", "Self-Healing Scripts", "AI Locators", "Predictive Test Selection", "Python"],
       "highlights": [
-        "Self-healing test scripts reducing maintenance",
-        "Predictive analytics for proactive defect detection",
-        "Real-user simulation for improved test coverage",
-        "Enhanced test resilience and reliability"
+        "Self-healing test scripts",
+        "AI locators",
+        "Predictive test selection"
       ],
       "company": "THIQAH"
     },
@@ -45,8 +42,8 @@
       "description": "Gamified learning and competition program for QA engineers, incorporating quizzes, challenges, and leaderboards. Boosted team collaboration, engagement, and knowledge sharing across automation and manual testing teams.",
       "role": "Founder & Program Lead",
       "startDate": "2024",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "type": "Team Engagement Initiative",
       "technologies": ["Gamification", "Learning Platform", "Team Collaboration"],
       "highlights": [
@@ -63,8 +60,8 @@
       "description": "Internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence within the QA community.",
       "role": "Founder & Content Creator",
       "startDate": "2024",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "type": "Knowledge Sharing Platform",
       "technologies": ["Content Creation", "Workshops", "Video Platform"],
       "highlights": [
@@ -81,8 +78,8 @@
       "description": "Suite of 5 specialized Custom GPTs to support QC engineers: ISTQB Study Partner, QC Senior Interviewer, User Story & Test Case Generator, SQL Query Generator, and Python Automation Assistant. Streamlined routine tasks and provided on-demand mentorship.",
       "role": "Developer & Creator",
       "startDate": "2024",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "type": "AI Productivity Tools",
       "technologies": ["ChatGPT", "Custom GPTs", "AI Assistants", "Prompt Engineering"],
       "highlights": [
@@ -98,10 +95,10 @@
       "id": "proj6",
       "name": "Automation Dashboards & Metrics",
       "description": "Interactive dashboards (Power BI, Metabase, custom solutions) to track automation coverage, defect detection rate, execution speed, and ROI. Provided real-time insights for management and supported data-driven decision-making.",
-      "role": "Technical Lead & Developer",
+      "role": "Developer",
       "startDate": "2023",
-      "endDate": null,
-      "isCurrent": true,
+      "endDate": "Jun 2026",
+      "isCurrent": false,
       "type": "Analytics & Reporting",
       "technologies": ["Power BI", "Metabase", "Python", "Data Analytics", "Dashboard Development"],
       "highlights": [
@@ -131,35 +128,33 @@
     },
     {
       "id": "proj8",
-      "name": "Thiqah Hackathon Organization",
-      "description": "Organized and mentored cross-functional teams on AI implementation for Thiqah's internal hackathon. Ensured high-quality prototypes, effective collaboration, and innovation across teams.",
-      "role": "Organizer & Mentor",
+      "name": "THIQAH Hackathon (Co-organizer)",
+      "description": "Co-organized THIQAH's internal hackathon (Nov 2025), supporting 10+ cross-functional teams on AI solutions.",
+      "role": "Co-organizer",
       "startDate": "Nov 2025",
       "endDate": "Nov 2025",
       "type": "Event Organization",
       "technologies": ["AI Mentorship", "Event Management", "Innovation"],
       "highlights": [
-        "Successfully organized company-wide hackathon",
-        "Mentored multiple teams on AI solutions",
-        "Fostered innovation and collaboration",
-        "High-quality prototypes delivered"
+        "Co-organized the company hackathon",
+        "Supported 10+ cross-functional teams on AI solutions"
       ],
       "company": "THIQAH"
     },
     {
       "id": "proj9",
       "name": "Automation Framework Modernization",
-      "description": "Built and optimized automation frameworks using Robot Framework, Playwright, Cypress, Testim, and Appium. Reduced test cycle time by 30%, achieved 95% functional coverage, and improved testing efficiency by 20%.",
-      "role": "Lead Automation Engineer",
+      "description": "Designed and evolved web and mobile automation frameworks (Robot Framework, Playwright, Cypress, Appium), reducing test cycle time by 30% across 10+ projects, and scaled the automated regression suite to 2,000+ tests with 95% functional coverage running through CI/CD pipelines.",
+      "role": "Lead Automation Testing Engineer",
       "startDate": "Sep 2022",
       "endDate": "Jan 2024",
       "type": "Framework Development",
       "technologies": ["Robot Framework", "Playwright", "Cypress", "Testim", "Appium", "Python"],
       "highlights": [
-        "Reduced test cycle time by 30%",
+        "Reduced test cycle time by 30% across 10+ projects",
         "Achieved 95% functional coverage",
-        "2,000+ automated test cases",
-        "Improved efficiency by 20%"
+        "2,000+ automated regression tests",
+        "CI/CD pipelines with scheduled execution"
       ],
       "company": "THIQAH"
     },
@@ -173,10 +168,10 @@
       "type": "Government Projects",
       "technologies": ["TFS", "MTM", "JMeter", "Selenium", "API Testing", "Performance Testing"],
       "highlights": [
-        "Quality assurance for multiple government platforms",
-        "Compliance with governmental standards",
+        "Test design and performance testing for 15+ government projects",
+        "Reduced post-release defects by 30%",
         "Performance and load testing using JMeter",
-        "Enhanced product stability and security"
+        "Compliance with governmental standards"
       ],
       "company": "THIQAH"
     },
@@ -184,7 +179,7 @@
       "id": "proj11",
       "name": "Cross-Platform Testing Solutions",
       "description": "Performed comprehensive cross-platform testing across web, Android, iOS, and Smart TV applications. Ensured consistent performance and user experience across all platforms.",
-      "role": "Senior Quality Control Engineer",
+      "role": "Senior Software Testing Engineer",
       "startDate": "Mar 2018",
       "endDate": "Apr 2019",
       "type": "Multi-Platform Testing",
@@ -201,13 +196,13 @@
       "id": "proj12",
       "name": "Banking System Quality Assurance",
       "description": "Developed and executed automated test scripts for financial applications. Performed API and integration testing, database validation using SQL, and ensured data integrity for financial transactions.",
-      "role": "Quality Control Engineer II",
+      "role": "Software Testing Engineer II",
       "startDate": "Feb 2017",
       "endDate": "Mar 2018",
       "type": "Financial Systems",
       "technologies": ["TFS", "SQL", "API Testing", "Selenium", "Banking Systems"],
       "highlights": [
-        "Quality assurance for banking applications",
+        "1,500+ manual and automated test scripts across 5+ concurrent projects",
         "Financial transaction validation",
         "Database testing and data integrity",
         "API and integration testing"

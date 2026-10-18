@@ -1,8 +1,10 @@
 {
   "email": "mmahmoudkhairy92@gmail.com",
-  "phone": "+966561945121",
+  "phone": "+966544759912",
+  "phoneDisplay": "+966 54 475 9912",
   "phoneEgypt": "+201120064763",
-  "whatsapp": "+966561945121",
+  "phoneEgyptDisplay": "+20 112 006 4763",
+  "whatsapp": "+201120064763",
   "linkedin": "https://www.linkedin.com/in/mahmoud-khairy-64633188/",
   "location": "Riyadh, Saudi Arabia",
   "socialLinks": [
@@ -18,7 +20,7 @@
     },
     {
       "platform": "WhatsApp",
-      "url": "https://wa.me/966561945121",
+      "url": "https://wa.me/201120064763",
       "icon": "bi-whatsapp"
     }
   ]

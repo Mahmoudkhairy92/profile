@@ -20,8 +20,8 @@
     },
     {
       "id": "ach3",
-      "title": "Organizer & Mentor - Thiqah Hackathon",
-      "description": "Led the organization of Thiqah Hackathon (Nov 2025) and mentored cross-functional teams on AI implementation, ensuring high-quality prototypes and effective collaboration. Fostered innovation and encouraged creative problem-solving.",
+      "title": "Co-organizer - THIQAH Hackathon",
+      "description": "Co-organized the THIQAH Hackathon (Nov 2025), supporting 10+ cross-functional teams on AI solutions.",
       "date": "Nov 2025",
       "category": "recognition",
       "organization": "THIQAH Business Services",
@@ -48,7 +48,7 @@
     {
       "id": "ach6",
       "title": "Created Quality Mate Platform",
-      "description": "Designed and developed Quality Mate, an AI-powered testing assistant and centralized test management platform. Enabled intelligent test generation, execution tracking, and seamless integration with Azure DevOps and Jira. Transformed team efficiency and quality metrics.",
+      "description": "Built Quality Mate, an internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%.",
       "date": "2024",
       "category": "innovation",
       "organization": "THIQAH Business Services",
@@ -82,13 +82,31 @@
       "icon": "bi-robot"
     },
     {
-      "id": "ach10",
-      "title": "Full Stack AI Course Certification",
-      "description": "Completed comprehensive Full Stack AI Course, covering AI/ML fundamentals, implementation strategies, and practical applications in software testing and automation.",
-      "date": "May 2023",
+      "id": "ach13",
+      "title": "ISTQB Advanced Level - Test Manager",
+      "description": "ISTQB Advanced Level certification in test management, issued by iSQI.",
+      "date": "Jan 2025",
       "category": "certification",
-      "organization": "AI Training Institute",
-      "icon": "bi-award-fill"
+      "organization": "iSQI",
+      "icon": "bi-patch-check-fill"
+    },
+    {
+      "id": "ach14",
+      "title": "Microsoft Certified: Azure Administrator Associate",
+      "description": "Microsoft role-based certification for Azure administration. Earned Oct 2023; expired Oct 2024.",
+      "date": "Oct 2023",
+      "category": "certification",
+      "organization": "Microsoft",
+      "icon": "bi-patch-check-fill"
+    },
+    {
+      "id": "ach15",
+      "title": "Testim Specialist",
+      "description": "Tricentis Testim Specialist certification.",
+      "date": "Jan 2023",
+      "category": "certification",
+      "organization": "Tricentis",
+      "icon": "bi-patch-check-fill"
     },
     {
       "id": "ach11",
@@ -96,7 +114,7 @@
       "description": "Achieved ISTQB Foundation Level certification, demonstrating strong understanding of software testing fundamentals, methodologies, and best practices.",
       "date": "May 2018",
       "category": "certification",
-      "organization": "ISTQB",
+      "organization": "Egyptian Software Testing Board (ESTB)",
       "icon": "bi-patch-check-fill"
     },
     {
