@@ -11,7 +11,7 @@ import { ConfigDataService } from './core/services';
   styleUrls: ['./app.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Mahmoud Amer Portfolio';
+  title = 'Mahmoud Khairy';
   currentYear = new Date().getFullYear();
   showScrollTop = false;
   isNavbarCollapsed = true;

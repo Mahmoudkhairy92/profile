@@ -22,7 +22,7 @@
       <!-- Quick Actions Section -->
       <div class="quick-actions-section">
         <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
+          <div class="col-md-4">
             <app-action-card
               type="button"
               variant="download"
@@ -33,7 +33,7 @@
             </app-action-card>
           </div>
           
-          <div class="col-lg-3 col-md-6">
+          <div class="col-md-4">
             <app-action-card
               type="link"
               variant="email"
@@ -44,19 +44,7 @@
             </app-action-card>
           </div>
           
-          <div class="col-lg-3 col-md-6">
-            <app-action-card
-              type="link"
-              variant="whatsapp"
-              icon="fab fa-whatsapp"
-              title="WhatsApp"
-              description="Chat instantly"
-              [href]="getWhatsAppLink(contactData.whatsapp)"
-              target="_blank">
-            </app-action-card>
-          </div>
-          
-          <div class="col-lg-3 col-md-6">
+          <div class="col-md-4">
             <app-action-card
               type="link"
               variant="linkedin"
@@ -70,17 +58,44 @@
         </div>
       </div>
 
-      <!-- Additional details (phone & location only – email/WhatsApp/LinkedIn are in Quick Actions) -->
-      <div class="contact-details-compact">
-        <div class="contact-details-card glass-card">
-          <a [href]="'tel:' + contactData.phone" class="contact-detail-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>{{ contactData.phone }}</span>
-          </a>
-          <div class="contact-detail-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>{{ contactData.location }}</span>
+      <!-- Contact by location: tells recruiters which number to use -->
+      <div class="contact-regions">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="contact-region-card glass-card h-100">
+              <h2 class="contact-region-title">
+                <i class="fas fa-map-marker-alt"></i>
+                Riyadh, Saudi Arabia
+              </h2>
+              <p class="contact-region-text">For Riyadh-based professional opportunities, please contact me on my Saudi number.</p>
+              <p class="contact-region-number">{{ contactData.phoneDisplay || contactData.phone }}</p>
+              <div class="contact-region-actions">
+                <a class="btn btn-gradient" [href]="'tel:' + contactData.phone">
+                  <i class="fas fa-phone-alt me-2"></i>Call Saudi Number
+                </a>
+              </div>
+            </div>
           </div>
+          @if (contactData.phoneEgypt) {
+            <div class="col-md-6">
+              <div class="contact-region-card glass-card h-100">
+                <h2 class="contact-region-title">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Egypt
+                </h2>
+                <p class="contact-region-text">For Egypt-based professional opportunities, please call my Egyptian number or reach me via WhatsApp.</p>
+                <p class="contact-region-number">{{ contactData.phoneEgyptDisplay || contactData.phoneEgypt }}</p>
+                <div class="contact-region-actions">
+                  <a class="btn btn-gradient" [href]="'tel:' + contactData.phoneEgypt">
+                    <i class="fas fa-phone-alt me-2"></i>Call Egyptian Number
+                  </a>
+                  <a class="btn btn-whatsapp" [href]="getWhatsAppLink(contactData.whatsapp)" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
         </div>
       </div>
 
