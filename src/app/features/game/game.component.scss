@@ -249,10 +249,19 @@
     color: #ccd6f6;
     margin-bottom: 2rem;
 
-    h3 {
+    h2 {
       color: #64ffda;
       margin-top: 1.5rem;
       margin-bottom: 1rem;
+      // Section headings (h2 for a correct outline) keep the size they had as h3;
+      // phones use the smaller size set in the max-width: 768px block below
+      @media (min-width: 769px) {
+        font-size: calc(1.3rem + 0.6vw);
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 1.75rem;
+      }
     }
 
     ul {
@@ -956,7 +965,7 @@
   }
 
   .instructions {
-    h3 {
+    h2 {
       font-size: 1.1rem;
     }
 

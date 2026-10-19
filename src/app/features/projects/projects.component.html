@@ -46,7 +46,7 @@
           
           @if (project.highlights && project.highlights.length > 0) {
             <div class="section">
-              <h6 class="section-title">Key Highlights</h6>
+              <h4 class="section-title">Key Highlights</h4>
               <ul class="simple-list">
                 @for (highlight of project.highlights; track highlight) {
                   <li>{{ highlight }}</li>
@@ -57,7 +57,7 @@
           
           @if (project.technologies && project.technologies.length > 0) {
             <div class="section">
-              <h6 class="section-title">Technologies</h6>
+              <h4 class="section-title">Technologies</h4>
               <div class="tech-list">
                 @for (tech of project.technologies; track tech) {
                   <span class="tech-badge">{{ tech }}</span>
@@ -75,13 +75,13 @@
                 </a>
               }
               @if (project.githubUrl) {
-                <a [href]="project.githubUrl" target="_blank" class="project-link">
+                <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="project-link">
                   <i class="fab fa-github"></i>
                   View Code
                 </a>
               }
               @if (project.liveUrl) {
-                <a [href]="project.liveUrl" target="_blank" class="project-link primary">
+                <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="project-link primary">
                   <i class="fas fa-external-link-alt"></i>
                   Live Demo
                 </a>

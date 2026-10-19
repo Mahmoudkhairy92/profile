@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +21,9 @@ export class PdfExportService {
     }
 
     try {
+      // The PDF libraries are large, so they are downloaded only when an export is requested
+      const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([import('html2canvas'), import('jspdf')]);
+
       // Capture the element as canvas
       const canvas = await html2canvas(element, {
         scale: 2,

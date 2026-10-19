@@ -2,7 +2,8 @@ export interface Course {
   id: string;
   title: string;
   provider: string;
-  completionDate: string;
+  /** Shown when known; omitted where the date is not verified. */
+  completionDate?: string;
   certificateUrl?: string;
   courseUrl?: string;
   level?: string;

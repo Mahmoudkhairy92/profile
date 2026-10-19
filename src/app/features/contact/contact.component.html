@@ -112,6 +112,7 @@
               <a 
                 [href]="social.url" 
                 target="_blank" 
+                rel="noopener noreferrer"
                 class="social-card glass-card"
                 [class]="'social-card-' + social.platform.toLowerCase()">
                 <div class="social-card-icon">
@@ -119,7 +120,7 @@
                     <i [class]="getSocialIcon(social.platform)"></i>
                   }
                 </div>
-                <h5 class="social-card-title">{{ social.platform }}</h5>
+                <h3 class="social-card-title">{{ social.platform }}</h3>
                 <div class="social-card-arrow">
                   <i class="fas fa-arrow-right"></i>
                 </div>

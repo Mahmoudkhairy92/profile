@@ -33,7 +33,7 @@
         <div class="no-results-icon">
           <i class="fas fa-search"></i>
         </div>
-        <h4>No skills found</h4>
+        <h2 class="skills-empty-title">No skills found</h2>
         <p>Try adjusting your search terms</p>
       </div>
     } @else {
@@ -44,7 +44,7 @@
               <div class="category-icon">
                 <i [class]="getCategoryIcon(category.category)"></i>
               </div>
-              <h3 class="category-name">{{ category.category }}</h3>
+              <h2 class="category-name">{{ category.category }}</h2>
               <span class="skill-count">{{ category.skills.length }}</span>
             </div>
             

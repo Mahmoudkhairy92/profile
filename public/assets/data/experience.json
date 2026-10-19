@@ -38,24 +38,24 @@
       "isCurrent": false,
       "description": "Shaped automation strategy and technical standards across THIQAH's Quality organization and led AI-enabled Quality Engineering initiatives.",
       "responsibilities": [
-        "Awarded Employee of the Year (2024) within the Quality Team for outstanding technical leadership, innovation in AI automation, and elevating team performance",
+        "Awarded Employee of the Year (2024) within the THIQAH Quality Team",
         "Shaped automation strategy, planning, prioritization, tool and framework selection, and technical standards, including mandatory CI/CD pipeline integration and scheduled execution, with technical influence across a Quality organization of ~70 engineers (seniors, leads and technical leads)",
         "Led test strategy and planning across multiple projects, including estimation, risk-based testing, defect triage, release-readiness assessment, CI/CD quality gates and stakeholder reporting to support go/no-go decisions",
-        "Built Quality Mate, an internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%",
+        "Built an internal AI-enabled Quality Engineering platform at THIQAH, integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%",
         "Introduced self-healing scripts, AI locators and predictive test selection, and built 5 custom GPT assistants for QA engineers covering test design and SQL/Python automation support",
         "Contributed to technical evaluations of enterprise and AI-driven testing platforms (e.g., Katalon, Testim, mabl, BrowserStack) to inform tooling strategy and build-vs-buy decisions",
         "Built Power BI and Metabase dashboards tracking automation coverage, defect rates, execution speed and ROI to support leadership decisions",
         "Launched Test League (gamified learning program) and QC Tube (knowledge hub) for the Quality organization, later expanded to Development teams, to accelerate automation and AI adoption",
         "Represented the QC Automation team in company-wide innovation initiatives, presenting AI agent use cases"
       ],
-      "technologies": ["Quality Mate", "Azure DevOps", "Flowise", "ChatGPT", "Robot Framework", "Playwright", "Cypress", "Appium", "Power BI", "Metabase", "Python", "AI/ML"],
+      "technologies": ["Azure DevOps", "Flowise", "ChatGPT", "Robot Framework", "Playwright", "Cypress", "Appium", "Power BI", "Metabase", "Python", "AI/ML"],
       "achievements": [
         "Employee of the Year (2024) - Quality Team",
         "2nd Place Winner - Elm Hackathon (Dec 2025) with team Agent X",
         "Co-organizer - THIQAH Hackathon (Nov 2025), supporting 10+ cross-functional teams on AI solutions",
-        "Created Quality Mate, an internal AI-powered QA platform adopted by 5 teams",
+        "Built an internal AI-enabled Quality Engineering platform adopted by 5 teams",
         "Launched Test League gamification program",
-        "Founded QC Tube knowledge hub"
+        "Launched QC Tube knowledge hub"
       ]
     },
     {

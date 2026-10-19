@@ -2,13 +2,12 @@
   "projects": [
     {
       "id": "proj1",
-      "name": "Quality Mate Platform",
-      "description": "Internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows, adopted by 5 teams (~20 QC engineers) and improving testing efficiency by 40%.",
+      "name": "Internal AI-enabled Quality Engineering Platform",
+      "description": "An internal AI-enabled Quality Engineering platform developed at THIQAH, integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%.",
       "role": "Creator",
       "startDate": "2024",
       "endDate": "Jun 2026",
       "isCurrent": false,
-      "isStrategicInitiative": true,
       "type": "AI Innovation Platform",
       "technologies": ["Azure DevOps", "GPT-Based Workflows", "AI/ML"],
       "highlights": [
@@ -28,7 +27,6 @@
       "startDate": "2024",
       "endDate": "Jun 2026",
       "isCurrent": false,
-      "isStrategicInitiative": true,
       "type": "AI Innovation",
       "technologies": ["AI/ML", "Self-Healing Scripts", "AI Locators", "Predictive Test Selection", "Python"],
       "highlights": [
@@ -44,7 +42,7 @@
       "id": "proj3",
       "name": "Test League - Gamification Platform",
       "description": "Gamified learning and competition program for QA engineers, incorporating quizzes, challenges, and leaderboards. Boosted team collaboration, engagement, and knowledge sharing across automation and manual testing teams.",
-      "role": "Founder & Program Lead",
+      "role": "Creator",
       "startDate": "2024",
       "endDate": "Jun 2026",
       "isCurrent": false,
@@ -63,7 +61,7 @@
       "id": "proj4",
       "name": "QC Tube Knowledge Hub",
       "description": "Internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence within the QA community.",
-      "role": "Founder & Content Creator",
+      "role": "Creator",
       "startDate": "2024",
       "endDate": "Jun 2026",
       "isCurrent": false,
@@ -120,17 +118,15 @@
     {
       "id": "proj7",
       "name": "Elm Hackathon - Agent X Solution",
-      "description": "Innovative AI-driven solution using Nuha LLM, OpenAI LLM, LangChain, CrewAI, FastAPI, NestJS, and Angular. Secured 2nd place and received deep admiration from senior judges and executive leaders.",
+      "description": "AI-driven solution developed at the Elm Hackathon; secured 2nd place with team Agent X (Dec 2025).",
       "role": "Team Member - Agent X",
       "startDate": "Dec 2025",
       "endDate": "Dec 2025",
       "type": "Hackathon Project",
-      "technologies": ["Nuha LLM", "OpenAI", "LangChain", "CrewAI", "FastAPI", "NestJS", "Angular"],
+      "technologies": [],
       "highlights": [
         "2nd Place Winner at Elm Hackathon",
-        "Integrated AI solution with multiple LLMs",
-        "Rapid prototyping under tight deadlines",
-        "Recognition from executive leadership"
+        "Rapid prototyping under tight deadlines"
       ],
       "company": "Elm Hackathon",
       "category": "hackathon"

@@ -7,6 +7,11 @@
   --bs-primary: #10b981;
   --bs-primary-light: #34d399;
   --bs-primary-dark: #059669;
+  /* Brand green for text on light backgrounds (WCAG AA 4.5:1; #10b981 is 2.5:1 on white) */
+  --bs-primary-text: #047857;
+  /* Brand green behind white text (5.5:1); #10b981 with white text is 2.5:1 */
+  --bs-primary-solid: #047857;
+  --bs-primary-solid-hover: #065f46;
   
   /* Secondary Colors - Amber Gold */
   --bs-secondary: #f59e0b;
@@ -63,6 +68,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bs-heading-color: #f8f9fa;
+    --bs-primary-text: #34d399;
     --bs-body-color: #dee2e6;
     --bs-body-bg: #1a1a1a;
     --bs-border-color: #495057;
@@ -147,10 +153,10 @@ button:focus-visible {
 
 /* Improved link styles */
 a {
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
   
   &:hover {
-    color: var(--bs-primary-dark);
+    color: var(--bs-heading-color);
   }
 }
 

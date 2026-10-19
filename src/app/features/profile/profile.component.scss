@@ -163,8 +163,23 @@
 .hero-badge {
   border-radius: 50px;
   font-weight: 600;
+  color: #0a58ca; // 5.8:1 on the light badge (Bootstrap's #0d6efd is 4.3:1)
   display: inline-block;
   animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+// LinkedIn brand blue keeps white text at 5.6:1 (Bootstrap's info cyan was 2:1)
+.btn-linkedin {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: white;
+
+  &:hover,
+  &:focus-visible {
+    background: #004182;
+    border-color: #004182;
+    color: white;
+  }
 }
 
 .hero-info-item {
@@ -202,7 +217,7 @@
 
 .section-icon {
   font-size: 1.35rem;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
 }
 
 .section-title {
@@ -261,7 +276,7 @@
   font-size: 2rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
 }
 
 .highlight-label {
@@ -296,12 +311,16 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: rgba(16, 185, 129, 0.12);
-  color: var(--bs-primary-dark);
+  color: var(--bs-primary-text);
 }
 
 .focus-secondary .focus-tag {
   background: rgba(245, 158, 11, 0.15);
-  color: var(--bs-secondary-dark);
+  color: #b45309;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-secondary-light);
+  }
 }
 
 .focus-title {
@@ -337,7 +356,7 @@
   align-items: center;
   margin-top: auto;
   font-weight: 600;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
   text-decoration: none;
 
   &:hover {
@@ -401,7 +420,7 @@
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
-  background: var(--bs-primary);
+  background: var(--bs-primary-solid);
   color: white;
 }
 
@@ -427,7 +446,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
 }
 
 .featured-title {
@@ -456,7 +475,7 @@
   font-weight: 600;
 
   i {
-    color: var(--bs-primary);
+    color: var(--bs-primary-text);
   }
 }
 
@@ -496,7 +515,7 @@
   font-size: 0.875rem;
 
   i {
-    color: var(--bs-primary);
+    color: var(--bs-primary-text);
   }
 }
 
@@ -519,7 +538,7 @@
 
 .recognition-icon {
   font-size: 1.5rem;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
 }
 
 .recognition-title {

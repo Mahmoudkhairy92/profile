@@ -167,7 +167,7 @@
   color: var(--bs-heading-color);
 
   i {
-    color: var(--bs-primary);
+    color: var(--bs-primary-text);
   }
 }
 
@@ -289,7 +289,7 @@
 
 .social-card-arrow {
   font-size: 1.25rem;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
   transition: transform 0.3s ease;
 }
 

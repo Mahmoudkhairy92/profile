@@ -9,14 +9,11 @@ import {
   withNavigationErrorHandler,
 } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 import { routes } from './app.routes';
 import { clarityInitializer } from './core/clarity.initializer';
 import { chunkLoadErrorHandler } from './core/chunk-load-recovery';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,8 +25,7 @@ export const appConfig: ApplicationConfig = {
       withNavigationErrorHandler(chunkLoadErrorHandler)
     ),
     provideHttpClient(withFetch()),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    // Firebase (used only by the game's leaderboard) is provided on the lazily loaded game route
     {
       provide: APP_INITIALIZER,
       useFactory: clarityInitializer,

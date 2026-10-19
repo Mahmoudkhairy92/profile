@@ -69,9 +69,9 @@ export const routes: Routes = [
   },
   {
     path: 'game',
-    loadComponent: () => 
-      import('./features/game/game.component').then(m => m.GameComponent),
-    title: 'Tech Stack Snake - Play & Learn | Mahmoud Khairy'
+    // Loads the game together with the Firebase providers its leaderboard needs
+    loadChildren: () =>
+      import('./features/game/game.routes').then(m => m.GAME_ROUTES)
   },
   {
     path: '**',
