@@ -168,7 +168,8 @@
       ],
       "company": "THIQAH",
       "category": "quality-engineering",
-      "featured": true
+      "featured": true,
+      "caseStudy": { "slug": "quality-engineering-automation-leadership", "title": "Quality Engineering & Automation Leadership" }
     },
     {
       "id": "proj10",

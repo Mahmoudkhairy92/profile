@@ -77,6 +77,12 @@
     </div>
   }
 
+  @if (experience.caseStudy) {
+    <a class="btn-see-details" [routerLink]="['/case-studies', experience.caseStudy.slug]">
+      Case study: {{ experience.caseStudy.title }} <i class="fas fa-arrow-right"></i>
+    </a>
+  }
+
   @if (showDetailsLink) {
     <a
       class="btn-see-details"

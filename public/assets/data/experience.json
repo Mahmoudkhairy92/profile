@@ -2,6 +2,7 @@
   "experiences": [
     {
       "id": "exp0",
+      "caseStudy": { "slug": "llm-ai-agent-evaluation", "title": "LLM & AI Agent Evaluation" },
       "company": "THIQAH",
       "companyFullName": "THIQAH Business Services Co.",
       "companyLogo": "/assets/images/logos/thiqah.jpeg",
@@ -24,6 +25,7 @@
     },
     {
       "id": "exp1",
+      "caseStudy": { "slug": "quality-engineering-automation-leadership", "title": "Quality Engineering & Automation Leadership" },
       "company": "THIQAH",
       "companyFullName": "THIQAH Business Services Co.",
       "companyLogo": "/assets/images/logos/thiqah.jpeg",
@@ -58,6 +60,7 @@
     },
     {
       "id": "exp2",
+      "caseStudy": { "slug": "quality-engineering-automation-leadership", "title": "Quality Engineering & Automation Leadership" },
       "company": "THIQAH",
       "companyFullName": "THIQAH Business Services Co.",
       "companyLogo": "/assets/images/logos/thiqah.jpeg",

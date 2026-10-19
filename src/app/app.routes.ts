@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { caseStudyTitleResolver } from './features/case-studies/case-study-title.resolver';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,18 @@ export const routes: Routes = [
     loadComponent: () => 
       import('./features/projects/projects.component').then(m => m.ProjectsComponent),
     title: 'Projects | Mahmoud Khairy'
+  },
+  {
+    path: 'case-studies',
+    loadComponent: () =>
+      import('./features/case-studies/case-studies.component').then(m => m.CaseStudiesComponent),
+    title: 'Case Studies | Mahmoud Khairy'
+  },
+  {
+    path: 'case-studies/:slug',
+    loadComponent: () =>
+      import('./features/case-studies/case-study-detail.component').then(m => m.CaseStudyDetailComponent),
+    title: caseStudyTitleResolver
   },
   {
     path: 'ventures',

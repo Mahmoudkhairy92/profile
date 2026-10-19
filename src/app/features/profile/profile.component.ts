@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
   readonly homeSkillCategories = computed(
     () => this.skills()?.categories.slice(0, HOME_SKILL_CATEGORY_COUNT) ?? []
   );
+  readonly caseStudies = computed(() => this.configService.caseStudies()?.caseStudies ?? []);
 
   ngOnInit(): void {
     this.configService.loadProfile();
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit {
     this.configService.loadProjects();
     this.configService.loadContact();
     this.configService.loadVentures();
+    this.configService.loadCaseStudies();
   }
 
   async exportToPdf(): Promise<void> {

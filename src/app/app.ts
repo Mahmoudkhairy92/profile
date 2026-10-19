@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, computed, HostListener, inject } from '@angular/core';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router, Scroll } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs/operators';
 import { VERSION } from '@angular/core';
 import { ConfigDataService } from './core/services';
 import { fixedHeaderOffset } from './core/fixed-header-offset';
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { path: '/profile', label: 'Home', icon: 'fas fa-user' },
     { path: '/experience', label: 'Experience', icon: 'fas fa-briefcase' },
     { path: '/projects', label: 'Projects', icon: 'fas fa-folder-open' },
+    { path: '/case-studies', label: 'Case Studies', icon: 'fas fa-book-open' },
     { path: '/ventures', label: 'Ventures', icon: 'fas fa-lightbulb' },
     { path: '/skills', label: 'Skills', icon: 'fas fa-code' },
     { path: '/game', label: 'Game', icon: 'fas fa-gamepad' },
@@ -44,10 +47,30 @@ export class AppComponent implements OnInit, OnDestroy {
     // value is applied as scroll-padding so the browser's own scroll-into-view (e.g. when the anchor
     // target receives focus) lands in the same place.
     const document = inject(DOCUMENT);
-    inject(ViewportScroller).setOffset(() => {
+    const viewportScroller = inject(ViewportScroller);
+    viewportScroller.setOffset(() => {
       const offset = fixedHeaderOffset(document);
       document.documentElement.style.scrollPaddingTop = `${offset}px`;
       return [0, offset];
+    });
+
+    // Scroll after each navigation: restore the position on back/forward, go to the #fragment,
+    // otherwise open the page at the top (without this, a link near the bottom of a long page
+    // opens the next page part-way down). Scrolls are instant: with the site's smooth scrolling,
+    // the focus that scrollToAnchor moves to the target interrupts the animation mid-way.
+    // Pages that render their anchor targets after the data loads (Projects, Case Studies)
+    // scroll again once the target exists.
+    inject(Router).events.pipe(
+      filter((event): event is Scroll => event instanceof Scroll),
+      takeUntilDestroyed()
+    ).subscribe(event => {
+      if (event.position) {
+        viewportScroller.scrollToPosition(event.position, { behavior: 'instant' });
+      } else if (event.anchor) {
+        viewportScroller.scrollToAnchor(event.anchor, { behavior: 'instant' });
+      } else {
+        viewportScroller.scrollToPosition([0, 0], { behavior: 'instant' });
+      }
     });
   }
 

@@ -1,3 +1,5 @@
+import { CaseStudyRef } from './case-study.model';
+
 /** A headline fact for the home page, e.g. { value: "10+", label: "Years in ..." }. */
 export interface ProfileHighlight {
   value: string;
@@ -14,6 +16,7 @@ export interface FocusArea {
   linkLabel: string;
   /** Secondary to the primary Quality Engineering identity. */
   secondary?: boolean;
+  caseStudy?: CaseStudyRef;
 }
 
 export interface Profile {

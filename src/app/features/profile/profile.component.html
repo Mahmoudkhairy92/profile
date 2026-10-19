@@ -145,9 +145,16 @@
                   <li>{{ item }}</li>
                 }
               </ul>
-              <a class="home-link" [routerLink]="area.link">
-                {{ area.linkLabel }} <i class="fas fa-arrow-right ms-1"></i>
-              </a>
+              <div class="focus-links">
+                <a class="home-link" [routerLink]="area.link">
+                  {{ area.linkLabel }} <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+                @if (area.caseStudy) {
+                  <a class="home-link" [routerLink]="['/case-studies', area.caseStudy.slug]" [attr.aria-label]="'Case study: ' + area.caseStudy.title">
+                    Case study <i class="fas fa-arrow-right ms-1"></i>
+                  </a>
+                }
+              </div>
             </article>
           }
         </div>
@@ -223,6 +230,32 @@
         <a class="home-link" routerLink="/projects">All projects <i class="fas fa-arrow-right ms-1"></i></a>
         <a class="home-link" routerLink="/ventures">All products &amp; ventures <i class="fas fa-arrow-right ms-1"></i></a>
       </div>
+    </section>
+  }
+
+  <!-- Case Studies: evidence-based write-ups (full content on the Case Studies pages) -->
+  @if (caseStudies().length) {
+    <section class="timeline-section" aria-labelledby="case-studies-title">
+      <div class="section-header-timeline">
+        <div class="section-icon-wrapper">
+          <i class="fas fa-book-open section-icon"></i>
+        </div>
+        <h2 class="section-title" id="case-studies-title">Case Studies</h2>
+      </div>
+      <div class="featured-grid">
+        @for (study of caseStudies(); track study.id) {
+          <article class="featured-card glass-card case-study-teaser">
+            <span class="featured-kind">{{ study.organization }}</span>
+            <h3 class="featured-title">{{ study.title }}</h3>
+            <div class="featured-role">{{ study.role }} · {{ study.period }}</div>
+            <p class="featured-description">{{ study.summary }}</p>
+            <a class="home-link" [routerLink]="['/case-studies', study.slug]" [attr.aria-label]="'Read the case study: ' + study.title">
+              Read the case study <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </article>
+        }
+      </div>
+      <a class="home-link" routerLink="/case-studies">All case studies <i class="fas fa-arrow-right ms-1"></i></a>
     </section>
   }
 

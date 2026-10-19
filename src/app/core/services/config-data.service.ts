@@ -8,10 +8,11 @@ import {
   CourseData, 
   SkillData, 
   VentureData,
+  CaseStudyData,
   Contact 
 } from '../models';
 import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class ConfigDataService {
   private skillsSignal = signal<SkillData | null>(null);
   private contactSignal = signal<Contact | null>(null);
   private venturesSignal = signal<VentureData | null>(null);
+  private caseStudiesSignal = signal<CaseStudyData | null>(null);
 
   // Readonly computed signals
   readonly profile = computed(() => this.profileSignal());
@@ -38,6 +40,7 @@ export class ConfigDataService {
   readonly skills = computed(() => this.skillsSignal());
   readonly contact = computed(() => this.contactSignal());
   readonly ventures = computed(() => this.venturesSignal());
+  readonly caseStudies = computed(() => this.caseStudiesSignal());
 
   // Loading states
   private loadingSignal = signal<boolean>(false);
@@ -146,6 +149,27 @@ export class ConfigDataService {
       .subscribe();
   }
 
+  loadCaseStudies(): void {
+    this.fetchCaseStudies().subscribe();
+  }
+
+  /** Case studies already loaded, or loads them (used to resolve case-study page titles). */
+  getCaseStudies(): Observable<CaseStudyData | null> {
+    const loaded = this.caseStudiesSignal();
+    return loaded ? of(loaded) : this.fetchCaseStudies();
+  }
+
+  private fetchCaseStudies(): Observable<CaseStudyData | null> {
+    return this.http.get<CaseStudyData>(`${this.baseUrl}/case-studies.json`)
+      .pipe(
+        tap(data => this.caseStudiesSignal.set(data)),
+        catchError(error => {
+          console.error('Error loading case studies:', error);
+          return of(null);
+        })
+      );
+  }
+
   // Load all data at once
   loadAllData(): void {
     this.loadProfile();
@@ -156,6 +180,7 @@ export class ConfigDataService {
     this.loadSkills();
     this.loadContact();
     this.loadVentures();
+    this.loadCaseStudies();
   }
 }
 

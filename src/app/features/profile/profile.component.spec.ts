@@ -4,6 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { AchievementData, ExperienceData, Profile, ProjectData, SkillData, VentureData } from '../../core/models';
+import { CASE_STUDY_DATA } from '../case-studies/case-study.fixtures';
 
 const PROFILE: Profile = {
   name: 'Mahmoud Khairy',
@@ -15,7 +16,7 @@ const PROFILE: Profile = {
   tagline: 'Tagline',
   highlights: [{ value: '10+', label: 'Years in software testing' }],
   focusAreas: [
-    { title: 'Quality Engineering & Test Automation', tag: 'Primary focus', description: 'QE.', evidence: ['Led a team'], link: '/experience', linkLabel: 'Experience' },
+    { title: 'Quality Engineering & Test Automation', tag: 'Primary focus', description: 'QE.', evidence: ['Led a team'], link: '/experience', linkLabel: 'Experience', caseStudy: { slug: 'first-study', title: 'First Study' } },
     { title: 'AI Product Management', tag: 'Current role', secondary: true, description: 'PM.', evidence: ['AI Product Manager'], link: '/ventures', linkLabel: 'Products & Ventures' }
   ]
 };
@@ -75,6 +76,7 @@ describe('ProfileComponent', () => {
     http.expectOne('assets/data/achievements.json').flush(ACHIEVEMENTS);
     http.expectOne('assets/data/skills.json').flush(SKILLS);
     http.expectOne('assets/data/experience.json').flush(EXPERIENCE);
+    http.expectOne('assets/data/case-studies.json').flush(CASE_STUDY_DATA);
     fixture.detectChanges();
     return fixture.nativeElement as HTMLElement;
   }
@@ -95,7 +97,8 @@ describe('ProfileComponent', () => {
 
   it('should feature only flagged projects, ventures and achievements', () => {
     const element = loadHomeData();
-    const featured = Array.from(element.querySelectorAll('.featured-title')).map(title => title.textContent?.trim());
+    const featuredSection = element.querySelector('#featured-title')!.closest('section')!;
+    const featured = Array.from(featuredSection.querySelectorAll('.featured-title')).map(title => title.textContent?.trim());
     const recognition = Array.from(element.querySelectorAll('.recognition-title')).map(title => title.textContent?.trim());
 
     expect(featured).toEqual(['Featured Project', 'Featured Venture']);
@@ -110,5 +113,19 @@ describe('ProfileComponent', () => {
     expect(element.querySelector('.skill-groups')?.textContent).not.toMatch(/%|Expert|Beginner|Intermediate/);
     expect(element.querySelector('.career-step-current .career-role')?.textContent).toContain('AI Product Manager');
     expect(element.querySelectorAll('.career-step').length).toBe(2);
+  });
+
+  it('should list the case studies and link focus areas to their case study', () => {
+    const element = loadHomeData();
+
+    const teasers = element.querySelectorAll('.case-study-teaser');
+    expect(Array.from(teasers).map(teaser => teaser.querySelector('.featured-title')?.textContent?.trim())).toEqual(['First Study', 'Second Study']);
+    expect(teasers[0].querySelector('a')?.getAttribute('href')).toBe('/case-studies/first-study');
+    expect(element.querySelector('#case-studies-title')?.closest('section')?.querySelector(':scope > a.home-link')?.getAttribute('href')).toBe('/case-studies');
+
+    const focusLinks = element.querySelectorAll('.focus-card')[0].querySelectorAll('.focus-links a');
+    expect(Array.from(focusLinks).map(link => link.getAttribute('href'))).toEqual(['/experience', '/case-studies/first-study']);
+    expect(focusLinks[1].getAttribute('aria-label')).toBe('Case study: First Study');
+    expect(element.querySelectorAll('.focus-card')[1].querySelectorAll('.focus-links a').length).toBe(1);
   });
 });

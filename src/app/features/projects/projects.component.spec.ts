@@ -23,7 +23,10 @@ const PROJECTS: ProjectData = {
   projects: [
     project({ id: 'a', name: 'Initiative', category: 'thiqah-initiative', company: 'THIQAH' }),
     project({ id: 'b', name: 'Hackathon', category: 'hackathon', startDate: 'Dec 2025', endDate: 'Dec 2025' }),
-    project({ id: 'c', name: 'Framework', category: 'quality-engineering', startDate: 'Sep 2022', endDate: 'Jan 2024' }),
+    project({
+      id: 'c', name: 'Framework', category: 'quality-engineering', startDate: 'Sep 2022', endDate: 'Jan 2024',
+      caseStudy: { slug: 'framework-study', title: 'Framework Study' }
+    }),
     project({ id: 'd', name: 'Uncategorized', endDate: null })
   ]
 };
@@ -74,6 +77,17 @@ describe('ProjectsComponent', () => {
 
     expect(component.formatPeriod(PROJECTS.projects[1])).toBe('Dec 2025');
     expect(component.formatPeriod(PROJECTS.projects[3])).toBe('2024 - Present');
+  });
+
+  it('should link a project to its case study', () => {
+    http.expectOne('assets/data/projects.json').flush(PROJECTS);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+
+    const link = element.querySelector('#project-c .project-links a');
+    expect(link?.getAttribute('href')).toBe('/case-studies/framework-study');
+    expect(link?.textContent).toContain('Case study: Framework Study');
+    expect(element.querySelector('#project-a .project-links')).toBeNull();
   });
 });
 

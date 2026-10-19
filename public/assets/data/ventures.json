@@ -32,7 +32,8 @@
       ],
       "links": [
         { "label": "Visit qcverseai.com", "url": "https://www.qcverseai.com/" }
-      ]
+      ],
+      "caseStudy": { "slug": "qcverse-product-development", "title": "QCVerse Product Development" }
     },
     {
       "id": "quad-insight",

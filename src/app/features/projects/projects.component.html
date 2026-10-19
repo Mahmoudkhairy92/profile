@@ -66,8 +66,14 @@
             </div>
           }
           
-          @if (project.githubUrl || project.liveUrl) {
+          @if (project.githubUrl || project.liveUrl || project.caseStudy) {
             <div class="project-links">
+              @if (project.caseStudy) {
+                <a [routerLink]="['/case-studies', project.caseStudy.slug]" class="project-link primary">
+                  <i class="fas fa-book-open"></i>
+                  Case study: {{ project.caseStudy.title }}
+                </a>
+              }
               @if (project.githubUrl) {
                 <a [href]="project.githubUrl" target="_blank" class="project-link">
                   <i class="fab fa-github"></i>

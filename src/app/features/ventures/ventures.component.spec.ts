@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
 import { VenturesComponent } from './ventures.component';
 import { VentureData } from '../../core/models';
 
@@ -16,7 +17,8 @@ const VENTURES: VentureData = {
       summary: 'A sample product.',
       team: 'Built by the Sample Team.',
       myContributions: ['Product direction'],
-      links: [{ label: 'Website', url: 'https://example.com/' }]
+      links: [{ label: 'Website', url: 'https://example.com/' }],
+      caseStudy: { slug: 'sample-study', title: 'Sample Study' }
     }
   ]
 };
@@ -28,7 +30,7 @@ describe('VenturesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [VenturesComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting()]
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(VenturesComponent);
@@ -52,5 +54,15 @@ describe('VenturesComponent', () => {
     const link = element.querySelector<HTMLAnchorElement>('.venture-links a');
     expect(link?.getAttribute('href')).toBe('https://example.com/');
     expect(link?.getAttribute('rel')).toBe('noopener noreferrer');
+  });
+
+  it('should link a venture to its case study', () => {
+    http.expectOne('assets/data/ventures.json').flush(VENTURES);
+    fixture.detectChanges();
+    const links = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('.venture-links a'));
+
+    const caseStudyLink = links.find(link => link.textContent?.includes('Case study'));
+    expect(caseStudyLink?.getAttribute('href')).toBe('/case-studies/sample-study');
+    expect(caseStudyLink?.textContent).toContain('Sample Study');
   });
 });

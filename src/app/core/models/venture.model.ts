@@ -1,3 +1,5 @@
+import { CaseStudyRef } from './case-study.model';
+
 export interface VentureLink {
   label: string;
   url: string;
@@ -31,6 +33,7 @@ export interface Venture {
   products?: VentureProduct[];
   notes?: string[];
   links?: VentureLink[];
+  caseStudy?: CaseStudyRef;
 }
 
 export interface VentureData {

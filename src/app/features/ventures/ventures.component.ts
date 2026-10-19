@@ -1,11 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ConfigDataService } from '../../core/services';
 import { PageHeaderComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-ventures',
   standalone: true,
-  imports: [PageHeaderComponent],
+  imports: [PageHeaderComponent, RouterLink],
   templateUrl: './ventures.component.html',
   styleUrls: ['./ventures.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

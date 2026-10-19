@@ -76,11 +76,16 @@
             <p class="venture-note"><i class="fas fa-info-circle"></i>{{ note }}</p>
           }
 
-          @if (venture.links?.length) {
+          @if (venture.links?.length || venture.caseStudy) {
             <div class="venture-links">
-              @for (link of venture.links; track link.url) {
+              @for (link of venture.links ?? []; track link.url) {
                 <a class="venture-link primary" [href]="link.url" target="_blank" rel="noopener noreferrer">
                   <i class="fas fa-external-link-alt"></i>{{ link.label }}
+                </a>
+              }
+              @if (venture.caseStudy) {
+                <a class="venture-link" [routerLink]="['/case-studies', venture.caseStudy.slug]">
+                  <i class="fas fa-book-open"></i>Case study: {{ venture.caseStudy.title }}
                 </a>
               }
             </div>

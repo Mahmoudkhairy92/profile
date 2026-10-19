@@ -44,7 +44,8 @@
         "Reduced test cycle time by 30% across 10+ projects"
       ],
       "link": "/experience",
-      "linkLabel": "Experience"
+      "linkLabel": "Experience",
+      "caseStudy": { "slug": "quality-engineering-automation-leadership", "title": "Quality Engineering & Automation Leadership" }
     },
     {
       "title": "AI Enablement",
@@ -66,7 +67,8 @@
         "Supports vendor acceptance and production-readiness decisions"
       ],
       "link": "/experience",
-      "linkLabel": "Experience"
+      "linkLabel": "Experience",
+      "caseStudy": { "slug": "llm-ai-agent-evaluation", "title": "LLM & AI Agent Evaluation" }
     },
     {
       "title": "AI Product Management",
@@ -78,7 +80,8 @@
         "Founder & Product Owner of QCVerse, an independent product built with the QCVerse Team"
       ],
       "link": "/ventures",
-      "linkLabel": "Products & Ventures"
+      "linkLabel": "Products & Ventures",
+      "caseStudy": { "slug": "qcverse-product-development", "title": "QCVerse Product Development" }
     }
   ]
 }

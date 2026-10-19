@@ -23,7 +23,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
-      withInMemoryScrolling({ anchorScrolling: 'enabled' }),
+      // Emits the router's Scroll events; AppComponent performs the scrolling (top, #fragment, back/forward)
+      withInMemoryScrolling(),
       withNavigationErrorHandler(chunkLoadErrorHandler)
     ),
     provideHttpClient(withFetch()),
