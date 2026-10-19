@@ -1,0 +1,257 @@
+<section
+  id="ask-panel"
+  class="ask-panel"
+  role="dialog"
+  aria-modal="false"
+  aria-labelledby="ask-title"
+  aria-describedby="ask-notice"
+  [hidden]="!open()"
+  [attr.lang]="lang()"
+  [attr.dir]="dir(lang())"
+  data-clarity-mask="true"
+  (keydown.escape)="close()">
+  <header class="ask-header">
+    <div class="ask-heading">
+      <h2 class="ask-title" id="ask-title"><i class="fas fa-comments" aria-hidden="true"></i>{{ text(ui.title) }}</h2>
+      <span class="ask-badge">{{ text(ui.badge) }}</span>
+    </div>
+    <div class="ask-header-actions">
+      <button type="button" class="ask-header-button ask-language" [attr.aria-label]="text(ui.switchLanguageLabel)" (click)="toggleLanguage()">
+        <span [attr.lang]="lang() === 'en' ? 'ar' : 'en'">{{ text(ui.switchLanguage) }}</span>
+      </button>
+      <button type="button" class="ask-header-button" [attr.aria-label]="text(ui.restart)" [attr.title]="text(ui.restart)" (click)="restart()">
+        <i class="fas fa-redo" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="ask-header-button ask-close" [attr.aria-label]="text(ui.close)" [attr.title]="text(ui.close)" (click)="close()">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <p class="ask-notice" id="ask-notice"><i class="fas fa-info-circle" aria-hidden="true"></i>{{ text(ui.notice) }}</p>
+
+  <div class="ask-log" #messageLog role="log" aria-live="polite" [attr.aria-label]="text(ui.title)" tabindex="-1">
+    @if (loadFailed()) {
+      <p class="ask-status ask-error" role="alert">{{ text(ui.loadError) }}</p>
+    } @else if (!matcher()) {
+      <p class="ask-status" role="status">{{ text(ui.loading) }}</p>
+    } @else {
+      @let kb = knowledgeBase()!;
+      <div class="ask-message ask-guide ask-welcome">
+        @for (entry of kb.entries; track entry.id) {
+          @if (entry.id === 'greeting') {
+            <p>{{ text(entry.answer) }}</p>
+          }
+        }
+        <p class="ask-chips-label">{{ text(ui.suggestions) }}</p>
+        <div class="ask-chips">
+          @for (entry of suggested(); track entry.id) {
+            <button type="button" class="ask-chip" (click)="choose(entry)">{{ text(entry.question) }}</button>
+          }
+        </div>
+      </div>
+
+      @for (message of messages(); track message.id) {
+        @if (message.from === 'visitor') {
+          <div class="ask-message ask-visitor" [attr.lang]="message.lang" [attr.dir]="dir(message.lang)">
+            <span class="visually-hidden">{{ text(ui.you, message.lang) }}: </span>{{ message.text }}
+          </div>
+        } @else if (message.outcome; as outcome) {
+          <div class="ask-message ask-guide" [attr.lang]="message.lang" [attr.dir]="dir(message.lang)">
+            <span class="visually-hidden">{{ text(ui.guide, message.lang) }}: </span>
+
+            @if (outcome.type === 'answer') {
+              @let entry = outcome.entry;
+              <div class="ask-answer" [attr.data-entry]="entry.id">
+                @for (part of message.parts ?? []; track $index) {
+                  @if (part.type === 'list') {
+                    <ul class="ask-list">
+                      @for (line of part.lines; track $index) {
+                        <li>{{ line }}</li>
+                      }
+                    </ul>
+                  } @else {
+                    @for (line of part.lines; track $index) {
+                      <p>{{ line }}</p>
+                    }
+                  }
+                }
+
+                @for (block of blockTypes(entry); track $index) {
+                  @switch (block.type) {
+                    @case ('career') {
+                      <ul class="ask-data">
+                        @for (role of careerRoles(message.lang); track role) {
+                          <li dir="ltr">{{ role }}</li>
+                        }
+                      </ul>
+                    }
+                    @case ('contact') {
+                      <ul class="ask-contacts">
+                        @for (action of contactList(blockChannels(block), message.lang); track action.channel) {
+                          <li>
+                            <span class="ask-contact-label">{{ action.label }}</span>
+                            @if (action.external) {
+                              <a [href]="action.href" target="_blank" rel="noopener noreferrer" [attr.data-channel]="action.channel">
+                                <bdi dir="ltr">{{ action.value }}</bdi><span class="visually-hidden"> ({{ text(ui.newTab, message.lang) }})</span>
+                              </a>
+                            } @else {
+                              <a [href]="action.href" [attr.data-channel]="action.channel"><bdi dir="ltr">{{ action.value }}</bdi></a>
+                            }
+                          </li>
+                        }
+                      </ul>
+                    }
+                    @case ('certifications') {
+                      <ul class="ask-data">
+                        @for (item of certificationList(); track item) {
+                          <li dir="ltr">{{ item }}</li>
+                        }
+                      </ul>
+                    }
+                    @case ('achievements') {
+                      <ul class="ask-data">
+                        @for (item of achievementList(blockIds(block)); track item) {
+                          <li dir="ltr">{{ item }}</li>
+                        }
+                      </ul>
+                    }
+                    @case ('ventures') {
+                      <ul class="ask-data">
+                        @for (venture of ventureList(blockIds(block), message.lang); track venture.name) {
+                          <li dir="ltr">
+                            <strong>{{ venture.name }}</strong> · {{ venture.details }}
+                            <span class="ask-data-note">{{ venture.affiliation }}</span>
+                            @if (venture.team) {
+                              <span class="ask-data-note">{{ venture.team }}</span>
+                            }
+                          </li>
+                        }
+                      </ul>
+                    }
+                    @case ('skills') {
+                      @let tools = mentionedTools(message.question, message.lang);
+                      @if (tools.length) {
+                        <p class="ask-mentioned"><strong>{{ text(ui.mentionedTools, message.lang) }}:</strong> <bdi dir="ltr">{{ tools.join(', ') }}</bdi></p>
+                      }
+                      <ul class="ask-data">
+                        @for (group of skillGroups(); track group.category) {
+                          <li dir="ltr"><strong>{{ group.category }}:</strong> {{ group.names }}</li>
+                        }
+                      </ul>
+                    }
+                    @case ('case-studies') {
+                      <ul class="ask-data">
+                        @for (study of caseStudyList(); track study.slug) {
+                          <li dir="ltr">
+                            <a [routerLink]="['/case-studies', study.slug]" (click)="followedLink()">{{ study.title }}</a>
+                            <span class="ask-data-note">{{ study.context }}</span>
+                          </li>
+                        }
+                      </ul>
+                    }
+                  }
+                }
+
+                @if (entry.caveat) {
+                  <p class="ask-caveat"><i class="fas fa-info-circle" aria-hidden="true"></i>{{ text(entry.caveat, message.lang) }}</p>
+                }
+
+                @if (entry.links.length) {
+                  <div class="ask-links">
+                    @for (link of entry.links; track $index) {
+                      @if (link.action === 'download-cv') {
+                        <button type="button" class="ask-link" (click)="downloadCV()">
+                          <i class="fas fa-download" aria-hidden="true"></i>{{ text(link.label, message.lang) }}
+                        </button>
+                      } @else if (link.route) {
+                        <a class="ask-link" [routerLink]="link.route" [fragment]="link.fragment" (click)="followedLink()">
+                          <i class="fas fa-arrow-right" aria-hidden="true"></i>{{ text(link.label, message.lang) }}
+                        </a>
+                      } @else if (link.url) {
+                        <a class="ask-link" [href]="link.url" target="_blank" rel="noopener noreferrer">
+                          <i class="fas fa-external-link-alt" aria-hidden="true"></i>{{ text(link.label, message.lang) }}<span class="visually-hidden"> ({{ text(ui.newTab, message.lang) }})</span>
+                        </a>
+                      }
+                    }
+                  </div>
+                }
+
+                @let sources = entrySources(entry, message.lang);
+                @if (sources.length) {
+                  <details class="ask-sources">
+                    <summary>{{ text(ui.sources, message.lang) }} ({{ sources.length }})</summary>
+                    <ul>
+                      @for (source of sources; track source.title) {
+                        <li>
+                          <span class="ask-source-type">{{ source.label }}</span>
+                          @if (source.route) {
+                            <a [routerLink]="source.route" [fragment]="source.fragment" (click)="followedLink()" dir="ltr">{{ source.title }}</a>
+                          } @else if (source.url) {
+                            <a [href]="source.url" target="_blank" rel="noopener noreferrer" dir="ltr">{{ source.title }}</a>
+                          } @else {
+                            <span dir="ltr">{{ source.title }}</span>
+                          }
+                        </li>
+                      }
+                    </ul>
+                  </details>
+                }
+              </div>
+
+              @if (outcome.related.length) {
+                <p class="ask-chips-label">{{ text(ui.related, message.lang) }}</p>
+                <div class="ask-chips">
+                  @for (related of outcome.related; track related.id) {
+                    <button type="button" class="ask-chip" (click)="choose(related)">{{ text(related.question, message.lang) }}</button>
+                  }
+                </div>
+              }
+            } @else if (outcome.type === 'clarify') {
+              <p>{{ text(kb.ui.clarify, message.lang) }}</p>
+              <div class="ask-chips">
+                @for (option of outcome.options; track option.id) {
+                  <button type="button" class="ask-chip" (click)="choose(option)">{{ text(option.question, message.lang) }}</button>
+                }
+              </div>
+            } @else {
+              <p class="ask-fallback">{{ text(kb.ui.fallback, message.lang) }}</p>
+              <div class="ask-chips">
+                @for (option of (outcome.suggestions.length ? outcome.suggestions : suggested().slice(0, 4)); track option.id) {
+                  <button type="button" class="ask-chip" (click)="choose(option)">{{ text(option.question, message.lang) }}</button>
+                }
+              </div>
+              <div class="ask-links">
+                @for (link of kb.ui.fallbackLinks; track $index) {
+                  <a class="ask-link" [routerLink]="link.route" (click)="followedLink()">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>{{ text(link.label, message.lang) }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        }
+      }
+    }
+  </div>
+
+  <form class="ask-form" (submit)="$event.preventDefault(); ask(draft())">
+    <label class="visually-hidden" for="ask-question">{{ text(ui.inputLabel) }}</label>
+    <input
+      #questionInput
+      id="ask-question"
+      class="ask-input"
+      type="text"
+      dir="auto"
+      autocomplete="off"
+      enterkeyhint="send"
+      [attr.maxlength]="maxLength"
+      [value]="draft()"
+      [placeholder]="text(ui.placeholder)"
+      [disabled]="!matcher()"
+      (input)="onDraftInput($event)" />
+    <button type="submit" class="ask-send" [attr.aria-label]="text(ui.send)" [disabled]="!matcher() || !draft().trim()">
+      <i class="fas fa-paper-plane" aria-hidden="true"></i>
+    </button>
+  </form>
+</section>

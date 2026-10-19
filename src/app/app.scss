@@ -263,6 +263,23 @@
   }
 }
 
+// Sits above the "Ask About Mahmoud" launcher when the guide is enabled
+.scroll-to-top.above-ask {
+  bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top.above-ask {
+    bottom: 5.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .scroll-to-top.above-ask {
+    right: calc(1.5rem + 3.5px); // centred over the 52px launcher
+  }
+}
+
 // Footer
 .footer {
   margin-top: auto;

@@ -8,4 +8,5 @@ export * from './contact.model';
 export * from './game.model';
 export * from './venture.model';
 export * from './case-study.model';
+export * from './ask.model';
 

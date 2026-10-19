@@ -42,13 +42,19 @@
 </main>
 
 <!-- Scroll to Top Button -->
-<button 
-  class="scroll-to-top" 
+<button
+  class="scroll-to-top"
   [class.show]="showScrollTop"
+  [class.above-ask]="askEnabled"
   (click)="scrollToTop()"
   aria-label="Scroll to top">
   <i class="fas fa-arrow-up"></i>
 </button>
+
+<!-- "Ask About Mahmoud" portfolio guide (client-side, loads on first open) -->
+@if (askEnabled) {
+  <app-ask-launcher />
+}
 
 <!-- Footer -->
 <footer class="footer">

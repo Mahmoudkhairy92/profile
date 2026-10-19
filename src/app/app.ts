@@ -6,11 +6,13 @@ import { filter } from 'rxjs/operators';
 import { VERSION } from '@angular/core';
 import { ConfigDataService } from './core/services';
 import { fixedHeaderOffset } from './core/fixed-header-offset';
+import { AskLauncherComponent } from './features/ask/ask-launcher.component';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, AskLauncherComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
@@ -19,6 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   showScrollTop = false;
   isNavbarCollapsed = true;
+  /** Feature flag for the "Ask About Mahmoud" portfolio guide. */
+  readonly askEnabled = environment.features.askAboutMahmoud;
 
   // Main navigation items - streamlined for better UX
   navItems = [

@@ -1,0 +1,23 @@
+<button
+  #launcher
+  type="button"
+  class="ask-launcher"
+  aria-haspopup="dialog"
+  [attr.aria-expanded]="open()"
+  [hidden]="open() && !loading()"
+  [disabled]="loading()"
+  (click)="show()">
+  @if (loading()) {
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span class="ask-launcher-label">Loading the portfolio guide…</span>
+  } @else {
+    <i class="fas fa-comments" aria-hidden="true"></i>
+    <span class="ask-launcher-label">Ask about Mahmoud</span>
+  }
+</button>
+
+@if (loadFailed()) {
+  <p class="ask-launcher-error" role="alert">The portfolio guide could not be loaded. Please try again.</p>
+}
+
+<ng-container #panelHost />
