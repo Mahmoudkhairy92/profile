@@ -7,17 +7,21 @@ import {
   signal,
   effect,
   ChangeDetectionStrategy,
+  Injector,
+  afterNextRender,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameService } from '../../core/services/game.service';
 import { ScreenshotService } from '../../core/services/screenshot.service';
 import { Direction, LeaderboardEntry } from '../../core/models/game.model';
+import { FocusTrapDirective } from '../../shared/directives/focus-trap.directive';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FocusTrapDirective],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +30,7 @@ export class GameComponent implements OnInit, OnDestroy {
   @ViewChild('gameCanvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('leaderboardCard') leaderboardCardRef?: ElementRef<HTMLElement>;
 
+  private readonly injector = inject(Injector);
   private ctx!: CanvasRenderingContext2D;
   public gameLoop: any; // Make public for template access
   private lastRenderTime = 0;
@@ -155,6 +160,9 @@ export class GameComponent implements OnInit, OnDestroy {
     this.render();
     
     // Don't start game loop yet - wait for first move
+
+    // Keyboard focus moves from the closed dialog to the game board (the arrow keys work page-wide)
+    afterNextRender(() => this.canvasRef.nativeElement.focus({ preventScroll: true }), { injector: this.injector });
   }
 
   private startGameLoop(): void {

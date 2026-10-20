@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" data-fixed-header>
   <div class="container">
-    <a class="navbar-brand" routerLink="/profile">
+    <a class="navbar-brand" routerLink="/">
       <i class="fas fa-user-circle me-2"></i>
       <span class="brand-text">{{ title }}</span>
     </a>
@@ -24,7 +24,8 @@
               class="nav-link" 
               [routerLink]="item.path"
               routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: item.path === '/profile' }"
+              ariaCurrentWhenActive="page"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
               (click)="collapseNavbar()">
               <i [class]="item.icon"></i>
               <span class="nav-text">{{ item.label }}</span>

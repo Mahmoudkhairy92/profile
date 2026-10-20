@@ -93,14 +93,14 @@ $accent: #047857;
   padding: 0 0.5rem;
   border: 0;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
   color: white;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.28);
+    background: rgba(0, 0, 0, 0.25);
   }
 
   &:focus-visible {
@@ -141,7 +141,7 @@ $accent: #047857;
   overscroll-behavior: contain;
 
   &:focus-visible {
-    outline: 2px solid $accent;
+    outline: 2px solid var(--focus-ring-color);
     outline-offset: -2px;
   }
 }
@@ -399,8 +399,8 @@ $accent: #047857;
   font-size: 1rem; // 16px avoids zoom-on-focus on iOS
 
   &:focus {
-    border-color: $accent;
-    outline: 2px solid rgba(4, 120, 87, 0.35);
+    border-color: var(--focus-ring-color);
+    outline: 2px solid var(--focus-ring-color);
     outline-offset: 0;
   }
 
@@ -434,7 +434,7 @@ $accent: #047857;
 .ask-sources summary,
 .ask-contacts a {
   &:focus-visible {
-    outline: 2px solid $accent;
+    outline: 2px solid var(--focus-ring-color);
     outline-offset: 2px;
   }
 }

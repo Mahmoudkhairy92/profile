@@ -3,6 +3,10 @@
   background: var(--bs-gradient-primary) !important;
   backdrop-filter: blur(10px);
   padding: 1rem 0;
+  min-height: var(--app-navbar-height); // page content is offset by the same value
+  --focus-ring-color: white;
+  // Hamburger lines at 92% white (Bootstrap's 55% was 2:1 on the green)
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.92%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   transition: all 0.3s ease;
   z-index: 1030;
   box-shadow: var(--bs-shadow-sm);
@@ -63,7 +67,13 @@
     }
     
     &:focus {
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    // Bootstrap's .navbar-toggler:focus removes the outline; keyboard focus gets the white ring
+    &:focus-visible {
+      outline: 3px solid var(--focus-ring-color);
+      outline-offset: 2px;
     }
     
     .navbar-toggler-icon {
@@ -97,7 +107,7 @@
     }
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(0, 0, 0, 0.12);
       color: white !important;
       
       i {
@@ -105,8 +115,12 @@
       }
     }
 
+    &:focus-visible {
+      box-shadow: none;
+    }
+
     &.active {
-      background-color: rgba(255, 255, 255, 0.25);
+      background-color: rgba(0, 0, 0, 0.22);
       color: white !important;
       font-weight: 600;
       box-shadow: var(--bs-shadow-sm);
@@ -159,7 +173,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: rgba(102, 126, 234, 0.98);
+      background: var(--bs-primary-solid-hover);
       backdrop-filter: blur(10px);
       border-radius: 0 0 12px 12px;
       margin-top: 0.5rem;
@@ -201,17 +215,11 @@
   }
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    padding-top: 58px; // Smaller navbar on mobile
-  }
-}
-
 // Main Content
 .main-content {
   min-height: calc(100vh - 250px);
   animation: fadeIn 0.5s ease-in;
-  padding-top: 70px; // Space for fixed navbar
+  padding-top: var(--app-navbar-height); // Space for the fixed navbar
 }
 
 // Scroll to Top Button
@@ -232,7 +240,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.4);
   z-index: 999; // Below navbar
   
   &.show {
@@ -242,11 +250,18 @@
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 20px rgba(4, 120, 87, 0.5);
   }
   
   &:active {
     transform: translateY(-2px);
+  }
+
+  // Two-tone ring: visible over light sections, the green heroes and the dark footer
+  &:focus-visible {
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--bs-body-bg);
   }
   
   i {
@@ -286,7 +301,8 @@
   background: linear-gradient(135deg, var(--bs-dark) 0%, #1a202c 100%);
   color: white;
   padding: 3rem 0 1.5rem;
-  border-top: 3px solid rgba(102, 126, 234, 0.3);
+  border-top: 3px solid rgba(16, 185, 129, 0.3);
+  --focus-ring-color: var(--bs-primary-light); // dark footer in both colour schemes
 }
 
 .footer-content {
@@ -312,7 +328,7 @@
     margin-bottom: 0.75rem;
     
     i {
-      color: var(--bs-primary-text);
+      color: var(--bs-primary-light); // the footer is dark in both colour schemes
       font-size: 1.75rem;
     }
   }
@@ -377,9 +393,9 @@
   }
   
   &:hover {
-    background: var(--bs-primary);
+    background: var(--bs-primary-solid);
     transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(4, 120, 87, 0.4);
   }
 }
 
@@ -419,7 +435,7 @@
 // Mobile Footer
 @media (max-width: 768px) {
   .footer {
-    padding: 2rem 0 1rem;
+    padding: 2rem 0 6.5rem; // clears the floating launcher
   }
   
   .footer-content {
@@ -441,3 +457,10 @@
   }
 }
 
+
+// Phones: the launcher and the back-to-top button stack at the bottom right
+@media (max-width: 576px) {
+  .footer {
+    padding-bottom: 9rem;
+  }
+}

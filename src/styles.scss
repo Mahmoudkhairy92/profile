@@ -47,11 +47,16 @@
   /* Overlays & Opacity */
   --bs-overlay-white: rgba(255, 255, 255, 0.1);
   --bs-overlay-dark: rgba(0, 0, 0, 0.1);
-  --bs-text-muted: rgba(255, 255, 255, 0.7);
+  /* Secondary white text on the green and dark surfaces (navbar, footer): 4.9:1 or more */
+  --bs-text-muted: rgba(255, 255, 255, 0.92);
   
   /* Gradients */
   --bs-gradient-card: linear-gradient(135deg, var(--bs-body-bg) 0%, var(--bs-light) 100%);
-  --bs-gradient-primary: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-primary-dark) 100%);
+  /* Brand surfaces behind white text (navbar, heroes, buttons): 5.5:1 or more for white text;
+     the lighter #10b981 -> #059669 gradient was 2.5:1 */
+  --bs-gradient-primary: linear-gradient(135deg, var(--bs-primary-solid) 0%, var(--bs-primary-solid-hover) 100%);
+  /* Gradient-filled icons and headings on the page background (lighter in dark mode) */
+  --bs-gradient-text: var(--bs-gradient-primary);
   --bs-gradient-secondary: linear-gradient(135deg, var(--bs-secondary-light) 0%, var(--bs-secondary) 100%);
   
   /* Additional Color Variables */
@@ -62,6 +67,18 @@
   
   /* Font */
   --bs-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Fixed navbar height: page content and full-screen overlays start below it */
+  --app-navbar-height: 81px;
+
+  /* Keyboard focus ring; green and dark containers (navbar, hero, footer, game) set their own */
+  --focus-ring-color: var(--bs-primary-solid);
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --app-navbar-height: 68px;
+  }
 }
 
 /* Dark mode support */
@@ -75,6 +92,10 @@
     --bs-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
     --bs-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.6);
     --bs-gradient-card: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+    /* Bootstrap's dark value; its light default (rgba(33, 37, 41, 0.75)) is invisible on dark backgrounds */
+    --bs-secondary-color: rgba(222, 226, 230, 0.75);
+    --bs-gradient-text: linear-gradient(135deg, var(--bs-primary-light) 0%, var(--bs-primary) 100%);
+    --focus-ring-color: var(--bs-primary-light);
   }
 }
 
@@ -143,12 +164,16 @@ img {
   height: auto;
 }
 
-/* Better focus indicators */
+/* Keyboard focus: one visible ring on every interactive element (WCAG 2.4.7, 1.4.11).
+   Bootstrap's .btn and .nav-link remove the outline on focus, so they are listed explicitly. */
 a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--bs-primary);
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid var(--focus-ring-color);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Improved link styles */
@@ -357,14 +382,24 @@ body {
   }
 }
 
-/* Focus Styles for Accessibility */
-*:focus {
-  outline: 2px solid var(--bs-primary);
-  outline-offset: 2px;
-}
+/* Reduced motion: no continuous or decorative animation, instant scrolling (loading spinners keep turning) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-button:focus,
-a:focus {
-  outline: 2px solid var(--bs-primary);
-  outline-offset: 2px;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .spinner-border {
+    animation-duration: 1.5s !important;
+    animation-iteration-count: infinite !important;
+  }
 }

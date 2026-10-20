@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Main navigation items - streamlined for better UX
   navItems = [
-    { path: '/profile', label: 'Home', icon: 'fas fa-user' },
+    { path: '/', label: 'Home', icon: 'fas fa-user' },
     { path: '/experience', label: 'Experience', icon: 'fas fa-briefcase' },
     { path: '/projects', label: 'Projects', icon: 'fas fa-folder-open' },
     { path: '/case-studies', label: 'Case Studies', icon: 'fas fa-book-open' },
@@ -90,9 +90,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   scrollToTop(): void {
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ 
       top: 0, 
-      behavior: 'smooth' 
+      behavior: reduceMotion ? 'auto' : 'smooth' 
     });
     
     // Collapse mobile menu if open

@@ -20,7 +20,7 @@
   .search-input {
     width: 100%;
     padding: 1rem 3.5rem;
-    border: 2px solid rgba(102, 126, 234, 0.2);
+    border: 2px solid rgba(16, 185, 129, 0.2);
     border-radius: 16px;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -30,22 +30,22 @@
     
     &:focus {
       outline: none;
-      border-color: var(--bs-primary);
-      box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+      border-color: var(--focus-ring-color); // 3:1 or more against the page in both colour schemes
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
       background: white;
     }
     
     &::placeholder {
-      color: var(--bs-secondary);
+      color: var(--bs-secondary-color);
     }
     
     @media (prefers-color-scheme: dark) {
       background: rgba(30, 30, 30, 0.8);
-      border-color: rgba(102, 126, 234, 0.3);
+      border-color: rgba(16, 185, 129, 0.3);
       
       &:focus {
         background: rgba(30, 30, 30, 0.95);
-        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25);
       }
       
       &::placeholder {
@@ -57,7 +57,7 @@
   .clear-btn {
     position: absolute;
     right: 1rem;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border: none;
     color: var(--bs-primary-text);
     cursor: pointer;
@@ -91,18 +91,18 @@
   border-radius: 16px;
   padding: 2rem;
   box-shadow: var(--bs-shadow-sm);
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.1);
   transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1);
     transform: translateY(-2px);
   }
   
   @media (prefers-color-scheme: dark) {
     background: rgba(30, 30, 30, 0.95);
     box-shadow: var(--bs-shadow);
-    border-color: rgba(102, 126, 234, 0.2);
+    border-color: rgba(16, 185, 129, 0.2);
     
     &:hover {
       box-shadow: var(--bs-shadow-lg);
@@ -116,10 +116,10 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+  border-bottom: 2px solid rgba(16, 185, 129, 0.1);
   
   @media (prefers-color-scheme: dark) {
-    border-bottom-color: rgba(102, 126, 234, 0.2);
+    border-bottom-color: rgba(16, 185, 129, 0.2);
   }
 }
 
@@ -134,7 +134,7 @@
   color: white;
   font-size: 1.25rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .category-name {
@@ -146,7 +146,7 @@
 }
 
 .skill-count {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   color: var(--bs-primary-text);
   padding: 0.375rem 0.875rem;
   border-radius: 20px;
@@ -206,7 +206,7 @@
     width: 80px;
     height: 80px;
     margin: 0 auto 1.5rem;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;

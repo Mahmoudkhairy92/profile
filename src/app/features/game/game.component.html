@@ -2,8 +2,9 @@
   <!-- Instructions Screen -->
   @if (showInstructions()) {
     <div class="overlay instructions-overlay">
-      <div class="modal-content glassmorphism">
-        <h1 class="game-title">🐍 Tech Stack Snake</h1>
+      <div class="modal-content glassmorphism" appFocusTrap aria-labelledby="game-instructions-title"
+           [appFocusTrapInitial]="startButton" [appFocusTrapFallback]="gameCanvas">
+        <h1 class="game-title" id="game-instructions-title">🐍 Tech Stack Snake</h1>
         <p class="subtitle">Built by Mahmoud Khairy</p>
         
         <div class="instructions">
@@ -36,13 +37,15 @@
           </ul>
         </div>
         
-        <button class="btn btn-primary btn-lg" (click)="startGame()">
-          🚀 Start Playing
-        </button>
-        
-        <button class="btn btn-outline-secondary mt-3" (click)="viewLeaderboard()">
-          🏆 View Leaderboard
-        </button>
+        <div class="modal-actions">
+          <button #startButton class="btn btn-primary btn-lg" (click)="startGame()">
+            🚀 Start Playing
+          </button>
+          
+          <button class="btn btn-outline-secondary mt-3" (click)="viewLeaderboard()">
+            🏆 View Leaderboard
+          </button>
+        </div>
       </div>
     </div>
   }
@@ -50,8 +53,9 @@
   <!-- Game Over Screen -->
   @if (showGameOver()) {
     <div class="overlay gameover-overlay">
-      <div class="modal-content glassmorphism">
-        <h1 class="game-over-title">🎮 Game Over!</h1>
+      <div class="modal-content glassmorphism" appFocusTrap aria-labelledby="game-over-title"
+           [appFocusTrapInitial]="playAgainButton" [appFocusTrapFallback]="gameCanvas">
+        <h1 class="game-over-title" id="game-over-title">🎮 Game Over!</h1>
         
         <div class="stats-grid">
           <div class="stat-item">
@@ -96,7 +100,7 @@
           <button class="btn btn-linkedin btn-lg" (click)="quickShareToLinkedIn()">
             <i class="fab fa-linkedin"></i> Share to LinkedIn
           </button>
-          <button class="btn btn-primary" (click)="startGame()">
+          <button #playAgainButton class="btn btn-primary" (click)="startGame()">
             🔄 Play Again
           </button>
           <button class="btn btn-outline-secondary" (click)="viewLeaderboard()">
@@ -110,8 +114,9 @@
   <!-- Leaderboard Screen -->
   @if (showLeaderboard()) {
     <div class="overlay leaderboard-overlay">
-      <div class="modal-content glassmorphism">
-        <h1 class="leaderboard-title">🏆 Leaderboard</h1>
+      <div class="modal-content glassmorphism" appFocusTrap aria-labelledby="game-leaderboard-title"
+           [appFocusTrapFallback]="gameCanvas" (appFocusTrapEscape)="closeLeaderboard()">
+        <h1 class="leaderboard-title" id="game-leaderboard-title">🏆 Leaderboard</h1>
         <p class="subtitle">Top Tech Stack Builders</p>
         
         <div class="leaderboard-table">
@@ -166,8 +171,9 @@
   <!-- Share Modal with Screenshot -->
   @if (showShareModal()) {
     <div class="overlay share-overlay">
-      <div class="modal-content glassmorphism share-modal">
-        <h1 class="share-title">🎉 Share Your Score!</h1>
+      <div class="modal-content glassmorphism share-modal" appFocusTrap aria-labelledby="game-share-title"
+           [appFocusTrapFallback]="gameCanvas" (appFocusTrapEscape)="closeShareModal()">
+        <h1 class="share-title" id="game-share-title">🎉 Share Your Score!</h1>
         <p class="subtitle">Show your network what you achieved</p>
         
         <!-- Screenshot Preview -->
@@ -211,8 +217,8 @@
     </div>
   }
 
-  <!-- Game Canvas -->
-  <div class="game-wrapper">
+  <!-- Game Canvas (inert while a dialog is open, so keyboard focus cannot reach controls hidden behind it) -->
+  <div class="game-wrapper" [attr.inert]="showInstructions() || showGameOver() || showLeaderboard() || showShareModal() ? '' : null">
     <!-- Current Tech Items (moved to top) -->
     @if (gameService.state().techItems.length > 0) {
       <div class="tech-tips-container">
@@ -237,7 +243,7 @@
 
     <!-- Canvas -->
     <div class="canvas-container">
-      <canvas #gameCanvas></canvas>
+      <canvas #gameCanvas tabindex="-1" role="img" aria-label="Tech Stack Snake game board"></canvas>
       
       @if (!gameLoop && !gameService.state().gameOver && !showInstructions()) {
         <div class="start-prompt">

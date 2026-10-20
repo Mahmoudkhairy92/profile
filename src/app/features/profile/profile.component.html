@@ -28,11 +28,11 @@
               <i class="fas fa-star me-2"></i>{{ profileData.yearsOfExperience }}+ Years Experience
             </div>
             <h1 class="display-3 fw-bold mb-3 text-white hero-title">{{ profileData.name }}</h1>
-            <h2 class="h3 mb-4 text-white-50 hero-subtitle">{{ profileData.title }}</h2>
+            <h2 class="h3 mb-4 hero-subtitle">{{ profileData.title }}</h2>
             <p class="lead mb-4 text-white hero-tagline">
               <i class="fas fa-quote-left me-2"></i>{{ profileData.tagline }}
             </p>
-            <div class="d-flex flex-wrap gap-3 mb-4">
+            <div class="d-flex flex-wrap gap-3 mb-4 hero-contact-chips">
               <div class="hero-info-item">
                 <i class="fas fa-map-marker-alt me-2"></i>{{ profileData.location }}
               </div>
@@ -41,14 +41,14 @@
                   <i class="fas fa-envelope me-2"></i>{{ contactData.email }}
                 </div>
                 <div class="hero-info-item">
-                  <i class="fas fa-phone me-2"></i>{{ contactData.phoneDisplay || contactData.phone }} <span class="text-white-50 ms-1">(KSA)</span>
+                  <i class="fas fa-phone me-2"></i>{{ contactData.phoneDisplay || contactData.phone }} <span class="hero-muted ms-1">(KSA)</span>
                 </div>
                 <div class="hero-info-item">
-                  <i class="fas fa-phone me-2"></i>{{ contactData.phoneEgyptDisplay || contactData.phoneEgypt }} <span class="text-white-50 ms-1">(Egypt)</span>
+                  <i class="fas fa-phone me-2"></i>{{ contactData.phoneEgyptDisplay || contactData.phoneEgypt }} <span class="hero-muted ms-1">(Egypt)</span>
                 </div>
               }
             </div>
-            <div class="d-flex flex-wrap gap-3">
+            <div class="d-flex flex-wrap gap-3 hero-actions">
               <button 
                 class="btn btn-light btn-lg shadow-lg"
                 (click)="downloadCV()">
@@ -80,7 +80,7 @@
                 Contact
               </a>
             </div>
-            <div class="mt-3 text-white-50">
+            <div class="mt-3 hero-muted hero-availability">
               <i class="fas fa-globe me-2"></i>Open to opportunities in Riyadh & Cairo
             </div>
           </div>

@@ -26,9 +26,11 @@
     background: #065f46;
   }
 
+  // Two-tone ring: visible over light sections, the green heroes and the dark footer
   &:focus-visible {
-    outline: 3px solid #34d399;
-    outline-offset: 3px;
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--bs-body-bg);
   }
 
   &[hidden] {
