@@ -2,20 +2,16 @@
   "name": "Mahmoud Khairy - Quality Engineering & AI Enablement",
   "short_name": "Mahmoud Khairy",
   "description": "Quality Engineering & Test Automation | AI Enablement & LLM Evaluation | AI Product Manager @ THIQAH",
-  "start_url": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0d6efd",
+  "theme_color": "#10b981",
   "icons": [
     {
       "src": "apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
-    },
-    {
-      "src": "favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
     }
   ]
 }

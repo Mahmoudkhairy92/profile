@@ -3,20 +3,22 @@
     {
       "id": "ach1",
       "title": "Employee of the Year (2024) - Quality Team",
-      "description": "Awarded Employee of the Year (2024) within the Quality Team at THIQAH for outstanding technical leadership, innovation in AI automation, and elevating team performance. Recognized for creating Quality Mate platform and driving AI-powered testing initiatives.",
+      "description": "Awarded Employee of the Year (2024) within the Quality Team at THIQAH.",
       "date": "2024",
       "category": "award",
       "organization": "THIQAH Business Services",
-      "icon": "bi-star-fill"
+      "icon": "bi-star-fill",
+      "featured": true
     },
     {
       "id": "ach2",
       "title": "Second Place - Elm Company Hackathon",
-      "description": "Achieved Second Place with team Agent X in Elm Company Hackathon (Dec 2025). Developed an innovative AI-driven solution using Nuha LLM, OpenAI LLM, LangChain, CrewAI, FastAPI, NestJS, and Angular. Received deep admiration from senior judges and executive leaders.",
+      "description": "Achieved Second Place with team Agent X in the Elm Company Hackathon (Dec 2025) with an AI-driven solution.",
       "date": "Dec 2025",
       "category": "award",
       "organization": "Elm Company",
-      "icon": "bi-trophy-fill"
+      "icon": "bi-trophy-fill",
+      "featured": true
     },
     {
       "id": "ach3",
@@ -25,30 +27,13 @@
       "date": "Nov 2025",
       "category": "recognition",
       "organization": "THIQAH Business Services",
-      "icon": "bi-people-fill"
-    },
-    {
-      "id": "ach4",
-      "title": "iHealth Presentation at LEAP 2025",
-      "description": "Part of the Digital Innovation team at THIQAH, showcased iHealth product at LEAP 2025. Demonstrated innovative healthcare solution born from team collaboration and technical innovation.",
-      "date": "Feb 2025",
-      "category": "recognition",
-      "organization": "THIQAH Business Services / LEAP 2025",
-      "icon": "bi-presentation-fill"
-    },
-    {
-      "id": "ach5",
-      "title": "Certificate of Appreciation - Outstanding Contributions",
-      "description": "Recognized for outstanding contributions within the development and quality department, including AI hackathons. Acknowledged for exceptional dedication, technical excellence, and innovation in digital transformation initiatives.",
-      "date": "2024",
-      "category": "recognition",
-      "organization": "THIQAH Business Services",
-      "icon": "bi-award-fill"
+      "icon": "bi-people-fill",
+      "featured": true
     },
     {
       "id": "ach6",
-      "title": "Created Quality Mate Platform",
-      "description": "Built Quality Mate, an internal THIQAH AI-powered QA platform integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%.",
+      "title": "Built an Internal AI-enabled Quality Engineering Platform",
+      "description": "Built an internal AI-enabled Quality Engineering platform at THIQAH, integrated with Azure DevOps and GPT-based workflows; adopted by 5 teams (~20 QC engineers), improving testing efficiency by 40%.",
       "date": "2024",
       "category": "innovation",
       "organization": "THIQAH Business Services",
@@ -65,8 +50,8 @@
     },
     {
       "id": "ach8",
-      "title": "Founded QC Tube Knowledge Hub",
-      "description": "Founded QC Tube, an internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence.",
+      "title": "Launched QC Tube Knowledge Hub",
+      "description": "Launched QC Tube, an internal platform for workshops, webinars, and knowledge sharing on software testing, automation frameworks, and AI innovations. Established a culture of continuous learning and technical excellence.",
       "date": "2024",
       "category": "innovation",
       "organization": "THIQAH Business Services",
@@ -88,7 +73,8 @@
       "date": "Jan 2025",
       "category": "certification",
       "organization": "iSQI",
-      "icon": "bi-patch-check-fill"
+      "icon": "bi-patch-check-fill",
+      "featured": true
     },
     {
       "id": "ach14",
@@ -119,8 +105,8 @@
     },
     {
       "id": "ach12",
-      "title": "Graduated with Excellent - Final Project",
-      "description": "Graduated from Menoufia University, Faculty of Electronic Engineering, Communication Department. Final project 'GSM Based Home Automation using Arduino' received Excellent grade, demonstrating strong technical and implementation skills.",
+      "title": "Graduated from Menoufia University",
+      "description": "Graduated from Menoufia University, Faculty of Electronic Engineering, Communication Department. Final project: 'GSM Based Home Automation using Arduino'.",
       "date": "2014",
       "category": "education",
       "organization": "Menoufia University",
