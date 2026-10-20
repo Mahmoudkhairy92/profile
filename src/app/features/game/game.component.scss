@@ -221,7 +221,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1010; // above the floating launcher and back-to-top, below the navbar and the portfolio guide
+  z-index: 1025; // modal: above the floating launcher, back-to-top and portfolio guide panel, below the navbar
   animation: fadeIn 0.3s ease-out;
   padding: 1rem 1rem 6rem; // the bottom space keeps dialog actions clear of the floating assistant launcher
 }

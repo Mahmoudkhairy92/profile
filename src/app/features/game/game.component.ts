@@ -31,6 +31,7 @@ export class GameComponent implements OnInit, OnDestroy {
   @ViewChild('leaderboardCard') leaderboardCardRef?: ElementRef<HTMLElement>;
 
   private readonly injector = inject(Injector);
+  private readonly onKeydown = (event: KeyboardEvent) => this.handleKeyPress(event);
   private ctx!: CanvasRenderingContext2D;
   public gameLoop: any; // Make public for template access
   private lastRenderTime = 0;
@@ -49,6 +50,8 @@ export class GameComponent implements OnInit, OnDestroy {
   public showShareModal = signal(false);
   public shareMessage = signal('');
   public copySuccess = signal(false);
+  /** Focus "Share to LinkedIn" when the game-over dialog returns from the share dialog. */
+  public returnToShare = signal(false);
 
   // Mobile controls
   public isMobile = signal(false);
@@ -82,6 +85,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    window.removeEventListener('keydown', this.onKeydown);
     if (this.gameLoop) {
       cancelAnimationFrame(this.gameLoop);
     }
@@ -94,11 +98,16 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private setupControls(): void {
-    // Keyboard controls
-    window.addEventListener('keydown', this.handleKeyPress.bind(this));
+    // Keyboard controls (removed when the game page is left, so other pages keep their keys)
+    window.addEventListener('keydown', this.onKeydown);
   }
 
   private handleKeyPress(event: KeyboardEvent): void {
+    // Typing in a text field (player name, the portfolio guide) must not steer or pause the game
+    if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"]')) {
+      return;
+    }
+
     const state = this.gameService.state();
     
     if (state.gameOver || this.showInstructions()) {
@@ -149,6 +158,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   public startGame(): void {
+    this.returnToShare.set(false);
     this.showInstructions.set(false);
     this.showGameOver.set(false);
     this.showLeaderboard.set(false);
@@ -302,6 +312,7 @@ export class GameComponent implements OnInit, OnDestroy {
     const total = await this.gameService.getTotalPlayers();
     this.playerRank.set(rank);
     this.totalPlayers.set(total);
+    this.returnToShare.set(false);
     this.showGameOver.set(true);
   }
 
@@ -499,6 +510,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   public closeShareModal(): void {
+    this.returnToShare.set(true);
     this.showShareModal.set(false);
     this.showGameOver.set(true);
   }

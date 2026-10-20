@@ -37,15 +37,9 @@ export class FocusTrapDirective implements OnDestroy {
   private readonly opener: HTMLElement | null;
   private readonly keepFocusInside = (event: FocusEvent) => {
     const target = event.target as Node | null;
-    if (!this.isTopmost() || !target || this.host.contains(target)) {
-      return;
+    if (this.isTopmost() && target && !this.host.contains(target)) {
+      this.focusables()[0]?.focus({ preventScroll: true });
     }
-    // A separate dialog shown above the page (e.g. the portfolio guide) keeps its own focus
-    const otherDialog = target instanceof Element ? target.closest('[role="dialog"]') : null;
-    if (otherDialog && !openDialogs.some((dialog) => dialog.host.contains(otherDialog))) {
-      return;
-    }
-    this.focusables()[0]?.focus({ preventScroll: true });
   };
 
   constructor() {

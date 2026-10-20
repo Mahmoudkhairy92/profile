@@ -3,6 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { GameComponent } from './game.component';
 import { GameService } from '../../core/services/game.service';
+import { ScreenshotService } from '../../core/services/screenshot.service';
 import { GAME_PROVIDERS, GAME_ROUTES } from './game.routes';
 
 describe('GameComponent', () => {
@@ -78,6 +79,96 @@ describe('GameComponent', () => {
     expect(element.querySelector('.leaderboard-overlay')).toBeNull();
     expect(document.activeElement).toBe(viewButton);
     fixture.destroy();
+  });
+
+  it('should keep focus in the share dialog, close it with Escape and return focus to Share to LinkedIn', async () => {
+    // Saving the score and the screenshot are mocked: nothing is written to the live leaderboard
+    const saveScore = vi.spyOn(GameService.prototype, 'saveScore').mockResolvedValue(undefined);
+    vi.spyOn(ScreenshotService.prototype, 'captureElement').mockResolvedValue('data:image/png;base64,AAAA');
+    const fixture = TestBed.createComponent(GameComponent);
+    const component = fixture.componentInstance;
+    const element: HTMLElement = fixture.nativeElement;
+    fixture.detectChanges();
+    await fixture.whenStable();
+    component.showInstructions.set(false);
+    component.showGameOver.set(true);
+    component.playerName.set('Tester');
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(document.activeElement?.textContent).toContain('Play Again');
+
+    const openShare = [...element.querySelectorAll<HTMLButtonElement>('.gameover-overlay button')]
+      .find((button) => button.textContent?.includes('Share to LinkedIn'))!;
+    openShare.focus();
+    openShare.click();
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(saveScore).toHaveBeenCalledWith('Tester');
+    const share = element.querySelector<HTMLElement>('.share-overlay [role="dialog"]')!;
+    const buttons = [...share.querySelectorAll<HTMLButtonElement>('button')];
+    expect(share.getAttribute('aria-modal')).toBe('true');
+    expect(share.contains(document.activeElement)).toBe(true);
+
+    const press = (target: HTMLElement, shiftKey = false) => {
+      const event = new KeyboardEvent('keydown', { key: 'Tab', shiftKey, bubbles: true, cancelable: true });
+      target.dispatchEvent(event);
+      return event;
+    };
+    buttons[buttons.length - 1].focus();
+    expect(press(buttons[buttons.length - 1]).defaultPrevented).toBe(true);
+    expect(document.activeElement).toBe(buttons[0]);
+    expect(press(buttons[0], true).defaultPrevented).toBe(true);
+    expect(document.activeElement).toBe(buttons[buttons.length - 1]);
+
+    share.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    fixture.detectChanges();
+    await fixture.whenStable();
+    await new Promise((resolve) => setTimeout(resolve));
+    expect(element.querySelector('.share-overlay')).toBeNull();
+    expect(element.querySelector('.gameover-overlay')?.contains(document.activeElement)).toBe(true);
+    expect(document.activeElement?.textContent).toContain('Share to LinkedIn');
+    fixture.destroy();
+  });
+
+  it('should not steer or pause the game while the visitor types in a text field', async () => {
+    const changeDirection = vi.spyOn(GameService.prototype, 'changeDirection');
+    const togglePause = vi.spyOn(GameService.prototype, 'togglePause');
+    const fixture = TestBed.createComponent(GameComponent);
+    vi.spyOn(fixture.componentInstance as never as { startGameLoop: () => void }, 'startGameLoop').mockImplementation(() => {});
+    fixture.detectChanges();
+    fixture.componentInstance.showInstructions.set(false);
+    const field = document.createElement('input');
+    document.body.appendChild(field);
+
+    for (const key of ['w', 'a', 's', 'd', ' ', 'ArrowUp']) {
+      const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
+      field.dispatchEvent(event);
+      expect(event.defaultPrevented).toBe(false);
+    }
+    expect(changeDirection).not.toHaveBeenCalled();
+    expect(togglePause).not.toHaveBeenCalled();
+
+    // Outside text fields the keys still control the game
+    const steer = new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true, cancelable: true });
+    document.body.dispatchEvent(steer);
+    expect(steer.defaultPrevented).toBe(true);
+    expect(changeDirection).toHaveBeenCalledTimes(1);
+    field.remove();
+    fixture.destroy();
+  });
+
+  it('should stop handling keys once the game page is left', () => {
+    const changeDirection = vi.spyOn(GameService.prototype, 'changeDirection');
+    const fixture = TestBed.createComponent(GameComponent);
+    fixture.detectChanges();
+    fixture.componentInstance.showInstructions.set(false);
+    fixture.destroy();
+
+    const scroll = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
+    document.body.dispatchEvent(scroll);
+    expect(scroll.defaultPrevented).toBe(false);
+    expect(changeDirection).not.toHaveBeenCalled();
   });
 
   it('should provide Firebase and the game service on the lazily loaded game route', () => {

@@ -54,7 +54,7 @@
   @if (showGameOver()) {
     <div class="overlay gameover-overlay">
       <div class="modal-content glassmorphism" appFocusTrap aria-labelledby="game-over-title"
-           [appFocusTrapInitial]="playAgainButton" [appFocusTrapFallback]="gameCanvas">
+           [appFocusTrapInitial]="returnToShare() ? shareButton : playAgainButton" [appFocusTrapFallback]="gameCanvas">
         <h1 class="game-over-title" id="game-over-title">🎮 Game Over!</h1>
         
         <div class="stats-grid">
@@ -97,7 +97,7 @@
         </div>
         
         <div class="button-group">
-          <button class="btn btn-linkedin btn-lg" (click)="quickShareToLinkedIn()">
+          <button #shareButton class="btn btn-linkedin btn-lg" (click)="quickShareToLinkedIn()">
             <i class="fab fa-linkedin"></i> Share to LinkedIn
           </button>
           <button #playAgainButton class="btn btn-primary" (click)="startGame()">

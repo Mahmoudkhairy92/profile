@@ -9,6 +9,7 @@ import { FocusTrapDirective } from './focus-trap.directive';
     <button id="opener" (click)="open.set(true)">Open</button>
     <a id="outside" href="#outside">Outside link</a>
     <button id="fallback" #fallback tabindex="-1">Fallback</button>
+    <div role="dialog" aria-modal="false"><button id="other-dialog-button">Other dialog</button></div>
     @if (open()) {
       <div id="dialog" appFocusTrap aria-labelledby="dialog-title" [appFocusTrapInitial]="useInitial ? primary : undefined"
            [appFocusTrapFallback]="fallback" (appFocusTrapEscape)="escapes = escapes + 1">
@@ -90,6 +91,12 @@ describe('FocusTrapDirective', () => {
   it('should bring focus back when it lands on background content', async () => {
     await openDialog();
     el('outside').focus();
+    expect(document.activeElement).toBe(el('first'));
+  });
+
+  it('should bring focus back from another (non-modal) dialog that the modal covers', async () => {
+    await openDialog();
+    el('other-dialog-button').focus();
     expect(document.activeElement).toBe(el('first'));
   });
 
