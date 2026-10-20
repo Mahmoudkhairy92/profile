@@ -1,0 +1,720 @@
+{
+  "lastReviewed": "2026-10-19",
+  "sources": [
+    { "id": "cv-summary", "type": "cv", "title": "CV: Professional Summary" },
+    { "id": "cv-earlier", "type": "cv", "title": "CV: Earlier roles (Algorithmz, Path Solutions, SiliconExpert)" },
+    { "id": "cv-quad-insight", "type": "cv", "title": "CV: Ventures & Independent Projects (Quad Insight)" },
+    { "id": "cv-languages", "type": "cv", "title": "CV: Languages" },
+    { "id": "portfolio-home", "type": "portfolio", "title": "Home page", "route": "/" },
+    { "id": "portfolio-proj1", "type": "portfolio", "title": "Project: Internal AI-enabled Quality Engineering platform (THIQAH)", "route": "/projects", "fragment": "project-proj1" },
+    { "id": "portfolio-proj2", "type": "portfolio", "title": "Project: AI-Enabled Testing Practices", "route": "/projects", "fragment": "project-proj2" },
+    { "id": "portfolio-proj5", "type": "portfolio", "title": "Project: Custom GPTs Ecosystem for QA Support", "route": "/projects", "fragment": "project-proj5" },
+    { "id": "portfolio-achievements", "type": "portfolio", "title": "Achievements page", "route": "/achievements" },
+    { "id": "portfolio-courses", "type": "portfolio", "title": "Courses & Trainings page", "route": "/courses" },
+    { "id": "portfolio-contact", "type": "portfolio", "title": "Contact page", "route": "/contact" },
+    { "id": "portfolio-case-studies", "type": "portfolio", "title": "Case Studies", "route": "/case-studies" }
+  ],
+  "stopwords": {
+    "en": ["what", "which", "who", "whom", "whose", "is", "are", "was", "were", "be", "been", "the", "a", "an", "of", "in", "on", "at", "to", "for", "from", "with", "about", "by", "as", "does", "do", "did", "has", "have", "had", "he", "him", "his", "mahmoud", "khairy", "mr", "can", "could", "would", "should", "will", "i", "me", "my", "you", "your", "we", "our", "us", "tell", "please", "and", "or", "any", "some", "there", "this", "that", "it", "its", "how", "much", "many", "give", "show", "share", "know", "also", "want", "need", "see", "all", "list", "describe", "explain", "more"],
+    "ar": ["ما", "ماذا", "من", "هل", "هو", "هي", "في", "عن", "على", "إلى", "مع", "كيف", "محمود", "خيري", "لديه", "لدى", "عنده", "كان", "يكون", "هذا", "هذه", "ذلك", "التي", "الذي", "أو", "ثم", "أي", "ممكن", "يمكن", "يمكنني", "يمكنك", "أريد", "لو", "فضلك", "أخبرني", "أعطني", "حول", "عنه", "له", "به", "أنا", "نحن", "لنا", "لي", "كل", "بعض", "أيضا", "قد", "لقد", "تم"]
+  },
+  "concepts": [
+    { "id": "about", "terms": ["who is", "about him", "about mahmoud", "introduce", "introduction", "summary", "overview", "bio", "profile", "من هو", "نبذة", "تعريف", "عرفني", "ملخص", "خلفية"] },
+    { "id": "years", "terms": ["years", "how long", "year", "سنوات", "سنة", "سنين", "أعوام", "عام"] },
+    { "id": "career", "terms": ["career", "experience*", "work history", "employment", "positions", "progression", "worked", "journey", "previous", "companies", "background", "مسير*", "مسار مهني", "مهني*", "خبرة", "خبرات", "خبرته", "وظائف", "عمل سابق", "شركات", "عمل في"] },
+    { "id": "current", "terms": ["current*", "now", "today", "present", "presently", "these days", "حاليا", "حالي", "الآن", "اليوم"] },
+    { "id": "role", "terms": ["role", "position", "title", "job", "منصب", "وظيفة", "دور", "مسمى"] },
+    { "id": "thiqah", "terms": ["thiqah", "ثقة"] },
+    { "id": "leadership", "terms": ["lead*", "led", "managed", "managing", "people management", "team management", "mentor*", "supervis*", "team size", "how many engineers", "direct report*", "قيادة", "قاد", "يقود", "أدار", "إدارة فريق", "فريق", "مهندسين", "إشراف", "أشرف", "توجيه"] },
+    { "id": "automation", "terms": ["automat*", "framework*", "regression", "selenium", "cypress", "appium", "test script*", "ci cd", "cicd", "pipeline*", "أتمتة", "اوتوميشن", "اختبارات آلية", "اختبار آلي", "فريموورك", "أطر", "إطار", "سيلينيوم", "انحدار"] },
+    { "id": "playwright", "terms": ["playwright", "playwrite", "play wright", "بلاي رايت", "بلايرايت"] },
+    { "id": "robot", "terms": ["robot framework", "robotframework", "روبوت فريموورك", "روبوت فريم ورك"] },
+    { "id": "results", "terms": ["result*", "metric*", "impact", "outcome*", "numbers", "kpi*", "coverage", "cycle time", "efficiency", "improv*", "reduc*", "نتائج", "أرقام", "أثر", "تغطية", "مؤشرات", "كفاءة", "تحسين", "تقليل"] },
+    { "id": "testing", "terms": ["test*", "qa", "quality assurance", "quality control", "qc", "اختبار", "اختبارات", "فحص", "ضمان الجودة", "ضبط الجودة"] },
+    { "id": "quality", "terms": ["quality", "qe", "quality engineering", "جودة", "هندسة الجودة"] },
+    { "id": "strategy", "terms": ["strateg*", "test management", "test planning", "planning", "governance", "risk based", "release readiness", "go no go", "estimation", "defect triage", "quality gate*", "dashboard*", "power bi", "metabase", "استراتيجية", "إدارة الاختبار", "إدارة الاختبارات", "تخطيط", "حوكمة", "مخاطر", "جاهزية", "لوحات", "تقارير"] },
+    { "id": "ai", "terms": ["ai", "artificial intelligence", "genai", "gen ai", "generative ai", "gpt*", "ذكاء اصطناعي", "الذكاء الاصطناعي", "ذكاء"] },
+    { "id": "ai-enablement", "terms": ["enablement", "ai in testing", "ai testing", "ai for testing", "self healing", "ai locator*", "predictive test selection", "custom gpt*", "ai platform", "ai qa platform", "تمكين", "ذاتية الإصلاح", "مساعدين", "منصة ذكاء", "الذكاء الاصطناعي في الاختبار", "الذكاء الاصطناعي في الاختبارات"] },
+    { "id": "internal-platform", "terms": ["internal platform", "internal ai platform", "internal qa platform", "internal quality platform", "internal tool", "platform at thiqah", "thiqah platform", "platform he built", "منصة داخلية", "المنصة التي بناها", "منصته الداخلية", "منصة ثقة"] },
+    { "id": "llm", "terms": ["llm*", "large language model*", "language model*", "chatbot*", "chat bot*", "conversational ai", "customer service ai", "نماذج لغوية", "نموذج لغوي", "النماذج اللغوية الكبيرة", "شات بوت", "روبوت محادثة", "روبوتات المحادثة"] },
+    { "id": "evaluation", "terms": ["evaluat*", "eval", "evals", "assess*", "hallucinat*", "prompt injection", "red team*", "benchmark*", "تقييم", "قيم", "هلوسة", "حقن"] },
+    { "id": "methods", "terms": ["method*", "methodolog*", "approach*", "techniqu*", "process*", "dimension*", "personally", "rubric*", "dataset*", "how did he", "طرق", "طريقة", "منهجية", "أساليب", "أبعاد", "شخصيا", "بنفسه"] },
+    { "id": "agents", "terms": ["agent*", "agentic", "وكيل", "وكلاء", "ايجنت", "وكيلية"] },
+    { "id": "actual", "terms": ["actual", "real", "really", "production", "فعلي", "فعليين", "فعلية", "حقيقي", "حقيقية"] },
+    { "id": "suitability", "terms": ["why consider", "why should", "why hire", "suitab*", "fit", "good fit", "qualified", "strength*", "recommend*", "candidate", "hire", "hiring", "مناسب", "مناسبا", "ملاءمة", "لماذا", "نوظف", "توظيف", "مرشح", "نقاط القوة", "يصلح", "مؤهل"] },
+    { "id": "manager-role", "terms": ["qe manager", "qa manager", "quality manager", "quality engineering manager", "test manager", "head of quality", "qa lead", "quality lead", "engineering manager", "test lead", "مدير هندسة الجودة", "مدير الجودة", "مدير جودة", "مدير اختبار", "مدير الاختبارات", "رئيس الجودة", "مدير ضمان الجودة"] },
+    { "id": "product-management", "terms": ["product manag*", "product owner", "pm", "مدير منتج", "مدير المنتجات", "مدير منتجات", "إدارة المنتجات", "إدارة منتجات", "مالك المنتج", "مالك منتج"] },
+    { "id": "skills", "terms": ["skill*", "tech stack", "stack", "tools", "tool", "technolog*", "expertise", "مهار*", "أدوات", "تقنيات"] },
+    { "id": "programming", "terms": ["programming", "coding", "code", "برمجة", "كود"] },
+    { "id": "api-perf", "terms": ["api", "apis", "performance", "load test*", "اداء", "أداء", "اختبار الحمل"] },
+    { "id": "certifications", "terms": ["certif*", "istqb", "credential*", "شهاد*", "اعتماد", "معتمد"] },
+    { "id": "awards", "terms": ["award*", "recogni*", "prize", "won", "win", "hackathon*", "employee of the year", "honor*", "achievement*", "جائزة", "جوائز", "تكريم", "هاكاثون", "موظف العام", "إنجاز*", "فاز"] },
+    { "id": "case-studies", "terms": ["case stud*", "case study", "deep dive", "examples of his work", "work samples", "دراسات حالة", "دراسة حالة", "دراسات الحالة"] },
+    { "id": "qcverse", "terms": ["qcverse", "qc verse", "qcverseai", "كيو سي فيرس", "كيوسي فيرس"] },
+    { "id": "team-attribution", "terms": ["alone", "by himself", "himself", "solo", "single handed*", "on his own", "who built", "who developed", "who made", "team", "built", "developed", "created", "وحده", "بمفرده", "لوحده", "من طور", "من بنى", "فريق", "طور", "بنى", "أنشأ"] },
+    { "id": "difference", "terms": ["difference", "differ*", "vs", "versus", "compare*", "comparison", "same", "relationship", "فرق", "الفرق", "مقارنة", "مقابل", "يختلف", "نفس", "علاقة"] },
+    { "id": "products", "terms": ["product*", "venture*", "startup*", "side project*", "own business", "independent", "apps", "app", "منتج*", "مشاريع خاصة", "مشاريع مستقلة", "شركات ناشئة", "تطبيق*", "مستقل*"] },
+    { "id": "quad", "terms": ["quad insight", "quadinsight", "quad", "veticare", "vet i care", "squeak", "كواد انسايت", "كواد", "فيتيكير", "سكويك"] },
+    { "id": "blindo", "terms": ["blindo", "بليندو", "card game", "لعبة ورق", "لعبة بطاقات"] },
+    { "id": "cv", "terms": ["cv", "resume", "résumé", "curriculum vitae", "سيرة ذاتية", "السيرة الذاتية", "سيرته الذاتية", "سي في"] },
+    { "id": "download", "terms": ["download*", "pdf", "copy", "تحميل", "تنزيل", "نسخة"] },
+    { "id": "contact", "terms": ["contact*", "reach*", "call", "phone", "mobile", "number", "رقم*", "email", "e mail", "mail", "get in touch", "linkedin", "message him", "تواصل*", "أتواصل", "اتصال", "اتصل", "رقم", "هاتف", "جوال", "موبايل", "ايميل", "إيميل", "بريد", "لينكد ان", "لينكدإن", "مراسلة", "أراسل"] },
+    { "id": "whatsapp", "terms": ["whatsapp", "whats app", "واتساب", "واتس اب", "واتس"] },
+    { "id": "riyadh", "terms": ["riyadh", "saudi*", "ksa", "kingdom", "الرياض", "رياض", "سعودية", "السعودية", "المملكة"] },
+    { "id": "egypt", "terms": ["egypt*", "cairo", "مصر", "القاهرة", "مصري", "مصرية"] },
+    { "id": "location", "terms": ["where", "located", "location", "based", "live", "lives", "city", "country", "أين", "مقيم", "يقيم", "يعيش", "مدينة", "دولة", "موقع", "مكان"] },
+    { "id": "languages", "terms": ["language*", "arabic", "english", "speak*", "fluent", "fluency", "native", "لغات", "لغة", "عربي", "العربية", "انجليزي", "الإنجليزية", "يتحدث", "يتكلم"] },
+    { "id": "salary", "terms": ["salary", "salaries", "compensation", "pay", "package", "expected salary", "wage", "راتب", "راتبه", "رواتب", "تعويض", "أجر", "مرتب"] },
+    { "id": "availability", "terms": ["availab*", "notice period", "notice", "start date", "when can he start", "join", "joining", "open to", "looking for", "متاح", "متى يبدأ", "فترة إشعار", "إشعار", "الانضمام", "ينضم", "يبحث عن"] },
+    { "id": "visa", "terms": ["visa", "relocat*", "iqama", "sponsor*", "work permit", "residency", "تأشيرة", "إقامة", "كفالة", "نقل كفالة", "انتقال", "تصريح عمل"] },
+    { "id": "personal", "terms": ["age", "how old", "married", "marital", "religion", "address", "family", "children", "nationality", "birthday", "born", "date of birth", "personal", "عمر", "عمره", "متزوج", "ديانة", "دين", "عنوان", "عنوانه", "عائلة", "أطفال", "جنسية", "ميلاد", "شخصي*"] },
+    { "id": "confidential", "terms": ["client*", "vendor*", "internal system*", "architecture", "source code", "confidential", "secret*", "internal details", "عملاء", "عميل", "موردين", "مورد", "بنية", "كود المصدر", "سري*", "داخلي*"] },
+    { "id": "greeting", "terms": ["hi", "hello", "hey", "good morning", "good evening", "salam", "help", "what can you do", "مرحبا", "السلام عليكم", "سلام", "أهلا", "مساعدة", "ماذا تستطيع", "هاي"] },
+    { "id": "thanks", "terms": ["thank*", "thx", "appreciate", "شكرا", "مشكور", "يعطيك العافية"] }
+  ],
+  "entries": [
+    {
+      "id": "about",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "Who is Mahmoud Khairy?", "ar": "من هو محمود خيري؟" },
+      "variants": {
+        "en": ["Tell me about Mahmoud", "Give me a summary of his profile", "How many years of experience does he have?", "What is his background?"],
+        "ar": ["عرفني على محمود خيري", "نبذة عن محمود", "كم سنة خبرة لديه؟", "ما هي خلفيته المهنية؟"]
+      },
+      "match": { "required": [["about", "years"]], "concepts": ["about", "years", "career"], "exclude": ["contact", "cv", "quad", "qcverse", "blindo"] },
+      "answer": {
+        "en": "Mahmoud Khairy is a quality engineering leader with 10+ years in software testing and test automation. At THIQAH he progressed from Senior Quality Control Engineer to Lead Automation Testing Engineer and Staff Engineer, Quality Control Automation, and he has been AI Product Manager since Jun 2026.\nHis primary focus is Quality Engineering & Test Automation and AI Enablement & LLM Evaluation, with AI Product Management as his current role. He is based in Riyadh, Saudi Arabia.",
+        "ar": "محمود خيري قائد في هندسة الجودة لديه أكثر من 10 سنوات من الخبرة في اختبار البرمجيات وأتمتة الاختبارات. تدرّج في THIQAH من Senior Quality Control Engineer إلى Lead Automation Testing Engineer ثم Staff Engineer, Quality Control Automation، ويشغل منذ يونيو 2026 منصب AI Product Manager.\nيتركّز عمله الأساسي في هندسة الجودة وأتمتة الاختبارات، وتمكين الذكاء الاصطناعي وتقييم النماذج اللغوية الكبيرة، إلى جانب دوره الحالي في إدارة منتجات الذكاء الاصطناعي. ويقيم في الرياض، المملكة العربية السعودية."
+      },
+      "sourceIds": ["cv-summary", "portfolio-home"],
+      "links": [
+        { "label": { "en": "Experience", "ar": "الخبرات" }, "route": "/experience" },
+        { "label": { "en": "Case Studies", "ar": "دراسات الحالة" }, "route": "/case-studies" },
+        { "label": { "en": "Download CV (PDF)", "ar": "تنزيل السيرة الذاتية (PDF)" }, "action": "download-cv" }
+      ]
+    },
+    {
+      "id": "career",
+      "kind": "answer",
+      "question": { "en": "What is his career progression?", "ar": "ما هي مسيرته المهنية؟" },
+      "variants": {
+        "en": ["Where has he worked?", "What is his work experience?", "Which roles has he held?", "What companies has he worked for?"],
+        "ar": ["أين عمل محمود؟", "ما هي خبراته العملية؟", "ما هي المناصب التي شغلها؟", "في أي شركات عمل؟"]
+      },
+      "match": { "required": [["career"]], "concepts": ["career", "thiqah", "role"], "exclude": ["playwright", "robot", "automation", "llm", "agents", "evaluation", "quad", "qcverse", "years", "current", "leadership", "ai", "strategy"] },
+      "answer": {
+        "en": "Mahmoud has 10+ years in software testing and test automation, including progressive roles at THIQAH since Apr 2019:",
+        "ar": "لدى محمود أكثر من 10 سنوات من الخبرة في اختبار البرمجيات وأتمتة الاختبارات، منها أدوار متدرجة في THIQAH منذ أبريل 2019:"
+      },
+      "blocks": [{ "type": "career" }],
+      "sourceIds": ["cv-aipm", "cv-staff", "cv-lead", "cv-senior", "cv-earlier"],
+      "links": [
+        { "label": { "en": "Experience", "ar": "الخبرات" }, "route": "/experience" },
+        { "label": { "en": "Download CV (PDF)", "ar": "تنزيل السيرة الذاتية (PDF)" }, "action": "download-cv" }
+      ]
+    },
+    {
+      "id": "current-role",
+      "kind": "answer",
+      "question": { "en": "What is his current role?", "ar": "ما هو منصبه الحالي؟" },
+      "variants": {
+        "en": ["What does he do now?", "Where does he work now?", "Is he a product manager?", "What is he doing as AI Product Manager?"],
+        "ar": ["ماذا يعمل حاليا؟", "أين يعمل الآن؟", "هل هو مدير منتجات؟", "ما هي مهامه كمدير منتجات الذكاء الاصطناعي؟"]
+      },
+      "match": { "required": [["current", "product-management"]], "concepts": ["current", "role", "thiqah", "product-management", "career"], "exclude": ["availability"] },
+      "answer": {
+        "en": "Since Jun 2026, Mahmoud has been AI Product Manager at THIQAH. According to his CV, he:\n- Owns business requirements and solution design for AI-powered customer service (call center) solutions\n- Designed and executed a structured evaluation of customer-service AI to support vendor acceptance and production-readiness decisions\n- Built and validated key capabilities for an AI-assisted procurement platform\n- Built and prototyped AI agents and agentic workflows",
+        "ar": "منذ يونيو 2026 يشغل محمود منصب AI Product Manager في THIQAH. وفقًا لسيرته الذاتية:\n- يتولى متطلبات الأعمال وتصميم الحلول لحلول خدمة العملاء (مراكز الاتصال) المعتمدة على الذكاء الاصطناعي\n- صمّم ونفّذ تقييمًا منهجيًا لأنظمة الذكاء الاصطناعي لخدمة العملاء لدعم قرارات قبول الموردين والجاهزية للإنتاج\n- بنى قدرات رئيسية لمنصة مشتريات مدعومة بالذكاء الاصطناعي وتحقق منها\n- بنى نماذج أولية لوكلاء ذكاء اصطناعي وسير عمل وكيلية (agentic workflows)"
+      },
+      "sourceIds": ["cv-aipm"],
+      "links": [
+        { "label": { "en": "Experience", "ar": "الخبرات" }, "route": "/experience" },
+        { "label": { "en": "Case study: LLM & AI Agent Evaluation", "ar": "دراسة حالة: LLM & AI Agent Evaluation" }, "route": "/case-studies/llm-ai-agent-evaluation" }
+      ]
+    },
+    {
+      "id": "leadership",
+      "kind": "answer",
+      "question": { "en": "What is his leadership experience?", "ar": "ما هي خبرته في القيادة؟" },
+      "variants": {
+        "en": ["How many engineers has he led?", "Has he managed a team?", "What team size did he lead?", "Did he manage 70 people?"],
+        "ar": ["كم عدد المهندسين الذين قادهم؟", "هل أدار فريقا؟", "ما حجم الفريق الذي قاده؟", "هل أدار 70 شخصا؟"]
+      },
+      "match": { "required": [["leadership"]], "concepts": ["leadership", "quality", "automation"], "exclude": ["manager-role", "suitability", "qcverse", "quad"] },
+      "answer": {
+        "en": "Mahmoud's leadership evidence is technical leadership:\n- As Lead Automation Testing Engineer (Sep 2022 – Jan 2024), he directly led a 5-engineer automation team, owning planning, prioritization, technical standards and hands-on mentoring.\n- As Staff Engineer, Quality Control Automation (Jan 2024 – Jun 2026), he shaped automation strategy, tool and framework selection and technical standards, with technical influence across a Quality organization of ~70 engineers (seniors, leads and technical leads).",
+        "ar": "الأدلة على القيادة لدى محمود هي قيادة تقنية:\n- بصفته Lead Automation Testing Engineer (سبتمبر 2022 – يناير 2024) قاد مباشرةً فريق أتمتة من 5 مهندسين، وتولى التخطيط وتحديد الأولويات والمعايير التقنية والتوجيه العملي.\n- بصفته Staff Engineer, Quality Control Automation (يناير 2024 – يونيو 2026) شكّل استراتيجية الأتمتة واختيار الأدوات وأطر العمل والمعايير التقنية، مع تأثير تقني على منظمة جودة تضم نحو 70 مهندسًا (مهندسين أوائل وقادة وقادة تقنيين)."
+      },
+      "caveat": {
+        "en": "The ~70 figure is the size of the organization he influenced, not a team he managed. The portfolio doesn't describe formal people-management or HR responsibilities.",
+        "ar": "رقم الـ 70 يمثل حجم المنظمة التي أثّر فيها تقنيًا، وليس فريقًا كان يديره. ولا يصف الملف إدارة موظفين رسمية أو مسؤوليات موارد بشرية."
+      },
+      "sourceIds": ["cv-lead", "cv-staff"],
+      "links": [
+        { "label": { "en": "Case study: Quality Engineering & Automation Leadership", "ar": "دراسة حالة: Quality Engineering & Automation Leadership" }, "route": "/case-studies/quality-engineering-automation-leadership", "fragment": "role" },
+        { "label": { "en": "Experience", "ar": "الخبرات" }, "route": "/experience" }
+      ]
+    },
+    {
+      "id": "test-automation",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "What is his experience with Playwright and Robot Framework?", "ar": "ما هي خبرته في Playwright وRobot Framework؟" },
+      "variants": {
+        "en": ["What is his test automation experience?", "Which automation frameworks has he used?", "Does he know Selenium or Cypress?", "What results did he achieve in test automation?", "How big was his regression suite?"],
+        "ar": ["ما هي خبرته في أتمتة الاختبارات؟", "ما أطر الأتمتة التي استخدمها؟", "هل يعرف Selenium أو Cypress؟", "ما نتائجه في أتمتة الاختبارات؟", "ما حجم حزمة اختبارات الانحدار؟"]
+      },
+      "match": { "required": [["automation", "playwright", "robot"]], "concepts": ["automation", "playwright", "robot", "results", "testing", "tool", "career"], "exclude": ["qcverse", "ai-enablement", "llm"] },
+      "answer": {
+        "en": "Test automation is Mahmoud's core specialty. According to his CV:\n- As Lead Automation Testing Engineer, he designed and evolved web and mobile automation frameworks using Robot Framework, Playwright, Cypress and Appium, reducing test cycle time by 30% across 10+ projects.\n- He scaled the automated regression suite to 2,000+ tests with 95% functional coverage, running through CI/CD pipelines with scheduled execution.\n- As Staff Engineer, he shaped technical standards including mandatory CI/CD pipeline integration and scheduled execution, and introduced self-healing scripts, AI locators and predictive test selection.\n- His automation toolkit also includes Selenium WebDriver, Applitools, Katalon Studio, Testim and BrowserStack, and he holds the Testim Specialist certification (Jan 2023).",
+        "ar": "أتمتة الاختبارات هي تخصص محمود الأساسي. وفقًا لسيرته الذاتية:\n- بصفته Lead Automation Testing Engineer صمّم وطوّر أطر أتمتة للويب والجوال باستخدام Robot Framework وPlaywright وCypress وAppium، ما خفّض زمن دورة الاختبار بنسبة 30% عبر أكثر من 10 مشاريع.\n- وسّع حزمة اختبارات الانحدار المؤتمتة إلى أكثر من 2,000 اختبار بتغطية وظيفية 95%، تعمل عبر خطوط CI/CD مع تنفيذ مجدول.\n- بصفته Staff Engineer شكّل معايير تقنية تشمل الدمج الإلزامي في خطوط CI/CD والتنفيذ المجدول، وأدخل السكربتات ذاتية الإصلاح ومحددات العناصر بالذكاء الاصطناعي واختيار الاختبارات التنبؤي.\n- تشمل أدواته أيضًا Selenium WebDriver وApplitools وKatalon Studio وTestim وBrowserStack، ويحمل شهادة Testim Specialist (يناير 2023)."
+      },
+      "caveat": {
+        "en": "Figures are as reported in his CV for the named suite and projects. The 95% is functional coverage, not code coverage.",
+        "ar": "الأرقام كما وردت في سيرته الذاتية للحزمة والمشاريع المذكورة، ونسبة 95% هي تغطية وظيفية وليست تغطية كود."
+      },
+      "sourceIds": ["cv-lead", "cv-staff", "cv-skills", "cv-certifications", "portfolio-proj9"],
+      "links": [
+        { "label": { "en": "Case study: Quality Engineering & Automation Leadership", "ar": "دراسة حالة: Quality Engineering & Automation Leadership" }, "route": "/case-studies/quality-engineering-automation-leadership" },
+        { "label": { "en": "Project: Automation Framework Modernization", "ar": "مشروع: Automation Framework Modernization" }, "route": "/projects", "fragment": "project-proj9" },
+        { "label": { "en": "Skills", "ar": "المهارات" }, "route": "/skills" }
+      ]
+    },
+    {
+      "id": "test-strategy",
+      "kind": "answer",
+      "question": { "en": "What is his test strategy and test management experience?", "ar": "ما هي خبرته في استراتيجية الاختبار وإدارة الاختبارات؟" },
+      "variants": {
+        "en": ["Has he done test planning?", "Does he do risk-based testing?", "How does he handle release readiness and go/no-go decisions?", "Has he built quality dashboards?"],
+        "ar": ["هل قام بتخطيط الاختبارات؟", "هل لديه خبرة في الاختبار المبني على المخاطر؟", "كيف يتعامل مع جاهزية الإطلاق؟", "هل بنى لوحات معلومات للجودة؟"]
+      },
+      "match": { "required": [["strategy"]], "concepts": ["strategy", "quality", "testing", "leadership"], "exclude": ["manager-role", "suitability", "llm"] },
+      "answer": {
+        "en": "As Staff Engineer, Quality Control Automation, Mahmoud led test strategy and planning across multiple projects, including estimation, risk-based testing, defect triage, release-readiness assessment, CI/CD quality gates and stakeholder reporting to support go/no-go decisions.\nHe also built Power BI and Metabase dashboards tracking automation coverage, defect rates, execution speed and ROI, and contributed to technical evaluations of testing platforms (e.g., Katalon, Testim, mabl, BrowserStack) for build-vs-buy decisions. He is ISTQB Advanced Level – Test Manager certified (Jan 2025).",
+        "ar": "بصفته Staff Engineer, Quality Control Automation قاد محمود استراتيجية الاختبار والتخطيط عبر مشاريع متعددة، بما في ذلك التقدير والاختبار المبني على المخاطر وفرز العيوب وتقييم الجاهزية للإطلاق وبوابات الجودة في CI/CD ورفع التقارير لأصحاب المصلحة لدعم قرارات الإطلاق (go/no-go).\nكما بنى لوحات معلومات في Power BI وMetabase لمتابعة تغطية الأتمتة ومعدلات العيوب وسرعة التنفيذ والعائد على الاستثمار، وساهم في التقييمات التقنية لمنصات الاختبار (مثل Katalon وTestim وmabl وBrowserStack) لدعم قرارات البناء أو الشراء. ويحمل شهادة ISTQB Advanced Level – Test Manager (يناير 2025)."
+      },
+      "caveat": {
+        "en": "Tool-evaluation outcomes and internal THIQAH details are not published.",
+        "ar": "نتائج تقييم الأدوات والتفاصيل الداخلية لـ THIQAH غير منشورة."
+      },
+      "sourceIds": ["cv-staff", "cv-certifications", "portfolio-proj6"],
+      "links": [
+        { "label": { "en": "Case study: Key decisions", "ar": "دراسة الحالة: القرارات الرئيسية" }, "route": "/case-studies/quality-engineering-automation-leadership", "fragment": "decisions" },
+        { "label": { "en": "Certifications & training", "ar": "الشهادات والتدريب" }, "route": "/courses" }
+      ]
+    },
+    {
+      "id": "ai-enablement",
+      "kind": "answer",
+      "question": { "en": "How has he used AI in testing?", "ar": "كيف استخدم الذكاء الاصطناعي في الاختبارات؟" },
+      "variants": {
+        "en": ["What is his AI enablement experience?", "What internal AI platform did he build at THIQAH?", "Has he built AI tools for QA engineers?", "What custom GPTs did he build?"],
+        "ar": ["ما هي خبرته في تمكين الذكاء الاصطناعي؟", "ما هي المنصة الداخلية التي بناها في THIQAH؟", "هل بنى أدوات ذكاء اصطناعي لمهندسي الجودة؟", "ما هي مساعدات GPT التي بناها؟"]
+      },
+      "match": { "required": [["ai-enablement", "internal-platform", "ai"]], "concepts": ["ai", "ai-enablement", "internal-platform", "testing", "results"], "exclude": ["qcverse", "agents", "product-management"] },
+      "answer": {
+        "en": "Mahmoud brought AI into quality engineering at THIQAH. According to his CV:\n- He built an internal AI-enabled Quality Engineering platform at THIQAH, integrated with Azure DevOps and GPT-based workflows; it was adopted by 5 teams (~20 QC engineers) and improved testing efficiency by 40%.\n- He introduced self-healing scripts, AI locators and predictive test selection.\n- He built 5 custom GPT assistants for QA engineers covering test design and SQL/Python automation support.\n- He launched Test League (a gamified learning program) and QC Tube (a knowledge hub), later expanded to Development teams, to accelerate automation and AI adoption.",
+        "ar": "أدخل محمود الذكاء الاصطناعي في هندسة الجودة في THIQAH. وفقًا لسيرته الذاتية:\n- بنى منصة داخلية لهندسة الجودة مدعومة بالذكاء الاصطناعي في THIQAH، مدمجة مع Azure DevOps وسير عمل قائمة على GPT، واعتمدتها 5 فرق (نحو 20 مهندس ضبط جودة) وحسّنت كفاءة الاختبار بنسبة 40%.\n- أدخل السكربتات ذاتية الإصلاح ومحددات العناصر بالذكاء الاصطناعي واختيار الاختبارات التنبؤي.\n- بنى 5 مساعدين مخصصين (Custom GPTs) لمهندسي الجودة يغطون تصميم الاختبارات ودعم الأتمتة بـ SQL وPython.\n- أطلق برنامج Test League (برنامج تعلّم قائم على التلعيب) ومنصة QC Tube (مركز معرفي)، وتوسّعا لاحقًا إلى فرق التطوير لتسريع تبنّي الأتمتة والذكاء الاصطناعي."
+      },
+      "caveat": {
+        "en": "This is an internal THIQAH initiative; its name and internal details are not published. The 40% figure is as reported in his CV for the teams that adopted it.",
+        "ar": "هذه مبادرة داخلية في THIQAH، ولا يُنشر اسمها أو تفاصيلها الداخلية. ونسبة 40% كما وردت في سيرته الذاتية للفرق التي اعتمدتها."
+      },
+      "sourceIds": ["cv-staff", "portfolio-proj1", "portfolio-proj2", "portfolio-proj5", "portfolio-proj3", "portfolio-proj4"],
+      "links": [
+        { "label": { "en": "THIQAH initiatives (Projects)", "ar": "مبادرات THIQAH (المشاريع)" }, "route": "/projects" }
+      ]
+    },
+    {
+      "id": "llm-evaluation",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "What is his LLM evaluation experience?", "ar": "ما هي خبرته في تقييم النماذج اللغوية الكبيرة؟" },
+      "variants": {
+        "en": ["Has he evaluated chatbots?", "How does he evaluate customer-service AI?", "Tell me about his LLM evaluation work", "Does he test LLMs for hallucination and prompt injection?"],
+        "ar": ["هل قيّم روبوتات المحادثة؟", "كيف يقيّم أنظمة الذكاء الاصطناعي لخدمة العملاء؟", "حدثني عن عمله في تقييم النماذج اللغوية", "هل يختبر النماذج اللغوية للهلوسة وحقن الأوامر؟"]
+      },
+      "match": { "required": [["llm", "evaluation", "ai"]], "concepts": ["llm", "evaluation", "ai", "results"], "exclude": ["methods", "agents", "internal-platform", "ai-enablement", "product-management", "confidential", "current"] },
+      "answer": {
+        "en": "As AI Product Manager at THIQAH, Mahmoud designed and executed a structured evaluation of customer-service AI across nine dimensions: correctness, relevance, task completion, hallucination, safety, prompt-injection resistance, privacy/PII handling, multilingual comprehension and conversational robustness.\nHe used repeatable test scenarios and human review to support vendor acceptance and production-readiness decisions.",
+        "ar": "بصفته AI Product Manager في THIQAH، صمّم محمود ونفّذ تقييمًا منهجيًا لأنظمة الذكاء الاصطناعي لخدمة العملاء عبر تسعة أبعاد: الصحة، والملاءمة، وإنجاز المهمة، والهلوسة، والسلامة، ومقاومة حقن الأوامر (prompt injection)، والتعامل مع الخصوصية والبيانات الشخصية، وفهم اللغات المتعددة، ومتانة المحادثة.\nواستخدم سيناريوهات اختبار قابلة للتكرار مع مراجعة بشرية لدعم قرارات قبول الموردين والجاهزية للإنتاج."
+      },
+      "caveat": {
+        "en": "Vendor names, evaluation findings and scores are internal and not published.",
+        "ar": "أسماء الموردين ونتائج التقييم والدرجات داخلية وغير منشورة."
+      },
+      "sourceIds": ["cv-aipm"],
+      "links": [
+        { "label": { "en": "Case study: LLM & AI Agent Evaluation", "ar": "دراسة حالة: LLM & AI Agent Evaluation" }, "route": "/case-studies/llm-ai-agent-evaluation" }
+      ]
+    },
+    {
+      "id": "llm-methods",
+      "kind": "answer",
+      "question": { "en": "Which LLM evaluation methods did he personally use?", "ar": "ما هي أساليب تقييم النماذج اللغوية التي استخدمها شخصيًا؟" },
+      "variants": {
+        "en": ["How did he evaluate the LLM?", "What evaluation approach did he follow?", "Did he use scoring rubrics or datasets?", "Did he use DeepEval or Promptfoo in production?"],
+        "ar": ["كيف قيّم النموذج اللغوي؟", "ما منهجية التقييم التي اتبعها؟", "هل استخدم معايير تقييم أو مجموعات بيانات؟", "هل استخدم DeepEval أو Promptfoo في الإنتاج؟"]
+      },
+      "match": { "required": [["methods", "tool"], ["llm", "evaluation", "ai"]], "concepts": ["methods", "llm", "evaluation", "tool", "actual"], "exclude": ["agents"] },
+      "answer": {
+        "en": "What he personally did, according to his CV: designed repeatable test scenarios, executed them against the customer-service AI under evaluation, evaluated nine quality dimensions and used human review.\nThe LLM & AI Agent Evaluation case study also describes general evaluation practice (versioned evaluation datasets, scoring rubrics, regression evaluation and result interpretation), labelled as general methodology rather than steps he is claimed to have used. Tools such as DeepEval, Ragas, Promptfoo and LangSmith are listed in his CV as hands-on exploration, not as tools used in that evaluation.",
+        "ar": "ما قام به شخصيًا وفقًا لسيرته الذاتية: صمّم سيناريوهات اختبار قابلة للتكرار، ونفّذها على نظام الذكاء الاصطناعي لخدمة العملاء محل التقييم، وقيّم تسعة أبعاد للجودة، واستخدم المراجعة البشرية.\nكما تعرض دراسة الحالة «LLM & AI Agent Evaluation» ممارسات تقييم عامة (مجموعات بيانات تقييم بإصدارات، ومعايير تقييم، وتقييم الانحدار، وتفسير النتائج)، وهي مصنّفة كمنهجية عامة وليست خطوات يُنسب إليه استخدامها. أما أدوات مثل DeepEval وRagas وPromptfoo وLangSmith فهي مذكورة في سيرته الذاتية كتجربة عملية (hands-on exploration)، وليست أدوات استُخدمت في ذلك التقييم."
+      },
+      "sourceIds": ["cv-aipm", "cv-skills"],
+      "links": [
+        { "label": { "en": "Case study: Approach and Methodology", "ar": "دراسة الحالة: المنهجية" }, "route": "/case-studies/llm-ai-agent-evaluation", "fragment": "approach" }
+      ]
+    },
+    {
+      "id": "ai-agents",
+      "kind": "answer",
+      "question": { "en": "Has Mahmoud evaluated actual AI agents?", "ar": "هل قيّم محمود وكلاء ذكاء اصطناعي فعليين؟" },
+      "variants": {
+        "en": ["What is his experience with AI agents?", "Has he built AI agents?", "Does he have agentic AI experience?", "Has he tested AI agents?"],
+        "ar": ["ما هي خبرته مع وكلاء الذكاء الاصطناعي؟", "هل بنى وكلاء ذكاء اصطناعي؟", "هل لديه خبرة في الذكاء الاصطناعي الوكيلي؟", "هل اختبر وكلاء ذكاء اصطناعي؟"]
+      },
+      "match": { "required": [["agents"]], "concepts": ["agents", "evaluation", "actual", "ai", "llm"], "exclude": ["qcverse"] },
+      "answer": {
+        "en": "His CV describes two related things:\n- He designed and executed a structured evaluation of customer-service AI, including task completion and conversational robustness.\n- Separately, he built and prototyped AI agents and agentic workflows, designed prompt strategies and validated solution concepts using AI-assisted development tools.\nHe also won 2nd place at the Elm Hackathon (Dec 2025) with team Agent X.",
+        "ar": "تصف سيرته الذاتية أمرين مرتبطين:\n- صمّم ونفّذ تقييمًا منهجيًا لأنظمة الذكاء الاصطناعي لخدمة العملاء، شمل إنجاز المهمة ومتانة المحادثة.\n- وبشكل منفصل، بنى نماذج أولية لوكلاء ذكاء اصطناعي وسير عمل وكيلية، وصمّم استراتيجيات للأوامر (prompts)، وتحقق من مفاهيم الحلول باستخدام أدوات التطوير المدعومة بالذكاء الاصطناعي.\nكما حصل على المركز الثاني في هاكاثون Elm (ديسمبر 2025) مع فريق Agent X."
+      },
+      "caveat": {
+        "en": "The portfolio doesn't state whether the customer-service AI he evaluated was an agent-based system, and it doesn't publish vendor or evaluation details.",
+        "ar": "لا يذكر الملف ما إذا كان نظام خدمة العملاء الذي قيّمه قائمًا على وكلاء ذكاء اصطناعي، ولا ينشر تفاصيل الموردين أو التقييم."
+      },
+      "sourceIds": ["cv-aipm", "cv-awards"],
+      "links": [
+        { "label": { "en": "Case study: LLM & AI Agent Evaluation", "ar": "دراسة حالة: LLM & AI Agent Evaluation" }, "route": "/case-studies/llm-ai-agent-evaluation" },
+        { "label": { "en": "Achievements", "ar": "الإنجازات" }, "route": "/achievements" }
+      ]
+    },
+    {
+      "id": "role-qe-manager",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "Why consider Mahmoud for a Quality Engineering Manager role?", "ar": "لماذا نعتبر محمود مناسبًا لمنصب مدير هندسة الجودة؟" },
+      "variants": {
+        "en": ["Why should we hire Mahmoud?", "Is he suitable for a QA Manager or Test Manager role?", "What are his strengths for a quality leadership role?", "Is he a good fit for Head of Quality?"],
+        "ar": ["لماذا نوظف محمود؟", "هل هو مناسب لمنصب مدير الجودة أو مدير الاختبارات؟", "ما نقاط قوته لدور قيادي في الجودة؟", "هل يصلح لمنصب رئيس الجودة؟"]
+      },
+      "match": { "required": [["suitability", "manager-role"]], "concepts": ["suitability", "manager-role", "leadership", "quality", "strategy"], "exclude": ["salary", "availability", "visa"] },
+      "answer": {
+        "en": "Whether he fits a specific role is for your hiring team to judge, but the portfolio's evidence for a Quality Engineering leadership role includes:\n- 10+ years in software testing and test automation\n- Directly led a 5-engineer automation team (planning, prioritization, technical standards and mentoring)\n- Shaped automation strategy and technical standards, with technical influence across a ~70-engineer Quality organization\n- Led test strategy and planning across multiple projects, including risk-based testing, release-readiness assessment and go/no-go reporting\n- Built quality dashboards and enablement programs (Test League, QC Tube)\n- ISTQB Advanced Level – Test Manager (Jan 2025) and Employee of the Year 2024 (THIQAH Quality Team)",
+        "ar": "تقييم مدى ملاءمته لدور محدد يعود لفريق التوظيف لديكم، لكن أدلة الملف على ملاءمته لأدوار قيادة هندسة الجودة تشمل:\n- أكثر من 10 سنوات في اختبار البرمجيات وأتمتة الاختبارات\n- قاد مباشرةً فريق أتمتة من 5 مهندسين (التخطيط وتحديد الأولويات والمعايير التقنية والتوجيه)\n- شكّل استراتيجية الأتمتة والمعايير التقنية، مع تأثير تقني على منظمة جودة تضم نحو 70 مهندسًا\n- قاد استراتيجية الاختبار والتخطيط عبر مشاريع متعددة، بما في ذلك الاختبار المبني على المخاطر وتقييم الجاهزية للإطلاق وتقارير قرارات الإطلاق\n- بنى لوحات معلومات للجودة وبرامج تمكين (Test League وQC Tube)\n- شهادة ISTQB Advanced Level – Test Manager (يناير 2025) وجائزة موظف العام 2024 (فريق الجودة في THIQAH)"
+      },
+      "caveat": {
+        "en": "The evidence shows technical leadership; the portfolio doesn't describe formal people-management or HR responsibilities.",
+        "ar": "تُظهر الأدلة قيادة تقنية، ولا يصف الملف إدارة موظفين رسمية أو مسؤوليات موارد بشرية."
+      },
+      "sourceIds": ["cv-summary", "cv-lead", "cv-staff", "cv-certifications", "cv-awards"],
+      "links": [
+        { "label": { "en": "Case study: Quality Engineering & Automation Leadership", "ar": "دراسة حالة: Quality Engineering & Automation Leadership" }, "route": "/case-studies/quality-engineering-automation-leadership" },
+        { "label": { "en": "Download CV (PDF)", "ar": "تنزيل السيرة الذاتية (PDF)" }, "action": "download-cv" },
+        { "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }
+      ]
+    },
+    {
+      "id": "skills",
+      "kind": "answer",
+      "question": { "en": "What are his technical skills?", "ar": "ما هي مهاراته التقنية؟" },
+      "variants": {
+        "en": ["What tools does he use?", "What is his tech stack?", "Does he know JMeter?", "Does he have API and performance testing experience?", "What programming languages does he know?"],
+        "ar": ["ما الأدوات التي يستخدمها؟", "ما هي التقنيات التي يعرفها؟", "هل يعرف JMeter؟", "هل لديه خبرة في اختبار API والأداء؟", "ما لغات البرمجة التي يعرفها؟"]
+      },
+      "match": { "required": [["skills", "tool", "api-perf", "programming"]], "concepts": ["skills", "tool", "api-perf", "programming"], "exclude": ["certifications", "qcverse", "ai-enablement"] },
+      "answer": {
+        "en": "His technical skills, as listed in his CV and on the Skills page, are below. Tools under Hands-on Exploration are listed as exploration, not production use.\nFor API and performance testing in practice: as Senior Quality Control Engineer he owned test design and performance testing for 15+ government projects, reducing post-release defects by 30%.",
+        "ar": "مهاراته التقنية كما وردت في سيرته الذاتية وصفحة المهارات موضحة أدناه، والأدوات المدرجة تحت Hands-on Exploration هي تجربة عملية وليست استخدامًا في بيئة الإنتاج.\nوفي اختبار API والأداء عمليًا: بصفته Senior Quality Control Engineer تولى تصميم الاختبارات واختبار الأداء لأكثر من 15 مشروعًا حكوميًا، ما قلّل العيوب بعد الإطلاق بنسبة 30%."
+      },
+      "blocks": [{ "type": "skills" }],
+      "sourceIds": ["cv-skills", "cv-senior", "portfolio-skills"],
+      "links": [
+        { "label": { "en": "Skills", "ar": "المهارات" }, "route": "/skills" }
+      ]
+    },
+    {
+      "id": "certifications",
+      "kind": "answer",
+      "question": { "en": "What certifications does he hold?", "ar": "ما هي شهاداته المهنية؟" },
+      "variants": {
+        "en": ["Is he ISTQB certified?", "Which certificates does he have?", "What are his credentials?"],
+        "ar": ["هل هو حاصل على شهادة ISTQB؟", "ما الشهادات التي يحملها؟", "ما هي اعتماداته المهنية؟"]
+      },
+      "match": { "required": [["certifications"]], "concepts": ["certifications", "testing"], "exclude": ["cv", "awards"] },
+      "answer": {
+        "en": "His certifications, as listed in his CV:",
+        "ar": "شهاداته كما وردت في سيرته الذاتية:"
+      },
+      "blocks": [{ "type": "certifications" }],
+      "sourceIds": ["cv-certifications", "portfolio-courses"],
+      "links": [
+        { "label": { "en": "Certifications & training", "ar": "الشهادات والتدريب" }, "route": "/courses" }
+      ]
+    },
+    {
+      "id": "awards",
+      "kind": "answer",
+      "question": { "en": "What awards and recognition has he received?", "ar": "ما الجوائز والتكريمات التي حصل عليها؟" },
+      "variants": {
+        "en": ["Has he won any awards?", "What hackathons has he taken part in?", "What are his achievements?"],
+        "ar": ["هل فاز بجوائز؟", "في أي هاكاثونات شارك؟", "ما هي إنجازاته؟"]
+      },
+      "match": { "required": [["awards"]], "concepts": ["awards", "thiqah"], "exclude": ["results", "automation"] },
+      "answer": {
+        "en": "Recognition listed in his CV:",
+        "ar": "التكريمات الواردة في سيرته الذاتية:"
+      },
+      "blocks": [{ "type": "achievements", "ids": ["ach1", "ach2", "ach3"] }],
+      "sourceIds": ["cv-awards", "portfolio-achievements"],
+      "links": [
+        { "label": { "en": "Achievements", "ar": "الإنجازات" }, "route": "/achievements" }
+      ]
+    },
+    {
+      "id": "case-studies",
+      "kind": "answer",
+      "question": { "en": "Which case studies are available?", "ar": "ما هي دراسات الحالة المتاحة؟" },
+      "variants": {
+        "en": ["Show me his case studies", "Do you have examples of his work?", "Where can I read a deep dive on his work?"],
+        "ar": ["أرني دراسات الحالة", "هل توجد أمثلة على عمله؟", "أين أقرأ تفاصيل أعمق عن عمله؟"]
+      },
+      "match": { "required": [["case-studies"]], "concepts": ["case-studies"] },
+      "answer": {
+        "en": "Three evidence-based case studies show his work in more depth. Each statement in them is labelled with its evidence:",
+        "ar": "تعرض ثلاث دراسات حالة قائمة على الأدلة عمله بتعمق أكبر، وكل عبارة فيها مصنّفة حسب مصدر الدليل:"
+      },
+      "blocks": [{ "type": "case-studies" }],
+      "sourceIds": ["portfolio-case-studies"],
+      "links": [
+        { "label": { "en": "All case studies", "ar": "جميع دراسات الحالة" }, "route": "/case-studies" }
+      ]
+    },
+    {
+      "id": "qcverse",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "What is QCVerse?", "ar": "ما هو QCVerse؟" },
+      "variants": {
+        "en": ["Tell me about QCVerse", "What does QCVerse do?", "Is QCVerse a THIQAH product?"],
+        "ar": ["حدثني عن QCVerse", "ماذا يقدم QCVerse؟", "هل QCVerse منتج تابع لـ THIQAH؟"]
+      },
+      "match": { "required": [["qcverse"]], "concepts": ["qcverse", "products", "thiqah"], "exclude": ["internal-platform", "team-attribution"] },
+      "answer": {
+        "en": "QCVerse is an independent AI-powered Quality Engineering and Test Automation product, built collaboratively by the QCVerse Team. Mahmoud has been its Founder & Product Owner since May 2026. It is not a THIQAH initiative.\nAccording to its public website, its tools cover requirement analysis, AI-generated test-case drafts with requirement coverage analysis, automation script generation for Playwright, Robot Framework and Selenium, and AI-assisted bug reports, with generated output treated as drafts for human review.",
+        "ar": "QCVerse منتج مستقل لهندسة الجودة وأتمتة الاختبارات مدعوم بالذكاء الاصطناعي، يطوّره فريق QCVerse بشكل تعاوني. ويشغل محمود منصب المؤسس ومالك المنتج (Founder & Product Owner) منذ مايو 2026. وهو ليس مبادرة تابعة لـ THIQAH.\nوفقًا لموقعه العام، تغطي أدواته تحليل المتطلبات، ومسودات حالات اختبار مولّدة بالذكاء الاصطناعي مع تحليل تغطية المتطلبات، وتوليد سكربتات أتمتة لـ Playwright وRobot Framework وSelenium، وتقارير أخطاء بمساعدة الذكاء الاصطناعي، مع التعامل مع المخرجات المولّدة كمسودات تتطلب مراجعة بشرية."
+      },
+      "sourceIds": ["cv-qcverse", "portfolio-ventures", "qcverse-home", "qcverse-about"],
+      "links": [
+        { "label": { "en": "Case study: QCVerse Product Development", "ar": "دراسة حالة: QCVerse Product Development" }, "route": "/case-studies/qcverse-product-development" },
+        { "label": { "en": "Products & Ventures", "ar": "المنتجات والمشاريع المستقلة" }, "route": "/ventures" },
+        { "label": { "en": "qcverseai.com", "ar": "qcverseai.com" }, "url": "https://www.qcverseai.com/" }
+      ]
+    },
+    {
+      "id": "qcverse-team",
+      "kind": "answer",
+      "question": { "en": "Was QCVerse developed by Mahmoud alone?", "ar": "هل طوّر محمود QCVerse وحده؟" },
+      "variants": {
+        "en": ["Who built QCVerse?", "Did he build QCVerse by himself?", "What was his role in QCVerse?", "Who is on the QCVerse team?"],
+        "ar": ["من طوّر QCVerse؟", "هل بنى QCVerse بمفرده؟", "ما هو دوره في QCVerse؟", "من هو فريق QCVerse؟"]
+      },
+      "match": { "required": [["qcverse"], ["team-attribution", "role"]], "concepts": ["qcverse", "team-attribution", "role"] },
+      "answer": {
+        "en": "No. QCVerse is built collaboratively by the QCVerse Team, with decisions and work shared across the team. Mahmoud's responsibilities as Founder & Product Owner are product direction, requirements and prioritization, product design decisions, and hands-on development and validation.\nThe product's capabilities and design choices are presented as team work, not as his individual achievements.",
+        "ar": "لا. يطوّر فريق QCVerse المنتج بشكل تعاوني، مع تقاسم القرارات والعمل بين أعضاء الفريق. وتشمل مسؤوليات محمود بصفته المؤسس ومالك المنتج: توجيه المنتج، والمتطلبات وتحديد الأولويات، وقرارات تصميم المنتج، والتطوير العملي والتحقق.\nوتُعرض قدرات المنتج وخيارات تصميمه كعمل جماعي للفريق، وليس كإنجازات فردية له."
+      },
+      "sourceIds": ["portfolio-ventures", "qcverse-about"],
+      "links": [
+        { "label": { "en": "Case study: My role and team", "ar": "دراسة الحالة: دوره والفريق" }, "route": "/case-studies/qcverse-product-development", "fragment": "role" }
+      ]
+    },
+    {
+      "id": "internal-platform-vs-qcverse",
+      "kind": "answer",
+      "question": { "en": "Is QCVerse the same as the platform he built at THIQAH?", "ar": "هل QCVerse هو نفسه المنصة التي بناها في THIQAH؟" },
+      "variants": {
+        "en": ["What is the difference between his internal THIQAH platform and QCVerse?", "Internal THIQAH platform vs QCVerse", "How is QCVerse related to his internal platform at THIQAH?"],
+        "ar": ["ما الفرق بين منصته الداخلية في THIQAH وQCVerse؟", "مقارنة بين المنصة الداخلية في THIQAH وQCVerse", "ما العلاقة بين QCVerse والمنصة الداخلية في THIQAH؟"]
+      },
+      "match": { "required": [["internal-platform"], ["qcverse"]], "concepts": ["difference", "internal-platform", "qcverse"] },
+      "answer": {
+        "en": "They are separate:\n- At THIQAH, Mahmoud built an internal AI-enabled Quality Engineering platform, integrated with Azure DevOps and GPT-based workflows and adopted by 5 teams (~20 QC engineers).\n- QCVerse is an independent AI-powered Quality Engineering product, not affiliated with THIQAH, built by the QCVerse Team, with Mahmoud as Founder & Product Owner since May 2026.",
+        "ar": "هما منتجان منفصلان:\n- في THIQAH، بنى محمود منصة داخلية لهندسة الجودة مدعومة بالذكاء الاصطناعي، مدمجة مع Azure DevOps وسير عمل قائمة على GPT، واعتمدتها 5 فرق (نحو 20 مهندس ضبط جودة).\n- QCVerse منتج مستقل لهندسة الجودة مدعوم بالذكاء الاصطناعي، غير تابع لـ THIQAH، يطوّره فريق QCVerse، ويشغل محمود فيه منصب المؤسس ومالك المنتج منذ مايو 2026."
+      },
+      "caveat": {
+        "en": "The THIQAH platform is internal, so its name, architecture and internal details are not published.",
+        "ar": "منصة THIQAH داخلية، لذا فإن اسمها وبنيتها وتفاصيلها الداخلية غير منشورة."
+      },
+      "sourceIds": ["cv-staff", "portfolio-proj1", "cv-qcverse", "portfolio-ventures"],
+      "links": [
+        { "label": { "en": "THIQAH initiatives (Projects)", "ar": "مبادرات THIQAH (المشاريع)" }, "route": "/projects" },
+        { "label": { "en": "Case study: QCVerse Product Development", "ar": "دراسة حالة: QCVerse Product Development" }, "route": "/case-studies/qcverse-product-development" }
+      ]
+    },
+    {
+      "id": "products",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "What products has he worked on?", "ar": "ما المنتجات التي عمل عليها؟" },
+      "variants": {
+        "en": ["Does he have his own products or ventures?", "What startups is he involved in?", "Which apps has he built?"],
+        "ar": ["هل لديه منتجات أو مشاريع مستقلة؟", "ما الشركات الناشئة التي يشارك فيها؟", "ما التطبيقات التي بناها؟"]
+      },
+      "match": { "required": [["products"]], "concepts": ["products", "career"], "exclude": ["qcverse", "quad", "blindo", "internal-platform", "product-management"] },
+      "answer": {
+        "en": "His independent products and ventures, separate from his THIQAH role, are listed below. At THIQAH he also built an internal AI-enabled Quality Engineering platform and, as AI Product Manager, built and validated key capabilities for an AI-assisted procurement platform.",
+        "ar": "منتجاته ومشاريعه المستقلة، المنفصلة عن عمله في THIQAH، موضحة أدناه. كما بنى في THIQAH منصة داخلية لهندسة الجودة مدعومة بالذكاء الاصطناعي، وبصفته AI Product Manager بنى قدرات رئيسية لمنصة مشتريات مدعومة بالذكاء الاصطناعي وتحقق منها."
+      },
+      "blocks": [{ "type": "ventures", "ids": ["qcverse", "quad-insight", "blindo"] }],
+      "sourceIds": ["portfolio-ventures", "cv-qcverse", "cv-quad-insight", "cv-staff", "cv-aipm"],
+      "links": [
+        { "label": { "en": "Products & Ventures", "ar": "المنتجات والمشاريع المستقلة" }, "route": "/ventures" },
+        { "label": { "en": "Case study: QCVerse Product Development", "ar": "دراسة حالة: QCVerse Product Development" }, "route": "/case-studies/qcverse-product-development" }
+      ]
+    },
+    {
+      "id": "quad-insight",
+      "kind": "answer",
+      "question": { "en": "What is Quad Insight?", "ar": "ما هي Quad Insight؟" },
+      "variants": {
+        "en": ["Tell me about Quad Insight", "What are VetICare and Squeak?", "What is his role in Quad Insight?"],
+        "ar": ["حدثني عن Quad Insight", "ما هما VetICare وSqueak؟", "ما دوره في Quad Insight؟"]
+      },
+      "match": { "required": [["quad"]], "concepts": ["quad", "products", "role"] },
+      "answer": {
+        "en": "Quad Insight is an independent product venture, not affiliated with THIQAH. Since Jan 2024, Mahmoud has been its Co-owner & Product Manager (remote, part-time). He leads the Quad Insight team behind VetICare (B2B software for veterinary clinics) and Squeak (a pet-owner mobile app), and led mobile quality validation for Squeak across multiple production builds through App Store release.",
+        "ar": "Quad Insight مشروع منتجات مستقل وغير تابع لـ THIQAH. ويشغل محمود منذ يناير 2024 منصب الشريك المالك ومدير المنتج (Co-owner & Product Manager) عن بُعد وبدوام جزئي. ويقود فريق Quad Insight الذي يطوّر VetICare (برنامج B2B للعيادات البيطرية) وSqueak (تطبيق جوال لأصحاب الحيوانات الأليفة)، وقاد التحقق من جودة تطبيق Squeak عبر عدة إصدارات إنتاجية حتى إطلاقه على App Store."
+      },
+      "blocks": [{ "type": "ventures", "ids": ["quad-insight"] }],
+      "sourceIds": ["cv-quad-insight", "portfolio-ventures"],
+      "links": [
+        { "label": { "en": "Products & Ventures", "ar": "المنتجات والمشاريع المستقلة" }, "route": "/ventures" }
+      ]
+    },
+    {
+      "id": "blindo",
+      "kind": "answer",
+      "question": { "en": "What is BLINDO?", "ar": "ما هو BLINDO؟" },
+      "variants": {
+        "en": ["Tell me about BLINDO", "Is BLINDO launched?"],
+        "ar": ["حدثني عن BLINDO", "هل تم إطلاق BLINDO؟"]
+      },
+      "match": { "required": [["blindo"]], "concepts": ["blindo", "products"] },
+      "answer": {
+        "en": "BLINDO is an original card-game product idea, not affiliated with THIQAH. Mahmoud is its Creator & Product Owner. It is a concept and has not been launched; the portfolio includes it as an example of independent product thinking and ownership.",
+        "ar": "BLINDO فكرة منتج أصلية للعبة ورق، غير تابعة لـ THIQAH، ومحمود هو مبتكرها ومالك المنتج (Creator & Product Owner). وهي ما تزال فكرة لم تُطلق بعد، ويعرضها الملف كمثال على التفكير المستقل في المنتجات وامتلاكها."
+      },
+      "blocks": [{ "type": "ventures", "ids": ["blindo"] }],
+      "sourceIds": ["portfolio-ventures"],
+      "links": [
+        { "label": { "en": "Products & Ventures", "ar": "المنتجات والمشاريع المستقلة" }, "route": "/ventures" }
+      ]
+    },
+    {
+      "id": "cv",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "Can I download his CV?", "ar": "هل يمكنني تنزيل سيرته الذاتية؟" },
+      "variants": {
+        "en": ["Where is his resume?", "Send me his CV", "Download CV PDF"],
+        "ar": ["أين سيرته الذاتية؟", "أريد السيرة الذاتية", "تحميل السيرة الذاتية PDF"]
+      },
+      "match": { "required": [["cv"]], "concepts": ["cv", "download"] },
+      "answer": {
+        "en": "Yes. You can download his CV (PDF) below. It covers his experience, skills, certifications and ventures.",
+        "ar": "نعم، يمكنك تنزيل سيرته الذاتية (PDF) من الرابط أدناه، وهي تشمل خبراته ومهاراته وشهاداته ومشاريعه المستقلة."
+      },
+      "sourceIds": ["portfolio-home"],
+      "links": [
+        { "label": { "en": "Download CV (PDF)", "ar": "تنزيل السيرة الذاتية (PDF)" }, "action": "download-cv" },
+        { "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }
+      ]
+    },
+    {
+      "id": "contact-riyadh",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "How can I contact him for a Riyadh-based role?", "ar": "كيف أتواصل معه بخصوص وظيفة في الرياض؟" },
+      "variants": {
+        "en": ["What is his Saudi phone number?", "Contact for a role in Saudi Arabia", "How do I call him in KSA?"],
+        "ar": ["ما هو رقمه السعودي؟", "التواصل بخصوص وظيفة في السعودية", "كيف أتصل به في المملكة؟"]
+      },
+      "match": { "required": [["contact", "whatsapp", "role"], ["riyadh"]], "concepts": ["contact", "riyadh", "role", "whatsapp"], "exclude": ["egypt"] },
+      "answer": {
+        "en": "For Riyadh or other Saudi-based roles, call his Saudi number. You can also email him or connect on LinkedIn. His WhatsApp is on his Egyptian number.",
+        "ar": "للأدوار في الرياض أو داخل المملكة العربية السعودية، يمكنك الاتصال برقمه السعودي، أو مراسلته عبر البريد الإلكتروني أو التواصل عبر LinkedIn. أما واتساب فعلى رقمه المصري."
+      },
+      "blocks": [{ "type": "contact", "channels": ["riyadh", "email", "linkedin", "whatsapp"] }],
+      "sourceIds": ["portfolio-contact"],
+      "links": [
+        { "label": { "en": "Contact page", "ar": "صفحة التواصل" }, "route": "/contact" }
+      ]
+    },
+    {
+      "id": "contact-egypt",
+      "kind": "answer",
+      "suggested": true,
+      "question": { "en": "Can I reach him via WhatsApp for an Egypt-based opportunity?", "ar": "هل يمكنني التواصل معه عبر واتساب لفرصة في مصر؟" },
+      "variants": {
+        "en": ["What is his Egyptian phone number?", "Contact for a role in Cairo", "What is his WhatsApp number?"],
+        "ar": ["ما هو رقمه المصري؟", "التواصل بخصوص وظيفة في القاهرة", "ما رقم الواتساب؟"]
+      },
+      "match": { "required": [["contact", "whatsapp", "role"], ["egypt"]], "concepts": ["contact", "whatsapp", "egypt", "role"], "exclude": ["riyadh"] },
+      "answer": {
+        "en": "Yes. For Egypt-based opportunities, use his Egyptian number, which is also on WhatsApp. You can also email him.",
+        "ar": "نعم. للفرص في مصر، استخدم رقمه المصري، وهو متاح أيضًا على واتساب، ويمكنك كذلك مراسلته عبر البريد الإلكتروني."
+      },
+      "blocks": [{ "type": "contact", "channels": ["egypt", "whatsapp", "email"] }],
+      "sourceIds": ["portfolio-contact"],
+      "links": [
+        { "label": { "en": "Contact page", "ar": "صفحة التواصل" }, "route": "/contact" }
+      ]
+    },
+    {
+      "id": "contact-general",
+      "kind": "answer",
+      "question": { "en": "How can I contact Mahmoud?", "ar": "كيف أتواصل مع محمود؟" },
+      "variants": {
+        "en": ["What is his email?", "Where is he based?", "What is his phone number?", "What is his LinkedIn?"],
+        "ar": ["ما هو بريده الإلكتروني؟", "أين يقيم؟", "ما رقم هاتفه؟", "ما حسابه على LinkedIn؟"]
+      },
+      "match": { "required": [["contact", "whatsapp", "location"]], "concepts": ["contact", "whatsapp", "location"], "exclude": ["cv"] },
+      "answer": {
+        "en": "Mahmoud is based in Riyadh, Saudi Arabia. Use the Saudi number for Riyadh or other Saudi-based roles, and the Egyptian number or WhatsApp for Egypt-based opportunities:",
+        "ar": "يقيم محمود في الرياض، المملكة العربية السعودية. استخدم الرقم السعودي للأدوار في الرياض أو داخل المملكة، والرقم المصري أو واتساب للفرص في مصر:"
+      },
+      "blocks": [{ "type": "contact", "channels": ["riyadh", "egypt", "whatsapp", "email", "linkedin"] }],
+      "sourceIds": ["portfolio-contact"],
+      "links": [
+        { "label": { "en": "Contact page", "ar": "صفحة التواصل" }, "route": "/contact" }
+      ]
+    },
+    {
+      "id": "languages",
+      "kind": "answer",
+      "question": { "en": "Which languages does he speak?", "ar": "ما اللغات التي يتحدثها؟" },
+      "variants": {
+        "en": ["Does he speak Arabic and English?", "Is he fluent in English?"],
+        "ar": ["هل يتحدث العربية والإنجليزية؟", "هل يجيد الإنجليزية؟"]
+      },
+      "match": { "required": [["languages"]], "concepts": ["languages"], "exclude": ["programming", "skills"] },
+      "answer": {
+        "en": "According to his CV: Arabic (native) and English (professional working proficiency).",
+        "ar": "وفقًا لسيرته الذاتية: العربية (اللغة الأم) والإنجليزية (كفاءة عمل مهنية)."
+      },
+      "sourceIds": ["cv-languages"],
+      "links": [
+        { "label": { "en": "Download CV (PDF)", "ar": "تنزيل السيرة الذاتية (PDF)" }, "action": "download-cv" }
+      ]
+    },
+    {
+      "id": "not-covered-salary",
+      "kind": "not-covered",
+      "question": { "en": "What are his salary expectations?", "ar": "ما هو راتبه المتوقع؟" },
+      "variants": { "en": ["How much does he earn?", "What is his expected compensation?"], "ar": ["كم راتبه؟", "ما التعويض المتوقع؟"] },
+      "match": { "required": [["salary"]], "concepts": ["salary"] },
+      "answer": {
+        "en": "The portfolio doesn't include salary expectations or compensation details. Please contact Mahmoud directly to discuss them.",
+        "ar": "لا يتضمن الملف توقعات الراتب أو تفاصيل التعويض. يُرجى التواصل مع محمود مباشرةً لمناقشتها."
+      },
+      "sourceIds": [],
+      "links": [{ "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }]
+    },
+    {
+      "id": "not-covered-availability",
+      "kind": "not-covered",
+      "question": { "en": "When is he available to start?", "ar": "متى يمكنه البدء؟" },
+      "variants": { "en": ["What is his notice period?", "Is he available for new roles?", "Is he open to new opportunities?"], "ar": ["ما فترة الإشعار؟", "هل هو متاح لفرص جديدة؟"] },
+      "match": { "required": [["availability"]], "concepts": ["availability", "current"], "exclude": ["case-studies", "cv", "skills", "certifications", "products", "qcverse", "quad", "blindo"] },
+      "answer": {
+        "en": "The portfolio doesn't state his availability, notice period or start date. Please contact Mahmoud directly to discuss them.",
+        "ar": "لا يذكر الملف مدى توفره أو فترة الإشعار أو تاريخ البدء. يُرجى التواصل مع محمود مباشرةً لمناقشة ذلك."
+      },
+      "sourceIds": [],
+      "links": [{ "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }]
+    },
+    {
+      "id": "not-covered-visa",
+      "kind": "not-covered",
+      "question": { "en": "Does he need a visa or relocation?", "ar": "هل يحتاج إلى تأشيرة أو نقل؟" },
+      "variants": { "en": ["Can he relocate?", "Does he need sponsorship?"], "ar": ["هل يمكنه الانتقال؟", "هل يحتاج إلى نقل كفالة؟"] },
+      "match": { "required": [["visa"]], "concepts": ["visa"] },
+      "answer": {
+        "en": "The portfolio doesn't cover visa, residency or relocation details. Please contact Mahmoud directly to discuss them.",
+        "ar": "لا يغطي الملف تفاصيل التأشيرة أو الإقامة أو الانتقال. يُرجى التواصل مع محمود مباشرةً لمناقشتها."
+      },
+      "sourceIds": [],
+      "links": [{ "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }]
+    },
+    {
+      "id": "not-covered-personal",
+      "kind": "not-covered",
+      "question": { "en": "Can you share personal details about him?", "ar": "هل يمكنك مشاركة معلومات شخصية عنه؟" },
+      "variants": { "en": ["How old is he?", "Is he married?", "What is his home address?"], "ar": ["كم عمره؟", "هل هو متزوج؟", "ما عنوانه؟"] },
+      "match": { "required": [["personal"]], "concepts": ["personal"], "exclude": ["contact"] },
+      "answer": {
+        "en": "This guide only covers professional information published on the portfolio. Personal details such as age, family or home address aren't included.",
+        "ar": "يغطي هذا الدليل المعلومات المهنية المنشورة في الملف فقط، ولا يتضمن معلومات شخصية مثل العمر أو العائلة أو عنوان السكن."
+      },
+      "sourceIds": [],
+      "links": [{ "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }]
+    },
+    {
+      "id": "not-covered-confidential",
+      "kind": "not-covered",
+      "question": { "en": "Which clients or vendors did he work with?", "ar": "مع أي عملاء أو موردين عمل؟" },
+      "variants": { "en": ["What is THIQAH's internal architecture?", "Which vendors did he evaluate?", "Can you share internal system details?"], "ar": ["ما هي البنية الداخلية لأنظمة THIQAH؟", "ما الموردون الذين قيّمهم؟"] },
+      "match": { "required": [["confidential"]], "concepts": ["confidential", "thiqah", "evaluation"] },
+      "answer": {
+        "en": "Internal THIQAH systems, clients, source code and vendor evaluation details are confidential and not published on this portfolio. The case studies describe his work at a level that is safe to share.",
+        "ar": "الأنظمة الداخلية لـ THIQAH وعملاؤها والكود المصدري وتفاصيل تقييم الموردين سرية وغير منشورة في هذا الملف، وتصف دراسات الحالة عمله بالقدر الذي يمكن مشاركته."
+      },
+      "sourceIds": [],
+      "links": [{ "label": { "en": "Case Studies", "ar": "دراسات الحالة" }, "route": "/case-studies" }]
+    },
+    {
+      "id": "greeting",
+      "kind": "system",
+      "question": { "en": "Hello", "ar": "مرحبا" },
+      "variants": { "en": ["Hi", "What can you do?", "Help"], "ar": ["السلام عليكم", "ماذا تستطيع أن تفعل؟", "مساعدة"] },
+      "match": { "required": [["greeting"]], "concepts": [] },
+      "answer": {
+        "en": "Hello! I'm a portfolio guide. I answer common questions about Mahmoud's experience, skills, case studies, products and contact details using prepared answers from this portfolio. Try a suggested question or type your own.",
+        "ar": "أهلًا! أنا دليل لهذا الملف المهني، أجيب عن الأسئلة الشائعة حول خبرات محمود ومهاراته ودراسات الحالة ومنتجاته وطرق التواصل معه، من خلال إجابات مُعدّة من الملف. جرّب أحد الأسئلة المقترحة أو اكتب سؤالك."
+      },
+      "sourceIds": [],
+      "links": []
+    },
+    {
+      "id": "thanks",
+      "kind": "system",
+      "question": { "en": "Thank you", "ar": "شكرا" },
+      "variants": { "en": ["Thanks", "Thanks a lot"], "ar": ["شكرا جزيلا", "مشكور"] },
+      "match": { "required": [["thanks"]], "concepts": [] },
+      "answer": {
+        "en": "You're welcome! Is there anything else you'd like to know?",
+        "ar": "على الرحب والسعة! هل هناك شيء آخر تود معرفته؟"
+      },
+      "sourceIds": [],
+      "links": []
+    }
+  ],
+  "ui": {
+    "fallback": {
+      "en": "I couldn't match that to the prepared answers in this portfolio, so I won't guess. Try one of these questions or browse the related pages.",
+      "ar": "لم أتمكن من مطابقة سؤالك مع الإجابات المُعدّة في هذا الملف، لذلك لن أخمّن. جرّب أحد هذه الأسئلة أو تصفّح الصفحات ذات الصلة."
+    },
+    "clarify": {
+      "en": "Your question could match more than one topic. Which one did you mean?",
+      "ar": "قد يتعلق سؤالك بأكثر من موضوع. أيّها تقصد؟"
+    },
+    "fallbackLinks": [
+      { "label": { "en": "Experience", "ar": "الخبرات" }, "route": "/experience" },
+      { "label": { "en": "Case Studies", "ar": "دراسات الحالة" }, "route": "/case-studies" },
+      { "label": { "en": "Skills", "ar": "المهارات" }, "route": "/skills" },
+      { "label": { "en": "Contact", "ar": "التواصل" }, "route": "/contact" }
+    ]
+  }
+}

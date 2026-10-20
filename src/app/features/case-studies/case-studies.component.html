@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <app-page-header
+    title="Case Studies"
+    subtitle="Evidence-based write-ups of my quality engineering, LLM evaluation and product work"
+    icon="fas fa-book-open" />
+
+  <p class="case-studies-intro">
+    <i class="fas fa-info-circle" aria-hidden="true"></i>
+    Each statement is labelled with its evidence: my CV, this portfolio, or a product's public website.
+    General methodology and synthetic examples are labelled as such, and unverified or confidential details are left out.
+  </p>
+
+  @if (caseStudies(); as caseStudyData) {
+    <ul class="case-study-list">
+      @for (study of caseStudyData.caseStudies; track study.id) {
+        <li class="case-study-card">
+          <span class="case-study-kind">{{ study.organization }}</span>
+          <h2 class="case-study-title">
+            <a [routerLink]="['/case-studies', study.slug]">{{ study.title }}</a>
+          </h2>
+          <div class="case-study-meta">
+            <span><i class="fas fa-user-tie" aria-hidden="true"></i>{{ study.role }}</span>
+            <span><i class="fas fa-calendar-alt" aria-hidden="true"></i>{{ study.period }}</span>
+          </div>
+          <p class="case-study-summary">{{ study.summary }}</p>
+          <ul class="case-study-tags" aria-label="Topics">
+            @for (tag of study.tags; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+          <a class="case-study-link" [routerLink]="['/case-studies', study.slug]" [attr.aria-label]="'Read the case study: ' + study.title">
+            Read the case study <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading case studies...</p>
+    </div>
+  }
+</div>

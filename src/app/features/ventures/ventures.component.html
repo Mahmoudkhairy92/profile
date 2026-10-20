@@ -1,0 +1,104 @@
+<div class="container py-5">
+  <app-page-header
+    title="Products & Ventures"
+    subtitle="Independent products I lead or co-own, separate from my role at THIQAH"
+    icon="fas fa-lightbulb" />
+
+  @if (ventures(); as ventureData) {
+    <div class="ventures-list">
+      @for (venture of ventureData.ventures; track venture.id) {
+        <article class="venture-card" [id]="'venture-' + venture.id">
+          <header class="venture-header">
+            <div class="venture-title-row">
+              <h2 class="venture-name">{{ venture.name }}</h2>
+              @if (venture.status) {
+                <span class="venture-status">{{ venture.status }}</span>
+              }
+            </div>
+            <div class="venture-type">{{ venture.type }}</div>
+            <div class="venture-meta">
+              <span><i class="fas fa-user-tie"></i>{{ venture.role }}</span>
+              <span><i class="fas fa-calendar-alt"></i>Since {{ venture.startDate }}</span>
+              @if (venture.engagement) {
+                <span><i class="fas fa-clock"></i>{{ venture.engagement }}</span>
+              }
+            </div>
+            <div class="venture-affiliation">
+              <i class="fas fa-info-circle"></i>{{ venture.affiliation }}
+            </div>
+          </header>
+
+          <p class="venture-summary">{{ venture.summary }}</p>
+
+          <div class="venture-sections">
+            <section class="venture-section">
+              <h3 class="venture-section-title">My contributions</h3>
+              <ul class="venture-items">
+                @for (item of venture.myContributions; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+              @if (venture.team) {
+                <p class="venture-team"><i class="fas fa-users"></i>{{ venture.team }}</p>
+              }
+            </section>
+
+            @if (venture.capabilities?.length) {
+              <section class="venture-section">
+                <h3 class="venture-section-title">Capabilities</h3>
+                <ul class="venture-items">
+                  @for (capability of venture.capabilities; track capability) {
+                    <li>{{ capability }}</li>
+                  }
+                </ul>
+              </section>
+            }
+
+            @if (venture.products?.length) {
+              <section class="venture-section">
+                <h3 class="venture-section-title">Products</h3>
+                @for (product of venture.products; track product.name) {
+                  <div class="venture-product">
+                    <div class="venture-product-name">{{ product.name }}</div>
+                    <p class="venture-product-description">{{ product.description }}</p>
+                    @for (link of product.links ?? []; track link.url) {
+                      <a class="venture-link" [href]="link.url" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>{{ link.label }}
+                      </a>
+                    }
+                  </div>
+                }
+              </section>
+            }
+          </div>
+
+          @for (note of venture.notes ?? []; track note) {
+            <p class="venture-note"><i class="fas fa-info-circle"></i>{{ note }}</p>
+          }
+
+          @if (venture.links?.length || venture.caseStudy) {
+            <div class="venture-links">
+              @for (link of venture.links ?? []; track link.url) {
+                <a class="venture-link primary" [href]="link.url" target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-external-link-alt"></i>{{ link.label }}
+                </a>
+              }
+              @if (venture.caseStudy) {
+                <a class="venture-link" [routerLink]="['/case-studies', venture.caseStudy.slug]">
+                  <i class="fas fa-book-open"></i>Case study: {{ venture.caseStudy.title }}
+                </a>
+              }
+            </div>
+          }
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading products and ventures...</p>
+    </div>
+  }
+</div>

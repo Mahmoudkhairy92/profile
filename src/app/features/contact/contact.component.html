@@ -7,7 +7,7 @@
         <i class="fas fa-paper-plane hero-icon"></i>
       </div>
       <h1 class="display-3 fw-bold mb-3 text-white hero-title">Let's Connect</h1>
-      <p class="lead text-white-50 mb-4 hero-subtitle">
+      <p class="lead mb-4 hero-subtitle">
         I'm always open to discussing new opportunities, innovative projects, and creative collaborations
       </p>
       <div class="hero-decorative-line"></div>
@@ -112,6 +112,7 @@
               <a 
                 [href]="social.url" 
                 target="_blank" 
+                rel="noopener noreferrer"
                 class="social-card glass-card"
                 [class]="'social-card-' + social.platform.toLowerCase()">
                 <div class="social-card-icon">
@@ -119,7 +120,7 @@
                     <i [class]="getSocialIcon(social.platform)"></i>
                   }
                 </div>
-                <h5 class="social-card-title">{{ social.platform }}</h5>
+                <h3 class="social-card-title">{{ social.platform }}</h3>
                 <div class="social-card-arrow">
                   <i class="fas fa-arrow-right"></i>
                 </div>

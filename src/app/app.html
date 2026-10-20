@@ -1,7 +1,7 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" data-fixed-header>
   <div class="container">
-    <a class="navbar-brand" routerLink="/profile">
+    <a class="navbar-brand" routerLink="/">
       <i class="fas fa-user-circle me-2"></i>
       <span class="brand-text">{{ title }}</span>
     </a>
@@ -24,7 +24,8 @@
               class="nav-link" 
               [routerLink]="item.path"
               routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: item.path === '/profile' }"
+              ariaCurrentWhenActive="page"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
               (click)="collapseNavbar()">
               <i [class]="item.icon"></i>
               <span class="nav-text">{{ item.label }}</span>
@@ -36,43 +37,25 @@
   </div>
 </nav>
 
-<!-- In Progress Banner -->
-@if (showInProgressBanner()) {
-  <div class="in-progress-banner">
-    <div class="container">
-      <div class="banner-content">
-        <div class="banner-icon">
-          <i class="fas fa-tools"></i>
-        </div>
-        <div class="banner-text">
-          <strong>Work in Progress</strong>
-          <span class="separator">•</span>
-          <span>This portfolio is currently under development. Some features may be incomplete or subject to change.</span>
-        </div>
-        <button 
-          class="banner-close" 
-          (click)="dismissInProgressBanner()"
-          aria-label="Dismiss banner">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-}
-
 <!-- Main Content -->
-<main class="main-content" [class.with-banner]="showInProgressBanner()">
+<main class="main-content">
   <router-outlet></router-outlet>
 </main>
 
 <!-- Scroll to Top Button -->
-<button 
-  class="scroll-to-top" 
+<button
+  class="scroll-to-top"
   [class.show]="showScrollTop"
+  [class.above-ask]="askEnabled"
   (click)="scrollToTop()"
   aria-label="Scroll to top">
   <i class="fas fa-arrow-up"></i>
 </button>
+
+<!-- "Ask About Mahmoud" portfolio guide (client-side, loads on first open) -->
+@if (askEnabled) {
+  <app-ask-launcher />
+}
 
 <!-- Footer -->
 <footer class="footer">
@@ -118,7 +101,7 @@
         <div class="footer-section">
           <h6 class="footer-title">Connect</h6>
           <div class="footer-social">
-            <a [href]="linkedinUrl()" target="_blank" class="social-link" title="LinkedIn">
+            <a [href]="linkedinUrl()" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn" aria-label="LinkedIn">
               <i class="fab fa-linkedin"></i>
             </a>
           </div>

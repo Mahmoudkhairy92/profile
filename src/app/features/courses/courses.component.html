@@ -13,7 +13,7 @@
               <i class="fas fa-graduation-cap"></i>
             </div>
             <div class="course-header-info">
-              <h3 class="course-title">{{ course.title }}</h3>
+              <h2 class="course-title">{{ course.title }}</h2>
               <div class="course-provider">{{ course.provider }}</div>
             </div>
           </div>
@@ -30,10 +30,12 @@
           }
           
           <div class="course-meta">
-            <span class="meta-item">
-              <i class="fas fa-calendar-check"></i>
-              {{ course.completionDate }}
-            </span>
+            @if (course.completionDate) {
+              <span class="meta-item">
+                <i class="fas fa-calendar-check"></i>
+                {{ course.completionDate }}
+              </span>
+            }
             @if (course.duration) {
               <span class="meta-item">
                 <i class="fas fa-clock"></i>
@@ -44,7 +46,7 @@
           
           @if (course.skills && course.skills.length > 0) {
             <div class="section">
-              <h6 class="section-title">Skills Acquired</h6>
+              <h3 class="section-title">Skills Acquired</h3>
               <div class="skills-list">
                 @for (skill of course.skills; track skill) {
                   <span class="skill-badge">{{ skill }}</span>

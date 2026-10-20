@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import html2canvas from 'html2canvas';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +12,8 @@ export class ScreenshotService {
    */
   async captureElement(element: HTMLElement, filename?: string): Promise<string> {
     try {
+      // Downloaded only when a screenshot is taken
+      const { default: html2canvas } = await import('html2canvas');
       const canvas = await html2canvas(element, {
         backgroundColor: '#0a192f',
         scale: 2, // Higher quality

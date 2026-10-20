@@ -8,20 +8,14 @@ import { Skill } from '../models';
 @Injectable({ providedIn: 'root' })
 export class SkillIconService {
   private readonly categoryIcons: Record<string, string> = {
-    'Leadership & People Management': 'fas fa-users-cog',
-    'Communication & Collaboration': 'fas fa-comments',
-    'Professional & Cognitive Skills': 'fas fa-brain',
-    'Project & Delivery Management': 'fas fa-tasks',
-    'Methodologies & Frameworks': 'fas fa-project-diagram',
-    'Software Engineering & Architecture': 'fas fa-sitemap',
-    'Frontend Technologies': 'fas fa-palette',
-    'Backend, DevOps & Cloud': 'fas fa-server',
-    'Data & Analytics': 'fas fa-chart-line',
-    'Tools & Platforms': 'fas fa-tools',
-    'AI & Emerging Technologies': 'fas fa-robot',
-    'Security & Authentication': 'fas fa-shield-alt',
-    'Languages': 'fas fa-language',
-    'Personal Interests & Wellness': 'fas fa-heart'
+    'Test Automation': 'fas fa-cogs',
+    'AI in Testing & GenAI': 'fas fa-brain',
+    'API & Performance Testing': 'fas fa-tachometer-alt',
+    'CI/CD & Test Management': 'fas fa-code-branch',
+    'Languages & Data': 'fas fa-database',
+    'AI-Assisted Development': 'fas fa-laptop-code',
+    'Hands-on Exploration (LLM Evaluation & Agents)': 'fas fa-flask',
+    'Core Competencies': 'fas fa-compass'
   };
 
   /** Skill name (exact or normalized) -> Font Awesome icon class */
@@ -144,6 +138,11 @@ export class SkillIconService {
    * Returns the Font Awesome icon class for a skill.
    * Uses skill.icon if set, then skill name lookup, then category icon, then 'fas fa-check'.
    */
+  /** Icon for a skill category heading. */
+  getCategoryIcon(category: string): string {
+    return this.categoryIcons[category] ?? 'fas fa-code';
+  }
+
   getSkillIcon(skill: Skill, category?: string): string {
     if (skill.icon) {
       return skill.icon;

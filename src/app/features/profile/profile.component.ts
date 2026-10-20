@@ -2,13 +2,15 @@ import { Component, OnInit, ChangeDetectionStrategy, inject, signal, computed } 
 import { Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ConfigDataService, PdfExportService, FileDownloadService, SkillIconService } from '../../core/services';
-import { Achievement, Skill, SkillData } from '../../core/models';
-import { ExperienceCardComponent } from '../../shared/components';
+import { Achievement, Skill } from '../../core/models';
+
+/** Number of skill categories shown on the home page (in skills.json order). */
+const HOME_SKILL_CATEGORY_COUNT = 5;
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink, ExperienceCardComponent],
+  imports: [RouterLink],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -37,44 +39,20 @@ export class ProfileComponent implements OnInit {
   readonly achievements = this.configService.achievements;
   readonly projects = this.configService.projects;
   readonly contact = this.configService.contact;
+  readonly ventures = this.configService.ventures;
   
   isExporting = signal(false);
 
-  /**
-   * Sorted skills with categories sorted (technical first) and skills sorted within each category
-   */
-  readonly sortedSkills = computed<SkillData | null>(() => {
-    const skillsData = this.skills();
-    if (!skillsData) return null;
-
-    // Process each category: sort skills and then sort categories
-    const processedCategories = skillsData.categories.map(cat => ({
-      category: cat.category,
-      skills: [...cat.skills].sort((a, b) => {
-        // First sort by level (descending - higher levels first)
-        if (b.level !== a.level) {
-          return b.level - a.level;
-        }
-        // If same level, sort alphabetically by name
-        return a.name.localeCompare(b.name);
-      })
-    }));
-
-    // Sort categories: technical first, then others
-    const sortedCategories = processedCategories.sort((a, b) => {
-      const aIsTechnical = this.isTechnicalCategory(a.category);
-      const bIsTechnical = this.isTechnicalCategory(b.category);
-      
-      if (aIsTechnical && !bIsTechnical) return -1;
-      if (!aIsTechnical && bIsTechnical) return 1;
-      // Keep original order within same group
-      return 0;
-    });
-
-    return {
-      categories: sortedCategories
-    };
-  });
+  /** Curated selections for the home page; the full lists live on their own pages. */
+  readonly featuredProjects = computed(() => this.projects()?.projects.filter(project => project.featured) ?? []);
+  readonly featuredVentures = computed(() => this.ventures()?.ventures.filter(venture => venture.featured) ?? []);
+  readonly featuredAchievements = computed(
+    () => this.achievements()?.achievements.filter(achievement => achievement.featured) ?? []
+  );
+  readonly homeSkillCategories = computed(
+    () => this.skills()?.categories.slice(0, HOME_SKILL_CATEGORY_COUNT) ?? []
+  );
+  readonly caseStudies = computed(() => this.configService.caseStudies()?.caseStudies ?? []);
 
   ngOnInit(): void {
     this.configService.loadProfile();
@@ -83,6 +61,8 @@ export class ProfileComponent implements OnInit {
     this.configService.loadAchievements();
     this.configService.loadProjects();
     this.configService.loadContact();
+    this.configService.loadVentures();
+    this.configService.loadCaseStudies();
   }
 
   async exportToPdf(): Promise<void> {
@@ -110,16 +90,6 @@ export class ProfileComponent implements OnInit {
     return iconMap[category] || 'fas fa-award';
   }
 
-  public getCategoryLabel(category: string): string {
-    const labelMap: Record<string, string> = {
-      'award': 'Award',
-      'certification': 'Certification',
-      'recognition': 'Recognition',
-      'milestone': 'Milestone'
-    };
-    return labelMap[category] || category;
-  }
-
   public getAchievementsByCategory(achievements: Achievement[], category: string): Achievement[] {
     return achievements.filter(a => a.category === category);
   }
@@ -134,44 +104,9 @@ export class ProfileComponent implements OnInit {
   }
 
   /**
-   * Gets the skill level category (beginner, intermediate, expert)
+   * Font Awesome icon for a skill (explicit icon, name lookup, then category fallback).
    */
   getSkillIcon(skill: Skill, category: string): string {
     return this.skillIconService.getSkillIcon(skill, category);
   }
-
-  public getSkillLevelCategory(level: number): 'beginner' | 'intermediate' | 'strong' {
-    if (level >= 1 && level <= 3) return 'beginner';
-    if (level >= 4 && level <= 6) return 'intermediate';
-    if (level >= 7 && level <= 9) return 'strong';
-    return 'beginner'; // fallback
-  }
-
-  /**
-   * Gets the skill level label
-   */
-  public getSkillLevelLabel(level: number): string {
-    if (level >= 1 && level <= 3) return 'Beginner';
-    if (level >= 4 && level <= 6) return 'Intermediate';
-    if (level >= 7 && level <= 9) return 'Expert';
-    return '';
-  }
-
-  /**
-   * Checks if a category is a technical section
-   */
-  private isTechnicalCategory(category: string): boolean {
-    const technicalCategories = [
-      'Methodologies & Frameworks',
-      'Software Engineering & Architecture',
-      'Frontend Technologies',
-      'Backend, DevOps & Cloud',
-      'Data & Analytics',
-      'Tools & Platforms',
-      'AI & Emerging Technologies',
-      'Security & Authentication'
-    ];
-    return technicalCategories.includes(category);
-  }
 }
-

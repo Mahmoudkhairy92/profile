@@ -15,9 +15,9 @@
         class="company-logo" />
     }
     <div class="exp-header-main">
-      <h3 class="timeline-content-title">{{ experience.position }}</h3>
+      <h2 class="timeline-content-title">{{ experience.position }}</h2>
       <div class="timeline-content-company">
-        <h4 class="company-name">
+        <h3 class="company-name">
           @if (experience.companyWebsite) {
             <a
               [href]="experience.companyWebsite"
@@ -29,7 +29,7 @@
           } @else {
             {{ experience.company }}
           }
-        </h4>
+        </h3>
       </div>
       @if (experience.location) {
         <div class="timeline-content-location">
@@ -49,7 +49,7 @@
 
   @if (showResponsibilities && experience.responsibilities.length) {
     <div class="section">
-      <h6 class="section-title">Key Responsibilities</h6>
+      <h4 class="section-title">Key Responsibilities</h4>
       <ul class="simple-list">
         @for (responsibility of experience.responsibilities; track responsibility) {
           <li>{{ responsibility }}</li>
@@ -60,7 +60,7 @@
 
   @if (showAchievements && experience.achievements.length) {
     <div class="section">
-      <h6 class="section-title">Achievements</h6>
+      <h4 class="section-title">Achievements</h4>
       <ul class="simple-list">
         @for (achievement of experience.achievements; track achievement) {
           <li>{{ achievement }}</li>
@@ -75,6 +75,12 @@
         <span class="tech-badge">{{ tech }}</span>
       }
     </div>
+  }
+
+  @if (experience.caseStudy) {
+    <a class="btn-see-details" [routerLink]="['/case-studies', experience.caseStudy.slug]">
+      Case study: {{ experience.caseStudy.title }} <i class="fas fa-arrow-right"></i>
+    </a>
   }
 
   @if (showDetailsLink) {

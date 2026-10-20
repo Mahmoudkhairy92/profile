@@ -6,6 +6,7 @@
   justify-content: center;
   padding: 2rem;
   position: relative;
+  --focus-ring-color: #64ffda;
 }
 
 .game-wrapper {
@@ -39,7 +40,7 @@
     min-width: 100px;
 
     .score-label {
-      color: #8892b0;
+      color: #a8b2d1; // 5.6:1 on the score panel (#8892b0 was 3.7:1)
       font-size: 0.875rem;
       margin-bottom: 0.25rem;
     }
@@ -162,6 +163,7 @@
 
     .tech-icon {
       font-size: 2rem;
+      color: #ccd6f6; // monochrome emoji fallbacks stay readable on the dark card
     }
 
     .tech-name {
@@ -178,7 +180,8 @@
     }
 
     .rarity-badge {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #5a67d8 0%, #764ba2 100%);
+      color: white; // rarity label: 4.8:1 or more
       padding: 0.25rem 0.75rem;
       border-radius: 12px;
       font-size: 0.75rem;
@@ -210,7 +213,7 @@
 // Overlays
 .overlay {
   position: fixed;
-  top: 0;
+  top: var(--app-navbar-height); // dialogs open below the fixed navbar
   left: 0;
   right: 0;
   bottom: 0;
@@ -218,16 +221,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1025; // modal: above the floating launcher, back-to-top and portfolio guide panel, below the navbar
   animation: fadeIn 0.3s ease-out;
-  padding: 1rem;
+  padding: 1rem 1rem 6rem; // the bottom space keeps dialog actions clear of the floating assistant launcher
 }
 
 .modal-content {
-  padding: 3rem;
+  --modal-padding-bottom: 3rem;
+  padding: 3rem 3rem var(--modal-padding-bottom);
   max-width: 600px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 100%;
   overflow-y: auto;
   animation: scaleIn 0.3s ease-out;
 
@@ -249,10 +253,19 @@
     color: #ccd6f6;
     margin-bottom: 2rem;
 
-    h3 {
+    h2 {
       color: #64ffda;
       margin-top: 1.5rem;
       margin-bottom: 1rem;
+      // Section headings (h2 for a correct outline) keep the size they had as h3;
+      // phones use the smaller size set in the max-width: 768px block below
+      @media (min-width: 769px) {
+        font-size: calc(1.3rem + 0.6vw);
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 1.75rem;
+      }
     }
 
     ul {
@@ -300,6 +313,24 @@
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
+  }
+
+  // Dialog actions stay in view at the bottom while long dialog content scrolls
+  .modal-actions,
+  .button-group,
+  .quick-actions {
+    position: sticky;
+    bottom: calc(-1 * var(--modal-padding-bottom)); // reach the dialog edge so scrolled text never shows below
+    z-index: 1;
+    padding: 1rem 0 var(--modal-padding-bottom);
+    margin-bottom: calc(-1 * var(--modal-padding-bottom));
+    background: linear-gradient(to bottom, rgba(23, 37, 57, 0), #172539 1rem);
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -874,7 +905,8 @@
   }
 
   .modal-content {
-    padding: 2rem 1.5rem;
+    --modal-padding-bottom: 2rem;
+    padding: 2rem 1.5rem var(--modal-padding-bottom);
 
     h1 {
       font-size: 2rem;
@@ -956,7 +988,7 @@
   }
 
   .instructions {
-    h3 {
+    h2 {
       font-size: 1.1rem;
     }
 

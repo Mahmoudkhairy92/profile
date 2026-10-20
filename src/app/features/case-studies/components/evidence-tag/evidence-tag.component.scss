@@ -1,0 +1,67 @@
+:host {
+  display: inline;
+}
+
+.evidence-tag {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  vertical-align: 0.1em;
+}
+
+// Verified facts (CV, portfolio, public website): quiet outlined tags.
+// Methodology and synthetic examples: filled, so they stand out as not being claims about my work.
+// Text colours keep at least 4.5:1 contrast on white and on their tinted backgrounds.
+.evidence-cv {
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #065f46;
+}
+
+.evidence-portfolio {
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #1e40af;
+}
+
+.evidence-public-product {
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #6b21a8;
+}
+
+.evidence-methodology {
+  background: rgba(107, 114, 128, 0.14);
+  color: #374151;
+}
+
+.evidence-synthetic {
+  background: rgba(245, 158, 11, 0.2);
+  color: #92400e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .evidence-cv {
+    color: #6ee7b7;
+  }
+
+  .evidence-portfolio {
+    color: #93c5fd;
+  }
+
+  .evidence-public-product {
+    color: #d8b4fe;
+  }
+
+  .evidence-methodology {
+    background: rgba(156, 163, 175, 0.2);
+    color: #e5e7eb;
+  }
+
+  .evidence-synthetic {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+  }
+}

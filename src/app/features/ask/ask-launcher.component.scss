@@ -1,0 +1,88 @@
+.ask-launcher {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1000; // just above the scroll-to-top button, below the navbar
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 50px;
+  padding: 0 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: #047857;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(6, 78, 59, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  i {
+    font-size: 1.15rem;
+  }
+
+  &:hover {
+    background: #065f46;
+  }
+
+  // Two-tone ring: visible over light sections, the green heroes and the dark footer
+  &:focus-visible {
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--bs-body-bg);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.ask-launcher-error {
+  position: fixed;
+  right: 2rem;
+  bottom: 5.5rem;
+  z-index: 1000;
+  max-width: 280px;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: #991b1b;
+  font-size: 0.85rem;
+}
+
+// Phones: icon-only round button (the label stays available to screen readers)
+@media (max-width: 576px) {
+  .ask-launcher {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .ask-launcher-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .ask-launcher-error {
+    right: 1rem;
+    bottom: 5rem;
+    left: 1rem;
+    max-width: none;
+  }
+}

@@ -1,0 +1,107 @@
+@let sharedSectionEvidence = sectionEvidence();
+<section class="case-section" [id]="section.id" tabindex="-1" [attr.aria-labelledby]="section.id + '-title'">
+  <div class="case-section-header">
+    <h2 class="case-section-title" [id]="section.id + '-title'">{{ section.title }}</h2>
+    @if (sharedSectionEvidence) {
+      <app-evidence-tag [type]="sharedSectionEvidence" [label]="evidenceLabel(sharedSectionEvidence)" scope="section" />
+    }
+  </div>
+
+  @for (paragraph of section.paragraphs ?? []; track paragraph.text) {
+    <p class="case-paragraph">
+      {{ paragraph.text }}
+      @if (!sharedSectionEvidence) {
+        <app-evidence-tag [type]="paragraph.evidence" [label]="evidenceLabel(paragraph.evidence)" />
+      }
+    </p>
+  }
+
+  @if (section.metrics?.length) {
+    <ul class="case-metrics">
+      @for (metric of section.metrics; track metric.label) {
+        <li class="case-metric">
+          <span class="case-metric-value">{{ metric.value }}</span>
+          <span class="case-metric-label">{{ metric.label }}</span>
+          <span class="case-metric-scope">{{ metric.scope }}</span>
+          @if (!sharedSectionEvidence) {
+            <app-evidence-tag [type]="metric.evidence" [label]="evidenceLabel(metric.evidence)" />
+          }
+        </li>
+      }
+    </ul>
+  }
+
+  @if (section.items?.length) {
+    <ng-container [ngTemplateOutlet]="itemList" [ngTemplateOutletContext]="{ $implicit: section.items, showTags: !sharedSectionEvidence }" />
+  }
+
+  @for (group of section.groups ?? []; track group.title) {
+    @let sharedGroupEvidence = sharedSectionEvidence ? null : groupEvidence(group);
+    <div class="case-group">
+      <div class="case-group-header">
+        <h3 class="case-group-title">{{ group.title }}</h3>
+        @if (sharedGroupEvidence) {
+          <app-evidence-tag [type]="sharedGroupEvidence" [label]="evidenceLabel(sharedGroupEvidence)" scope="group" />
+        }
+      </div>
+      @if (group.items?.length) {
+        <ng-container [ngTemplateOutlet]="itemList" [ngTemplateOutletContext]="{ $implicit: group.items, showTags: !sharedSectionEvidence && !sharedGroupEvidence }" />
+      }
+      @if (group.chips?.length) {
+        <ul class="case-chips">
+          @for (chip of group.chips; track chip) {
+            <li class="case-chip">{{ chip }}</li>
+          }
+        </ul>
+      }
+      @if (group.note) {
+        <p class="case-note"><i class="fas fa-info-circle" aria-hidden="true"></i>{{ group.note }}</p>
+      }
+    </div>
+  }
+
+  @for (example of section.examples ?? []; track example.title) {
+    <figure class="case-example" [class.case-example-synthetic]="example.evidence === 'synthetic'">
+      <figcaption class="case-example-header">
+        <span class="case-example-label">
+          <i [class]="example.evidence === 'synthetic' ? 'fas fa-flask' : 'fas fa-vial'" aria-hidden="true"></i>{{ example.label }}
+        </span>
+        <h3 class="case-example-title">{{ example.title }}</h3>
+      </figcaption>
+      <dl class="case-example-fields">
+        @for (field of example.fields; track field.name) {
+          <div class="case-example-field">
+            <dt>{{ field.name }}</dt>
+            <dd>{{ field.value }}</dd>
+          </div>
+        }
+      </dl>
+      <p class="case-example-disclaimer">
+        {{ example.disclaimer }}
+        @if (!sharedSectionEvidence && !exampleNamesEvidence(example)) {
+          <app-evidence-tag [type]="example.evidence" [label]="evidenceLabel(example.evidence)" />
+        }
+      </p>
+    </figure>
+  }
+
+  @for (note of section.notes ?? []; track note) {
+    <p class="case-note"><i class="fas fa-info-circle" aria-hidden="true"></i>{{ note }}</p>
+  }
+</section>
+
+<ng-template #itemList let-items let-showTags="showTags">
+  <ul class="case-items">
+    @for (item of items; track item.text) {
+      <li class="case-item">
+        @if (item.label) {
+          <strong class="case-item-label">{{ item.label }}</strong>
+        }
+        {{ item.text }}
+        @if (showTags) {
+          <app-evidence-tag [type]="item.evidence" [label]="evidenceLabel(item.evidence)" />
+        }
+      </li>
+    }
+  </ul>
+</ng-template>

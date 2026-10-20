@@ -1,3 +1,5 @@
+import { CaseStudyRef } from './case-study.model';
+
 export interface Experience {
   id: string;
   company: string;
@@ -14,6 +16,7 @@ export interface Experience {
   responsibilities: string[];
   technologies: string[];
   achievements: string[];
+  caseStudy?: CaseStudyRef;
 }
 
 export interface ExperienceData {

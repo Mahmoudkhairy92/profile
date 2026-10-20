@@ -6,7 +6,7 @@
     <div class="action-icon">
       <i [class]="icon"></i>
     </div>
-    <h5 class="action-title">{{ title }}</h5>
+    <h2 class="action-title">{{ title }}</h2>
     @if (description) {
       <p class="action-description">{{ description }}</p>
     }
@@ -15,12 +15,13 @@
   <a 
     [href]="href" 
     [target]="target"
+    [attr.rel]="target === '_blank' ? 'noopener noreferrer' : null"
     class="action-card glass-card"
     [ngClass]="'action-card-' + variant">
     <div class="action-icon">
       <i [class]="icon"></i>
     </div>
-    <h5 class="action-title">{{ title }}</h5>
+    <h2 class="action-title">{{ title }}</h2>
     @if (description) {
       <p class="action-description">{{ description }}</p>
     }

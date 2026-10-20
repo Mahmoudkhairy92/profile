@@ -1,0 +1,256 @@
+// Section card follows the Products & Ventures card style
+.case-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--bs-primary);
+  color: var(--bs-body-color);
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.case-section-header,
+.case-group-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+
+.case-section-header {
+  margin-bottom: 1.25rem;
+}
+
+.case-group-header {
+  margin-bottom: 0.75rem;
+}
+
+.case-section-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+}
+
+.case-paragraph {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.case-items {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+}
+
+.case-item {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+.case-item-label {
+  display: block;
+  color: var(--bs-heading-color);
+}
+
+.case-group {
+  margin-top: 0.5rem;
+}
+
+.case-group + .case-group {
+  margin-top: 1.5rem;
+}
+
+.case-group-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bs-secondary-color);
+}
+
+.case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.case-chip {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: var(--bs-secondary-bg);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.case-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 10px;
+  background: var(--bs-secondary-bg);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.case-metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bs-primary-dark);
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-primary-light);
+  }
+}
+
+.case-metric-label {
+  font-weight: 600;
+  color: var(--bs-heading-color);
+}
+
+.case-metric-scope {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.case-example {
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px dashed var(--bs-border-color);
+  border-radius: 10px;
+  background: var(--bs-secondary-bg);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.case-example-synthetic {
+  border-color: rgba(217, 119, 6, 0.6);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.case-example-header {
+  margin-bottom: 0.75rem;
+}
+
+.case-example-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #92400e;
+
+  @media (prefers-color-scheme: dark) {
+    color: #fcd34d;
+  }
+}
+
+.case-example:not(.case-example-synthetic) .case-example-label {
+  color: #6b21a8;
+
+  @media (prefers-color-scheme: dark) {
+    color: #d8b4fe;
+  }
+}
+
+.case-example-title {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+}
+
+.case-example-fields {
+  margin: 0;
+}
+
+.case-example-field {
+  display: grid;
+  grid-template-columns: minmax(130px, 200px) 1fr;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--bs-border-color);
+
+  dt {
+    font-weight: 600;
+    color: var(--bs-heading-color);
+  }
+
+  dd {
+    margin: 0;
+    line-height: 1.55;
+  }
+}
+
+.case-example-disclaimer {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--bs-secondary-color);
+}
+
+.case-note {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--bs-secondary-color);
+
+  i {
+    margin-top: 0.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-section {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .case-section-title {
+    font-size: 1.25rem;
+  }
+
+  .case-example {
+    padding: 1rem;
+  }
+
+  .case-example-field {
+    grid-template-columns: 1fr;
+  }
+}

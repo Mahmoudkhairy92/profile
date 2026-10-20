@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { caseStudyTitleResolver } from './features/case-studies/case-study-title.resolver';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,24 @@ export const routes: Routes = [
     loadComponent: () => 
       import('./features/projects/projects.component').then(m => m.ProjectsComponent),
     title: 'Projects | Mahmoud Khairy'
+  },
+  {
+    path: 'case-studies',
+    loadComponent: () =>
+      import('./features/case-studies/case-studies.component').then(m => m.CaseStudiesComponent),
+    title: 'Case Studies | Mahmoud Khairy'
+  },
+  {
+    path: 'case-studies/:slug',
+    loadComponent: () =>
+      import('./features/case-studies/case-study-detail.component').then(m => m.CaseStudyDetailComponent),
+    title: caseStudyTitleResolver
+  },
+  {
+    path: 'ventures',
+    loadComponent: () =>
+      import('./features/ventures/ventures.component').then(m => m.VenturesComponent),
+    title: 'Products & Ventures | Mahmoud Khairy'
   },
   {
     path: 'achievements',
@@ -50,9 +69,9 @@ export const routes: Routes = [
   },
   {
     path: 'game',
-    loadComponent: () => 
-      import('./features/game/game.component').then(m => m.GameComponent),
-    title: 'Tech Stack Snake - Play & Learn | Mahmoud Khairy'
+    // Loads the game together with the Firebase providers its leaderboard needs
+    loadChildren: () =>
+      import('./features/game/game.routes').then(m => m.GAME_ROUTES)
   },
   {
     path: '**',

@@ -16,10 +16,9 @@
   display: flex;
   flex-direction: column;
   color: var(--bs-body-color);
-  scroll-margin-top: 2rem;
   
   &:hover {
-    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
     transform: translateY(-2px);
   }
   
@@ -76,7 +75,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
   animation: pulse 2s ease-in-out infinite;
   
   i {
@@ -85,10 +84,10 @@
   
   @keyframes pulse {
     0%, 100% {
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
     }
     50% {
-      box-shadow: 0 2px 12px rgba(102, 126, 234, 0.5);
+      box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
     }
   }
 }
@@ -96,20 +95,20 @@
 // Strategic Initiative Card Styling
 .project-card.strategic-initiative {
   border-left-color: var(--bs-primary-dark);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.02) 0%, rgba(5, 150, 105, 0.02) 100%);
   
   @media (prefers-color-scheme: dark) {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
   }
   
   &:hover {
-    box-shadow: 0 4px 16px rgba(118, 75, 162, 0.25);
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.25);
   }
 }
 
 .project-role {
   font-size: 0.95rem;
-  color: var(--bs-primary);
+  color: var(--bs-primary-text);
   font-weight: 600;
 }
 
@@ -138,7 +137,7 @@
   opacity: 0.8;
   
   i {
-    color: var(--bs-primary);
+    color: var(--bs-primary-text);
   }
 }
 
@@ -178,7 +177,7 @@
       content: '•';
       position: absolute;
       left: 0;
-      color: var(--bs-primary);
+      color: var(--bs-primary-text);
       font-weight: 700;
       font-size: 1.2rem;
     }
@@ -193,8 +192,8 @@
 }
 
 .tech-badge {
-  background: rgba(102, 126, 234, 0.1);
-  color: var(--bs-primary);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--bs-primary-text);
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -202,7 +201,7 @@
   transition: all 0.2s ease;
   
   &:hover {
-    background: #667eea;
+    background: var(--bs-primary-solid);
     color: white;
   }
 }
@@ -241,12 +240,12 @@
   }
   
   &.primary {
-    background: var(--bs-primary);
+    background: var(--bs-primary-solid);
     color: white;
-    border-color: var(--bs-primary);
+    border-color: var(--bs-primary-solid);
     
     &:hover {
-      background: var(--bs-primary-dark);
+      background: var(--bs-primary-solid-hover);
       color: white;
     }
   }
@@ -292,3 +291,57 @@
   }
 }
 
+// Category groups and pointer to Products & Ventures
+.ventures-pointer {
+  margin-bottom: 2.5rem;
+  color: var(--bs-body-color);
+
+  i {
+    margin-right: 0.5rem;
+    color: var(--bs-primary-text);
+  }
+
+  a {
+    font-weight: 600;
+    color: var(--bs-primary-text);
+  }
+}
+
+.project-group {
+  margin-bottom: 3.5rem;
+}
+
+.project-group-header {
+  margin-bottom: 1.5rem;
+}
+
+.project-group-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bs-heading-color);
+}
+
+.project-group-description {
+  margin: 0;
+  color: var(--bs-secondary-color);
+}
+
+.project-company {
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+}
+
+.meta-label {
+  font-weight: 600;
+}
+
+// Anchor targets receive focus; show it for keyboard users only
+.project-card:focus {
+  outline: none;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 4px;
+}

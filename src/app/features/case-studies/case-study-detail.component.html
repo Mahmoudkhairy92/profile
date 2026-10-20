@@ -1,0 +1,146 @@
+<div class="container py-5">
+  @if (caseStudyData(); as data) {
+    @if (caseStudy(); as study) {
+      <nav class="case-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a routerLink="/case-studies">Case Studies</a></li>
+          <li aria-current="page">{{ study.title }}</li>
+        </ol>
+      </nav>
+
+      <app-page-header [title]="study.title" [subtitle]="study.summary" icon="fas fa-book-open" />
+
+      <dl class="case-facts">
+        <div class="case-fact">
+          <dt>Organization</dt>
+          <dd>{{ study.organization }}</dd>
+        </div>
+        <div class="case-fact">
+          <dt>Role</dt>
+          <dd>{{ study.role }}</dd>
+        </div>
+        <div class="case-fact">
+          <dt>Period</dt>
+          <dd>{{ study.period }}</dd>
+        </div>
+      </dl>
+
+      <div class="case-layout">
+        <nav class="case-toc" aria-labelledby="case-toc-title">
+          <h2 class="case-toc-title" id="case-toc-title">On this page</h2>
+          <ol class="case-toc-list">
+            @for (section of study.sections; track section.id) {
+              <li>
+                <a [routerLink]="[]" [fragment]="section.id" (click)="scrollToSection(section.id)">{{ section.title }}</a>
+              </li>
+            }
+            <li>
+              <a [routerLink]="[]" [fragment]="referencesId" (click)="scrollToSection(referencesId)">Relevant Links and References</a>
+            </li>
+          </ol>
+        </nav>
+
+        <div class="case-content">
+          <aside class="evidence-key" aria-labelledby="evidence-key-title">
+            <h2 class="evidence-key-title" id="evidence-key-title">How to read this case study</h2>
+            <p class="evidence-key-intro">Each statement is labelled with the evidence behind it:</p>
+            <ul class="evidence-key-list">
+              @for (entry of evidenceKey(); track entry.type) {
+                <li>
+                  <app-evidence-tag [type]="entry.type" [label]="entry.label" />
+                  <span>{{ entry.description }}</span>
+                </li>
+              }
+            </ul>
+            <p class="evidence-key-note">
+              When every statement in a section or group has the same evidence, its label appears once, next to the heading.
+              Unverified or confidential details are left out rather than estimated, and a section is omitted when no verified source covers it.
+            </p>
+          </aside>
+
+          @for (section of study.sections; track section.id) {
+            <app-case-study-section [section]="section" [evidenceTypes]="data.evidenceTypes" />
+          }
+
+          <section class="case-references" [id]="referencesId" tabindex="-1" aria-labelledby="references-title">
+            <h2 class="case-references-title" id="references-title">Relevant Links and References</h2>
+
+            @if (references().cv.length) {
+              <div class="reference-group">
+                <h3 class="reference-group-title">CV</h3>
+                <ul class="reference-list">
+                  @for (source of references().cv; track source.id) {
+                    <li>{{ source.title }}</li>
+                  }
+                </ul>
+                <button type="button" class="reference-action" (click)="downloadCV()">
+                  <i class="fas fa-download" aria-hidden="true"></i>Download CV (PDF)
+                </button>
+              </div>
+            }
+
+            @if (references().portfolio.length) {
+              <div class="reference-group">
+                <h3 class="reference-group-title">On this portfolio</h3>
+                <ul class="reference-list">
+                  @for (source of references().portfolio; track source.id) {
+                    <li>
+                      <a [routerLink]="source.route" [fragment]="source.fragment">{{ source.title }}</a>
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+
+            @if (references().publicProduct.length) {
+              <div class="reference-group">
+                <h3 class="reference-group-title">Public product information</h3>
+                <ul class="reference-list">
+                  @for (source of references().publicProduct; track source.id) {
+                    <li>
+                      <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                        {{ source.title }}<i class="fas fa-external-link-alt ms-2" aria-hidden="true"></i><span class="visually-hidden"> (opens in a new tab)</span>
+                      </a>
+                      @if (source.verifiedOn) {
+                        <span class="reference-checked">Checked {{ formatSourceDate(source.verifiedOn) }}</span>
+                      }
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+          </section>
+        </div>
+      </div>
+
+      <nav class="case-pager" aria-label="More case studies">
+        @if (neighbours().previous; as previous) {
+          <a class="case-pager-link case-pager-previous" [routerLink]="['/case-studies', previous.slug]">
+            <span class="case-pager-hint"><i class="fas fa-arrow-left" aria-hidden="true"></i>Previous case study</span>
+            {{ previous.title }}
+          </a>
+        }
+        <a class="case-pager-all" routerLink="/case-studies">All case studies</a>
+        @if (neighbours().next; as next) {
+          <a class="case-pager-link case-pager-next" [routerLink]="['/case-studies', next.slug]">
+            <span class="case-pager-hint">Next case study<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            {{ next.title }}
+          </a>
+        }
+      </nav>
+    } @else {
+      <div class="case-not-found">
+        <h1 class="case-not-found-title">Case study not found</h1>
+        <p>This case study isn't available. It may have been renamed or removed.</p>
+        <a class="reference-action" routerLink="/case-studies">See all case studies</a>
+      </div>
+    }
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3 text-muted">Loading case study...</p>
+    </div>
+  }
+</div>

@@ -7,5 +7,9 @@ export const environment = {
     storageBucket: "mahmoud-khairy-portfolio.firebasestorage.app",
     messagingSenderId: "147604514434",
     appId: "1:147604514434:web:98c7e29c1eadef3aac369b"
+  },
+  features: {
+    /** "Ask About Mahmoud" client-side portfolio guide (no backend, no AI service). */
+    askAboutMahmoud: true
   }
 };
